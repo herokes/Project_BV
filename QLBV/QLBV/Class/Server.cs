@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace QLBV.Class
+namespace QLBV
 {
-    class Server
+    [Serializable]
+    public class Server
     {
         private string hostname;
         private string username;

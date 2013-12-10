@@ -7,17 +7,21 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections;
 using MySql.Data.MySqlClient;
 
-namespace QLBV.Class
+namespace QLBV
 {
-    class Util
+    public class Util
     {
         public MySqlConnection con;
+
+        public Util()
+        {
+        }
 
         public bool connect(Server server)
         { 
             try
             {
-                string strCon = "server=" + server.Hostname + ";User Id=" + server.Username + ";Persist Security Info=True;database=" +  server.Database;
+                string strCon = "server=" + server.Hostname + ";User Id=" + server.Username + ";Password=" + server.Password + ";Persist Security Info=True;database=" +  server.Database;
                 con = new MySqlConnection(strCon);
                 con.Open();
                 con.Close();
