@@ -69,7 +69,7 @@
             this.textBox_username.Location = new System.Drawing.Point(73, 126);
             this.textBox_username.Name = "textBox_username";
             this.textBox_username.Size = new System.Drawing.Size(153, 20);
-            this.textBox_username.TabIndex = 1;
+            this.textBox_username.TabIndex = 2;
             // 
             // label3
             // 
@@ -85,7 +85,7 @@
             this.textBox_password.Location = new System.Drawing.Point(73, 152);
             this.textBox_password.Name = "textBox_password";
             this.textBox_password.Size = new System.Drawing.Size(153, 20);
-            this.textBox_password.TabIndex = 1;
+            this.textBox_password.TabIndex = 3;
             this.textBox_password.UseSystemPasswordChar = true;
             // 
             // label4
@@ -102,20 +102,22 @@
             this.textBox_database.Location = new System.Drawing.Point(73, 178);
             this.textBox_database.Name = "textBox_database";
             this.textBox_database.Size = new System.Drawing.Size(153, 20);
-            this.textBox_database.TabIndex = 1;
+            this.textBox_database.TabIndex = 4;
             // 
             // button_ok
             // 
             this.button_ok.Location = new System.Drawing.Point(105, 218);
             this.button_ok.Name = "button_ok";
             this.button_ok.Size = new System.Drawing.Size(75, 23);
-            this.button_ok.TabIndex = 2;
+            this.button_ok.TabIndex = 5;
             this.button_ok.Text = "OK";
             this.button_ok.UseVisualStyleBackColor = true;
             this.button_ok.Click += new System.EventHandler(this.button_ok_Click);
             // 
             // SetupForm
             // 
+            this.AcceptButton = this.button_ok;
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
@@ -129,7 +131,9 @@
             this.Controls.Add(this.textBox_hostname);
             this.Controls.Add(this.label1);
             this.Name = "SetupForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Setup Database";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SetupForm_FormClosed);
             this.Load += new System.EventHandler(this.SetupForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

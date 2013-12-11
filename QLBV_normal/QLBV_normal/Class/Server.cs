@@ -15,10 +15,10 @@ namespace QLBV_normal
 
         public Server() 
         {
-            this.hostname = "localhost";
-            this.username = "root";
+            this.hostname = "";
+            this.username = "";
             this.password = "";
-            this.database = "dbthan";
+            this.database = "";
         }
 
         public string Hostname
