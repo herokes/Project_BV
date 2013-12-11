@@ -15,7 +15,7 @@ namespace QLBV_normal
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SetupForm());
+            Application.Run(new MainForm());
         }
     }
 }

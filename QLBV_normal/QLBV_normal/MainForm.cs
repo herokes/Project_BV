@@ -20,17 +20,18 @@ namespace QLBV_normal
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            frmSetup.Visible = false;
+            //frmSetup.Visible = false;
         }
 
         private void MainForm_Activated(object sender, EventArgs e)
         {
-            frmSetup.Visible = false;
+            //frmSetup.Visible = false;
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
+
     }
 }
