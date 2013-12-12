@@ -29,8 +29,8 @@ namespace QLBV_normal
             if (arrServer.Count > 0)
             {
                 Server server = (Server)arrServer[0];
-                Session.CONNECTED = Util.connect(server);
-                if (Session.CONNECTED)
+                Session.SERVER = Util.connect(server);
+                if (Session.SERVER.Count != 0)
                 {
                     if (Session.USER.Count == 0)
                     {
@@ -52,7 +52,7 @@ namespace QLBV_normal
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (Session.CONNECTED && (Session.USER.Count != 0))
+            if ((Session.SERVER.Count != 0) && (Session.USER.Count != 0))
             {
                 Application.Exit();
             }
