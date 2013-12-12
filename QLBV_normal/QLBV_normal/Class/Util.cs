@@ -6,18 +6,15 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections;
 using MySql.Data.MySqlClient;
+using System.Security.Cryptography;
 
 namespace QLBV_normal
 {
     public class Util
     {
-        public MySqlConnection con;
+        public static MySqlConnection con;
 
-        public Util()
-        {
-        }
-
-        public bool connect(Server server)
+        public static bool connect(Server server)
         { 
             try
             {
@@ -32,8 +29,8 @@ namespace QLBV_normal
                 return false;
             }
         }
-            
-        public void saveList(ArrayList arrList, string To_filepath)
+
+        public static void saveList(ArrayList arrList, string To_filepath)
         {
             FileStream fs = new FileStream(To_filepath, FileMode.Create);
             BinaryFormatter bf = new BinaryFormatter();
@@ -41,7 +38,7 @@ namespace QLBV_normal
             fs.Close();
         }
 
-        public ArrayList openList(string filepath)
+        public static ArrayList openList(string filepath)
         {
             ArrayList arrList = new ArrayList();
             try
@@ -53,9 +50,30 @@ namespace QLBV_normal
             }
             catch (FileNotFoundException)
             {
-                this.saveList(arrList, filepath);
+                saveList(arrList, filepath);
             }
             return arrList;
+        }
+
+        public static string MD5Hash(string text)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+
+            //compute hash from the bytes of text
+            md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(text));
+
+            //get hash result after compute it
+            byte[] result = md5.Hash;
+
+            StringBuilder strBuilder = new StringBuilder();
+            for (int i = 0; i < result.Length; i++)
+            {
+                //change it into 2 hexadecimal digits
+                //for each byte
+                strBuilder.Append(result[i].ToString("x2"));
+            }
+
+            return strBuilder.ToString();
         }
     }
 }

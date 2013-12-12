@@ -14,51 +14,42 @@ namespace QLBV_normal
     {
         public MainForm frmMain;
 
-        public Util util = new Util();
+        Server server = new Server();
 
         public SetupForm()
         {
             InitializeComponent();
         }
 
-        private void SetupForm_Load(object sender, EventArgs e)
-        {
-            ArrayList arrServer = util.openList("server.list");
-            foreach (Server server in arrServer)
-            {
-                if (util.connect(server))
-                {
-                    if (frmMain == null || frmMain.IsDisposed)
-                    {
-                        frmMain = new MainForm();
-                        frmMain.frmSetup = this;
-                        frmMain.Show();
-                        frmMain.Activate();
-                    }
-                }
-            }
-        }
-
         private void button_ok_Click(object sender, EventArgs e)
         {
-            Server server = new Server();
             server.Hostname = textBox_hostname.Text;
             server.Username = textBox_username.Text;
             server.Password = textBox_password.Text;
             server.Database = textBox_database.Text;
-            if (util.connect(server))
+            Session.CONNECTED = Util.connect(server);
+            if (Session.CONNECTED)
             {
                 ArrayList arrServer = new ArrayList();
                 arrServer.Add(server);
-                util.saveList(arrServer, "server.list");
-                if (frmMain == null || frmMain.IsDisposed)
-                {
-                    frmMain = new MainForm();
-                    frmMain.frmSetup = this;
-                    frmMain.Show();
-                    frmMain.Activate();
-                }
+                Util.saveList(arrServer, "server.list");
+                this.Close();
+                this.frmMain = new MainForm();
+                this.frmMain.Show();
             }
+        }
+
+        private void SetupForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (!Session.CONNECTED)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void SetupForm_Load(object sender, EventArgs e)
+        {
+            textBox_hostname.Focus();
         }
     }
 }
