@@ -11,6 +11,8 @@ namespace QLBV_normal
 {
     public partial class DangkyForm : Form
     {
+        public MainForm frmMain;
+
         public DangkyForm()
         {
             InitializeComponent();

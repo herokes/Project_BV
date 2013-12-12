@@ -15,6 +15,8 @@ namespace QLBV_normal
         //Global form variable
         public SetupForm frmSetup;
         public LoginForm frmLogin;
+        public BenhvienForm frmBenhvien;
+        public DangkyForm frmDangky;
 
         //Global class variable
 
@@ -32,6 +34,7 @@ namespace QLBV_normal
                 Session.SERVER = Util.connect(server);
                 if (Session.SERVER.Count != 0)
                 {
+                    Session.USER.Add("admin", "remove me");
                     if (Session.USER.Count == 0)
                     {
                         this.frmLogin = new LoginForm();
@@ -55,6 +58,36 @@ namespace QLBV_normal
             if ((Session.SERVER.Count != 0) && (Session.USER.Count != 0))
             {
                 Application.Exit();
+            }
+        }
+
+        private void bỆNHVIỆNToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmBenhvien == null || frmBenhvien.IsDisposed)
+            {
+                frmBenhvien = new BenhvienForm();
+                frmBenhvien.frmMain = this;
+                frmBenhvien.MdiParent = this;
+                frmBenhvien.Show();
+            }
+            else
+            {
+                frmBenhvien.Focus();
+            }
+        }
+
+        private void đĂNGKÝKHÁMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmBenhvien == null || frmBenhvien.IsDisposed)
+            {
+                frmDangky = new DangkyForm();
+                frmDangky.frmMain = this;
+                frmDangky.MdiParent = this;
+                frmDangky.Show();
+            }
+            else
+            {
+                frmDangky.Focus();
             }
         }
 

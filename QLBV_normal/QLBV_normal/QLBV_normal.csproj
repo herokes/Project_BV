@@ -51,6 +51,12 @@
     <Reference Include="TelerikCommon, Version=2013.3.1016.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BenhvienForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BenhvienForm.Designer.cs">
+      <DependentUpon>BenhvienForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Class\Bacsi.cs" />
     <Compile Include="Class\Benhnhan.cs" />
     <Compile Include="Class\Server.cs" />
@@ -82,6 +88,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BenhvienForm.resx">
+      <DependentUpon>BenhvienForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DangkyForm.resx">
       <DependentUpon>DangkyForm.cs</DependentUpon>
     </EmbeddedResource>

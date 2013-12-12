@@ -67,6 +67,7 @@
             this.đĂNGKÝKHÁMToolStripMenuItem.Name = "đĂNGKÝKHÁMToolStripMenuItem";
             this.đĂNGKÝKHÁMToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
             this.đĂNGKÝKHÁMToolStripMenuItem.Text = "ĐĂNG KÝ KHÁM";
+            this.đĂNGKÝKHÁMToolStripMenuItem.Click += new System.EventHandler(this.đĂNGKÝKHÁMToolStripMenuItem_Click);
             // 
             // nGOẠITRÚToolStripMenuItem
             // 
@@ -106,6 +107,7 @@
             this.bỆNHVIỆNToolStripMenuItem.Name = "bỆNHVIỆNToolStripMenuItem";
             this.bỆNHVIỆNToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.bỆNHVIỆNToolStripMenuItem.Text = "BỆNH VIỆN";
+            this.bỆNHVIỆNToolStripMenuItem.Click += new System.EventHandler(this.bỆNHVIỆNToolStripMenuItem_Click);
             // 
             // MainForm
             // 
