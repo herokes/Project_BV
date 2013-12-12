@@ -15,6 +15,7 @@ namespace QLBV_normal
         {
             InitializeComponent();
         }
+
      
       
     }
