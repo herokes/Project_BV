@@ -1,0 +1,3 @@
+ALTER TABLE `benhnhan` CHANGE `Dienthoai` `Dienthoai` VARCHAR(20) NULL DEFAULT NULL;
+
+ALTER TABLE `thuoc` CHANGE `idThuoc` `idThuoc` INT(11) NOT NULL AUTO_INCREMENT;

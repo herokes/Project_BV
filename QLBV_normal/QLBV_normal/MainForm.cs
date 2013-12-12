@@ -17,6 +17,7 @@ namespace QLBV_normal
         public LoginForm frmLogin;
         public BenhvienForm frmBenhvien;
         public DangkyForm frmDangky;
+        public ThuocForm frmThuoc;
 
         //Global class variable
 
@@ -88,6 +89,21 @@ namespace QLBV_normal
             else
             {
                 frmDangky.Focus();
+            }
+        }
+
+        private void tHUỐCToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmBenhvien == null || frmBenhvien.IsDisposed)
+            {
+                frmThuoc = new ThuocForm();
+                frmThuoc.frmMain = this;
+                frmThuoc.MdiParent = this;
+                frmThuoc.Show();
+            }
+            else
+            {
+                frmThuoc.Focus();
             }
         }
 
