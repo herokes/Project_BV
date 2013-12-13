@@ -15,8 +15,10 @@ namespace QLBV_normal
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            MainForm frmMain = new MainForm();
-            frmMain.Show();
+            DangkyForm frmDangky = new DangkyForm();
+            frmDangky.Show();
+            //MainForm frmMain = new MainForm();
+            //frmMain.Show();
             Application.Run();
         }
     }

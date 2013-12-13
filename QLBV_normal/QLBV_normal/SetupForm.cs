@@ -27,8 +27,8 @@ namespace QLBV_normal
             server.Username = textBox_username.Text;
             server.Password = textBox_password.Text;
             server.Database = textBox_database.Text;
-            Session.SERVER = Util.connect(server);
-            if (Session.SERVER.Count != 0)
+            Session.CONNECTED = Util.connect(server);
+            if (Session.CONNECTED)
             {
                 ArrayList arrServer = new ArrayList();
                 arrServer.Add(server);
@@ -41,7 +41,7 @@ namespace QLBV_normal
 
         private void SetupForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (Session.SERVER.Count == 0)
+            if (!Session.CONNECTED)
             {
                 Application.Exit();
             }

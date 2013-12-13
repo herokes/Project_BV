@@ -8,7 +8,7 @@ namespace QLBV_normal
 {
     public class Session
     {
-        public static Hashtable SERVER = new Hashtable();
+        public static bool CONNECTED = false;
         public static Hashtable USER = new Hashtable();
     }
 }

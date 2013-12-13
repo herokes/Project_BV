@@ -14,21 +14,22 @@ namespace QLBV_normal
     {
         public static MySqlConnection con;
 
-        public static Hashtable connect(Server server)
-        {
-            Hashtable info = new Hashtable();
+        public static bool connect(Server server)
+        { 
             try
             {
-                string strCon = "server=" + server.Hostname + ";User Id=" + server.Username + ";Password=" + server.Password + ";Persist Security Info=True;database=" + server.Database + ";charset=utf8";
+                //string strCon = "server=" + server.Hostname + ";User Id=" + server.Username + ";Password=" + server.Password + ";Persist Security Info=True;database=" +  server.Database;
+                String strCon= "server=localhost:8080;User Id=root;Password=;Persist Security Info=True;database=dbthan";
+                
                 con = new MySqlConnection(strCon);
                 con.Open();
                 con.Close();
-                info.Add("info", server);
-                return info;
+                return true;
             }
             catch (MySqlException)
             {
-                return info;
+                return false;
+                
             }
         }
 
