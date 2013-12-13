@@ -37,6 +37,7 @@
             this.tIỆNÍCHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bÁCSĨToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bỆNHVIỆNToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tHUỐCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +68,7 @@
             this.đĂNGKÝKHÁMToolStripMenuItem.Name = "đĂNGKÝKHÁMToolStripMenuItem";
             this.đĂNGKÝKHÁMToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
             this.đĂNGKÝKHÁMToolStripMenuItem.Text = "ĐĂNG KÝ KHÁM";
+            this.đĂNGKÝKHÁMToolStripMenuItem.Click += new System.EventHandler(this.đĂNGKÝKHÁMToolStripMenuItem_Click);
             // 
             // nGOẠITRÚToolStripMenuItem
             // 
@@ -90,7 +92,8 @@
             // 
             this.tIỆNÍCHToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bÁCSĨToolStripMenuItem,
-            this.bỆNHVIỆNToolStripMenuItem});
+            this.bỆNHVIỆNToolStripMenuItem,
+            this.tHUỐCToolStripMenuItem});
             this.tIỆNÍCHToolStripMenuItem.Name = "tIỆNÍCHToolStripMenuItem";
             this.tIỆNÍCHToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.tIỆNÍCHToolStripMenuItem.Text = "TIỆN ÍCH";
@@ -106,12 +109,20 @@
             this.bỆNHVIỆNToolStripMenuItem.Name = "bỆNHVIỆNToolStripMenuItem";
             this.bỆNHVIỆNToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.bỆNHVIỆNToolStripMenuItem.Text = "BỆNH VIỆN";
+            this.bỆNHVIỆNToolStripMenuItem.Click += new System.EventHandler(this.bỆNHVIỆNToolStripMenuItem_Click);
+            // 
+            // tHUỐCToolStripMenuItem
+            // 
+            this.tHUỐCToolStripMenuItem.Name = "tHUỐCToolStripMenuItem";
+            this.tHUỐCToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tHUỐCToolStripMenuItem.Text = "THUỐC";
+            this.tHUỐCToolStripMenuItem.Click += new System.EventHandler(this.tHUỐCToolStripMenuItem_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(810, 370);
+            this.ClientSize = new System.Drawing.Size(810, 453);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -137,5 +148,6 @@
         private System.Windows.Forms.ToolStripMenuItem tIỆNÍCHToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bÁCSĨToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bỆNHVIỆNToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tHUỐCToolStripMenuItem;
     }
 }
