@@ -105,20 +105,20 @@
             // bÁCSĨToolStripMenuItem
             // 
             this.bÁCSĨToolStripMenuItem.Name = "bÁCSĨToolStripMenuItem";
-            this.bÁCSĨToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.bÁCSĨToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.bÁCSĨToolStripMenuItem.Text = "BÁC SĨ";
             // 
             // bỆNHVIỆNToolStripMenuItem
             // 
             this.bỆNHVIỆNToolStripMenuItem.Name = "bỆNHVIỆNToolStripMenuItem";
-            this.bỆNHVIỆNToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.bỆNHVIỆNToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.bỆNHVIỆNToolStripMenuItem.Text = "BỆNH VIỆN";
             this.bỆNHVIỆNToolStripMenuItem.Click += new System.EventHandler(this.bỆNHVIỆNToolStripMenuItem_Click);
             // 
             // tHUỐCToolStripMenuItem
             // 
             this.tHUỐCToolStripMenuItem.Name = "tHUỐCToolStripMenuItem";
-            this.tHUỐCToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tHUỐCToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.tHUỐCToolStripMenuItem.Text = "THUỐC";
             this.tHUỐCToolStripMenuItem.Click += new System.EventHandler(this.tHUỐCToolStripMenuItem_Click);
             // 
@@ -147,6 +147,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Quản lý khoa thận";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
