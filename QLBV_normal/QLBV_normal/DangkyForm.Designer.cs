@@ -1150,7 +1150,7 @@
             this.Controls.Add(this.button_Xoa);
             this.Controls.Add(this.groupBox1);
             this.Name = "DangkyForm";
-            this.Text = "`";
+            this.Text = "ĐĂNG KÝ KHÁM BỆNH";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.DangkyForm_Load);
             this.groupBox1.ResumeLayout(false);
