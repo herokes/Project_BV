@@ -112,6 +112,25 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Report_Benhanngoaitru.rpt</DependentUpon>
+      <DependentUpon>Benhanngoaitru.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Bienbanhoichuan.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Bienbanhoichuan.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Phieukhambenhvaovien.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Phieukhambenhvaovien.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Toathuoc.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Toathuoc.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SearchPhieukhambenhForm.cs">
@@ -155,6 +174,18 @@
     <EmbeddedResource Include="Report\Report_Benhanngoaitru.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Report_Benhanngoaitru.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Bienbanhoichuan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Bienbanhoichuan.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Phieukhambenhvaovien.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Phieukhambenhvaovien.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Toathuoc.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Toathuoc.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchPhieukhambenhForm.resx">
       <DependentUpon>SearchPhieukhambenhForm.cs</DependentUpon>

@@ -16,14 +16,14 @@ namespace QLBV_normal.Report {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class Report_Benhanngoaitru : ReportClass {
+    public class Phieukhambenhvaovien : ReportClass {
         
-        public Report_Benhanngoaitru() {
+        public Phieukhambenhvaovien() {
         }
         
         public override string ResourceName {
             get {
-                return "Report_Benhanngoaitru.rpt";
+                return "Phieukhambenhvaovien.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace QLBV_normal.Report {
         
         public override string FullResourceName {
             get {
-                return "QLBV_normal.Report.Report_Benhanngoaitru.rpt";
+                return "QLBV_normal.Report.Phieukhambenhvaovien.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace QLBV_normal.Report {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedReport_Benhanngoaitru : Component, ICachedReport {
+    public class CachedPhieukhambenhvaovien : Component, ICachedReport {
         
-        public CachedReport_Benhanngoaitru() {
+        public CachedPhieukhambenhvaovien() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace QLBV_normal.Report {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            Report_Benhanngoaitru rpt = new Report_Benhanngoaitru();
+            Phieukhambenhvaovien rpt = new Phieukhambenhvaovien();
             rpt.Site = this.Site;
             return rpt;
         }
