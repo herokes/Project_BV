@@ -8,28 +8,28 @@ namespace QLBV_normal
     [Serializable]
     public class Server
     {
-        private string hostname;
-        private string username;
-        private string password;
-        private string database;
+        private string _hostname;
+        private string _username;
+        private string _password;
+        private string _database;
 
         public Server() 
         {
-            this.hostname = "";
-            this.username = "";
-            this.password = "";
-            this.database = "";
+            this._hostname = "";
+            this._username = "";
+            this._password = "";
+            this._database = "";
         }
 
         public string Hostname
         {
             get
             {
-                return this.hostname;
+                return this._hostname;
             }
             set
             {
-                this.hostname = value;
+                this._hostname = value;
             }
         }
 
@@ -37,11 +37,11 @@ namespace QLBV_normal
         {
             get
             {
-                return this.username;
+                return this._username;
             }
             set
             {
-                this.username = value;
+                this._username = value;
             }
         }
 
@@ -49,11 +49,11 @@ namespace QLBV_normal
         {
             get
             {
-                return this.password;
+                return this._password;
             }
             set
             {
-                this.password = value;
+                this._password = value;
             }
         }
 
@@ -61,11 +61,11 @@ namespace QLBV_normal
         {
             get
             {
-                return this.database;
+                return this._database;
             }
             set
             {
-                this.database = value;
+                this._database = value;
             }
         }
 

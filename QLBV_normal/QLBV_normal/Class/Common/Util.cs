@@ -19,8 +19,7 @@ namespace QLBV_normal
             Hashtable info = new Hashtable();
             try
             {
-                //string strCon = "server=" + server.Hostname + ";User Id=" + server.Username + ";Password=" + server.Password + ";Persist Security Info=True;database=" + server.Database + ";charset=utf8";
-                string strCon = "server=" + "localhost" + ";User Id=" + "root" + ";Password=" + "" + ";Persist Security Info=True;database=" + "dbthan" + ";charset=utf8";
+                string strCon = "server=" + server.Hostname + ";User Id=" + server.Username + ";Password=" + server.Password + ";Persist Security Info=True;database=" + server.Database + ";charset=utf8";
                 con = new MySqlConnection(strCon);
                 con.Open();
                 con.Close();
@@ -77,6 +76,12 @@ namespace QLBV_normal
             }
 
             return strBuilder.ToString();
+        }
+
+        public static long GenerateID()
+        {
+            DateTime dt = DateTime.Now;
+            return dt.ToUnixTimestamp();
         }
     }
 }

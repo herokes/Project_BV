@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
+using QLBV_normal.Class;
 
 namespace QLBV_normal
 {
@@ -132,6 +133,9 @@ namespace QLBV_normal
                 frmReport = new ReportForm();
                 frmReport.frmMain = this;
                 frmReport.MdiParent = this;
+                frmReport.arrReport = new ArrayList();
+                Benhanngoaitru bant = new Benhanngoaitru();
+                frmReport.arrReport.Add(bant);
                 frmReport.Show();
             }
             else

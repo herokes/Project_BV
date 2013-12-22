@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using QLBV_normal.Class;
 
 namespace QLBV_normal
 {
