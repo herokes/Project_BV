@@ -16,6 +16,7 @@ namespace QLBV_normal
         //Global form variable
         public SetupForm frmSetup;
         public LoginForm frmLogin;
+        public ThontinbenhnhanForm frmThongtinbenhnhan;
         public BenhvienForm frmBenhvien;
         public DangkyForm frmDangky;
         public ThuocForm frmThuoc;
@@ -83,7 +84,7 @@ namespace QLBV_normal
 
         private void đĂNGKÝKHÁMToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (frmBenhvien == null || frmBenhvien.IsDisposed)
+            if (frmDangky == null || frmDangky.IsDisposed)
             {
                 frmDangky = new DangkyForm();
                 frmDangky.frmMain = this;
@@ -141,6 +142,21 @@ namespace QLBV_normal
             else
             {
                 frmReport.Focus();
+            }
+        }
+
+        private void tHÔNGTINHÀNHCHÍNHBỆNHNHÂNToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmThongtinbenhnhan == null || frmThongtinbenhnhan.IsDisposed)
+            {
+                frmThongtinbenhnhan = new ThontinbenhnhanForm();
+                frmThongtinbenhnhan.frmMain = this;
+                frmThongtinbenhnhan.MdiParent = this;
+                frmThongtinbenhnhan.Show();
+            }
+            else
+            {
+                frmThongtinbenhnhan.Focus();
             }
         }
 

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
 using QLBV_normal.Class;
+using System.Collections;
 
 namespace QLBV_normal
 {
@@ -30,50 +31,14 @@ namespace QLBV_normal
 
         private void button_CapNhat_Click(object sender, EventArgs e)
         {
-            // cap nhat bn
-            
-            try
-            {
-                if (tt == 0)
-                {
-                    MySqlCommand com = new MySqlCommand();
-                    com.Connection = Util.con;
-                    com.Parameters.Add("@id", MySqlDbType.Int64, 50).Value = textBox_MaBN.Text;
-                    com.Parameters.Add("@ten", MySqlDbType.VarChar, 200).Value = textBox_Ten.Text;
-                    com.Parameters.Add("@ngaysinh", MySqlDbType.Date, 20).Value = dateTimePicker_Namsinh.Value;
-                    if (comboBox_Gioitinh.Text == "Nam")
-                        com.Parameters.Add("@gioitinh", MySqlDbType.Bit, 10).Value = 1;
-                    else
-                        com.Parameters.Add("@gioitinh", MySqlDbType.Bit, 10).Value = 0;
-                    com.Parameters.Add("@nghenghiep", MySqlDbType.VarChar, 20).Value = comboBox_Nghenghiep.Text;
-                    com.Parameters.Add("@dantoc", MySqlDbType.VarChar, 20).Value = comboBox_Dantoc.Text;
-                    com.Parameters.Add("@cmnd", MySqlDbType.VarChar, 20).Value = textBox_CMND.Text;
-                    com.Parameters.Add("@ngoaikieu", MySqlDbType.VarChar, 20).Value = comboBox_Ngoaikieu.Text;
-                    com.Parameters.Add("@sonha", MySqlDbType.VarChar, 50).Value = textBox_Sonha.Text;
-                    com.Parameters.Add("@phuong", MySqlDbType.VarChar, 50).Value = textBox_Phuong.Text;
-                    com.Parameters.Add("@quan", MySqlDbType.VarChar, 50).Value = textBox_Quan.Text;
-                    com.Parameters.Add("@thanhpho", MySqlDbType.VarChar, 50).Value = textBox_Thanhpho.Text;
-                    com.Parameters.Add("@noilamviec", MySqlDbType.VarChar, 50).Value = textBox_Noilamviec.Text;
-                    com.CommandText = "insert into Benhnhan values (@id,@ten,@ngaysinh,@gioitinh,@nghenghiep,@dantoc,@cmnd,@ngoaikieu,@sonha,@phuong,@quan,@thanhpho,@noilamviec)";
-                    Util.con.Open();
-                    com.ExecuteNonQuery();
-                    Util.con.Close();
-                    tt = 0;
-                }
-                
-            }
-            catch (MySqlException sqlE)
-            {
-                MessageBox.Show(sqlE.Source.ToString());
-                return;
-            }
+           
             // cap nhat phieu kham benh
             try
             {
                 MySqlCommand com1 = new MySqlCommand();
                 com1.Connection = Util.con;
-                
                 com1.Parameters.Add("@doituong", MySqlDbType.VarChar, 200).Value = comboBox_Doituong.Text;
+                com1.Parameters.Add("@noidkkcbbd", MySqlDbType.VarChar, 200).Value = textBox_NoiDKKCBBD.Text;
                 com1.Parameters.Add("@bhytgiatritu", MySqlDbType.Date, 20).Value = dateTimePicker_Tu.Value;
                 com1.Parameters.Add("@bhytgiatriden", MySqlDbType.Date, 20).Value = dateTimePicker_Den.Value;
                 com1.Parameters.Add("@sobhyt", MySqlDbType.VarChar,30).Value = textBox_Sothe.Text;
@@ -84,7 +49,8 @@ namespace QLBV_normal
                 com1.Parameters.Add("@noigioithieu", MySqlDbType.VarChar, 100).Value = textBox_Noigioithieu.Text;
                 com1.Parameters.Add("@lydovaovien", MySqlDbType.VarChar, 200).Value = textBox_Lydovaovien.Text;
                 com1.Parameters.Add("@quatrinhbenhly", MySqlDbType.VarChar, 200).Value = textBox_Quatrinhbenhly.Text;
-                com1.Parameters.Add("@tiensubenh", MySqlDbType.VarChar, 200).Value = textBox_Tiensubenh.Text;
+                com1.Parameters.Add("@tiensubenhbanthan", MySqlDbType.VarChar, 200).Value = textBox_Tiensubenhbanthan.Text;
+                com1.Parameters.Add("@tiensubenhgiadinh", MySqlDbType.VarChar, 200).Value = textBox_tiensubenhgiadinh.Text;
                 com1.Parameters.Add("@mach", MySqlDbType.VarChar, 20).Value = textBox_Mach.Text;
                 com1.Parameters.Add("@nhietdo", MySqlDbType.VarChar, 20).Value = textBox_Nhiet.Text;
                 com1.Parameters.Add("@huyetap", MySqlDbType.VarChar, 20).Value = textBox_Huyetap.Text;
@@ -98,11 +64,16 @@ namespace QLBV_normal
                 com1.Parameters.Add("@dieutritaikhoa", MySqlDbType.VarChar, 200).Value = textBox_Dieutritaikhoa.Text;
                 com1.Parameters.Add("@chuy", MySqlDbType.VarChar, 200).Value = textBox_Chuy.Text;
                 com1.Parameters.Add("@idbenhnhan", MySqlDbType.Int64, 20).Value = textBox_MaBN.Text;
-                //com1.Parameters.Add("@hosophimanh", MySqlDbType.Int16, 20).Value = 0;
-                com1.Parameters.Add("@idbacsi", MySqlDbType.Int32, 20).Value = textBox_idbacsikham.Text;
-               // com.Parameters.Add("@idbacsi", MySqlDbType.Int16, 20).Value = comboBox_Bacsikham.Value;
+                
+                
 
-                com1.CommandText = "insert into phieukhambenh(Doituong,BHYTgiatritu,BHYTgiatriden,SoBHYT,Nguoithan,Diachinguoithan,Dienthoai,Thoigiandenkham,Noigioithieu,Lydovaovien,Quatrinhbenhly,Tiensubenh,Mach,Nhietdo,Huyetap,Nhiptho,Trongluong,Toanthan,Cacbophan,Tomtatketqualamsan,Chuandoanvaovien,Xuli,Dieutritaikhoa,Chuy,Benhnhan_idBenhnhan,Idbacsi) values (@doituong,@bhytgiatritu,@bhytgiatriden,@sobhyt,@nguoithan,@diachinguoithan,@dienthoai,@thoigiandenkham,@noigioithieu,@lydovaovien,@quatrinhbenhly,@tiensubenh,@mach,@nhietdo,@huyetap,@nhiptho,@trongluong,@toanthan,@cacbophan,@tomtat,@chuandoan,@xuli,@dieutritaikhoa,@chuy,@idbenhnhan,@idbacsi)";
+                com1.CommandText = "insert into phieukhambenh(Doituong,DKKCBBD,Bhytgiatritu,Bhytgiatriden,Sobhyt,Nguoithan"+
+                    ",Diachinguoithan,Dienthoai,Thoigiandenkham,Noigioithieu,Lydovaovien,Quatrinhbenhly,Tiensubenhbanthan,Tiensubenhgiadinh"+
+                    ",Mach,Nhietdo,Huyetap,Nhiptho,Trongluong,Toanthan,Cacbophan,Tomtatketqualamsan,Chuandoanvaovien"+
+                    ",Xuli,Dieutritaikhoa,Chuy,Benhnhan_id) values (@doituong,@noidkkcbbd,@bhytgiatritu,@bhytgiatriden,"+
+                    "@sobhyt,@nguoithan,@diachinguoithan,@dienthoai,@thoigiandenkham,@noigioithieu,@lydovaovien,"+
+                    "@quatrinhbenhly,@tiensubenhbanthan,@tiensubenhgiadinh,@mach,@nhietdo,@huyetap,@nhiptho,@trongluong,@toanthan,@cacbophan"+
+                    ",@tomtat,@chuandoan,@xuli,@dieutritaikhoa,@chuy,@idbenhnhan)";
                
                 Util.con.Open();
                 com1.ExecuteNonQuery();
@@ -112,17 +83,17 @@ namespace QLBV_normal
             /// nhap vao ngoai tru hay noi tru 
             /// lay ma phieu kham benh
                 
-                com1.CommandText = "SELECT MAX( idphieukhambenh )FROM benhnhan, phieukhambenh WHERE benhnhan.idbenhnhan = phieukhambenh.benhnhan_idbenhnhan AND benhnhan.idbenhnhan ="+ textBox_MaBN.Text;
+                com1.CommandText = "SELECT MAX( id )FROM phieukhambenh WHERE benhnhan_id ="+ textBox_MaBN.Text;
                 //MessageBox.Show("executenonquery select");
                 Util.con.Open();
                 int maphieukhambenh=(int)com1.ExecuteScalar();
                 Util.con.Close();
                 if (comboBox_Loaidieutri.Text == "NGOẠI TRÚ CHẠY THẬN")
                     //MessageBox.Show(maphieukhambenh.ToString());
-                    com1.CommandText = "INSERT INTO  ngoaitru (idNgoaitru ,Ngaygiovaovien,Benhchinh ,Benhkemtheo,Dieutritu ,Dieutriden ,Tinhtrangravien ,Huongdieutri ,Bacsikhambenh ,Bacsidieutri ,chaythan ,Phieukhambenh_idPhieukhambenh)VALUES (NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , 1 , NULL ," + maphieukhambenh.ToString() + ")";
+                    com1.CommandText = "INSERT INTO  ngoaitru (id,Ngaygiovaovien,Benhchinh ,Benhkemtheo,Dieutritu ,Dieutriden ,Tinhtrangravien ,Huongdieutri ,Bacsikhambenh ,Bacsidieutri ,chaythan ,Phieukhambenh_id)VALUES (NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , 1 ," + maphieukhambenh + ")";
                 else if (comboBox_Loaidieutri.Text == "NGOẠI TRU KHÔNG CHẠY THẬN")
-                    com1.CommandText = "INSERT INTO  ngoaitru (idNgoaitru ,Ngaygiovaovien,Benhchinh ,Benhkemtheo,Dieutritu ,Dieutriden ,Tinhtrangravien ,Huongdieutri ,Bacsikhambenh ,Bacsidieutri ,chaythan ,Phieukhambenh_idPhieukhambenh)VALUES (NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL ," + maphieukhambenh.ToString() + ")";
-                else com1.CommandText = "";
+                    com1.CommandText = "INSERT INTO  ngoaitru (id,Ngaygiovaovien,Benhchinh ,Benhkemtheo,Dieutritu ,Dieutriden ,Tinhtrangravien ,Huongdieutri ,Bacsikhambenh ,Bacsidieutri ,chaythan ,Phieukhambenh_id)VALUES (NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , 0 ," + maphieukhambenh + ")";
+                else com1.CommandText = "INSERT INTO `dbthan`.`noitru` (`id`, `Thoigianvaovien`, `Tructiepvao`, `Vaolanthu`, `Ngaygiovaokhoa`, `Chuyenkhoa`, `Ngaygiochuyenkhoa`, `Chuyenvien`, `Chuyenden`, `Ngaygioravien`, `Loairavien`, `Noichuyenden`, `KKBCapcuu`, `Khivaokhoadieutri`, `Thuthuat`, `Phauthuat`, `Benhchinh`, `Benhkemtheo`, `Taibien`, `Bienchung`, `Ketquadieutri`, `Giaiphaubenh`, `Thoigiantuvong`, `Lydotuvong`, `Nguyennhanchinhtuvong`, `Khamnghiemtuthi`, `Chuandoangiaiphaututhi`, `Diung`, `Matuy`, `Ruoubia`, `Thuocla`, `Thuoclao`, `Khac`, `Tuanhoan`, `Hohap`, `Tieuhoa`, `Thantietnieusinhduc`, `Thankinh`, `Coxuongkhop`, `Taimuihong`, `Ranghammat`, `Mat`, `Noitietdinhduong`, `Tomtatbenhan`, `Tienluong`, `Huongdieutri`, `Phuongphapdieutri`, `BStruongkhoa`, `Bslambenhan`, `BSdieutri`, `Phieukhambenh_id`) VALUES (NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL," + maphieukhambenh + ")";
                 Util.con.Open();
                 com1.ExecuteNonQuery();
                 Util.con.Close();
@@ -165,7 +136,7 @@ namespace QLBV_normal
             textBox_Noigioithieu.Text = "";
             textBox_Lydovaovien.Text = "";
             textBox_Quatrinhbenhly.Text = "";
-            textBox_Tiensubenh.Text = "";
+            textBox_Tiensubenhbanthan.Text = "";
             textBox_Mach.Text = "";
             textBox_Nhiet.Text = "";
             textBox_Huyetap.Text = "";
@@ -192,11 +163,11 @@ namespace QLBV_normal
                 com.CommandText = "SELECT * FROM bacsi";
                 Util.con.Open();
                 MySqlDataReader read = com.ExecuteReader();
-                if (read.Read())
+                while (read.Read())
                 {
-                    while(read.Read())
-                    comboBox_Bacsikham.Items.Add(read[1].ToString());
+                    comboBox_Bacsikham.Items.Add(read["TenBacsi"].ToString());
                 }
+
                 Util.con.Close();
             }
             catch (MySqlException sqlE)
@@ -205,35 +176,6 @@ namespace QLBV_normal
                 return;
             }
         }
-
-        private void textBox_idbacsikham_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                MySqlCommand com = new MySqlCommand();
-                com.Connection = Util.con;
-                com.CommandText = "SELECT * FROM bacsi WHERE idBacsi= "+ textBox_idbacsikham.Text;
-                //MessageBox.Show(com.CommandText.te);
-                Util.con.Open();
-                MySqlDataReader read = com.ExecuteReader();
-                if (read.Read())
-                {
-
-                    comboBox_Bacsikham.Text = read[1].ToString();
-
-                }
-                Util.con.Close();
-            }
-            catch (MySqlException sqlE)
-            {
-                Util.con.Close();
-                MessageBox.Show(sqlE.Source.ToString());
-                return;
-            }
-        }
-
-       
-
         private void textBox_MaBN_KeyDown(object sender, KeyEventArgs e)
         {
             try
@@ -242,7 +184,7 @@ namespace QLBV_normal
                 {
                     MySqlCommand com = new MySqlCommand();
                     com.Connection = Util.con;
-                    com.CommandText = "SELECT * FROM benhnhan WHERE idbenhnhan= " + textBox_MaBN.Text;
+                    com.CommandText = "SELECT * FROM benhnhan WHERE id= " + textBox_MaBN.Text;
                     //MessageBox.Show(com.CommandText.te);
                     Util.con.Open();
                     MySqlDataReader read = com.ExecuteReader();
@@ -251,7 +193,7 @@ namespace QLBV_normal
                         tt = 1;
                         textBox_Ten.Text = read[1].ToString();
                         dateTimePicker_Namsinh.Value = DateTime.Parse(read[2].ToString());
-                        if (int.Parse(read[3].ToString()) == 0)
+                        if (read[3].ToString() == "True")
                             comboBox_Gioitinh.Text = "Nam";
                         else comboBox_Gioitinh.Text = "Nữ";
                         comboBox_Nghenghiep.Text = read[4].ToString();
@@ -259,10 +201,11 @@ namespace QLBV_normal
                         textBox_CMND.Text = read[6].ToString();
                         comboBox_Ngoaikieu.Text = read[7].ToString();
                         textBox_Sonha.Text = read[8].ToString();
-                        textBox_Phuong.Text = read[9].ToString();
-                        textBox_Quan.Text = read[10].ToString();
-                        textBox_Thanhpho.Text = read[11].ToString();
-                        textBox_Noilamviec.Text = read[12].ToString();
+                        textBox_duong.Text = read[9].ToString();
+                        textBox_Phuong.Text = read[10].ToString();
+                        textBox_Quan.Text = read[11].ToString();
+                        textBox_Thanhpho.Text = read[12].ToString();
+                        textBox_Noilamviec.Text = read[13].ToString();
 
                     }
                     Util.con.Close();
@@ -280,8 +223,6 @@ namespace QLBV_normal
         {
             Clear_Thongtin();
         }
-
-
 
         private void dateTimePicker_Namsinh_ValueChanged(object sender, EventArgs e)
         {
@@ -325,6 +266,84 @@ namespace QLBV_normal
 
             } 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox_MaBN.TextLength == 0)
+                MessageBox.Show("Bạn chưa nhập mã bệnh nhân");
+            else
+            if (frmMain.frmReport == null || frmMain.frmReport.IsDisposed)
+            {
+                frmMain.frmReport = new ReportForm();
+                frmMain.frmReport.frmMain = this.frmMain;
+                frmMain.frmReport.MdiParent = this.frmMain;
+                frmMain.frmReport.arrReport = new ArrayList();
+                try
+                {
+                    MySqlCommand com = new MySqlCommand();
+                    com.Connection = Util.con;
+                    com.CommandText = "SELECT * FROM benhnhan where id="+ textBox_MaBN.Text;
+                    Util.con.Open();
+                    MySqlDataReader read = com.ExecuteReader();
+                    while (read.Read())
+                    {
+                        Benhnhan bant = new Benhnhan();
+                        bant.Ten = read[1].ToString();
+                        bant.Dantoc = read[5].ToString();
+                        bant.Noilamviec = read[13].ToString();
+                        frmMain.frmReport.arrReport.Add(bant);
+                    }
+
+                    Util.con.Close();
+                }
+                catch (MySqlException sqlE)
+                {
+                    MessageBox.Show(sqlE.Source.ToString());
+                    return;
+                }
+                
+                frmMain.frmReport.Show();
+            }
+            else
+            {
+                frmMain.frmReport.Focus();
+            }
+        }
+
+        private void textBox_Ten_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = char.Parse(e.KeyChar.ToString().ToUpper());  
+        }
+
+        private void textBox_idbacsikham_TextChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox_idbacsikham.TextLength > 0)
+                {
+                    MySqlCommand com = new MySqlCommand();
+                    com.Connection = Util.con;
+                    com.CommandText = "SELECT * FROM bacsi WHERE id= " + textBox_idbacsikham.Text;
+                    //MessageBox.Show(com.CommandText.te);
+                    Util.con.Open();
+                    MySqlDataReader read = com.ExecuteReader();
+                    if (read.Read())
+                    {
+                        //MessageBox.Show(read[1].ToString());
+                        //comboBox_Bacsikham.Text = read[1].ToString();
+                        comboBox_Bacsikham.Text = read[1].ToString();
+                    }
+                    Util.con.Close();
+                }
+            }
+            catch (MySqlException sqlE)
+            {
+                Util.con.Close();
+                MessageBox.Show(sqlE.Source.ToString());
+                return;
+            }
+        }
+
 
       
     }
