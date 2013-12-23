@@ -15,7 +15,8 @@ namespace QLBV_normal
     {
         public MainForm frmMain;
         public ArrayList arrReport;
-        public String typeReport;
+        public string typeReport;
+
         public ReportForm()
         {
             InitializeComponent();
@@ -23,8 +24,17 @@ namespace QLBV_normal
 
         private void ReportForm_Load(object sender, EventArgs e)
         {
+            dynamic rp;
+            switch (typeReport)
+            {
+                case "benhanngoaitru":
+                    rp = new Report_Benhanngoaitru();
+                    break;
+                default:
+                    rp = new Report_Benhanngoaitru();
+                    break;
+            }
             
-            Phieukhambenhvaovien rp = new Phieukhambenhvaovien();
             if (arrReport != null && arrReport.Count > 0)
             {
                 rp.SetDataSource(arrReport);
