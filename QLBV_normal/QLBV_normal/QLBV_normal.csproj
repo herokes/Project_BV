@@ -113,7 +113,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Report_Benhanngoaitru.rpt</DependentUpon>
-      <DependentUpon>Benhanngoaitru.rpt</DependentUpon>
+      <DependentUpon>Report_Benhanngoaitru.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report\Bienbanhoichuan.cs">

@@ -15,7 +15,8 @@ namespace QLBV_normal
     {
         public MainForm frmMain;
         public ArrayList arrReport;
-        public String typeReport;
+        public string typeReport;
+
         public ReportForm()
         {
             InitializeComponent();
@@ -23,25 +24,20 @@ namespace QLBV_normal
 
         private void ReportForm_Load(object sender, EventArgs e)
         {
-            //if (typeReport!=null)
-            //{
-            //    switch (typeReport)
-            //    {
-            //        case "phieukhambenh":
-            //                Phieukhambenhvaovien rp = new Phieukhambenhvaovien();
-            //                if (arrReport != null && arrReport.Count > 0)
-            //                {
-            //                    rp.SetDataSource(arrReport);
-            //                }
-            //                crystalReportViewer.ReportSource = rp;
-            //                break;
-            //        case "":
-            //        default:
-            //            break;
-            //    }
-            //}
-            
-            Phieukhambenhvaovien rp = new Phieukhambenhvaovien();
+            dynamic rp;
+            switch (typeReport)
+            {
+                case "benhanngoaitru":
+                    rp = new Report_Benhanngoaitru();
+                    break;
+				case "phieukhambenh":
+					rp = new Phieukhambenhvaovien();
+					break;
+                default:
+                    rp = new Report_Benhanngoaitru();
+                    break;
+            }
+
             if (arrReport != null && arrReport.Count > 0)
             {
                 rp.SetDataSource(arrReport);

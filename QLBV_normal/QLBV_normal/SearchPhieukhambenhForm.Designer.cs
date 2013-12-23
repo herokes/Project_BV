@@ -38,6 +38,7 @@
             this.textBox_filter = new System.Windows.Forms.TextBox();
             this.button_search = new System.Windows.Forms.Button();
             this.button_choose = new System.Windows.Forms.Button();
+            this.button_print = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView_searchresult
@@ -117,11 +118,22 @@
             this.button_choose.UseVisualStyleBackColor = true;
             this.button_choose.Click += new System.EventHandler(this.button_choose_Click);
             // 
+            // button_print
+            // 
+            this.button_print.Location = new System.Drawing.Point(125, 363);
+            this.button_print.Name = "button_print";
+            this.button_print.Size = new System.Drawing.Size(121, 23);
+            this.button_print.TabIndex = 4;
+            this.button_print.Text = "In phiếu khám bệnh";
+            this.button_print.UseVisualStyleBackColor = true;
+            this.button_print.Click += new System.EventHandler(this.button_print_Click);
+            // 
             // SearchPhieukhambenhForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(766, 398);
+            this.Controls.Add(this.button_print);
             this.Controls.Add(this.button_choose);
             this.Controls.Add(this.button_search);
             this.Controls.Add(this.textBox_filter);
@@ -145,5 +157,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.Button button_print;
     }
 }
