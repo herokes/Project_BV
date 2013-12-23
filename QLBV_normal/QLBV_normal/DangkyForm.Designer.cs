@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox_tiensubenhgiadinh = new System.Windows.Forms.TextBox();
+            this.label50 = new System.Windows.Forms.Label();
             this.comboBox_Loaidieutri = new System.Windows.Forms.ComboBox();
             this.dateTimePicker_Ngaykham = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker_Giokham = new System.Windows.Forms.DateTimePicker();
@@ -136,8 +138,6 @@
             this.textBox_Phuong = new System.Windows.Forms.TextBox();
             this.dateTimePicker_Namsinh = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox_tiensubenhgiadinh = new System.Windows.Forms.TextBox();
-            this.label50 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -220,6 +220,22 @@
             this.groupBox2.TabIndex = 48;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Phiếu Khám bệnh";
+            // 
+            // textBox_tiensubenhgiadinh
+            // 
+            this.textBox_tiensubenhgiadinh.Location = new System.Drawing.Point(149, 288);
+            this.textBox_tiensubenhgiadinh.Name = "textBox_tiensubenhgiadinh";
+            this.textBox_tiensubenhgiadinh.Size = new System.Drawing.Size(527, 20);
+            this.textBox_tiensubenhgiadinh.TabIndex = 161;
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(36, 291);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(113, 13);
+            this.label50.TabIndex = 162;
+            this.label50.Text = "Tiền sử bệnh gia đình:";
             // 
             // comboBox_Loaidieutri
             // 
@@ -686,6 +702,7 @@
             this.comboBox_Doituong.Items.AddRange(new object[] {
             "BHYT",
             "THU PHÍ",
+            "MIỄN PHÍ",
             "KHÁC"});
             this.comboBox_Doituong.Location = new System.Drawing.Point(148, 72);
             this.comboBox_Doituong.Name = "comboBox_Doituong";
@@ -1153,22 +1170,6 @@
             this.groupBox1.TabIndex = 36;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "THÔNG TIN HÀNH CHÍNH BỆNH NHÂN";
-            // 
-            // textBox_tiensubenhgiadinh
-            // 
-            this.textBox_tiensubenhgiadinh.Location = new System.Drawing.Point(149, 288);
-            this.textBox_tiensubenhgiadinh.Name = "textBox_tiensubenhgiadinh";
-            this.textBox_tiensubenhgiadinh.Size = new System.Drawing.Size(527, 20);
-            this.textBox_tiensubenhgiadinh.TabIndex = 161;
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(36, 291);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(113, 13);
-            this.label50.TabIndex = 162;
-            this.label50.Text = "Tiền sử bệnh gia đình:";
             // 
             // DangkyForm
             // 

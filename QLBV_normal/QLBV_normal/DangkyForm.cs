@@ -16,6 +16,7 @@ namespace QLBV_normal
     public partial class DangkyForm : Form
     {
         public MainForm frmMain;
+        public ReportForm frmReport;
         int tt = 0;
         public DangkyForm()
         {
@@ -37,7 +38,18 @@ namespace QLBV_normal
             {
                 MySqlCommand com1 = new MySqlCommand();
                 com1.Connection = Util.con;
-                com1.Parameters.Add("@doituong", MySqlDbType.VarChar, 200).Value = comboBox_Doituong.Text;
+                if(comboBox_Doituong.Text=="BHYT")
+                com1.Parameters.Add("@doituong", MySqlDbType.Int16, 200).Value = 1;
+                else
+                    if (comboBox_Doituong.Text == "THU PHÍ")
+                        com1.Parameters.Add("@doituong", MySqlDbType.Int16, 200).Value = 2;
+                else
+                        if (comboBox_Doituong.Text == "MIỄN PHÍ")
+                            com1.Parameters.Add("@doituong", MySqlDbType.Int16, 200).Value = 3;
+                else
+                            if (comboBox_Doituong.Text == "KHÁC")
+                                com1.Parameters.Add("@doituong", MySqlDbType.Int16, 200).Value = 4;
+                   
                 com1.Parameters.Add("@noidkkcbbd", MySqlDbType.VarChar, 200).Value = textBox_NoiDKKCBBD.Text;
                 com1.Parameters.Add("@bhytgiatritu", MySqlDbType.Date, 20).Value = dateTimePicker_Tu.Value;
                 com1.Parameters.Add("@bhytgiatriden", MySqlDbType.Date, 20).Value = dateTimePicker_Den.Value;
@@ -274,6 +286,7 @@ namespace QLBV_normal
             else
             if (frmMain.frmReport == null || frmMain.frmReport.IsDisposed)
             {
+                //frmMain.frmReport.typeReport = "Phieukhambenh";
                 frmMain.frmReport = new ReportForm();
                 frmMain.frmReport.frmMain = this.frmMain;
                 frmMain.frmReport.MdiParent = this.frmMain;
@@ -282,15 +295,53 @@ namespace QLBV_normal
                 {
                     MySqlCommand com = new MySqlCommand();
                     com.Connection = Util.con;
-                    com.CommandText = "SELECT * FROM benhnhan where id="+ textBox_MaBN.Text;
+                    com.CommandText = "select * from benhnhan, phieukhambenh where benhnhan.id=phieukhambenh.Benhnhan_id and benhnhan.id=" + textBox_MaBN.Text;
                     Util.con.Open();
                     MySqlDataReader read = com.ExecuteReader();
                     while (read.Read())
                     {
-                        Benhnhan bant = new Benhnhan();
+                        Phieukhambenh bant = new Phieukhambenh();
+                        bant.IdBenhnhan=int.Parse(read[0].ToString());
                         bant.Ten = read[1].ToString();
+                        bant.Ngaysinh = DateTime.Parse(read[2].ToString());
+                        //bant.Gioitinh = read[3].ToString(); 
+                        bant.Nghenghiep = read[4].ToString();
                         bant.Dantoc = read[5].ToString();
+                        bant.CMND = read[6].ToString();
+                        bant.Ngoaikieu = read[7].ToString();
+                        bant.Sonha = read[8].ToString();
+                        bant.Duong = read[9].ToString();
+                        bant.Phuong = read[10].ToString();
+                        bant.Quan = read[11].ToString();
+                        bant.Thanhpho = read[12].ToString();
                         bant.Noilamviec = read[13].ToString();
+                        bant.Doituong= int.Parse(read[15].ToString());
+                        bant.DKKCBBD = read[16].ToString();
+                        bant.BYYTgiatritu = DateTime.Parse(read[17].ToString());
+                        bant.BYYTgiatriden = DateTime.Parse(read[18].ToString());
+                        bant.Sobhyt = read[19].ToString();
+                        bant.Nguoithan = read[20].ToString();
+                        bant.Diachinguoithan = read[21].ToString();
+                        bant.Dienthoai = read[22].ToString();
+                        bant.Thoigiandenkham = DateTime.Parse(read[23].ToString());
+                        bant.Noigioithieu = read[24].ToString(); ;
+                        bant.Lydovaovien = read[25].ToString();
+                        bant.Quatrinhbenhly = read[26].ToString();
+                        bant.Tiensubenhbanthan = read[27].ToString();
+                        bant.Tiensubenhgiadinh = read[28].ToString();
+                        bant.Mach = read[29].ToString();
+                        bant.Nhietdo = read[30].ToString();
+                        bant.Huyetap = read[31].ToString();
+                        bant.Nhiptho = read[32].ToString();
+                        bant.Trongluong = read[33].ToString();
+                        bant.Toanthan = read[34].ToString();
+                        bant.Cacbophan = read[35].ToString();
+                        bant.Tomtatketqualamsan = read[36].ToString();
+                        bant.Chuandoanvaovien = read[37].ToString();
+                        bant.Xuli = read[38].ToString();
+                        bant.Dieutritaikhoa = read[39].ToString();
+                        bant.Chuy = read[40].ToString();
+                        bant.Benhnhan_id = read[41].ToString();
                         frmMain.frmReport.arrReport.Add(bant);
                     }
 

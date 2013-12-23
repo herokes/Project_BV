@@ -11,7 +11,7 @@ namespace QLBV_normal.Class
         public int IdBenhnhan
         {
             set { _IdBenhnhan = value; }
-            get { return IdBenhnhan; }
+            get { return _IdBenhnhan; }
         }
         private String _Ten;
         public String Ten
@@ -117,7 +117,9 @@ namespace QLBV_normal.Class
         }
 
         public Benhnhan()
-        { }
+        { 
+            _Ten = "Tiep ghe"; 
+        }
         public Benhnhan(int idBenhnhan,String ten, Boolean gioitinh, String nghenghiep, String dantoc, String cmnd, String ngoaikieu, String sonha, String duong, String phuong, String quan,String thanhpho, String noilamviec, String doituong, DateTime bhytgiatriden,String sobhyt , String nguoithan, int dienthoai )
         {
             _IdBenhnhan = idBenhnhan;
