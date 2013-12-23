@@ -23,6 +23,23 @@ namespace QLBV_normal
 
         private void ReportForm_Load(object sender, EventArgs e)
         {
+            //if (typeReport!=null)
+            //{
+            //    switch (typeReport)
+            //    {
+            //        case "phieukhambenh":
+            //                Phieukhambenhvaovien rp = new Phieukhambenhvaovien();
+            //                if (arrReport != null && arrReport.Count > 0)
+            //                {
+            //                    rp.SetDataSource(arrReport);
+            //                }
+            //                crystalReportViewer.ReportSource = rp;
+            //                break;
+            //        case "":
+            //        default:
+            //            break;
+            //    }
+            //}
             
             Phieukhambenhvaovien rp = new Phieukhambenhvaovien();
             if (arrReport != null && arrReport.Count > 0)

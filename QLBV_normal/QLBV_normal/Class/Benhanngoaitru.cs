@@ -11,7 +11,7 @@ namespace QLBV_normal.Class
 
         public Benhanngoaitru() 
         {
-            this._tenbenhnhan = "NGuyễn văn b";
+            this._tenbenhnhan = "";
 
         }
 
