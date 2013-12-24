@@ -23,6 +23,7 @@ namespace QLBV_normal
         public NgoaitruForm frmNgoaitru;
         public SearchPhieukhambenhForm frmSearchPhieukhambenh;
         public ReportForm frmReport;
+        public PhieuxetnghiemForm frmPhieuxetnghiem;
 
         //Global class variable
 
@@ -157,6 +158,21 @@ namespace QLBV_normal
             else
             {
                 frmThongtinbenhnhan.Focus();
+            }
+        }
+
+        private void phieuXetNghiemTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmPhieuxetnghiem == null || frmPhieuxetnghiem.IsDisposed)
+            {
+                frmPhieuxetnghiem = new PhieuxetnghiemForm();
+                frmPhieuxetnghiem.frmMain = this;
+                frmPhieuxetnghiem.MdiParent = this;
+                frmPhieuxetnghiem.Show();
+            }
+            else
+            {
+                frmPhieuxetnghiem.Focus();
             }
         }
 
