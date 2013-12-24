@@ -109,6 +109,12 @@
     <Compile Include="NgoaitruFormnew.Designer.cs">
       <DependentUpon>NgoaitruFormnew.cs</DependentUpon>
     </Compile>
+    <Compile Include="PhieuxetnghiemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PhieuxetnghiemForm.Designer.cs">
+      <DependentUpon>PhieuxetnghiemForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NgoaitruFormnew.resx">
       <DependentUpon>NgoaitruFormnew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PhieuxetnghiemForm.resx">
+      <DependentUpon>PhieuxetnghiemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
