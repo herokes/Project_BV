@@ -23,6 +23,7 @@ namespace QLBV_normal
         public NgoaitruForm frmNgoaitru;
         public SearchPhieukhambenhForm frmSearchPhieukhambenh;
         public ReportForm frmReport;
+        public NgoaitruFormnew frmNgoaitrunew;
 
         //Global class variable
 
@@ -114,16 +115,16 @@ namespace QLBV_normal
 
         private void nGOẠITRÚToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (frmNgoaitru == null || frmNgoaitru.IsDisposed)
+            if (frmNgoaitrunew == null || frmNgoaitrunew.IsDisposed)
             {
-                frmNgoaitru = new NgoaitruForm();
-                frmNgoaitru.frmMain = this;
-                frmNgoaitru.MdiParent = this;
-                frmNgoaitru.Show();
+                frmNgoaitrunew = new NgoaitruFormnew();
+                frmNgoaitrunew.frmMain = this;
+                frmNgoaitrunew.MdiParent = this;
+                frmNgoaitrunew.Show();
             }
             else
             {
-                frmNgoaitru.Focus();
+                frmNgoaitrunew.Focus();
             }
         }
 
