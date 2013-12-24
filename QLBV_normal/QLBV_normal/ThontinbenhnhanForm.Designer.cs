@@ -236,9 +236,17 @@
             // 
             this.comboBox_Nghenghiep.FormattingEnabled = true;
             this.comboBox_Nghenghiep.Items.AddRange(new object[] {
-            "Công nhân",
             "Học sinh",
-            "Nhân viên"});
+            "Sinh viên",
+            "Nhân viên",
+            "Giáo viên",
+            "Hưu trí",
+            "Nông dân",
+            "Công nhân",
+            "Bảo vệ",
+            "Kỹ sư",
+            "Dược sĩ",
+            "Khác"});
             this.comboBox_Nghenghiep.Location = new System.Drawing.Point(487, 78);
             this.comboBox_Nghenghiep.Name = "comboBox_Nghenghiep";
             this.comboBox_Nghenghiep.Size = new System.Drawing.Size(113, 21);

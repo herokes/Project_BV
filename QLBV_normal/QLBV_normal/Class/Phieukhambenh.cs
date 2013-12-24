@@ -25,8 +25,14 @@ namespace QLBV_normal.Class
             set { _Ngaysinh = value; }
             get { return _Ngaysinh; }
         }
-        private Boolean _Gioitinh;
-        public Boolean Gioitinh
+        private int _Tuoi;
+        public int Tuoi
+        {
+            set { _Tuoi = value; }
+            get { return _Tuoi; }
+        }
+        private int _Gioitinh;
+        public int Gioitinh
         {
             set { _Gioitinh = value; }
             get { return _Gioitinh; }
@@ -261,30 +267,51 @@ namespace QLBV_normal.Class
         }
 
 
+
         public Phieukhambenh()
-        { 
-          
+        {
+            _IdBenhnhan = 0;
+            _Ten = "";
+            _Ngaysinh = DateTime.Today;
+            _Tuoi = 0;
+            _Gioitinh = 0;
+            _Nghenghiep = "";
+            _Dantoc = "";
+            _CMND = "";
+            _Ngoaikieu = "";
+            _Sonha = "";
+            _Duong = "";
+            _Phuong = "";
+            _Quan = "";
+            _Thanhpho = "";
+            _Noilamviec = "";
+            _Doituong = 0;
+            _DKKCBBD="";
+            _BHYTgiatriden = DateTime.Today;
+            _BHYTgiatritu=DateTime.Today;
+            _Sobhyt = "";
+            _Nguoithan = "";
+            _Dienthoai = "";
+            _Diachinguoithan = "";
+            _Thoigiandenkham = DateTime.Today;
+            _Noigioithieu = "";
+            _Lydovaovien = "";
+            _Quatrinhbenhly = "";
+            _Tiensubenhbanthan = "";
+            _Tiensubenhgiadinh = "";
+            _Mach = "";
+            _Nhietdo = "";
+            _Huyetap = "";
+            _Nhiptho = "";
+            _Trongluong = "";
+            _Toanthan = "";
+            _Cacbophan = "";
+            _Tomtatketqualamsan = "";
+            _Chuandoanvaovien = "";
+            _Xuli = "";
+            _Dieutritaikhoa = "";
+            _Chuy = "";
+            
         }
-        //public Phieukhambenh(int idBenhnhan,String ten, Boolean gioitinh, String nghenghiep, String dantoc, String cmnd, String ngoaikieu, String sonha, String duong, String phuong, String quan,String thanhpho, String noilamviec, String doituong, DateTime bhytgiatriden,String sobhyt , String nguoithan, int dienthoai )
-        //{
-        //    _IdBenhnhan = idBenhnhan;
-        //    _Ten = ten;
-        //    _Gioitinh = gioitinh;
-        //    _Nghenghiep = nghenghiep;
-        //    _Dantoc = dantoc;
-        //    _CMND = cmnd;
-        //    _Ngoaikieu = ngoaikieu;
-        //    _Sonha = sonha;
-        //    _Duong = duong;
-        //    _Phuong = phuong;
-        //    _Quan = quan;
-        //    _Thanhpho = thanhpho;
-        //    _Noilamviec = noilamviec;
-        //    _Doituong = doituong;
-        //    _BHYTgiatriden = bhytgiatriden;
-        //    _SoBHYT = sobhyt;
-        //    _Nguoithan = nguoithan;
-        //    _Dienthoai = dienthoai;
-        //}
     }
 }

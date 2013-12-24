@@ -103,6 +103,12 @@
     <Compile Include="NgoaitruForm.Designer.cs">
       <DependentUpon>NgoaitruForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NgoaitruFormnew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NgoaitruFormnew.Designer.cs">
+      <DependentUpon>NgoaitruFormnew.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NgoaitruForm.resx">
       <DependentUpon>NgoaitruForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NgoaitruFormnew.resx">
+      <DependentUpon>NgoaitruFormnew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>

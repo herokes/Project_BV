@@ -128,13 +128,13 @@ namespace QLBV_normal
             comboBox_Gioitinh.Text = "Nam";
             textBox_CMND.Text = "";
             comboBox_Nghenghiep.Text = "";
-            comboBox_Dantoc.Text = "KINH";
-            comboBox_Ngoaikieu.Text = "";
-            textBox_Sonha.Text = "";
-            textBox_Thanhpho.Text = "";
-            textBox_Quan.Text = "";
-            textBox_Phuong.Text = "";
-            textBox_Noilamviec.Text = "";
+            //comboBox_Dantoc.Text = "KINH";
+           // comboBox_Ngoaikieu.Text = "";
+            //textBox_Sonha.Text = "";
+            //textBox_Thanhpho.Text = "";
+           // textBox_Quan.Text = "";
+            //textBox_Phuong.Text = "";
+            //textBox_Noilamviec.Text = "";
             dateTimePicker_Ngaykham.Value = DateTime.Today;
             dateTimePicker_Giokham.Value = DateTime.Now;
             comboBox_Doituong.Text = "BHYT";
@@ -166,6 +166,7 @@ namespace QLBV_normal
 
          // thong tin phieu kham benh
         }
+       // public void Show_list
         public  void Show_Combobox_Bacsi ()
         {
             try
@@ -184,7 +185,7 @@ namespace QLBV_normal
             }
             catch (MySqlException sqlE)
             {
-                MessageBox.Show(sqlE.Source.ToString());
+                //MessageBox.Show(sqlE.Source.ToString());
                 return;
             }
         }
@@ -209,15 +210,15 @@ namespace QLBV_normal
                             comboBox_Gioitinh.Text = "Nam";
                         else comboBox_Gioitinh.Text = "Nữ";
                         comboBox_Nghenghiep.Text = read[4].ToString();
-                        comboBox_Dantoc.Text = read[5].ToString();
+                        //comboBox_Dantoc.Text = read[5].ToString();
                         textBox_CMND.Text = read[6].ToString();
-                        comboBox_Ngoaikieu.Text = read[7].ToString();
-                        textBox_Sonha.Text = read[8].ToString();
-                        textBox_duong.Text = read[9].ToString();
-                        textBox_Phuong.Text = read[10].ToString();
-                        textBox_Quan.Text = read[11].ToString();
-                        textBox_Thanhpho.Text = read[12].ToString();
-                        textBox_Noilamviec.Text = read[13].ToString();
+                        //comboBox_Ngoaikieu.Text = read[7].ToString();
+                        //textBox_Sonha.Text = read[8].ToString();
+                        //textBox_duong.Text = read[9].ToString();
+                        //textBox_Phuong.Text = read[10].ToString();
+                        //textBox_Quan.Text = read[11].ToString();
+                        //textBox_Thanhpho.Text = read[12].ToString();
+                        //textBox_Noilamviec.Text = read[13].ToString();
 
                     }
                     Util.con.Close();
@@ -286,11 +287,12 @@ namespace QLBV_normal
             else
             if (frmMain.frmReport == null || frmMain.frmReport.IsDisposed)
             {
-                //frmMain.frmReport.typeReport = "Phieukhambenh";
+                
                 frmMain.frmReport = new ReportForm();
                 frmMain.frmReport.frmMain = this.frmMain;
                 frmMain.frmReport.MdiParent = this.frmMain;
                 frmMain.frmReport.arrReport = new ArrayList();
+                frmMain.frmReport.typeReport = "Phieukhambenh";
                 try
                 {
                     MySqlCommand com = new MySqlCommand();
@@ -346,6 +348,7 @@ namespace QLBV_normal
                     }
 
                     Util.con.Close();
+                    frmMain.frmReport.Show();
                 }
                 catch (MySqlException sqlE)
                 {
@@ -353,7 +356,7 @@ namespace QLBV_normal
                     return;
                 }
                 
-                frmMain.frmReport.Show();
+               
             }
             else
             {
