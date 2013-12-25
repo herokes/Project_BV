@@ -24,7 +24,7 @@ namespace QLBV_normal
         public SearchPhieukhambenhForm frmSearchPhieukhambenh;
         public ReportForm frmReport;
 		public NgoaitruFormnew frmNgoaitrunew;
-        public PhieuxetnghiemForm frmPhieuxetnghi 
+        public PhieuxetnghiemForm frmPhieuxetnghiem; 
 
         //Global class variable
 

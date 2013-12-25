@@ -25,12 +25,12 @@ namespace QLBV_normal
                 string sql="";
                 if (radioButton_dieutri.Checked == true)
                 {
-                    sql = "select benhnhan.id, benhnhan.Ten from benhnhan,phieukhambenh,ngoaitru where benhnhan.id= phieukhambenh.Benhnhan_id and phieukhambenh.id= ngoaitru.Phieukhambenh_id and ngoaitru.Tinhtrangravien=0";
+                    sql = "select DISTINCT benhnhan.id, benhnhan.Ten from benhnhan,phieukhambenh,ngoaitru where benhnhan.id= phieukhambenh.Benhnhan_id and phieukhambenh.id= ngoaitru.Phieukhambenh_id and ngoaitru.Tinhtrangravien=0";
                 }
                 else
                     if(radioButton_xuatvien.Checked== true)
                     {
-                        sql = "select benhnhan.id, benhnhan.Ten from benhnhan,phieukhambenh,ngoaitru where benhnhan.id= phieukhambenh.Benhnhan_id and phieukhambenh.id= ngoaitru.Phieukhambenh_id and ngoaitru.Tinhtrangravien!=0";
+                        sql = "select DISTINCT benhnhan.id, benhnhan.Ten from benhnhan,phieukhambenh,ngoaitru where benhnhan.id= phieukhambenh.Benhnhan_id and phieukhambenh.id= ngoaitru.Phieukhambenh_id and ngoaitru.Tinhtrangravien!=0";
                     }
                 
                 MySqlCommand com = new MySqlCommand();
@@ -58,5 +58,19 @@ namespace QLBV_normal
         {
             Show_danhsachbenhnhan();
         }
+
+        private void radioButton_xuatvien_CheckedChanged(object sender, EventArgs e)
+        {
+            Show_danhsachbenhnhan();
+        }
+
+        private void radioButton_dieutri_CheckedChanged(object sender, EventArgs e)
+        {
+            Show_danhsachbenhnhan();
+        }
+
+ 
+
+       
     }
 }
