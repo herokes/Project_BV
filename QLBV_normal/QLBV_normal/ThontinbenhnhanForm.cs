@@ -80,9 +80,9 @@ namespace QLBV_normal
                     com.Parameters.Add("@ten", MySqlDbType.VarChar, 200).Value = textBox_Ten.Text;
                     com.Parameters.Add("@ngaysinh", MySqlDbType.Date, 20).Value = dateTimePicker_Namsinh.Value;
                     if (comboBox_Gioitinh.Text == "Nam")
-                        com.Parameters.Add("@gioitinh", MySqlDbType.Bit, 10).Value = 1;
+                        com.Parameters.Add("@gioitinh", MySqlDbType.Int16, 10).Value = 1;
                     else
-                        com.Parameters.Add("@gioitinh", MySqlDbType.Bit, 10).Value = 0;
+                        com.Parameters.Add("@gioitinh", MySqlDbType.Int16, 10).Value = 2;
                     com.Parameters.Add("@nghenghiep", MySqlDbType.VarChar, 20).Value = comboBox_Nghenghiep.Text;
                     com.Parameters.Add("@dantoc", MySqlDbType.VarChar, 20).Value = comboBox_Dantoc.Text;
                     com.Parameters.Add("@cmnd", MySqlDbType.VarChar, 20).Value = textBox_CMND.Text;
@@ -208,6 +208,13 @@ namespace QLBV_normal
                 MessageBox.Show(sqlE.Source.ToString());
                 return;
             }
+        }
+
+        private void dateTimePicker_Namsinh_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime a = DateTime.Today;
+            int b = a.Year - dateTimePicker_Namsinh.Value.Year;
+            textBox_Tuoi.Text = b.ToString();
         }
 
 

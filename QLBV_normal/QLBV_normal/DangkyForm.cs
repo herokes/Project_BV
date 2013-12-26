@@ -18,6 +18,7 @@ namespace QLBV_normal
         public MainForm frmMain;
         public ReportForm frmReport;
         int tt = 0;
+        ArrayList arricd = new ArrayList();
         public DangkyForm()
         {
             InitializeComponent();
@@ -25,7 +26,9 @@ namespace QLBV_normal
 
         private void DangkyForm_Load(object sender, EventArgs e)
         {
+           
             Show_Combobox_Bacsi();
+
         }
 
 
@@ -33,9 +36,9 @@ namespace QLBV_normal
         private void button_CapNhat_Click(object sender, EventArgs e)
         {
            
-            // cap nhat phieu kham benh
-            try
-            {
+            //// cap nhat phieu kham benh
+            //try
+            //{
                 MySqlCommand com1 = new MySqlCommand();
                 com1.Connection = Util.con;
                 if(comboBox_Doituong.Text=="BHYT")
@@ -109,14 +112,23 @@ namespace QLBV_normal
                 Util.con.Open();
                 com1.ExecuteNonQuery();
                 Util.con.Close();
+                /// nhap chuan doan benh
+                foreach (var i in arricd )
+                {
+                    com1.CommandText = "INSERT INTO idc_phieukhambenh(idc_phieukhambenh.IDC_id,idc_phieukhambenh.Phieukhambenh_id) values('" + i.ToString() + "'," + maphieukhambenh + ")";
+                    Util.con.Open();
+                    com1.ExecuteNonQuery();
+                    Util.con.Close();
+                }
+                arricd.Clear();
                 MessageBox.Show("Đăng ký thành công");
-            }
-            catch (MySqlException sqlE)
-            {
-                Util.con.Close();
-                MessageBox.Show(sqlE.Source.ToString());
-                return;
-            }
+            //}
+            //catch (MySqlException sqlE)
+            //{
+            //    Util.con.Close();
+            //    MessageBox.Show(sqlE.Source.ToString());
+            //    return;
+            //}
                 //MessageBox.Show("ok");
             
         }
@@ -169,25 +181,25 @@ namespace QLBV_normal
        // public void Show_list
         public  void Show_Combobox_Bacsi ()
         {
-            try
-            {
-                MySqlCommand com = new MySqlCommand();
-                com.Connection = Util.con;
-                com.CommandText = "SELECT * FROM bacsi";
-                Util.con.Open();
-                MySqlDataReader read = com.ExecuteReader();
-                while (read.Read())
-                {
-                    comboBox_Bacsikham.Items.Add(read["TenBacsi"].ToString());
-                }
+            //try
+            //{
+            //    MySqlCommand com = new MySqlCommand();
+            //    com.Connection = Util.con;
+            //    com.CommandText = "SELECT * FROM bacsi";
+            //    Util.con.Open();
+            //    MySqlDataReader read = com.ExecuteReader();
+            //    while (read.Read())
+            //    {
+            //        comboBox_Bacsikham.Items.Add(read["TenBacsi"].ToString());
+            //    }
 
-                Util.con.Close();
-            }
-            catch (MySqlException sqlE)
-            {
-                //MessageBox.Show(sqlE.Source.ToString());
-                return;
-            }
+            //    Util.con.Close();
+            //}
+            //catch (MySqlException sqlE)
+            //{
+            //    //MessageBox.Show(sqlE.Source.ToString());
+            //    return;
+            //}
         }
         private void textBox_MaBN_KeyDown(object sender, KeyEventArgs e)
         {
@@ -297,7 +309,7 @@ namespace QLBV_normal
                 {
                     MySqlCommand com = new MySqlCommand();
                     com.Connection = Util.con;
-                    com.CommandText = "select * from benhnhan, phieukhambenh where benhnhan.id=phieukhambenh.Benhnhan_id and benhnhan.id=" + textBox_MaBN.Text;
+                    com.CommandText = "select * from benhnhan, phieukhambenh,ngoaitru where benhnhan.id=phieukhambenh.Benhnhan_id and phieukhambenh.id=ngoaitru.Phieukhambenh_id  and benhnhan.id=" + textBox_MaBN.Text;
                     Util.con.Open();
                     MySqlDataReader read = com.ExecuteReader();
                     while (read.Read())
@@ -306,6 +318,25 @@ namespace QLBV_normal
                         bant.IdBenhnhan=int.Parse(read[0].ToString());
                         bant.Ten = read[1].ToString();
                         bant.Ngaysinh = DateTime.Parse(read[2].ToString());
+                        bant.Tuoi = DateTime.Today.Year - bant.Ngaysinh.Year;
+                        // ngay thang nam
+                        string a;
+                        if (bant.Ngaysinh.Day.ToString().Length == 1)
+                            a = "0" + bant.Ngaysinh.Day.ToString();
+                        else
+                            a = bant.Ngaysinh.Day.ToString(); 
+                        bant.Ngay1 = a.Substring(0,1);
+                        bant.Ngay2 = a.Substring(1, 1);
+                        if (bant.Ngaysinh.Month.ToString().Length == 1)
+                            a = "0" + bant.Ngaysinh.Month.ToString();
+                        else
+                            a = bant.Ngaysinh.Month.ToString();
+                        bant.Thang1 = a.Substring(0, 1);
+                        bant.Thang2 = a.Substring(1, 1);
+                        bant.Nam1 = bant.Ngaysinh.Year.ToString().Substring(0, 1);
+                        bant.Nam2 = bant.Ngaysinh.Year.ToString().Substring(1, 1);
+                        bant.Nam3 = bant.Ngaysinh.Year.ToString().Substring(2, 1);
+                        bant.Nam4 = bant.Ngaysinh.Year.ToString().Substring(3, 1);
                         //bant.Gioitinh = read[3].ToString(); 
                         bant.Nghenghiep = read[4].ToString();
                         bant.Dantoc = read[5].ToString();
@@ -344,6 +375,7 @@ namespace QLBV_normal
                         bant.Dieutritaikhoa = read[39].ToString();
                         bant.Chuy = read[40].ToString();
                         bant.Benhnhan_id = read[41].ToString();
+                        bant.Bacsikhambenh = read[50].ToString();
                         frmMain.frmReport.arrReport.Add(bant);
                     }
 
@@ -394,6 +426,56 @@ namespace QLBV_normal
             {
                 Util.con.Close();
                 MessageBox.Show(sqlE.Source.ToString());
+                return;
+            }
+        }
+
+        private void textBox_maICD_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox_idICD.TextLength > 0)
+                {
+                    MySqlCommand com = new MySqlCommand();
+                    com.Connection = Util.con;
+                    com.CommandText = "select idc.TenIDC from idc where idc.id='"+ textBox_idICD.Text+"'" ;
+                    //MessageBox.Show(com.CommandText.te);
+                    Util.con.Open();
+                    MySqlDataReader read = com.ExecuteReader();
+                    if (read.Read())
+                    {
+                       
+                        textBox_Chuandoan.Text = read[0].ToString();
+                    }
+                    Util.con.Close();
+                }
+            }
+            catch (MySqlException sqlE)
+            {
+                Util.con.Close();
+                MessageBox.Show(sqlE.Source.ToString());
+                return;
+            }
+        }
+
+        private void textBox_idICD_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    richTextBox_dsbenh.Text += textBox_Chuandoan.Text+",";
+                    
+                    arricd.Add(textBox_idICD.Text);
+                    textBox_Chuandoan.Text = null;
+                    textBox_idICD.Text = null;
+                    this.textBox_idICD.Focus();
+
+                }
+            }
+            catch (MySqlException sqlE)
+            {
+               
                 return;
             }
         }
