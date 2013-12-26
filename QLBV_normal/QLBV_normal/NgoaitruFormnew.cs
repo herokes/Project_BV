@@ -69,6 +69,11 @@ namespace QLBV_normal
             Show_danhsachbenhnhan();
         }
 
+        private void listView_danhsachbenhnhan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
  
 
        

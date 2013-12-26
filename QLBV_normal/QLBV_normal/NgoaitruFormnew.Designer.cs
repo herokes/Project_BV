@@ -47,8 +47,58 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBox_idbacsikham = new System.Windows.Forms.TextBox();
+            this.comboBox_Bacsikham = new System.Windows.Forms.ComboBox();
+            this.textBox_Chuandoan = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.dateTimePicker_Ngaykham = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker_Giokham = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker_Den = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker_Tu = new System.Windows.Forms.DateTimePicker();
+            this.textBox_Diachinguoithan = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.textBox_Lydovaovien = new System.Windows.Forms.TextBox();
+            this.textBox_Noigioithieu = new System.Windows.Forms.TextBox();
+            this.textBox_Dienthoai = new System.Windows.Forms.TextBox();
+            this.textBox_Nguoithan = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.textBox_Sothe = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.comboBox_Doituong = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.textBox_NoiDKKCBBD = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.textBox_Phongkham = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox30 = new System.Windows.Forms.TextBox();
+            this.checkBox26 = new System.Windows.Forms.CheckBox();
+            this.textBox29 = new System.Windows.Forms.TextBox();
+            this.checkBox20 = new System.Windows.Forms.CheckBox();
+            this.textBox42 = new System.Windows.Forms.TextBox();
+            this.checkBox42 = new System.Windows.Forms.CheckBox();
+            this.textBox38 = new System.Windows.Forms.TextBox();
+            this.textBox39 = new System.Windows.Forms.TextBox();
+            this.textBox40 = new System.Windows.Forms.TextBox();
+            this.textBox41 = new System.Windows.Forms.TextBox();
+            this.checkBox37 = new System.Windows.Forms.CheckBox();
+            this.checkBox39 = new System.Windows.Forms.CheckBox();
+            this.checkBox40 = new System.Windows.Forms.CheckBox();
+            this.checkBox41 = new System.Windows.Forms.CheckBox();
+            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.checkBox21 = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -111,59 +161,17 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.radioButton_dieutri = new System.Windows.Forms.RadioButton();
-            this.radioButton_xuatvien = new System.Windows.Forms.RadioButton();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.checkBox21 = new System.Windows.Forms.CheckBox();
-            this.textBox38 = new System.Windows.Forms.TextBox();
-            this.textBox39 = new System.Windows.Forms.TextBox();
-            this.textBox40 = new System.Windows.Forms.TextBox();
-            this.textBox41 = new System.Windows.Forms.TextBox();
-            this.checkBox37 = new System.Windows.Forms.CheckBox();
-            this.checkBox39 = new System.Windows.Forms.CheckBox();
-            this.checkBox40 = new System.Windows.Forms.CheckBox();
-            this.checkBox41 = new System.Windows.Forms.CheckBox();
-            this.textBox42 = new System.Windows.Forms.TextBox();
-            this.checkBox42 = new System.Windows.Forms.CheckBox();
-            this.textBox29 = new System.Windows.Forms.TextBox();
-            this.checkBox20 = new System.Windows.Forms.CheckBox();
-            this.textBox30 = new System.Windows.Forms.TextBox();
-            this.checkBox26 = new System.Windows.Forms.CheckBox();
-            this.dateTimePicker_Ngaykham = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker_Giokham = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker_Den = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker_Tu = new System.Windows.Forms.DateTimePicker();
-            this.textBox_Diachinguoithan = new System.Windows.Forms.TextBox();
-            this.label44 = new System.Windows.Forms.Label();
-            this.textBox_Lydovaovien = new System.Windows.Forms.TextBox();
-            this.textBox_Noigioithieu = new System.Windows.Forms.TextBox();
-            this.textBox_Dienthoai = new System.Windows.Forms.TextBox();
-            this.textBox_Nguoithan = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.textBox_Sothe = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.comboBox_Doituong = new System.Windows.Forms.ComboBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.textBox_NoiDKKCBBD = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.textBox_Phongkham = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.textBox_idbacsikham = new System.Windows.Forms.TextBox();
-            this.comboBox_Bacsikham = new System.Windows.Forms.ComboBox();
-            this.textBox_Chuandoan = new System.Windows.Forms.TextBox();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBox38 = new System.Windows.Forms.CheckBox();
+            this.checkBox43 = new System.Windows.Forms.CheckBox();
+            this.checkBox44 = new System.Windows.Forms.CheckBox();
+            this.checkBox34 = new System.Windows.Forms.CheckBox();
+            this.checkBox35 = new System.Windows.Forms.CheckBox();
+            this.checkBox36 = new System.Windows.Forms.CheckBox();
+            this.checkBox33 = new System.Windows.Forms.CheckBox();
+            this.checkBox32 = new System.Windows.Forms.CheckBox();
+            this.checkBox31 = new System.Windows.Forms.CheckBox();
+            this.label33 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
@@ -180,17 +188,9 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBox31 = new System.Windows.Forms.CheckBox();
-            this.checkBox32 = new System.Windows.Forms.CheckBox();
-            this.checkBox33 = new System.Windows.Forms.CheckBox();
-            this.checkBox34 = new System.Windows.Forms.CheckBox();
-            this.checkBox35 = new System.Windows.Forms.CheckBox();
-            this.checkBox36 = new System.Windows.Forms.CheckBox();
-            this.checkBox38 = new System.Windows.Forms.CheckBox();
-            this.checkBox43 = new System.Windows.Forms.CheckBox();
-            this.checkBox44 = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.radioButton_dieutri = new System.Windows.Forms.RadioButton();
+            this.radioButton_xuatvien = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -212,6 +212,7 @@
             this.listView_danhsachbenhnhan.TabIndex = 0;
             this.listView_danhsachbenhnhan.UseCompatibleStateImageBehavior = false;
             this.listView_danhsachbenhnhan.View = System.Windows.Forms.View.Details;
+            this.listView_danhsachbenhnhan.SelectedIndexChanged += new System.EventHandler(this.listView_danhsachbenhnhan_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -410,6 +411,267 @@
             this.tabPage1.Text = "Thông tin vào viện";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // textBox_idbacsikham
+            // 
+            this.textBox_idbacsikham.Location = new System.Drawing.Point(132, 239);
+            this.textBox_idbacsikham.Name = "textBox_idbacsikham";
+            this.textBox_idbacsikham.Size = new System.Drawing.Size(48, 20);
+            this.textBox_idbacsikham.TabIndex = 183;
+            // 
+            // comboBox_Bacsikham
+            // 
+            this.comboBox_Bacsikham.FormattingEnabled = true;
+            this.comboBox_Bacsikham.Location = new System.Drawing.Point(186, 238);
+            this.comboBox_Bacsikham.Name = "comboBox_Bacsikham";
+            this.comboBox_Bacsikham.Size = new System.Drawing.Size(229, 21);
+            this.comboBox_Bacsikham.TabIndex = 184;
+            // 
+            // textBox_Chuandoan
+            // 
+            this.textBox_Chuandoan.Location = new System.Drawing.Point(132, 210);
+            this.textBox_Chuandoan.Name = "textBox_Chuandoan";
+            this.textBox_Chuandoan.Size = new System.Drawing.Size(283, 20);
+            this.textBox_Chuandoan.TabIndex = 182;
+            this.textBox_Chuandoan.Text = "lay ma IDC va ten IDC";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(27, 238);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(101, 13);
+            this.label36.TabIndex = 186;
+            this.label36.Text = "Bác sĩ khám bệnh :";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(12, 214);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(116, 13);
+            this.label40.TabIndex = 185;
+            this.label40.Text = "Chuẩn đoán vào viện :";
+            // 
+            // dateTimePicker_Ngaykham
+            // 
+            this.dateTimePicker_Ngaykham.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_Ngaykham.Location = new System.Drawing.Point(109, 16);
+            this.dateTimePicker_Ngaykham.Name = "dateTimePicker_Ngaykham";
+            this.dateTimePicker_Ngaykham.Size = new System.Drawing.Size(105, 20);
+            this.dateTimePicker_Ngaykham.TabIndex = 156;
+            // 
+            // dateTimePicker_Giokham
+            // 
+            this.dateTimePicker_Giokham.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker_Giokham.Location = new System.Drawing.Point(252, 17);
+            this.dateTimePicker_Giokham.Name = "dateTimePicker_Giokham";
+            this.dateTimePicker_Giokham.Size = new System.Drawing.Size(82, 20);
+            this.dateTimePicker_Giokham.TabIndex = 157;
+            // 
+            // dateTimePicker_Den
+            // 
+            this.dateTimePicker_Den.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_Den.Location = new System.Drawing.Point(551, 92);
+            this.dateTimePicker_Den.Name = "dateTimePicker_Den";
+            this.dateTimePicker_Den.Size = new System.Drawing.Size(85, 20);
+            this.dateTimePicker_Den.TabIndex = 163;
+            // 
+            // dateTimePicker_Tu
+            // 
+            this.dateTimePicker_Tu.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_Tu.Location = new System.Drawing.Point(425, 90);
+            this.dateTimePicker_Tu.Name = "dateTimePicker_Tu";
+            this.dateTimePicker_Tu.Size = new System.Drawing.Size(95, 20);
+            this.dateTimePicker_Tu.TabIndex = 162;
+            // 
+            // textBox_Diachinguoithan
+            // 
+            this.textBox_Diachinguoithan.Location = new System.Drawing.Point(109, 138);
+            this.textBox_Diachinguoithan.Name = "textBox_Diachinguoithan";
+            this.textBox_Diachinguoithan.Size = new System.Drawing.Size(527, 20);
+            this.textBox_Diachinguoithan.TabIndex = 166;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(11, 141);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(99, 13);
+            this.label44.TabIndex = 181;
+            this.label44.Text = "Địa chỉ người thân :";
+            // 
+            // textBox_Lydovaovien
+            // 
+            this.textBox_Lydovaovien.Location = new System.Drawing.Point(109, 186);
+            this.textBox_Lydovaovien.Name = "textBox_Lydovaovien";
+            this.textBox_Lydovaovien.Size = new System.Drawing.Size(527, 20);
+            this.textBox_Lydovaovien.TabIndex = 168;
+            // 
+            // textBox_Noigioithieu
+            // 
+            this.textBox_Noigioithieu.Location = new System.Drawing.Point(109, 162);
+            this.textBox_Noigioithieu.Name = "textBox_Noigioithieu";
+            this.textBox_Noigioithieu.Size = new System.Drawing.Size(527, 20);
+            this.textBox_Noigioithieu.TabIndex = 167;
+            // 
+            // textBox_Dienthoai
+            // 
+            this.textBox_Dienthoai.Location = new System.Drawing.Point(466, 113);
+            this.textBox_Dienthoai.Name = "textBox_Dienthoai";
+            this.textBox_Dienthoai.Size = new System.Drawing.Size(170, 20);
+            this.textBox_Dienthoai.TabIndex = 165;
+            // 
+            // textBox_Nguoithan
+            // 
+            this.textBox_Nguoithan.Location = new System.Drawing.Point(109, 114);
+            this.textBox_Nguoithan.Name = "textBox_Nguoithan";
+            this.textBox_Nguoithan.Size = new System.Drawing.Size(283, 20);
+            this.textBox_Nguoithan.TabIndex = 164;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(27, 189);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(83, 13);
+            this.label30.TabIndex = 180;
+            this.label30.Text = "Lý do vào viện :";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(36, 165);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(74, 13);
+            this.label27.TabIndex = 179;
+            this.label27.Text = "Nơi giới thiệu :";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(398, 116);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(61, 13);
+            this.label26.TabIndex = 178;
+            this.label26.Text = "Điện thoại :";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(45, 117);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(65, 13);
+            this.label25.TabIndex = 177;
+            this.label25.Text = "Người thân :";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(526, 94);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(27, 13);
+            this.label23.TabIndex = 176;
+            this.label23.Text = "Đến";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(399, 94);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(20, 13);
+            this.label24.TabIndex = 175;
+            this.label24.Text = "Từ";
+            // 
+            // textBox_Sothe
+            // 
+            this.textBox_Sothe.Location = new System.Drawing.Point(109, 90);
+            this.textBox_Sothe.Name = "textBox_Sothe";
+            this.textBox_Sothe.Size = new System.Drawing.Size(283, 20);
+            this.textBox_Sothe.TabIndex = 161;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(66, 93);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(44, 13);
+            this.label22.TabIndex = 174;
+            this.label22.Text = "Số thẻ :";
+            // 
+            // comboBox_Doituong
+            // 
+            this.comboBox_Doituong.FormattingEnabled = true;
+            this.comboBox_Doituong.Items.AddRange(new object[] {
+            "BHYT",
+            "THU PHÍ",
+            "MIỄN PHÍ",
+            "KHÁC"});
+            this.comboBox_Doituong.Location = new System.Drawing.Point(109, 41);
+            this.comboBox_Doituong.Name = "comboBox_Doituong";
+            this.comboBox_Doituong.Size = new System.Drawing.Size(105, 21);
+            this.comboBox_Doituong.TabIndex = 159;
+            this.comboBox_Doituong.Text = "BHYT";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(51, 47);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(59, 13);
+            this.label21.TabIndex = 173;
+            this.label21.Text = "Đối tượng :";
+            // 
+            // textBox_NoiDKKCBBD
+            // 
+            this.textBox_NoiDKKCBBD.Location = new System.Drawing.Point(109, 66);
+            this.textBox_NoiDKKCBBD.Name = "textBox_NoiDKKCBBD";
+            this.textBox_NoiDKKCBBD.Size = new System.Drawing.Size(527, 20);
+            this.textBox_NoiDKKCBBD.TabIndex = 160;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(34, 70);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(76, 13);
+            this.label20.TabIndex = 172;
+            this.label20.Text = "Nơi DKKBBĐ :";
+            // 
+            // textBox_Phongkham
+            // 
+            this.textBox_Phongkham.Location = new System.Drawing.Point(444, 17);
+            this.textBox_Phongkham.Name = "textBox_Phongkham";
+            this.textBox_Phongkham.Size = new System.Drawing.Size(188, 20);
+            this.textBox_Phongkham.TabIndex = 158;
+            this.textBox_Phongkham.Text = "KHOA THẬN";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(361, 21);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(73, 13);
+            this.label19.TabIndex = 171;
+            this.label19.Text = "Phòng khám :";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(220, 21);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(27, 13);
+            this.label18.TabIndex = 170;
+            this.label18.Text = "giờ :";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(42, 21);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(68, 13);
+            this.label17.TabIndex = 169;
+            this.label17.Text = "Ngày Khám :";
+            // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -507,6 +769,173 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Xét nghiệm";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(559, 67);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 111;
+            this.button3.Text = "Hủy";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(559, 44);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 110;
+            this.button2.Text = "Mới";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(559, 21);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 109;
+            this.button1.Text = "Lưu";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox30
+            // 
+            this.textBox30.Location = new System.Drawing.Point(245, 116);
+            this.textBox30.Name = "textBox30";
+            this.textBox30.Size = new System.Drawing.Size(34, 20);
+            this.textBox30.TabIndex = 108;
+            // 
+            // checkBox26
+            // 
+            this.checkBox26.AutoSize = true;
+            this.checkBox26.Location = new System.Drawing.Point(159, 119);
+            this.checkBox26.Name = "checkBox26";
+            this.checkBox26.Size = new System.Drawing.Size(65, 17);
+            this.checkBox26.TabIndex = 107;
+            this.checkBox26.Text = "Amylase";
+            this.checkBox26.UseVisualStyleBackColor = true;
+            // 
+            // textBox29
+            // 
+            this.textBox29.Location = new System.Drawing.Point(245, 93);
+            this.textBox29.Name = "textBox29";
+            this.textBox29.Size = new System.Drawing.Size(34, 20);
+            this.textBox29.TabIndex = 106;
+            // 
+            // checkBox20
+            // 
+            this.checkBox20.AutoSize = true;
+            this.checkBox20.Location = new System.Drawing.Point(159, 96);
+            this.checkBox20.Name = "checkBox20";
+            this.checkBox20.Size = new System.Drawing.Size(60, 17);
+            this.checkBox20.TabIndex = 105;
+            this.checkBox20.Text = "Cl-/ISE";
+            this.checkBox20.UseVisualStyleBackColor = true;
+            // 
+            // textBox42
+            // 
+            this.textBox42.Location = new System.Drawing.Point(107, 278);
+            this.textBox42.Name = "textBox42";
+            this.textBox42.Size = new System.Drawing.Size(34, 20);
+            this.textBox42.TabIndex = 104;
+            // 
+            // checkBox42
+            // 
+            this.checkBox42.AutoSize = true;
+            this.checkBox42.Location = new System.Drawing.Point(21, 281);
+            this.checkBox42.Name = "checkBox42";
+            this.checkBox42.Size = new System.Drawing.Size(78, 17);
+            this.checkBox42.TabIndex = 103;
+            this.checkBox42.Text = "Cholesterol";
+            this.checkBox42.UseVisualStyleBackColor = true;
+            // 
+            // textBox38
+            // 
+            this.textBox38.Location = new System.Drawing.Point(107, 186);
+            this.textBox38.Name = "textBox38";
+            this.textBox38.Size = new System.Drawing.Size(34, 20);
+            this.textBox38.TabIndex = 102;
+            // 
+            // textBox39
+            // 
+            this.textBox39.Location = new System.Drawing.Point(107, 163);
+            this.textBox39.Name = "textBox39";
+            this.textBox39.Size = new System.Drawing.Size(34, 20);
+            this.textBox39.TabIndex = 99;
+            // 
+            // textBox40
+            // 
+            this.textBox40.Location = new System.Drawing.Point(107, 140);
+            this.textBox40.Name = "textBox40";
+            this.textBox40.Size = new System.Drawing.Size(34, 20);
+            this.textBox40.TabIndex = 100;
+            // 
+            // textBox41
+            // 
+            this.textBox41.Location = new System.Drawing.Point(107, 117);
+            this.textBox41.Name = "textBox41";
+            this.textBox41.Size = new System.Drawing.Size(34, 20);
+            this.textBox41.TabIndex = 101;
+            // 
+            // checkBox37
+            // 
+            this.checkBox37.AutoSize = true;
+            this.checkBox37.Checked = true;
+            this.checkBox37.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox37.Location = new System.Drawing.Point(21, 189);
+            this.checkBox37.Name = "checkBox37";
+            this.checkBox37.Size = new System.Drawing.Size(67, 17);
+            this.checkBox37.TabIndex = 98;
+            this.checkBox37.Text = "Creatinin";
+            this.checkBox37.UseVisualStyleBackColor = true;
+            // 
+            // checkBox39
+            // 
+            this.checkBox39.AutoSize = true;
+            this.checkBox39.Location = new System.Drawing.Point(21, 143);
+            this.checkBox39.Name = "checkBox39";
+            this.checkBox39.Size = new System.Drawing.Size(89, 17);
+            this.checkBox39.TabIndex = 97;
+            this.checkBox39.Text = "Bilirubin Total";
+            this.checkBox39.UseVisualStyleBackColor = true;
+            // 
+            // checkBox40
+            // 
+            this.checkBox40.AutoSize = true;
+            this.checkBox40.Checked = true;
+            this.checkBox40.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox40.Location = new System.Drawing.Point(21, 166);
+            this.checkBox40.Name = "checkBox40";
+            this.checkBox40.Size = new System.Drawing.Size(90, 17);
+            this.checkBox40.TabIndex = 96;
+            this.checkBox40.Text = "BilirubinDirect";
+            this.checkBox40.UseVisualStyleBackColor = true;
+            // 
+            // checkBox41
+            // 
+            this.checkBox41.AutoSize = true;
+            this.checkBox41.Location = new System.Drawing.Point(21, 120);
+            this.checkBox41.Name = "checkBox41";
+            this.checkBox41.Size = new System.Drawing.Size(69, 17);
+            this.checkBox41.TabIndex = 95;
+            this.checkBox41.Text = "Acid Uric";
+            this.checkBox41.UseVisualStyleBackColor = true;
+            // 
+            // textBox19
+            // 
+            this.textBox19.Location = new System.Drawing.Point(245, 25);
+            this.textBox19.Name = "textBox19";
+            this.textBox19.Size = new System.Drawing.Size(34, 20);
+            this.textBox19.TabIndex = 94;
+            // 
+            // checkBox21
+            // 
+            this.checkBox21.AutoSize = true;
+            this.checkBox21.Location = new System.Drawing.Point(159, 28);
+            this.checkBox21.Name = "checkBox21";
+            this.checkBox21.Size = new System.Drawing.Size(68, 17);
+            this.checkBox21.TabIndex = 78;
+            this.checkBox21.Text = "Na+/ISE";
+            this.checkBox21.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
@@ -1105,466 +1534,122 @@
             this.tabPage6.Text = "Điều trị Ngoại trú";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Danh sách bệnh nhân";
-            // 
-            // radioButton_dieutri
-            // 
-            this.radioButton_dieutri.AutoSize = true;
-            this.radioButton_dieutri.Checked = true;
-            this.radioButton_dieutri.Location = new System.Drawing.Point(13, 33);
-            this.radioButton_dieutri.Name = "radioButton_dieutri";
-            this.radioButton_dieutri.Size = new System.Drawing.Size(58, 17);
-            this.radioButton_dieutri.TabIndex = 4;
-            this.radioButton_dieutri.TabStop = true;
-            this.radioButton_dieutri.Text = "Điều trị";
-            this.radioButton_dieutri.UseVisualStyleBackColor = true;
-            this.radioButton_dieutri.CheckedChanged += new System.EventHandler(this.radioButton_dieutri_CheckedChanged);
-            // 
-            // radioButton_xuatvien
-            // 
-            this.radioButton_xuatvien.AutoSize = true;
-            this.radioButton_xuatvien.Location = new System.Drawing.Point(105, 33);
-            this.radioButton_xuatvien.Name = "radioButton_xuatvien";
-            this.radioButton_xuatvien.Size = new System.Drawing.Size(70, 17);
-            this.radioButton_xuatvien.TabIndex = 5;
-            this.radioButton_xuatvien.Text = "Xuất viện";
-            this.radioButton_xuatvien.UseVisualStyleBackColor = true;
-            this.radioButton_xuatvien.CheckedChanged += new System.EventHandler(this.radioButton_xuatvien_CheckedChanged);
-            // 
-            // textBox19
-            // 
-            this.textBox19.Location = new System.Drawing.Point(245, 25);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(34, 20);
-            this.textBox19.TabIndex = 94;
-            // 
-            // checkBox21
-            // 
-            this.checkBox21.AutoSize = true;
-            this.checkBox21.Location = new System.Drawing.Point(159, 28);
-            this.checkBox21.Name = "checkBox21";
-            this.checkBox21.Size = new System.Drawing.Size(68, 17);
-            this.checkBox21.TabIndex = 78;
-            this.checkBox21.Text = "Na+/ISE";
-            this.checkBox21.UseVisualStyleBackColor = true;
-            // 
-            // textBox38
-            // 
-            this.textBox38.Location = new System.Drawing.Point(107, 186);
-            this.textBox38.Name = "textBox38";
-            this.textBox38.Size = new System.Drawing.Size(34, 20);
-            this.textBox38.TabIndex = 102;
-            // 
-            // textBox39
-            // 
-            this.textBox39.Location = new System.Drawing.Point(107, 163);
-            this.textBox39.Name = "textBox39";
-            this.textBox39.Size = new System.Drawing.Size(34, 20);
-            this.textBox39.TabIndex = 99;
-            // 
-            // textBox40
-            // 
-            this.textBox40.Location = new System.Drawing.Point(107, 140);
-            this.textBox40.Name = "textBox40";
-            this.textBox40.Size = new System.Drawing.Size(34, 20);
-            this.textBox40.TabIndex = 100;
-            // 
-            // textBox41
-            // 
-            this.textBox41.Location = new System.Drawing.Point(107, 117);
-            this.textBox41.Name = "textBox41";
-            this.textBox41.Size = new System.Drawing.Size(34, 20);
-            this.textBox41.TabIndex = 101;
-            // 
-            // checkBox37
-            // 
-            this.checkBox37.AutoSize = true;
-            this.checkBox37.Checked = true;
-            this.checkBox37.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox37.Location = new System.Drawing.Point(21, 189);
-            this.checkBox37.Name = "checkBox37";
-            this.checkBox37.Size = new System.Drawing.Size(67, 17);
-            this.checkBox37.TabIndex = 98;
-            this.checkBox37.Text = "Creatinin";
-            this.checkBox37.UseVisualStyleBackColor = true;
-            // 
-            // checkBox39
-            // 
-            this.checkBox39.AutoSize = true;
-            this.checkBox39.Location = new System.Drawing.Point(21, 143);
-            this.checkBox39.Name = "checkBox39";
-            this.checkBox39.Size = new System.Drawing.Size(89, 17);
-            this.checkBox39.TabIndex = 97;
-            this.checkBox39.Text = "Bilirubin Total";
-            this.checkBox39.UseVisualStyleBackColor = true;
-            // 
-            // checkBox40
-            // 
-            this.checkBox40.AutoSize = true;
-            this.checkBox40.Checked = true;
-            this.checkBox40.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox40.Location = new System.Drawing.Point(21, 166);
-            this.checkBox40.Name = "checkBox40";
-            this.checkBox40.Size = new System.Drawing.Size(90, 17);
-            this.checkBox40.TabIndex = 96;
-            this.checkBox40.Text = "BilirubinDirect";
-            this.checkBox40.UseVisualStyleBackColor = true;
-            // 
-            // checkBox41
-            // 
-            this.checkBox41.AutoSize = true;
-            this.checkBox41.Location = new System.Drawing.Point(21, 120);
-            this.checkBox41.Name = "checkBox41";
-            this.checkBox41.Size = new System.Drawing.Size(69, 17);
-            this.checkBox41.TabIndex = 95;
-            this.checkBox41.Text = "Acid Uric";
-            this.checkBox41.UseVisualStyleBackColor = true;
-            // 
-            // textBox42
-            // 
-            this.textBox42.Location = new System.Drawing.Point(107, 278);
-            this.textBox42.Name = "textBox42";
-            this.textBox42.Size = new System.Drawing.Size(34, 20);
-            this.textBox42.TabIndex = 104;
-            // 
-            // checkBox42
-            // 
-            this.checkBox42.AutoSize = true;
-            this.checkBox42.Location = new System.Drawing.Point(21, 281);
-            this.checkBox42.Name = "checkBox42";
-            this.checkBox42.Size = new System.Drawing.Size(78, 17);
-            this.checkBox42.TabIndex = 103;
-            this.checkBox42.Text = "Cholesterol";
-            this.checkBox42.UseVisualStyleBackColor = true;
-            // 
-            // textBox29
-            // 
-            this.textBox29.Location = new System.Drawing.Point(245, 93);
-            this.textBox29.Name = "textBox29";
-            this.textBox29.Size = new System.Drawing.Size(34, 20);
-            this.textBox29.TabIndex = 106;
-            // 
-            // checkBox20
-            // 
-            this.checkBox20.AutoSize = true;
-            this.checkBox20.Location = new System.Drawing.Point(159, 96);
-            this.checkBox20.Name = "checkBox20";
-            this.checkBox20.Size = new System.Drawing.Size(60, 17);
-            this.checkBox20.TabIndex = 105;
-            this.checkBox20.Text = "Cl-/ISE";
-            this.checkBox20.UseVisualStyleBackColor = true;
-            // 
-            // textBox30
-            // 
-            this.textBox30.Location = new System.Drawing.Point(245, 116);
-            this.textBox30.Name = "textBox30";
-            this.textBox30.Size = new System.Drawing.Size(34, 20);
-            this.textBox30.TabIndex = 108;
-            // 
-            // checkBox26
-            // 
-            this.checkBox26.AutoSize = true;
-            this.checkBox26.Location = new System.Drawing.Point(159, 119);
-            this.checkBox26.Name = "checkBox26";
-            this.checkBox26.Size = new System.Drawing.Size(65, 17);
-            this.checkBox26.TabIndex = 107;
-            this.checkBox26.Text = "Amylase";
-            this.checkBox26.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker_Ngaykham
-            // 
-            this.dateTimePicker_Ngaykham.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker_Ngaykham.Location = new System.Drawing.Point(109, 16);
-            this.dateTimePicker_Ngaykham.Name = "dateTimePicker_Ngaykham";
-            this.dateTimePicker_Ngaykham.Size = new System.Drawing.Size(105, 20);
-            this.dateTimePicker_Ngaykham.TabIndex = 156;
-            // 
-            // dateTimePicker_Giokham
-            // 
-            this.dateTimePicker_Giokham.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker_Giokham.Location = new System.Drawing.Point(252, 17);
-            this.dateTimePicker_Giokham.Name = "dateTimePicker_Giokham";
-            this.dateTimePicker_Giokham.Size = new System.Drawing.Size(82, 20);
-            this.dateTimePicker_Giokham.TabIndex = 157;
-            // 
-            // dateTimePicker_Den
-            // 
-            this.dateTimePicker_Den.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker_Den.Location = new System.Drawing.Point(551, 92);
-            this.dateTimePicker_Den.Name = "dateTimePicker_Den";
-            this.dateTimePicker_Den.Size = new System.Drawing.Size(85, 20);
-            this.dateTimePicker_Den.TabIndex = 163;
-            // 
-            // dateTimePicker_Tu
-            // 
-            this.dateTimePicker_Tu.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker_Tu.Location = new System.Drawing.Point(425, 90);
-            this.dateTimePicker_Tu.Name = "dateTimePicker_Tu";
-            this.dateTimePicker_Tu.Size = new System.Drawing.Size(95, 20);
-            this.dateTimePicker_Tu.TabIndex = 162;
-            // 
-            // textBox_Diachinguoithan
-            // 
-            this.textBox_Diachinguoithan.Location = new System.Drawing.Point(109, 138);
-            this.textBox_Diachinguoithan.Name = "textBox_Diachinguoithan";
-            this.textBox_Diachinguoithan.Size = new System.Drawing.Size(527, 20);
-            this.textBox_Diachinguoithan.TabIndex = 166;
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(11, 141);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(99, 13);
-            this.label44.TabIndex = 181;
-            this.label44.Text = "Địa chỉ người thân :";
-            // 
-            // textBox_Lydovaovien
-            // 
-            this.textBox_Lydovaovien.Location = new System.Drawing.Point(109, 186);
-            this.textBox_Lydovaovien.Name = "textBox_Lydovaovien";
-            this.textBox_Lydovaovien.Size = new System.Drawing.Size(527, 20);
-            this.textBox_Lydovaovien.TabIndex = 168;
-            // 
-            // textBox_Noigioithieu
-            // 
-            this.textBox_Noigioithieu.Location = new System.Drawing.Point(109, 162);
-            this.textBox_Noigioithieu.Name = "textBox_Noigioithieu";
-            this.textBox_Noigioithieu.Size = new System.Drawing.Size(527, 20);
-            this.textBox_Noigioithieu.TabIndex = 167;
-            // 
-            // textBox_Dienthoai
-            // 
-            this.textBox_Dienthoai.Location = new System.Drawing.Point(466, 113);
-            this.textBox_Dienthoai.Name = "textBox_Dienthoai";
-            this.textBox_Dienthoai.Size = new System.Drawing.Size(170, 20);
-            this.textBox_Dienthoai.TabIndex = 165;
-            // 
-            // textBox_Nguoithan
-            // 
-            this.textBox_Nguoithan.Location = new System.Drawing.Point(109, 114);
-            this.textBox_Nguoithan.Name = "textBox_Nguoithan";
-            this.textBox_Nguoithan.Size = new System.Drawing.Size(283, 20);
-            this.textBox_Nguoithan.TabIndex = 164;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(27, 189);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(83, 13);
-            this.label30.TabIndex = 180;
-            this.label30.Text = "Lý do vào viện :";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(36, 165);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(74, 13);
-            this.label27.TabIndex = 179;
-            this.label27.Text = "Nơi giới thiệu :";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(398, 116);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(61, 13);
-            this.label26.TabIndex = 178;
-            this.label26.Text = "Điện thoại :";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(45, 117);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(65, 13);
-            this.label25.TabIndex = 177;
-            this.label25.Text = "Người thân :";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(526, 94);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(27, 13);
-            this.label23.TabIndex = 176;
-            this.label23.Text = "Đến";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(399, 94);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(20, 13);
-            this.label24.TabIndex = 175;
-            this.label24.Text = "Từ";
-            // 
-            // textBox_Sothe
-            // 
-            this.textBox_Sothe.Location = new System.Drawing.Point(109, 90);
-            this.textBox_Sothe.Name = "textBox_Sothe";
-            this.textBox_Sothe.Size = new System.Drawing.Size(283, 20);
-            this.textBox_Sothe.TabIndex = 161;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(66, 93);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(44, 13);
-            this.label22.TabIndex = 174;
-            this.label22.Text = "Số thẻ :";
-            // 
-            // comboBox_Doituong
-            // 
-            this.comboBox_Doituong.FormattingEnabled = true;
-            this.comboBox_Doituong.Items.AddRange(new object[] {
-            "BHYT",
-            "THU PHÍ",
-            "MIỄN PHÍ",
-            "KHÁC"});
-            this.comboBox_Doituong.Location = new System.Drawing.Point(109, 41);
-            this.comboBox_Doituong.Name = "comboBox_Doituong";
-            this.comboBox_Doituong.Size = new System.Drawing.Size(105, 21);
-            this.comboBox_Doituong.TabIndex = 159;
-            this.comboBox_Doituong.Text = "BHYT";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(51, 47);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(59, 13);
-            this.label21.TabIndex = 173;
-            this.label21.Text = "Đối tượng :";
-            // 
-            // textBox_NoiDKKCBBD
-            // 
-            this.textBox_NoiDKKCBBD.Location = new System.Drawing.Point(109, 66);
-            this.textBox_NoiDKKCBBD.Name = "textBox_NoiDKKCBBD";
-            this.textBox_NoiDKKCBBD.Size = new System.Drawing.Size(527, 20);
-            this.textBox_NoiDKKCBBD.TabIndex = 160;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(34, 70);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(76, 13);
-            this.label20.TabIndex = 172;
-            this.label20.Text = "Nơi DKKBBĐ :";
-            // 
-            // textBox_Phongkham
-            // 
-            this.textBox_Phongkham.Location = new System.Drawing.Point(444, 17);
-            this.textBox_Phongkham.Name = "textBox_Phongkham";
-            this.textBox_Phongkham.Size = new System.Drawing.Size(188, 20);
-            this.textBox_Phongkham.TabIndex = 158;
-            this.textBox_Phongkham.Text = "KHOA THẬN";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(361, 21);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(73, 13);
-            this.label19.TabIndex = 171;
-            this.label19.Text = "Phòng khám :";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(220, 21);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(27, 13);
-            this.label18.TabIndex = 170;
-            this.label18.Text = "giờ :";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(42, 21);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(68, 13);
-            this.label17.TabIndex = 169;
-            this.label17.Text = "Ngày Khám :";
-            // 
-            // textBox_idbacsikham
-            // 
-            this.textBox_idbacsikham.Location = new System.Drawing.Point(132, 239);
-            this.textBox_idbacsikham.Name = "textBox_idbacsikham";
-            this.textBox_idbacsikham.Size = new System.Drawing.Size(48, 20);
-            this.textBox_idbacsikham.TabIndex = 183;
-            // 
-            // comboBox_Bacsikham
-            // 
-            this.comboBox_Bacsikham.FormattingEnabled = true;
-            this.comboBox_Bacsikham.Location = new System.Drawing.Point(186, 238);
-            this.comboBox_Bacsikham.Name = "comboBox_Bacsikham";
-            this.comboBox_Bacsikham.Size = new System.Drawing.Size(229, 21);
-            this.comboBox_Bacsikham.TabIndex = 184;
-            // 
-            // textBox_Chuandoan
-            // 
-            this.textBox_Chuandoan.Location = new System.Drawing.Point(132, 210);
-            this.textBox_Chuandoan.Name = "textBox_Chuandoan";
-            this.textBox_Chuandoan.Size = new System.Drawing.Size(283, 20);
-            this.textBox_Chuandoan.TabIndex = 182;
-            this.textBox_Chuandoan.Text = "lay ma IDC va ten IDC";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(27, 238);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(101, 13);
-            this.label36.TabIndex = 186;
-            this.label36.Text = "Bác sĩ khám bệnh :";
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(12, 214);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(116, 13);
-            this.label40.TabIndex = 185;
-            this.label40.Text = "Chuẩn đoán vào viện :";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(559, 21);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 109;
-            this.button1.Text = "Lưu";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(559, 44);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 110;
-            this.button2.Text = "Mới";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(559, 67);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 111;
-            this.button3.Text = "Hủy";
-            this.button3.UseVisualStyleBackColor = true;
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.checkBox38);
+            this.groupBox3.Controls.Add(this.checkBox43);
+            this.groupBox3.Controls.Add(this.checkBox44);
+            this.groupBox3.Controls.Add(this.checkBox34);
+            this.groupBox3.Controls.Add(this.checkBox35);
+            this.groupBox3.Controls.Add(this.checkBox36);
+            this.groupBox3.Controls.Add(this.checkBox33);
+            this.groupBox3.Controls.Add(this.checkBox32);
+            this.groupBox3.Controls.Add(this.checkBox31);
+            this.groupBox3.Location = new System.Drawing.Point(99, 130);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(504, 108);
+            this.groupBox3.TabIndex = 194;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Xử trí";
+            // 
+            // checkBox38
+            // 
+            this.checkBox38.AutoSize = true;
+            this.checkBox38.Location = new System.Drawing.Point(265, 70);
+            this.checkBox38.Name = "checkBox38";
+            this.checkBox38.Size = new System.Drawing.Size(86, 17);
+            this.checkBox38.TabIndex = 8;
+            this.checkBox38.Text = "checkBox38";
+            this.checkBox38.UseVisualStyleBackColor = true;
+            // 
+            // checkBox43
+            // 
+            this.checkBox43.AutoSize = true;
+            this.checkBox43.Location = new System.Drawing.Point(265, 47);
+            this.checkBox43.Name = "checkBox43";
+            this.checkBox43.Size = new System.Drawing.Size(86, 17);
+            this.checkBox43.TabIndex = 7;
+            this.checkBox43.Text = "checkBox43";
+            this.checkBox43.UseVisualStyleBackColor = true;
+            // 
+            // checkBox44
+            // 
+            this.checkBox44.AutoSize = true;
+            this.checkBox44.Location = new System.Drawing.Point(265, 24);
+            this.checkBox44.Name = "checkBox44";
+            this.checkBox44.Size = new System.Drawing.Size(86, 17);
+            this.checkBox44.TabIndex = 6;
+            this.checkBox44.Text = "checkBox44";
+            this.checkBox44.UseVisualStyleBackColor = true;
+            // 
+            // checkBox34
+            // 
+            this.checkBox34.AutoSize = true;
+            this.checkBox34.Location = new System.Drawing.Point(144, 70);
+            this.checkBox34.Name = "checkBox34";
+            this.checkBox34.Size = new System.Drawing.Size(86, 17);
+            this.checkBox34.TabIndex = 5;
+            this.checkBox34.Text = "checkBox34";
+            this.checkBox34.UseVisualStyleBackColor = true;
+            // 
+            // checkBox35
+            // 
+            this.checkBox35.AutoSize = true;
+            this.checkBox35.Location = new System.Drawing.Point(144, 47);
+            this.checkBox35.Name = "checkBox35";
+            this.checkBox35.Size = new System.Drawing.Size(86, 17);
+            this.checkBox35.TabIndex = 4;
+            this.checkBox35.Text = "checkBox35";
+            this.checkBox35.UseVisualStyleBackColor = true;
+            // 
+            // checkBox36
+            // 
+            this.checkBox36.AutoSize = true;
+            this.checkBox36.Location = new System.Drawing.Point(144, 24);
+            this.checkBox36.Name = "checkBox36";
+            this.checkBox36.Size = new System.Drawing.Size(68, 17);
+            this.checkBox36.TabIndex = 3;
+            this.checkBox36.Text = "Theo dõi";
+            this.checkBox36.UseVisualStyleBackColor = true;
+            // 
+            // checkBox33
+            // 
+            this.checkBox33.AutoSize = true;
+            this.checkBox33.Location = new System.Drawing.Point(23, 70);
+            this.checkBox33.Name = "checkBox33";
+            this.checkBox33.Size = new System.Drawing.Size(74, 17);
+            this.checkBox33.TabIndex = 2;
+            this.checkBox33.Text = "Chạy thận";
+            this.checkBox33.UseVisualStyleBackColor = true;
+            // 
+            // checkBox32
+            // 
+            this.checkBox32.AutoSize = true;
+            this.checkBox32.Location = new System.Drawing.Point(23, 47);
+            this.checkBox32.Name = "checkBox32";
+            this.checkBox32.Size = new System.Drawing.Size(79, 17);
+            this.checkBox32.TabIndex = 1;
+            this.checkBox32.Text = "Xét nghiệm";
+            this.checkBox32.UseVisualStyleBackColor = true;
+            // 
+            // checkBox31
+            // 
+            this.checkBox31.AutoSize = true;
+            this.checkBox31.Location = new System.Drawing.Point(23, 24);
+            this.checkBox31.Name = "checkBox31";
+            this.checkBox31.Size = new System.Drawing.Size(63, 17);
+            this.checkBox31.TabIndex = 0;
+            this.checkBox31.Text = "Cấp toa";
+            this.checkBox31.UseVisualStyleBackColor = true;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(46, 126);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(39, 13);
+            this.label33.TabIndex = 193;
+            this.label33.Text = "Xử trí :";
             // 
             // dateTimePicker1
             // 
@@ -1706,122 +1791,38 @@
             this.label32.TabIndex = 185;
             this.label32.Text = "Ngày Khám :";
             // 
-            // label33
+            // label1
             // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(46, 126);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(39, 13);
-            this.label33.TabIndex = 193;
-            this.label33.Text = "Xử trí :";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Danh sách bệnh nhân";
             // 
-            // groupBox3
+            // radioButton_dieutri
             // 
-            this.groupBox3.Controls.Add(this.checkBox38);
-            this.groupBox3.Controls.Add(this.checkBox43);
-            this.groupBox3.Controls.Add(this.checkBox44);
-            this.groupBox3.Controls.Add(this.checkBox34);
-            this.groupBox3.Controls.Add(this.checkBox35);
-            this.groupBox3.Controls.Add(this.checkBox36);
-            this.groupBox3.Controls.Add(this.checkBox33);
-            this.groupBox3.Controls.Add(this.checkBox32);
-            this.groupBox3.Controls.Add(this.checkBox31);
-            this.groupBox3.Location = new System.Drawing.Point(99, 130);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(504, 108);
-            this.groupBox3.TabIndex = 194;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Xử trí";
+            this.radioButton_dieutri.AutoSize = true;
+            this.radioButton_dieutri.Checked = true;
+            this.radioButton_dieutri.Location = new System.Drawing.Point(13, 33);
+            this.radioButton_dieutri.Name = "radioButton_dieutri";
+            this.radioButton_dieutri.Size = new System.Drawing.Size(58, 17);
+            this.radioButton_dieutri.TabIndex = 4;
+            this.radioButton_dieutri.TabStop = true;
+            this.radioButton_dieutri.Text = "Điều trị";
+            this.radioButton_dieutri.UseVisualStyleBackColor = true;
+            this.radioButton_dieutri.CheckedChanged += new System.EventHandler(this.radioButton_dieutri_CheckedChanged);
             // 
-            // checkBox31
+            // radioButton_xuatvien
             // 
-            this.checkBox31.AutoSize = true;
-            this.checkBox31.Location = new System.Drawing.Point(23, 24);
-            this.checkBox31.Name = "checkBox31";
-            this.checkBox31.Size = new System.Drawing.Size(63, 17);
-            this.checkBox31.TabIndex = 0;
-            this.checkBox31.Text = "Cấp toa";
-            this.checkBox31.UseVisualStyleBackColor = true;
-            // 
-            // checkBox32
-            // 
-            this.checkBox32.AutoSize = true;
-            this.checkBox32.Location = new System.Drawing.Point(23, 47);
-            this.checkBox32.Name = "checkBox32";
-            this.checkBox32.Size = new System.Drawing.Size(79, 17);
-            this.checkBox32.TabIndex = 1;
-            this.checkBox32.Text = "Xét nghiệm";
-            this.checkBox32.UseVisualStyleBackColor = true;
-            // 
-            // checkBox33
-            // 
-            this.checkBox33.AutoSize = true;
-            this.checkBox33.Location = new System.Drawing.Point(23, 70);
-            this.checkBox33.Name = "checkBox33";
-            this.checkBox33.Size = new System.Drawing.Size(74, 17);
-            this.checkBox33.TabIndex = 2;
-            this.checkBox33.Text = "Chạy thận";
-            this.checkBox33.UseVisualStyleBackColor = true;
-            // 
-            // checkBox34
-            // 
-            this.checkBox34.AutoSize = true;
-            this.checkBox34.Location = new System.Drawing.Point(144, 70);
-            this.checkBox34.Name = "checkBox34";
-            this.checkBox34.Size = new System.Drawing.Size(86, 17);
-            this.checkBox34.TabIndex = 5;
-            this.checkBox34.Text = "checkBox34";
-            this.checkBox34.UseVisualStyleBackColor = true;
-            // 
-            // checkBox35
-            // 
-            this.checkBox35.AutoSize = true;
-            this.checkBox35.Location = new System.Drawing.Point(144, 47);
-            this.checkBox35.Name = "checkBox35";
-            this.checkBox35.Size = new System.Drawing.Size(86, 17);
-            this.checkBox35.TabIndex = 4;
-            this.checkBox35.Text = "checkBox35";
-            this.checkBox35.UseVisualStyleBackColor = true;
-            // 
-            // checkBox36
-            // 
-            this.checkBox36.AutoSize = true;
-            this.checkBox36.Location = new System.Drawing.Point(144, 24);
-            this.checkBox36.Name = "checkBox36";
-            this.checkBox36.Size = new System.Drawing.Size(68, 17);
-            this.checkBox36.TabIndex = 3;
-            this.checkBox36.Text = "Theo dõi";
-            this.checkBox36.UseVisualStyleBackColor = true;
-            // 
-            // checkBox38
-            // 
-            this.checkBox38.AutoSize = true;
-            this.checkBox38.Location = new System.Drawing.Point(265, 70);
-            this.checkBox38.Name = "checkBox38";
-            this.checkBox38.Size = new System.Drawing.Size(86, 17);
-            this.checkBox38.TabIndex = 8;
-            this.checkBox38.Text = "checkBox38";
-            this.checkBox38.UseVisualStyleBackColor = true;
-            // 
-            // checkBox43
-            // 
-            this.checkBox43.AutoSize = true;
-            this.checkBox43.Location = new System.Drawing.Point(265, 47);
-            this.checkBox43.Name = "checkBox43";
-            this.checkBox43.Size = new System.Drawing.Size(86, 17);
-            this.checkBox43.TabIndex = 7;
-            this.checkBox43.Text = "checkBox43";
-            this.checkBox43.UseVisualStyleBackColor = true;
-            // 
-            // checkBox44
-            // 
-            this.checkBox44.AutoSize = true;
-            this.checkBox44.Location = new System.Drawing.Point(265, 24);
-            this.checkBox44.Name = "checkBox44";
-            this.checkBox44.Size = new System.Drawing.Size(86, 17);
-            this.checkBox44.TabIndex = 6;
-            this.checkBox44.Text = "checkBox44";
-            this.checkBox44.UseVisualStyleBackColor = true;
+            this.radioButton_xuatvien.AutoSize = true;
+            this.radioButton_xuatvien.Location = new System.Drawing.Point(105, 33);
+            this.radioButton_xuatvien.Name = "radioButton_xuatvien";
+            this.radioButton_xuatvien.Size = new System.Drawing.Size(70, 17);
+            this.radioButton_xuatvien.TabIndex = 5;
+            this.radioButton_xuatvien.Text = "Xuất viện";
+            this.radioButton_xuatvien.UseVisualStyleBackColor = true;
+            this.radioButton_xuatvien.CheckedChanged += new System.EventHandler(this.radioButton_xuatvien_CheckedChanged);
             // 
             // NgoaitruFormnew
             // 

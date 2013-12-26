@@ -45,13 +45,9 @@ namespace QLBV_normal
                 while (read.Read())
                 {
                     ListViewItem item = new ListViewItem();
-                    if (groupName.Equals(""))
-                    {
-                        groupName = read["Loaixetnghiem"].ToString();
-                    }
                     if (!groupName.Equals(read["Loaixetnghiem"].ToString()))
                     {
-                        ListViewGroup group = new ListViewGroup();
+                        ListViewGroup group = new ListViewGroup(read["Loaixetnghiem"].ToString());
                         listView_xetnghiem.Groups.Add(group);
                         groupName = read["Loaixetnghiem"].ToString();
                         item.Group = group;

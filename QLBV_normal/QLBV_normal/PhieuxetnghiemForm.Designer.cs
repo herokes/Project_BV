@@ -39,6 +39,7 @@
             // 
             // listView_xetnghiem
             // 
+            this.listView_xetnghiem.CheckBoxes = true;
             this.listView_xetnghiem.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
