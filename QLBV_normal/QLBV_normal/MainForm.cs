@@ -137,7 +137,7 @@ namespace QLBV_normal
                 frmReport.frmMain = this;
                 frmReport.MdiParent = this;
                 frmReport.arrReport = new ArrayList();
-                Benhanngoaitru bant = new Benhanngoaitru();
+                Todieutri bant = new Todieutri();
                 frmReport.arrReport.Add(bant);
                 frmReport.Show();
             }

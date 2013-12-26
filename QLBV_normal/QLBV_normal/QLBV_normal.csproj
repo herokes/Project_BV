@@ -76,6 +76,7 @@
     <Compile Include="Class\Common\Session.cs" />
     <Compile Include="Class\Common\Util.cs" />
     <Compile Include="Class\Common\Extension\DateExtension.cs" />
+    <Compile Include="Class\Todieutri.cs" />
     <Compile Include="Class\Phieukhambenh.cs" />
     <Compile Include="DangkyForm.cs">
       <SubType>Form</SubType>
@@ -136,6 +137,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Phieukhambenhvaovien.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Report_Todieutri.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Report_Todieutri.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report\Toathuoc.cs">
@@ -205,6 +212,10 @@
     <EmbeddedResource Include="Report\Phieukhambenhvaovien.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Phieukhambenhvaovien.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Report_Todieutri.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Report_Todieutri.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Toathuoc.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

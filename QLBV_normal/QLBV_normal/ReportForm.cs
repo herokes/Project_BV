@@ -33,8 +33,11 @@ namespace QLBV_normal
                 case "Phieukhambenh":
 					rp = new Phieukhambenhvaovien();
 					break;
+                case "todieutri":
+                    rp = new Report_Todieutri();
+                    break;
                 default:
-                    rp = new Report_Benhanngoaitru();
+                    rp = new Report_Todieutri();
                     break;
             }
 
