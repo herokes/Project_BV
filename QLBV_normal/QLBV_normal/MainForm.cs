@@ -20,10 +20,10 @@ namespace QLBV_normal
         public BenhvienForm frmBenhvien;
         public DangkyForm frmDangky;
         public ThuocForm frmThuoc;
-        public NgoaitruForm frmNgoaitru;
+        public NgoaitruFormold frmNgoaitru;
         public SearchPhieukhambenhForm frmSearchPhieukhambenh;
         public ReportForm frmReport;
-		public NgoaitruFormnew frmNgoaitrunew;
+		public NgoaitruForm frmNgoaitrunew;
         public PhieuxetnghiemForm frmPhieuxetnghiem; 
 
         //Global class variable
@@ -118,7 +118,7 @@ namespace QLBV_normal
         {
             if (frmNgoaitrunew == null || frmNgoaitrunew.IsDisposed)
             {
-                frmNgoaitrunew = new NgoaitruFormnew();
+                frmNgoaitrunew = new NgoaitruForm();
                 frmNgoaitrunew.frmMain = this;
                 frmNgoaitrunew.MdiParent = this;
                 frmNgoaitrunew.Show();
@@ -137,7 +137,7 @@ namespace QLBV_normal
                 frmReport.frmMain = this;
                 frmReport.MdiParent = this;
                 frmReport.arrReport = new ArrayList();
-                Benhanngoaitru bant = new Benhanngoaitru();
+                Todieutri bant = new Todieutri();
                 frmReport.arrReport.Add(bant);
                 frmReport.Show();
             }

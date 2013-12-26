@@ -35,6 +35,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBox_benhnhan = new System.Windows.Forms.TextBox();
             this.button_print = new System.Windows.Forms.Button();
+            this.dataGridView_xetnghiem = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_xetnghiem)).BeginInit();
             this.SuspendLayout();
             // 
             // listView_xetnghiem
@@ -52,6 +58,7 @@
             this.listView_xetnghiem.TabIndex = 0;
             this.listView_xetnghiem.UseCompatibleStateImageBehavior = false;
             this.listView_xetnghiem.View = System.Windows.Forms.View.Details;
+            this.listView_xetnghiem.SelectedIndexChanged += new System.EventHandler(this.listView_xetnghiem_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -94,17 +101,61 @@
             this.button_print.Text = "In phiếu xét nghiệm";
             this.button_print.UseVisualStyleBackColor = true;
             // 
+            // dataGridView_xetnghiem
+            // 
+            this.dataGridView_xetnghiem.AllowUserToAddRows = false;
+            this.dataGridView_xetnghiem.AllowUserToDeleteRows = false;
+            this.dataGridView_xetnghiem.AllowUserToOrderColumns = true;
+            this.dataGridView_xetnghiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_xetnghiem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4});
+            this.dataGridView_xetnghiem.Location = new System.Drawing.Point(473, 83);
+            this.dataGridView_xetnghiem.Name = "dataGridView_xetnghiem";
+            this.dataGridView_xetnghiem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridView_xetnghiem.Size = new System.Drawing.Size(615, 279);
+            this.dataGridView_xetnghiem.TabIndex = 4;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Xét nghiệm";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 150;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Trị số bình thường";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 150;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Kết quả";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 150;
+            // 
             // PhieuxetnghiemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 374);
+            this.ClientSize = new System.Drawing.Size(1128, 374);
+            this.Controls.Add(this.dataGridView_xetnghiem);
             this.Controls.Add(this.button_print);
             this.Controls.Add(this.textBox_benhnhan);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView_xetnghiem);
             this.Name = "PhieuxetnghiemForm";
             this.Text = "PhieuxetnghiemForm";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_xetnghiem)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,5 +170,10 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox_benhnhan;
         private System.Windows.Forms.Button button_print;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridView dataGridView_xetnghiem;
     }
 }
