@@ -120,8 +120,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listView_Caclankhambenh = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label4 = new System.Windows.Forms.Label();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox_idICD = new System.Windows.Forms.TextBox();
+            this.richTextBox_dsbenh = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -133,6 +135,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.richTextBox_dsbenh);
+            this.groupBox2.Controls.Add(this.textBox_idICD);
             this.groupBox2.Controls.Add(this.textBox_tiensubenhgiadinh);
             this.groupBox2.Controls.Add(this.label50);
             this.groupBox2.Controls.Add(this.comboBox_Loaidieutri);
@@ -226,7 +230,6 @@
             this.comboBox_Loaidieutri.FormattingEnabled = true;
             this.comboBox_Loaidieutri.Items.AddRange(new object[] {
             "NGOẠI TRÚ CHẠY THẬN",
-            "NGOẠI TRU KHÔNG CHẠY THẬN",
             "NỘI TRÚ"});
             this.comboBox_Loaidieutri.Location = new System.Drawing.Point(226, 532);
             this.comboBox_Loaidieutri.Name = "comboBox_Loaidieutri";
@@ -392,11 +395,10 @@
             // 
             // textBox_Chuandoan
             // 
-            this.textBox_Chuandoan.Location = new System.Drawing.Point(153, 463);
+            this.textBox_Chuandoan.Location = new System.Drawing.Point(230, 463);
             this.textBox_Chuandoan.Name = "textBox_Chuandoan";
             this.textBox_Chuandoan.Size = new System.Drawing.Size(283, 20);
             this.textBox_Chuandoan.TabIndex = 122;
-            this.textBox_Chuandoan.Text = "lay ma IDC va ten IDC";
             // 
             // textBox_Trongluong
             // 
@@ -756,7 +758,7 @@
             // 
             // button_Xoa
             // 
-            this.button_Xoa.Location = new System.Drawing.Point(210, 186);
+            this.button_Xoa.Location = new System.Drawing.Point(371, 176);
             this.button_Xoa.Name = "button_Xoa";
             this.button_Xoa.Size = new System.Drawing.Size(75, 23);
             this.button_Xoa.TabIndex = 45;
@@ -765,7 +767,7 @@
             // 
             // button_Tim
             // 
-            this.button_Tim.Location = new System.Drawing.Point(302, 186);
+            this.button_Tim.Location = new System.Drawing.Point(463, 176);
             this.button_Tim.Name = "button_Tim";
             this.button_Tim.Size = new System.Drawing.Size(75, 23);
             this.button_Tim.TabIndex = 46;
@@ -774,7 +776,7 @@
             // 
             // button_Nhapmoi
             // 
-            this.button_Nhapmoi.Location = new System.Drawing.Point(394, 186);
+            this.button_Nhapmoi.Location = new System.Drawing.Point(555, 176);
             this.button_Nhapmoi.Name = "button_Nhapmoi";
             this.button_Nhapmoi.Size = new System.Drawing.Size(75, 23);
             this.button_Nhapmoi.TabIndex = 47;
@@ -784,7 +786,7 @@
             // 
             // button_CapNhat
             // 
-            this.button_CapNhat.Location = new System.Drawing.Point(118, 186);
+            this.button_CapNhat.Location = new System.Drawing.Point(279, 176);
             this.button_CapNhat.Name = "button_CapNhat";
             this.button_CapNhat.Size = new System.Drawing.Size(75, 23);
             this.button_CapNhat.TabIndex = 44;
@@ -794,7 +796,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(210, 226);
+            this.button1.Location = new System.Drawing.Point(371, 216);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(163, 23);
             this.button1.TabIndex = 49;
@@ -975,7 +977,7 @@
             this.listView_Caclankhambenh.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-            this.listView_Caclankhambenh.Location = new System.Drawing.Point(43, 268);
+            this.listView_Caclankhambenh.Location = new System.Drawing.Point(25, 174);
             this.listView_Caclankhambenh.Name = "listView_Caclankhambenh";
             this.listView_Caclankhambenh.Size = new System.Drawing.Size(150, 197);
             this.listView_Caclankhambenh.TabIndex = 50;
@@ -987,19 +989,36 @@
             this.columnHeader1.Text = "id";
             this.columnHeader1.Width = 48;
             // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Ngày khám";
+            this.columnHeader2.Width = 107;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 252);
+            this.label4.Location = new System.Drawing.Point(12, 158);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(99, 13);
             this.label4.TabIndex = 51;
             this.label4.Text = "Các lần khám bệnh";
             // 
-            // columnHeader2
+            // textBox_idICD
             // 
-            this.columnHeader2.Text = "Ngày khám";
-            this.columnHeader2.Width = 107;
+            this.textBox_idICD.Location = new System.Drawing.Point(153, 463);
+            this.textBox_idICD.Name = "textBox_idICD";
+            this.textBox_idICD.Size = new System.Drawing.Size(61, 20);
+            this.textBox_idICD.TabIndex = 163;
+            this.textBox_idICD.TextChanged += new System.EventHandler(this.textBox_maICD_TextChanged);
+            this.textBox_idICD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_idICD_KeyDown);
+            // 
+            // richTextBox_dsbenh
+            // 
+            this.richTextBox_dsbenh.Location = new System.Drawing.Point(351, 493);
+            this.richTextBox_dsbenh.Name = "richTextBox_dsbenh";
+            this.richTextBox_dsbenh.Size = new System.Drawing.Size(190, 32);
+            this.richTextBox_dsbenh.TabIndex = 164;
+            this.richTextBox_dsbenh.Text = "";
             // 
             // DangkyForm
             // 
@@ -1126,6 +1145,8 @@
         private System.Windows.Forms.ListView listView_Caclankhambenh;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.TextBox textBox_idICD;
+        private System.Windows.Forms.RichTextBox richTextBox_dsbenh;
 
     }
 }

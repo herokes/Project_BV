@@ -49,8 +49,6 @@
             this.comboBox_Gioitinh = new System.Windows.Forms.ComboBox();
             this.textBox_Tuoi = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox_Namsinh = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -92,8 +90,6 @@
             this.groupBox1.Controls.Add(this.comboBox_Gioitinh);
             this.groupBox1.Controls.Add(this.textBox_Tuoi);
             this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.textBox_Namsinh);
-            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label11);
@@ -122,6 +118,7 @@
             this.dateTimePicker_Namsinh.Name = "dateTimePicker_Namsinh";
             this.dateTimePicker_Namsinh.Size = new System.Drawing.Size(121, 20);
             this.dateTimePicker_Namsinh.TabIndex = 3;
+            this.dateTimePicker_Namsinh.ValueChanged += new System.EventHandler(this.dateTimePicker_Namsinh_ValueChanged);
             // 
             // textBox_Phuong
             // 
@@ -287,22 +284,6 @@
             this.label14.Size = new System.Drawing.Size(34, 13);
             this.label14.TabIndex = 17;
             this.label14.Text = "Tuổi :";
-            // 
-            // textBox_Namsinh
-            // 
-            this.textBox_Namsinh.Location = new System.Drawing.Point(273, 52);
-            this.textBox_Namsinh.Name = "textBox_Namsinh";
-            this.textBox_Namsinh.Size = new System.Drawing.Size(51, 20);
-            this.textBox_Namsinh.TabIndex = 16;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(214, 59);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(57, 13);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "Năm sinh :";
             // 
             // label8
             // 
@@ -487,8 +468,6 @@
         private System.Windows.Forms.ComboBox comboBox_Gioitinh;
         private System.Windows.Forms.TextBox textBox_Tuoi;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox_Namsinh;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
