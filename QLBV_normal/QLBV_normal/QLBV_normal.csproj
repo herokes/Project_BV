@@ -95,17 +95,17 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NgoaitruFormold.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NgoaitruFormold.Designer.cs">
+      <DependentUpon>NgoaitruFormold.cs</DependentUpon>
+    </Compile>
     <Compile Include="NgoaitruForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="NgoaitruForm.Designer.cs">
       <DependentUpon>NgoaitruForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NgoaitruFormnew.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NgoaitruFormnew.Designer.cs">
-      <DependentUpon>NgoaitruFormnew.cs</DependentUpon>
     </Compile>
     <Compile Include="PhieuxetnghiemForm.cs">
       <SubType>Form</SubType>
@@ -182,11 +182,11 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NgoaitruFormold.resx">
+      <DependentUpon>NgoaitruFormold.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NgoaitruForm.resx">
       <DependentUpon>NgoaitruForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NgoaitruFormnew.resx">
-      <DependentUpon>NgoaitruFormnew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PhieuxetnghiemForm.resx">
       <DependentUpon>PhieuxetnghiemForm.cs</DependentUpon>

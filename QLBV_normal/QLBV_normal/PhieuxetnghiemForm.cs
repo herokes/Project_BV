@@ -42,24 +42,22 @@ namespace QLBV_normal
                                         WHERE bn.id=@id AND ngt.Tinhtrangravien=0";
                 Util.con.Open();
                 MySqlDataReader read = com.ExecuteReader();
+                ListViewGroup group = new ListViewGroup();
                 while (read.Read())
                 {
                     ListViewItem item = new ListViewItem();
-                    if (groupName.Equals(""))
+                    if (groupName.Equals(read["Loaixetnghiem"].ToString()))
                     {
                         groupName = read["Loaixetnghiem"].ToString();
-                    }
-                    if (!groupName.Equals(read["Loaixetnghiem"].ToString()))
-                    {
-                        ListViewGroup group = new ListViewGroup();
+                        group = new ListViewGroup(groupName);
                         listView_xetnghiem.Groups.Add(group);
-                        groupName = read["Loaixetnghiem"].ToString();
-                        item.Group = group;
                     }
+                    item.Group = group;
                     item.Text = read["Tenxetnghiem"].ToString();
                     item.SubItems.Add(read["Thongsobinhthuong"].ToString());
                     item.SubItems.Add(read["Thongsoxetnghiem"].ToString());
                     listView_xetnghiem.Items.Add(item);
+
                 }
                 Util.con.Close();
             }
@@ -67,6 +65,11 @@ namespace QLBV_normal
             {
                 return;
             }
+        }
+
+        private void listView_xetnghiem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
 
