@@ -500,13 +500,14 @@ CREATE TABLE IF NOT EXISTS `todieutri` (
 -- Table structure for table `todieutri_bosung`
 --
 
-CREATE TABLE IF NOT EXISTS `todieutri_bosung` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `todieutri_noidung` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `Dientienbenh` text,
+  `Ylenh` text,
   `Ngaygio` datetime DEFAULT NULL,
   `Todieutri_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_Todieutri_bosung_Todieutri1` (`Todieutri_id`)
+  KEY `fk_Todieutri_noidung_Todieutri1` (`Todieutri_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -679,8 +680,8 @@ ALTER TABLE `todieutri`
 --
 -- Constraints for table `todieutri_bosung`
 --
-ALTER TABLE `todieutri_bosung`
-  ADD CONSTRAINT `fk_Todieutri_bosung_Todieutri1` FOREIGN KEY (`Todieutri_id`) REFERENCES `todieutri` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `todieutri_noidung`
+  ADD CONSTRAINT `fk_Todieutri_noidung_Todieutri1` FOREIGN KEY (`Todieutri_id`) REFERENCES `todieutri` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `xetnghiem_phieuxetnghiem`
