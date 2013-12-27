@@ -15,6 +15,8 @@ namespace QLBV_normal
     public partial class NgoaitruForm : Form
     {
         public MainForm frmMain;
+        public Hashtable currentObject = new Hashtable();
+
         public NgoaitruForm()
         {
             InitializeComponent();
@@ -70,32 +72,19 @@ namespace QLBV_normal
         {
             Show_danhsachbenhnhan();
         }
-
-        private void listView_danhsachbenhnhan_SelectedIndexChanged(object sender, EventArgs e)
+        public void load_Thongtinhanhchinh(int idBenhnhan)
         {
             try
             {
                 MySqlCommand com = new MySqlCommand();
                 com.Connection = Util.con;
-                //MessageBox.Show(listView_danhsachbenhnhan.SelectedItems[0].SubItems[0].ToString());
-                com.Parameters.Add("@id", MySqlDbType.Int32, 11).Value = listView_danhsachbenhnhan.SelectedItems[0].SubItems[0].Text;
-                com.CommandText = @"SELECT xn_pxn.Thongsoxetnghiem, xn.*, bn.*, pkb.* FROM xetnghiem_phieuxetnghiem xn_pxn  
-                                        LEFT OUTER JOIN phieuxetnghiem pxn 
-                                            ON pxn.id=xn_pxn.Phieuxetnghiem_id  
-                                        LEFT OUTER JOIN xetnghiem xn 
-                                            ON xn.id=xn_pxn.Xetnghiem_id
-                                        LEFT OUTER JOIN phieukhambenh pkb 
-                                            ON pkb.id=pxn.Phieukhambenh_id 
-                                        LEFT OUTER JOIN ngoaitru ngt 
-                                            ON pkb.id=ngt.Phieukhambenh_id 
-                                        LEFT OUTER JOIN benhnhan bn 
-                                            ON bn.id=pkb.Benhnhan_id 
-                                        WHERE bn.id=@id AND ngt.Tinhtrangravien=0";
+                com.Parameters.Add("@id", MySqlDbType.Int32, 11).Value = idBenhnhan;
+                com.CommandText = @"SELECT * FROM benhnhan WHERE id=@id";
                 Util.con.Open();
                 MySqlDataReader read = com.ExecuteReader();
                 while (read.Read())
                 {
-                    textBox_MaBN.Text = read["Benhnhan_id"].ToString();
+                    textBox_MaBN.Text = read["id"].ToString();
                     textBox_Ten.Text = read["Ten"].ToString();
                     comboBox_Gioitinh.SelectedIndex = bool.Parse(read["Gioitinh"].ToString()) ? 0 : 1;
                     dateTimePicker_Namsinh.Value = DateTime.Parse(read["Ngaysinh"].ToString());
@@ -113,6 +102,142 @@ namespace QLBV_normal
             }
         }
 
+        public void load_Dieutri(int idBenhnhan)
+        {
+            listView_dieutri.Items.Clear();
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.Parameters.Add("@id", MySqlDbType.Int32, 11).Value = idBenhnhan;
+                com.CommandText = @"SELECT benhnhan.Ten, benhnhan.Ngaysinh, todieutri_noidung.*
+                                        FROM todieutri_noidung 
+                                        LEFT OUTER JOIN todieutri
+                                            ON todieutri_noidung.Todieutri_id=todieutri.id
+                                        LEFT OUTER JOIN phieukhambenh 
+                                            ON phieukhambenh.id=todieutri.Phieukhambenh_id 
+                                        LEFT OUTER JOIN ngoaitru
+                                            ON ngoaitru.Phieukhambenh_id=phieukhambenh.id 
+                                        LEFT OUTER JOIN benhnhan
+                                            ON benhnhan.id=phieukhambenh.Benhnhan_id 
+                                        WHERE benhnhan.id=@id AND ngoaitru.Tinhtrangravien=0";
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                while (read.Read())
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.Text = DateTime.Parse(read["Ngaygio"].ToString()).ToString("dd/MM/yyyy h\\h mm");
+                    item.SubItems.Add(read["Dientienbenh"].ToString());
+                    item.SubItems.Add(read["Ylenh"].ToString());
+                    listView_dieutri.Items.Add(item);
+                }
+                Util.con.Close();
+            }
+            catch (MySqlException sqlE)
+            {
+                return;
+            }
+        }
+
+        public void load_Dientienbenh(int idBenhnhan)
+        {
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.Parameters.Add("@id", MySqlDbType.Int32, 11).Value = idBenhnhan;
+                com.CommandText = @"SELECT phieukhambenh.*
+                                        FROM phieukhambenh
+                                        LEFT OUTER JOIN ngoaitru
+                                            ON ngoaitru.Phieukhambenh_id=phieukhambenh.id 
+                                        LEFT OUTER JOIN benhnhan
+                                            ON benhnhan.id=phieukhambenh.Benhnhan_id 
+                                        WHERE benhnhan.id=@id AND ngoaitru.Tinhtrangravien=0";
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                while (read.Read())
+                {
+                    richTextBox_dientienbenh.Text = "1.Toàn thân: " + read["Toanthan"].ToString()
+                        + "\n2.Các bộ phận: " + read["Cacbophan"].ToString()
+                        + "\nMạch: " + read["Mach"].ToString() + " lần/phút"
+                        + "\nNhiệt độ: " + read["Nhietdo"].ToString() + " oC"
+                        + "\nHuyết áp: " + read["Huyetap"].ToString() + " mmHg"
+                        + "\nNhịp thở: " + read["Nhiptho"].ToString() + " lần/phút"
+                        + "\nCân nặng: " + read["Trongluong"].ToString() + " lần/phút"
+                        + "\n3.Tóm tắt kết quả lâm sàn: " + read["Cacbophan"].ToString()
+                        + "\n4.Chuẩn đoán vào viện: " + read["Chuandoanvaovien"].ToString()
+                        + "\n5.Đã xử lí (thuốc, chăm sóc...): " + read["Xuli"].ToString()
+                        + "\n6.Cho vào điều trị tại khoa: " + read["Dieutritaikhoa"].ToString()
+                        + "\n7.Chú ý: " + read["Chuy"].ToString();
+                }
+                Util.con.Close();
+            }
+            catch (MySqlException sqlE)
+            {
+                return;
+            }
+        }
+
+        public void load_Ylenh(int idBenhnhan)
+        {
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.Parameters.Add("@id", MySqlDbType.Int32, 11).Value = idBenhnhan;
+                com.CommandText = @"SELECT phieukhambenh.*
+                                        FROM phieukhambenh
+                                        LEFT OUTER JOIN ngoaitru
+                                            ON ngoaitru.Phieukhambenh_id=phieukhambenh.id 
+                                        LEFT OUTER JOIN benhnhan
+                                            ON benhnhan.id=phieukhambenh.Benhnhan_id 
+                                        WHERE benhnhan.id=@id AND ngoaitru.Tinhtrangravien=0";
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                while (read.Read())
+                {
+                    richTextBox_ylenh.Text = "1.Toàn thân: " + read["Toanthan"].ToString()
+                        + "\n2.Các bộ phận: " + read["Cacbophan"].ToString()
+                        + "\nMạch: " + read["Mach"].ToString() + " lần/phút"
+                        + "\nNhiệt độ: " + read["Nhietdo"].ToString() + " oC"
+                        + "\nHuyết áp: " + read["Huyetap"].ToString() + " mmHg"
+                        + "\nNhịp thở: " + read["Nhiptho"].ToString() + " lần/phút"
+                        + "\nCân nặng: " + read["Trongluong"].ToString() + " lần/phút"
+                        + "\n3.Tóm tắt kết quả lâm sàn: " + read["Cacbophan"].ToString()
+                        + "\n4.Chuẩn đoán vào viện: " + read["Chuandoanvaovien"].ToString()
+                        + "\n5.Đã xử lí (thuốc, chăm sóc...): " + read["Xuli"].ToString()
+                        + "\n6.Cho vào điều trị tại khoa: " + read["Dieutritaikhoa"].ToString()
+                        + "\n7.Chú ý: " + read["Chuy"].ToString();
+                }
+                Util.con.Close();
+            }
+            catch (MySqlException sqlE)
+            {
+                return;
+            }
+        }
+
+        public void set_CurrentObject()
+        {
+            currentObject.Add("idBenhnhan", 0);
+            currentObject.Add("idPhieukhambenh", 0);
+            currentObject.Add("idNgoaitru", 0);
+            currentObject.Add("idTodieutri", 0);
+            currentObject.Add("idPhieuxetnghiem", 0);
+        }
+        private void listView_danhsachbenhnhan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listView_danhsachbenhnhan.SelectedItems.Count < 1)
+            {
+                return;
+            }
+            int idBenhnhan = int.Parse(listView_danhsachbenhnhan.SelectedItems[0].SubItems[0].Text);
+            load_Thongtinhanhchinh(idBenhnhan);
+            load_Dieutri(idBenhnhan);
+            load_Dientienbenh(idBenhnhan);
+            load_Ylenh(idBenhnhan);
+        }
+
         private void button_print_todieutri_Click(object sender, EventArgs e)
         {
             frmMain.frmReport = new ReportForm();
@@ -124,19 +249,18 @@ namespace QLBV_normal
             {
                 MySqlCommand com = new MySqlCommand();
                 com.Connection = Util.con;
-                com.Parameters.Add("@id", MySqlDbType.Int32, 11).Value = listView_danhsachbenhnhan.SelectedItems[0].SubItems[0].Text;
-                com.CommandText = @"SELECT xn_pxn.Thongsoxetnghiem, xn.*, bn.*, pkb.* FROM xetnghiem_phieuxetnghiem xn_pxn  
-                                        LEFT OUTER JOIN phieuxetnghiem pxn 
-                                            ON pxn.id=xn_pxn.Phieuxetnghiem_id  
-                                        LEFT OUTER JOIN xetnghiem xn 
-                                            ON xn.id=xn_pxn.Xetnghiem_id
-                                        LEFT OUTER JOIN phieukhambenh pkb 
-                                            ON pkb.id=pxn.Phieukhambenh_id 
-                                        LEFT OUTER JOIN ngoaitru ngt 
-                                            ON pkb.id=ngt.Phieukhambenh_id 
-                                        LEFT OUTER JOIN benhnhan bn 
-                                            ON bn.id=pkb.Benhnhan_id 
-                                        WHERE bn.id=@id AND ngt.Tinhtrangravien=0";
+                com.Parameters.Add("@id", MySqlDbType.Int32, 11).Value = int.Parse(listView_danhsachbenhnhan.SelectedItems[0].SubItems[0].Text);
+                com.CommandText = @"SELECT benhnhan.Ten, benhnhan.Ngaysinh, todieutri_noidung.*
+                                        FROM todieutri_noidung 
+                                        LEFT OUTER JOIN todieutri
+                                            ON todieutri_noidung.Todieutri_id=todieutri.id
+                                        LEFT OUTER JOIN phieukhambenh 
+                                            ON phieukhambenh.id=todieutri.Phieukhambenh_id 
+                                        LEFT OUTER JOIN ngoaitru
+                                            ON ngoaitru.Phieukhambenh_id=phieukhambenh.id 
+                                        LEFT OUTER JOIN benhnhan
+                                            ON benhnhan.id=phieukhambenh.Benhnhan_id 
+                                        WHERE benhnhan.id=@id AND ngoaitru.Tinhtrangravien=0";
                 Util.con.Open();
                 MySqlDataReader read = com.ExecuteReader();
                 while (read.Read())
@@ -144,6 +268,9 @@ namespace QLBV_normal
                     Todieutri obj = new Todieutri();
                     obj.Tenbenhnhan = read["Ten"].ToString();
                     obj.Ngaysinh = DateTime.Parse(read["Ngaysinh"].ToString());
+                    obj.Ngaygio = DateTime.Parse(read["Ngaygio"].ToString());
+                    obj.Dientienbenh = read["Dientienbenh"].ToString();
+                    obj.Ylenh = read["Ylenh"].ToString();
                     frmMain.frmReport.arrReport.Add(obj);
                 }
                 Util.con.Close();
@@ -153,6 +280,36 @@ namespace QLBV_normal
             {
                 return;
             }
+        }
+
+        private void button_add_dieutri_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.Parameters.Add("@dientienbenh", MySqlDbType.Text).Value = "";
+                com.Parameters.Add("@ylenh", MySqlDbType.Text).Value = "";
+                com.Parameters.Add("@ngaygio", MySqlDbType.DateTime).Value = DateTime.Now;
+                com.Parameters.Add("@todieutri_id", MySqlDbType.Int32, 11).Value = "";
+
+                com.CommandText = @"INSERT INTO `todieutri_noidung` (`Dientienbenh`, `Ylenh`, `Ngaygio`, `Todieutri_id`) VALUES (@dientienbenh, @ylenh, @ngaygio, @todieutri_id)";
+                Util.con.Open();
+                if (com.ExecuteNonQuery() == 1)
+                {
+                    //load_Dieutri(currentObject);
+                }
+                Util.con.Close();
+            }
+            catch (MySqlException sqlE)
+            {
+                return;
+            }
+        }
+
+        private void textBox_MaBN_TextChanged(object sender, EventArgs e)
+        {
+            //MessageBox.Show("ok");
         }
 
  
