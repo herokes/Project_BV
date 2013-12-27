@@ -77,6 +77,7 @@ namespace QLBV_normal
             {
                 MySqlCommand com = new MySqlCommand();
                 com.Connection = Util.con;
+                //MessageBox.Show(listView_danhsachbenhnhan.SelectedItems[0].SubItems[0].ToString());
                 com.Parameters.Add("@id", MySqlDbType.Int32, 11).Value = listView_danhsachbenhnhan.SelectedItems[0].SubItems[0].Text;
                 com.CommandText = @"SELECT xn_pxn.Thongsoxetnghiem, xn.*, bn.*, pkb.* FROM xetnghiem_phieuxetnghiem xn_pxn  
                                         LEFT OUTER JOIN phieuxetnghiem pxn 
@@ -106,7 +107,9 @@ namespace QLBV_normal
             }
             catch (MySqlException sqlE)
             {
+                
                 return;
+
             }
         }
 

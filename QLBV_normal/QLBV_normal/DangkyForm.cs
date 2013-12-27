@@ -28,9 +28,30 @@ namespace QLBV_normal
         {
            
             Show_Combobox_Bacsi();
+            
 
         }
-
+        public bool Kiemtrabenhnhanxuatvien(String mabn)
+        {
+            MySqlCommand com1 = new MySqlCommand();
+            com1.Connection = Util.con;
+            com1.CommandText = "select ngoaitru.Tinhtrangravien from ngoaitru, phieukhambenh "+
+                                "where ngoaitru.Phieukhambenh_id= phieukhambenh.id "+ 
+                                "and ngoaitru.Tinhtrangravien=0 "+
+                                "and phieukhambenh.Benhnhan_id= " + mabn;
+            Util.con.Open();
+            MySqlDataReader read = com1.ExecuteReader();
+            //Util.con.Close();
+            if (read.Read())
+            {
+                Util.con.Close();
+                return false;//  benh nhan chua xuat vien
+                
+            }
+            else
+                Util.con.Close();
+                return true;   // benh nhan da xuat vien      
+        }
 
 
         private void button_CapNhat_Click(object sender, EventArgs e)
@@ -39,89 +60,94 @@ namespace QLBV_normal
             //// cap nhat phieu kham benh
             //try
             //{
-                MySqlCommand com1 = new MySqlCommand();
-                com1.Connection = Util.con;
-                if(comboBox_Doituong.Text=="BHYT")
-                com1.Parameters.Add("@doituong", MySqlDbType.Int16, 200).Value = 1;
-                else
-                    if (comboBox_Doituong.Text == "THU PHÍ")
-                        com1.Parameters.Add("@doituong", MySqlDbType.Int16, 200).Value = 2;
-                else
-                        if (comboBox_Doituong.Text == "MIỄN PHÍ")
-                            com1.Parameters.Add("@doituong", MySqlDbType.Int16, 200).Value = 3;
-                else
-                            if (comboBox_Doituong.Text == "KHÁC")
-                                com1.Parameters.Add("@doituong", MySqlDbType.Int16, 200).Value = 4;
-                   
-                com1.Parameters.Add("@noidkkcbbd", MySqlDbType.VarChar, 200).Value = textBox_NoiDKKCBBD.Text;
-                com1.Parameters.Add("@bhytgiatritu", MySqlDbType.Date, 20).Value = dateTimePicker_Tu.Value;
-                com1.Parameters.Add("@bhytgiatriden", MySqlDbType.Date, 20).Value = dateTimePicker_Den.Value;
-                com1.Parameters.Add("@sobhyt", MySqlDbType.VarChar,30).Value = textBox_Sothe.Text;
-                com1.Parameters.Add("@nguoithan", MySqlDbType.VarChar, 20).Value = textBox_Nguoithan.Text;
-                com1.Parameters.Add("@diachinguoithan", MySqlDbType.VarChar, 100).Value = textBox_Diachinguoithan.Text;
-                com1.Parameters.Add("@dienthoai", MySqlDbType.VarChar, 50).Value = textBox_Dienthoai.Text;
-                com1.Parameters.Add("@thoigiandenkham", MySqlDbType.DateTime, 50).Value = dateTimePicker_Ngaykham.Value;
-                com1.Parameters.Add("@noigioithieu", MySqlDbType.VarChar, 100).Value = textBox_Noigioithieu.Text;
-                com1.Parameters.Add("@lydovaovien", MySqlDbType.VarChar, 200).Value = textBox_Lydovaovien.Text;
-                com1.Parameters.Add("@quatrinhbenhly", MySqlDbType.VarChar, 200).Value = textBox_Quatrinhbenhly.Text;
-                com1.Parameters.Add("@tiensubenhbanthan", MySqlDbType.VarChar, 200).Value = textBox_Tiensubenhbanthan.Text;
-                com1.Parameters.Add("@tiensubenhgiadinh", MySqlDbType.VarChar, 200).Value = textBox_tiensubenhgiadinh.Text;
-                com1.Parameters.Add("@mach", MySqlDbType.VarChar, 20).Value = textBox_Mach.Text;
-                com1.Parameters.Add("@nhietdo", MySqlDbType.VarChar, 20).Value = textBox_Nhiet.Text;
-                com1.Parameters.Add("@huyetap", MySqlDbType.VarChar, 20).Value = textBox_Huyetap.Text;
-                com1.Parameters.Add("@nhiptho", MySqlDbType.VarChar, 20).Value = textBox_Nhiptho.Text;
-                com1.Parameters.Add("@trongluong", MySqlDbType.VarChar, 20).Value = textBox_Trongluong.Text;
-                com1.Parameters.Add("@toanthan", MySqlDbType.VarChar, 20).Value = richText_Toanthan.Text;
-                com1.Parameters.Add("@cacbophan", MySqlDbType.VarChar, 200).Value = richTextBox_Cacbophan.Text;
-                com1.Parameters.Add("@tomtat", MySqlDbType.VarChar, 200).Value = richTextBox_Tomtat.Text;
-                com1.Parameters.Add("@chuandoan", MySqlDbType.VarChar, 200).Value = textBox_Chuandoan.Text;
-                com1.Parameters.Add("@xuli", MySqlDbType.VarChar, 200).Value = richTextBox_Xuly.Text;
-                com1.Parameters.Add("@dieutritaikhoa", MySqlDbType.VarChar, 200).Value = textBox_Dieutritaikhoa.Text;
-                com1.Parameters.Add("@chuy", MySqlDbType.VarChar, 200).Value = textBox_Chuy.Text;
-                com1.Parameters.Add("@idbenhnhan", MySqlDbType.Int64, 20).Value = textBox_MaBN.Text;
-                
-                
-
-                com1.CommandText = "insert into phieukhambenh(Doituong,DKKCBBD,Bhytgiatritu,Bhytgiatriden,Sobhyt,Nguoithan"+
-                    ",Diachinguoithan,Dienthoai,Thoigiandenkham,Noigioithieu,Lydovaovien,Quatrinhbenhly,Tiensubenhbanthan,Tiensubenhgiadinh"+
-                    ",Mach,Nhietdo,Huyetap,Nhiptho,Trongluong,Toanthan,Cacbophan,Tomtatketqualamsan,Chuandoanvaovien"+
-                    ",Xuli,Dieutritaikhoa,Chuy,Benhnhan_id) values (@doituong,@noidkkcbbd,@bhytgiatritu,@bhytgiatriden,"+
-                    "@sobhyt,@nguoithan,@diachinguoithan,@dienthoai,@thoigiandenkham,@noigioithieu,@lydovaovien,"+
-                    "@quatrinhbenhly,@tiensubenhbanthan,@tiensubenhgiadinh,@mach,@nhietdo,@huyetap,@nhiptho,@trongluong,@toanthan,@cacbophan"+
-                    ",@tomtat,@chuandoan,@xuli,@dieutritaikhoa,@chuy,@idbenhnhan)";
-               
-                Util.con.Open();
-                com1.ExecuteNonQuery();
-                Util.con.Close();
-               
-            
-            /// nhap vao ngoai tru hay noi tru 
-            /// lay ma phieu kham benh
-                
-                com1.CommandText = "SELECT MAX( id )FROM phieukhambenh WHERE benhnhan_id ="+ textBox_MaBN.Text;
-                //MessageBox.Show("executenonquery select");
-                Util.con.Open();
-                int maphieukhambenh=(int)com1.ExecuteScalar();
-                Util.con.Close();
-                if (comboBox_Loaidieutri.Text == "NGOẠI TRÚ CHẠY THẬN")
-                    //MessageBox.Show(maphieukhambenh.ToString());
-                    com1.CommandText = "INSERT INTO  ngoaitru (id,Ngaygiovaovien,Benhchinh ,Benhkemtheo,Dieutritu ,Dieutriden ,Tinhtrangravien ,Huongdieutri ,Bacsikhambenh ,Bacsidieutri ,chaythan ,Phieukhambenh_id)VALUES (NULL , NULL , NULL , NULL , NULL , NULL , 0 , NULL , NULL , NULL , 1 ," + maphieukhambenh + ")";
-                else if (comboBox_Loaidieutri.Text == "NGOẠI TRU KHÔNG CHẠY THẬN")
-                    com1.CommandText = "INSERT INTO  ngoaitru (id,Ngaygiovaovien,Benhchinh ,Benhkemtheo,Dieutritu ,Dieutriden ,Tinhtrangravien ,Huongdieutri ,Bacsikhambenh ,Bacsidieutri ,chaythan ,Phieukhambenh_id)VALUES (NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , 0 ," + maphieukhambenh + ")";
-                else com1.CommandText = "INSERT INTO `dbthan`.`noitru` (`id`, `Thoigianvaovien`, `Tructiepvao`, `Vaolanthu`, `Ngaygiovaokhoa`, `Chuyenkhoa`, `Ngaygiochuyenkhoa`, `Chuyenvien`, `Chuyenden`, `Ngaygioravien`, `Loairavien`, `Noichuyenden`, `KKBCapcuu`, `Khivaokhoadieutri`, `Thuthuat`, `Phauthuat`, `Benhchinh`, `Benhkemtheo`, `Taibien`, `Bienchung`, `Ketquadieutri`, `Giaiphaubenh`, `Thoigiantuvong`, `Lydotuvong`, `Nguyennhanchinhtuvong`, `Khamnghiemtuthi`, `Chuandoangiaiphaututhi`, `Diung`, `Matuy`, `Ruoubia`, `Thuocla`, `Thuoclao`, `Khac`, `Tuanhoan`, `Hohap`, `Tieuhoa`, `Thantietnieusinhduc`, `Thankinh`, `Coxuongkhop`, `Taimuihong`, `Ranghammat`, `Mat`, `Noitietdinhduong`, `Tomtatbenhan`, `Tienluong`, `Huongdieutri`, `Phuongphapdieutri`, `BStruongkhoa`, `Bslambenhan`, `BSdieutri`, `Phieukhambenh_id`) VALUES (NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL," + maphieukhambenh + ")";
-                Util.con.Open();
-                com1.ExecuteNonQuery();
-                Util.con.Close();
-                /// nhap chuan doan benh
-                foreach (var i in arricd )
+                if (Kiemtrabenhnhanxuatvien(textBox_MaBN.Text) == true)
                 {
-                    com1.CommandText = "INSERT INTO idc_phieukhambenh(idc_phieukhambenh.IDC_id,idc_phieukhambenh.Phieukhambenh_id) values('" + i.ToString() + "'," + maphieukhambenh + ")";
+                    MySqlCommand com1 = new MySqlCommand();
+                    com1.Connection = Util.con;
+                    if (comboBox_Doituong.Text == "BHYT")
+                        com1.Parameters.Add("@doituong", MySqlDbType.Int16, 200).Value = 1;
+                    else
+                        if (comboBox_Doituong.Text == "THU PHÍ")
+                            com1.Parameters.Add("@doituong", MySqlDbType.Int16, 200).Value = 2;
+                        else
+                            if (comboBox_Doituong.Text == "MIỄN PHÍ")
+                                com1.Parameters.Add("@doituong", MySqlDbType.Int16, 200).Value = 3;
+                            else
+                                if (comboBox_Doituong.Text == "KHÁC")
+                                    com1.Parameters.Add("@doituong", MySqlDbType.Int16, 200).Value = 4;
+
+                    com1.Parameters.Add("@noidkkcbbd", MySqlDbType.VarChar, 200).Value = textBox_NoiDKKCBBD.Text;
+                    com1.Parameters.Add("@bhytgiatritu", MySqlDbType.Date, 20).Value = dateTimePicker_Tu.Value;
+                    com1.Parameters.Add("@bhytgiatriden", MySqlDbType.Date, 20).Value = dateTimePicker_Den.Value;
+                    com1.Parameters.Add("@sobhyt", MySqlDbType.VarChar, 30).Value = textBox_Sothe.Text;
+                    com1.Parameters.Add("@nguoithan", MySqlDbType.VarChar, 20).Value = textBox_Nguoithan.Text;
+                    com1.Parameters.Add("@diachinguoithan", MySqlDbType.VarChar, 100).Value = textBox_Diachinguoithan.Text;
+                    com1.Parameters.Add("@dienthoai", MySqlDbType.VarChar, 50).Value = textBox_Dienthoai.Text;
+                    DateTime thoigiankham = new DateTime(dateTimePicker_Ngaykham.Value.Year, dateTimePicker_Ngaykham.Value.Month, dateTimePicker_Ngaykham.Value.Day, dateTimePicker_Giokham.Value.Hour, dateTimePicker_Giokham.Value.Minute, dateTimePicker_Giokham.Value.Second);
+                    com1.Parameters.Add("@thoigiandenkham", MySqlDbType.DateTime, 50).Value = thoigiankham;
+                    com1.Parameters.Add("@noigioithieu", MySqlDbType.VarChar, 100).Value = textBox_Noigioithieu.Text;
+                    com1.Parameters.Add("@lydovaovien", MySqlDbType.VarChar, 200).Value = textBox_Lydovaovien.Text;
+                    com1.Parameters.Add("@quatrinhbenhly", MySqlDbType.VarChar, 200).Value = textBox_Quatrinhbenhly.Text;
+                    com1.Parameters.Add("@tiensubenhbanthan", MySqlDbType.VarChar, 200).Value = textBox_Tiensubenhbanthan.Text;
+                    com1.Parameters.Add("@tiensubenhgiadinh", MySqlDbType.VarChar, 200).Value = textBox_tiensubenhgiadinh.Text;
+                    com1.Parameters.Add("@mach", MySqlDbType.VarChar, 20).Value = textBox_Mach.Text;
+                    com1.Parameters.Add("@nhietdo", MySqlDbType.VarChar, 20).Value = textBox_Nhiet.Text;
+                    com1.Parameters.Add("@huyetap", MySqlDbType.VarChar, 20).Value = textBox_Huyetap.Text;
+                    com1.Parameters.Add("@nhiptho", MySqlDbType.VarChar, 20).Value = textBox_Nhiptho.Text;
+                    com1.Parameters.Add("@trongluong", MySqlDbType.VarChar, 20).Value = textBox_Trongluong.Text;
+                    com1.Parameters.Add("@toanthan", MySqlDbType.VarChar, 20).Value = richText_Toanthan.Text;
+                    com1.Parameters.Add("@cacbophan", MySqlDbType.VarChar, 200).Value = richTextBox_Cacbophan.Text;
+                    com1.Parameters.Add("@tomtat", MySqlDbType.VarChar, 200).Value = richTextBox_Tomtat.Text;
+                    com1.Parameters.Add("@chuandoan", MySqlDbType.VarChar, 200).Value = textBox_Chuandoan.Text;
+                    com1.Parameters.Add("@xuli", MySqlDbType.VarChar, 200).Value = richTextBox_Xuly.Text;
+                    com1.Parameters.Add("@dieutritaikhoa", MySqlDbType.VarChar, 200).Value = textBox_Dieutritaikhoa.Text;
+                    com1.Parameters.Add("@chuy", MySqlDbType.VarChar, 200).Value = textBox_Chuy.Text;
+                    com1.Parameters.Add("@idbenhnhan", MySqlDbType.Int64, 20).Value = textBox_MaBN.Text;
+
+
+
+                    com1.CommandText = "insert into phieukhambenh(Doituong,DKKCBBD,Bhytgiatritu,Bhytgiatriden,Sobhyt,Nguoithan" +
+                        ",Diachinguoithan,Dienthoai,Thoigiandenkham,Noigioithieu,Lydovaovien,Quatrinhbenhly,Tiensubenhbanthan,Tiensubenhgiadinh" +
+                        ",Mach,Nhietdo,Huyetap,Nhiptho,Trongluong,Toanthan,Cacbophan,Tomtatketqualamsan,Chuandoanvaovien" +
+                        ",Xuli,Dieutritaikhoa,Chuy,Benhnhan_id) values (@doituong,@noidkkcbbd,@bhytgiatritu,@bhytgiatriden," +
+                        "@sobhyt,@nguoithan,@diachinguoithan,@dienthoai,@thoigiandenkham,@noigioithieu,@lydovaovien," +
+                        "@quatrinhbenhly,@tiensubenhbanthan,@tiensubenhgiadinh,@mach,@nhietdo,@huyetap,@nhiptho,@trongluong,@toanthan,@cacbophan" +
+                        ",@tomtat,@chuandoan,@xuli,@dieutritaikhoa,@chuy,@idbenhnhan)";
+
                     Util.con.Open();
                     com1.ExecuteNonQuery();
                     Util.con.Close();
+
+
+                    /// nhap vao ngoai tru hay noi tru 
+                    /// lay ma phieu kham benh
+
+                    com1.CommandText = "SELECT MAX( id )FROM phieukhambenh WHERE benhnhan_id =" + textBox_MaBN.Text;
+                    //MessageBox.Show("executenonquery select");
+                    Util.con.Open();
+                    int maphieukhambenh = (int)com1.ExecuteScalar();
+                    Util.con.Close();
+                    if (comboBox_Loaidieutri.Text == "NGOẠI TRÚ CHẠY THẬN")
+                        //MessageBox.Show(maphieukhambenh.ToString());
+                        com1.CommandText = "INSERT INTO  ngoaitru (id,Ngaygiovaovien,Benhchinh ,Benhkemtheo,Dieutritu ,Dieutriden ,Tinhtrangravien ,Huongdieutri ,Bacsikhambenh ,Bacsidieutri ,chaythan ,Phieukhambenh_id)VALUES (NULL , NULL , NULL , NULL , NULL , NULL , 0 , NULL ," + comboBox_Bacsikham.Text + ", NULL , 1 ," + maphieukhambenh + ")";
+                    else if (comboBox_Loaidieutri.Text == "NGOẠI TRU KHÔNG CHẠY THẬN")
+                        com1.CommandText = "INSERT INTO  ngoaitru (id,Ngaygiovaovien,Benhchinh ,Benhkemtheo,Dieutritu ,Dieutriden ,Tinhtrangravien ,Huongdieutri ,Bacsikhambenh ,Bacsidieutri ,chaythan ,Phieukhambenh_id)VALUES (NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , 0 ," + maphieukhambenh + ")";
+                    else com1.CommandText = "INSERT INTO `dbthan`.`noitru` (`id`, `Thoigianvaovien`, `Tructiepvao`, `Vaolanthu`, `Ngaygiovaokhoa`, `Chuyenkhoa`, `Ngaygiochuyenkhoa`, `Chuyenvien`, `Chuyenden`, `Ngaygioravien`, `Loairavien`, `Noichuyenden`, `KKBCapcuu`, `Khivaokhoadieutri`, `Thuthuat`, `Phauthuat`, `Benhchinh`, `Benhkemtheo`, `Taibien`, `Bienchung`, `Ketquadieutri`, `Giaiphaubenh`, `Thoigiantuvong`, `Lydotuvong`, `Nguyennhanchinhtuvong`, `Khamnghiemtuthi`, `Chuandoangiaiphaututhi`, `Diung`, `Matuy`, `Ruoubia`, `Thuocla`, `Thuoclao`, `Khac`, `Tuanhoan`, `Hohap`, `Tieuhoa`, `Thantietnieusinhduc`, `Thankinh`, `Coxuongkhop`, `Taimuihong`, `Ranghammat`, `Mat`, `Noitietdinhduong`, `Tomtatbenhan`, `Tienluong`, `Huongdieutri`, `Phuongphapdieutri`, `BStruongkhoa`, `Bslambenhan`, `BSdieutri`, `Phieukhambenh_id`) VALUES (NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL," + maphieukhambenh + ")";
+                    Util.con.Open();
+                    com1.ExecuteNonQuery();
+                    Util.con.Close();
+                    /// nhap chuan doan benh
+                    foreach (var i in arricd)
+                    {
+                        com1.CommandText = "INSERT INTO idc_phieukhambenh(idc_phieukhambenh.IDC_id,idc_phieukhambenh.Phieukhambenh_id) values('" + i.ToString() + "'," + maphieukhambenh + ")";
+                        Util.con.Open();
+                        com1.ExecuteNonQuery();
+                        Util.con.Close();
+                    }
+                    arricd.Clear();
+                    MessageBox.Show("Đăng ký phiếu khám bệnh và nhập khoa thành công");
                 }
-                arricd.Clear();
-                MessageBox.Show("Đăng ký thành công");
+                else MessageBox.Show(" Bệnh nhân chưa xuất viện");
             //}
             //catch (MySqlException sqlE)
             //{
@@ -129,7 +155,7 @@ namespace QLBV_normal
             //    MessageBox.Show(sqlE.Source.ToString());
             //    return;
             //}
-                //MessageBox.Show("ok");
+            //MessageBox.Show("ok");
             
         }
         public void Clear_Thongtin()
@@ -234,6 +260,7 @@ namespace QLBV_normal
 
                     }
                     Util.con.Close();
+                    Show_listview_caclankhac();
                 }
             }
             catch (MySqlException sqlE)
@@ -480,7 +507,87 @@ namespace QLBV_normal
             }
         }
 
+        public void Show_listview_caclankhac()
+        {
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.CommandText = "select phieukhambenh.id, phieukhambenh.Thoigiandenkham from phieukhambenh where phieukhambenh.Benhnhan_id=" + textBox_MaBN.Text + "  ORDER BY phieukhambenh.Thoigiandenkham DESC";
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                listView_Caclankhambenh.Items.Clear();
+                while (read.Read())
+                {
+                    int i = listView_Caclankhambenh.Items.Count;
+                    listView_Caclankhambenh.Items.Add(read[0].ToString());
+                    listView_Caclankhambenh.Items[i].SubItems.Add(read[1].ToString());
+
+                }
+
+                Util.con.Close();
+            }
+            catch (MySqlException sqlE)
+            {
+                Util.con.Close();
+                MessageBox.Show(sqlE.Source.ToString());
+                return;
+            }
+        }
+        private void listView_Caclankhambenh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                MessageBox.Show(listView_Caclankhambenh.SelectedItems[0].SubItems[0].Text);
+                com.CommandText = "select * from phieukhambenh where phieukhambenh.id=" + listView_Caclankhambenh.SelectedItems[0].SubItems[0].Text; 
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                while (read.Read())
+                {
+                   comboBox_Doituong.Text= read[1].ToString();
+                    textBox_NoiDKKCBBD.Text= read[2].ToString();
+                   dateTimePicker_Tu.Value=DateTime.Parse(read[3].ToString());
+                    dateTimePicker_Den.Value= DateTime.Parse(read[4].ToString());
+                    textBox_Sothe.Text = read[5].ToString();
+                    textBox_Nguoithan.Text = read[6].ToString();
+                    textBox_Diachinguoithan.Text = read[7].ToString();
+                    textBox_Dienthoai.Text = read[8].ToString(); 
+                    dateTimePicker_Ngaykham.Value = DateTime.Parse(read[9].ToString());
+                    textBox_Noigioithieu.Text = read[10].ToString();
+                    textBox_Lydovaovien.Text = read[11].ToString();
+                    textBox_Tiensubenhbanthan.Text = read[12].ToString();
+                    textBox_tiensubenhgiadinh.Text = read[13].ToString();
+                    textBox_Mach.Text = read[14].ToString();
+                    textBox_Nhiet.Text = read[15].ToString();
+                    textBox_Huyetap.Text = read[16].ToString();
+                    textBox_Nhiptho.Text = read[17].ToString();
+                    textBox_Trongluong.Text = read[18].ToString();
+                    richText_Toanthan.Text = read[19].ToString();
+                    richTextBox_Cacbophan.Text = read[20].ToString();
+                    richTextBox_Tomtat.Text = read[21].ToString();
+                    textBox_Chuandoan.Text = read[22].ToString();
+                    textBox_Dieutritaikhoa.Text = read[23].ToString();
+                    textBox_Chuy.Text = read[24].ToString();
+                        
+                }
+
+                Util.con.Close();
+            }
+            catch (MySqlException sqlE)
+            {
+                Util.con.Close();
+                MessageBox.Show(sqlE.Source.ToString());
+                return;
+            }
+        }
+
+
 
       
     }
 }
+
+                 

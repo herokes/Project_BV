@@ -88,6 +88,53 @@ namespace QLBV_normal.Class
             _chuy = "";
 
         }
+        private string _Ngay1;
+        public string Ngay1
+        {
+            set { _Ngay1 = value; }
+            get { return _Ngay1; }
+        }
+        private string _Ngay2;
+        public string Ngay2
+        {
+            set { _Ngay2 = value; }
+            get { return _Ngay2; }
+        }
+        private string _Thang1;
+        public string Thang1
+        {
+            set { _Thang1 = value; }
+            get { return _Thang1; }
+        }private string _Thang2;
+        public string Thang2
+        {
+            set { _Thang2 = value; }
+            get { return _Thang2; }
+        }
+        private string _Nam1;
+        public string Nam1
+        {
+            set { _Nam1 = value; }
+            get { return _Nam1; }
+        }
+        private string _Nam2;
+        public string Nam2
+        {
+            set { _Nam2 = value; }
+            get { return _Nam2; }
+        }
+        private string _Nam3;
+        public string Nam3
+        {
+            set { _Nam3 = value; }
+            get { return _Nam3; }
+        }
+        private string _Nam4;
+        public string Nam4
+        {
+            set { _Nam4 = value; }
+            get { return _Nam4; }
+        }
 
         public string Tenbenhnhan
         {
