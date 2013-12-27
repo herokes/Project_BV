@@ -188,21 +188,23 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.radioButton_dieutri = new System.Windows.Forms.RadioButton();
-            this.radioButton_xuatvien = new System.Windows.Forms.RadioButton();
-            this.button_print_todieutri = new System.Windows.Forms.Button();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.button_del_dieutri = new System.Windows.Forms.Button();
+            this.button_add_dieutri = new System.Windows.Forms.Button();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.richTextBox_ylenh = new System.Windows.Forms.RichTextBox();
+            this.richTextBox_dientienbenh = new System.Windows.Forms.RichTextBox();
+            this.button_print_todieutri = new System.Windows.Forms.Button();
+            this.listView_dieutri = new System.Windows.Forms.ListView();
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.label34 = new System.Windows.Forms.Label();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.label35 = new System.Windows.Forms.Label();
-            this.button_add_dieutri = new System.Windows.Forms.Button();
-            this.button_del_dieutri = new System.Windows.Forms.Button();
+            this.radioButton_dieutri = new System.Windows.Forms.RadioButton();
+            this.radioButton_xuatvien = new System.Windows.Forms.RadioButton();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.textBox34 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -211,6 +213,7 @@
             this.tabPage6.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabPage7.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView_danhsachbenhnhan
@@ -220,10 +223,10 @@
             this.columnHeader2});
             this.listView_danhsachbenhnhan.FullRowSelect = true;
             this.listView_danhsachbenhnhan.GridLines = true;
-            this.listView_danhsachbenhnhan.Location = new System.Drawing.Point(7, 54);
+            this.listView_danhsachbenhnhan.Location = new System.Drawing.Point(6, 66);
             this.listView_danhsachbenhnhan.MultiSelect = false;
             this.listView_danhsachbenhnhan.Name = "listView_danhsachbenhnhan";
-            this.listView_danhsachbenhnhan.Size = new System.Drawing.Size(196, 476);
+            this.listView_danhsachbenhnhan.Size = new System.Drawing.Size(203, 442);
             this.listView_danhsachbenhnhan.TabIndex = 0;
             this.listView_danhsachbenhnhan.UseCompatibleStateImageBehavior = false;
             this.listView_danhsachbenhnhan.View = System.Windows.Forms.View.Details;
@@ -253,9 +256,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBox_MaBN);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(222, 16);
+            this.groupBox1.Location = new System.Drawing.Point(233, 16);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(878, 72);
+            this.groupBox1.Size = new System.Drawing.Size(867, 72);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin hành chính";
@@ -264,14 +267,14 @@
             // 
             this.dateTimePicker_Namsinh.CustomFormat = "dd/MM/yyyy";
             this.dateTimePicker_Namsinh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker_Namsinh.Location = new System.Drawing.Point(617, 17);
+            this.dateTimePicker_Namsinh.Location = new System.Drawing.Point(608, 17);
             this.dateTimePicker_Namsinh.Name = "dateTimePicker_Namsinh";
             this.dateTimePicker_Namsinh.Size = new System.Drawing.Size(121, 20);
             this.dateTimePicker_Namsinh.TabIndex = 23;
             // 
             // textBox_diachi
             // 
-            this.textBox_diachi.Location = new System.Drawing.Point(70, 43);
+            this.textBox_diachi.Location = new System.Drawing.Point(61, 43);
             this.textBox_diachi.Name = "textBox_diachi";
             this.textBox_diachi.Size = new System.Drawing.Size(414, 20);
             this.textBox_diachi.TabIndex = 26;
@@ -282,14 +285,14 @@
             this.comboBox_Gioitinh.Items.AddRange(new object[] {
             "Nam",
             "Nữ"});
-            this.comboBox_Gioitinh.Location = new System.Drawing.Point(493, 17);
+            this.comboBox_Gioitinh.Location = new System.Drawing.Point(484, 17);
             this.comboBox_Gioitinh.Name = "comboBox_Gioitinh";
             this.comboBox_Gioitinh.Size = new System.Drawing.Size(54, 21);
             this.comboBox_Gioitinh.TabIndex = 24;
             // 
             // textBox_Tuoi
             // 
-            this.textBox_Tuoi.Location = new System.Drawing.Point(782, 16);
+            this.textBox_Tuoi.Location = new System.Drawing.Point(773, 16);
             this.textBox_Tuoi.Name = "textBox_Tuoi";
             this.textBox_Tuoi.Size = new System.Drawing.Size(51, 20);
             this.textBox_Tuoi.TabIndex = 30;
@@ -297,7 +300,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(746, 21);
+            this.label14.Location = new System.Drawing.Point(737, 21);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(34, 13);
             this.label14.TabIndex = 29;
@@ -306,7 +309,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(23, 47);
+            this.label8.Location = new System.Drawing.Point(11, 47);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 13);
             this.label8.TabIndex = 28;
@@ -315,7 +318,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(436, 21);
+            this.label5.Location = new System.Drawing.Point(427, 21);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 13);
             this.label5.TabIndex = 27;
@@ -324,7 +327,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(556, 20);
+            this.label3.Location = new System.Drawing.Point(547, 20);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 25;
@@ -332,7 +335,7 @@
             // 
             // textBox_Ten
             // 
-            this.textBox_Ten.Location = new System.Drawing.Point(228, 17);
+            this.textBox_Ten.Location = new System.Drawing.Point(219, 17);
             this.textBox_Ten.Name = "textBox_Ten";
             this.textBox_Ten.Size = new System.Drawing.Size(202, 20);
             this.textBox_Ten.TabIndex = 21;
@@ -340,7 +343,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(166, 20);
+            this.label2.Location = new System.Drawing.Point(157, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 22;
@@ -348,15 +351,16 @@
             // 
             // textBox_MaBN
             // 
-            this.textBox_MaBN.Location = new System.Drawing.Point(70, 17);
+            this.textBox_MaBN.Location = new System.Drawing.Point(61, 17);
             this.textBox_MaBN.Name = "textBox_MaBN";
             this.textBox_MaBN.Size = new System.Drawing.Size(92, 20);
             this.textBox_MaBN.TabIndex = 20;
+            this.textBox_MaBN.TextChanged += new System.EventHandler(this.textBox_MaBN_TextChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 21);
+            this.label4.Location = new System.Drawing.Point(11, 21);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 13);
             this.label4.TabIndex = 19;
@@ -365,9 +369,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.tabControl1);
-            this.groupBox2.Location = new System.Drawing.Point(222, 98);
+            this.groupBox2.Location = new System.Drawing.Point(233, 98);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(878, 432);
+            this.groupBox2.Size = new System.Drawing.Size(867, 432);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
@@ -1809,38 +1813,75 @@
             this.label32.TabIndex = 185;
             this.label32.Text = "Ngày Khám :";
             // 
-            // label1
+            // tabPage7
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Danh sách bệnh nhân";
+            this.tabPage7.Controls.Add(this.button_del_dieutri);
+            this.tabPage7.Controls.Add(this.button_add_dieutri);
+            this.tabPage7.Controls.Add(this.label35);
+            this.tabPage7.Controls.Add(this.label34);
+            this.tabPage7.Controls.Add(this.richTextBox_ylenh);
+            this.tabPage7.Controls.Add(this.richTextBox_dientienbenh);
+            this.tabPage7.Controls.Add(this.button_print_todieutri);
+            this.tabPage7.Controls.Add(this.listView_dieutri);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(848, 376);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "Điều trị";
+            this.tabPage7.UseVisualStyleBackColor = true;
             // 
-            // radioButton_dieutri
+            // button_del_dieutri
             // 
-            this.radioButton_dieutri.AutoSize = true;
-            this.radioButton_dieutri.Checked = true;
-            this.radioButton_dieutri.Location = new System.Drawing.Point(13, 33);
-            this.radioButton_dieutri.Name = "radioButton_dieutri";
-            this.radioButton_dieutri.Size = new System.Drawing.Size(58, 17);
-            this.radioButton_dieutri.TabIndex = 4;
-            this.radioButton_dieutri.TabStop = true;
-            this.radioButton_dieutri.Text = "Điều trị";
-            this.radioButton_dieutri.UseVisualStyleBackColor = true;
-            this.radioButton_dieutri.CheckedChanged += new System.EventHandler(this.radioButton_dieutri_CheckedChanged);
+            this.button_del_dieutri.Location = new System.Drawing.Point(283, 343);
+            this.button_del_dieutri.Name = "button_del_dieutri";
+            this.button_del_dieutri.Size = new System.Drawing.Size(75, 23);
+            this.button_del_dieutri.TabIndex = 35;
+            this.button_del_dieutri.Text = "Xóa";
+            this.button_del_dieutri.UseVisualStyleBackColor = true;
             // 
-            // radioButton_xuatvien
+            // button_add_dieutri
             // 
-            this.radioButton_xuatvien.AutoSize = true;
-            this.radioButton_xuatvien.Location = new System.Drawing.Point(105, 33);
-            this.radioButton_xuatvien.Name = "radioButton_xuatvien";
-            this.radioButton_xuatvien.Size = new System.Drawing.Size(70, 17);
-            this.radioButton_xuatvien.TabIndex = 5;
-            this.radioButton_xuatvien.Text = "Xuất viện";
-            this.radioButton_xuatvien.UseVisualStyleBackColor = true;
-            this.radioButton_xuatvien.CheckedChanged += new System.EventHandler(this.radioButton_xuatvien_CheckedChanged);
+            this.button_add_dieutri.Location = new System.Drawing.Point(13, 343);
+            this.button_add_dieutri.Name = "button_add_dieutri";
+            this.button_add_dieutri.Size = new System.Drawing.Size(117, 23);
+            this.button_add_dieutri.TabIndex = 34;
+            this.button_add_dieutri.Text = "Cập nhật điều trị mới";
+            this.button_add_dieutri.UseVisualStyleBackColor = true;
+            this.button_add_dieutri.Click += new System.EventHandler(this.button_add_dieutri_Click);
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(10, 190);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(37, 13);
+            this.label35.TabIndex = 33;
+            this.label35.Text = "Y lệnh";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(10, 25);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(76, 13);
+            this.label34.TabIndex = 33;
+            this.label34.Text = "Diễn tiến bệnh";
+            // 
+            // richTextBox_ylenh
+            // 
+            this.richTextBox_ylenh.Location = new System.Drawing.Point(13, 206);
+            this.richTextBox_ylenh.Name = "richTextBox_ylenh";
+            this.richTextBox_ylenh.Size = new System.Drawing.Size(249, 131);
+            this.richTextBox_ylenh.TabIndex = 32;
+            this.richTextBox_ylenh.Text = "";
+            // 
+            // richTextBox_dientienbenh
+            // 
+            this.richTextBox_dientienbenh.Location = new System.Drawing.Point(13, 41);
+            this.richTextBox_dientienbenh.Name = "richTextBox_dientienbenh";
+            this.richTextBox_dientienbenh.Size = new System.Drawing.Size(249, 129);
+            this.richTextBox_dientienbenh.TabIndex = 32;
+            this.richTextBox_dientienbenh.Text = "";
             // 
             // button_print_todieutri
             // 
@@ -1852,116 +1893,100 @@
             this.button_print_todieutri.UseVisualStyleBackColor = true;
             this.button_print_todieutri.Click += new System.EventHandler(this.button_print_todieutri_Click);
             // 
-            // tabPage7
+            // listView_dieutri
             // 
-            this.tabPage7.Controls.Add(this.button_del_dieutri);
-            this.tabPage7.Controls.Add(this.button_add_dieutri);
-            this.tabPage7.Controls.Add(this.label35);
-            this.tabPage7.Controls.Add(this.label34);
-            this.tabPage7.Controls.Add(this.richTextBox2);
-            this.tabPage7.Controls.Add(this.richTextBox1);
-            this.tabPage7.Controls.Add(this.button_print_todieutri);
-            this.tabPage7.Controls.Add(this.listView1);
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(848, 376);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "Điều trị";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listView_dieutri.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(283, 15);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(540, 322);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView_dieutri.FullRowSelect = true;
+            this.listView_dieutri.GridLines = true;
+            this.listView_dieutri.Location = new System.Drawing.Point(283, 15);
+            this.listView_dieutri.Name = "listView_dieutri";
+            this.listView_dieutri.Size = new System.Drawing.Size(540, 322);
+            this.listView_dieutri.TabIndex = 0;
+            this.listView_dieutri.UseCompatibleStateImageBehavior = false;
+            this.listView_dieutri.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Giờ";
-            this.columnHeader3.Width = 69;
+            this.columnHeader3.Text = "Ngày giờ";
+            this.columnHeader3.Width = 131;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Diễn tiến bệnh";
-            this.columnHeader4.Width = 233;
+            this.columnHeader4.Width = 185;
             // 
             // columnHeader5
             // 
             this.columnHeader5.Text = "Y lệnh";
-            this.columnHeader5.Width = 208;
+            this.columnHeader5.Width = 193;
             // 
-            // richTextBox1
+            // radioButton_dieutri
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(13, 41);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(249, 129);
-            this.richTextBox1.TabIndex = 32;
-            this.richTextBox1.Text = "";
+            this.radioButton_dieutri.AutoSize = true;
+            this.radioButton_dieutri.Checked = true;
+            this.radioButton_dieutri.Location = new System.Drawing.Point(12, 17);
+            this.radioButton_dieutri.Name = "radioButton_dieutri";
+            this.radioButton_dieutri.Size = new System.Drawing.Size(58, 17);
+            this.radioButton_dieutri.TabIndex = 4;
+            this.radioButton_dieutri.TabStop = true;
+            this.radioButton_dieutri.Text = "Điều trị";
+            this.radioButton_dieutri.UseVisualStyleBackColor = true;
+            this.radioButton_dieutri.CheckedChanged += new System.EventHandler(this.radioButton_dieutri_CheckedChanged);
             // 
-            // label34
+            // radioButton_xuatvien
             // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(10, 25);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(76, 13);
-            this.label34.TabIndex = 33;
-            this.label34.Text = "Diễn tiến bệnh";
+            this.radioButton_xuatvien.AutoSize = true;
+            this.radioButton_xuatvien.Location = new System.Drawing.Point(104, 17);
+            this.radioButton_xuatvien.Name = "radioButton_xuatvien";
+            this.radioButton_xuatvien.Size = new System.Drawing.Size(70, 17);
+            this.radioButton_xuatvien.TabIndex = 5;
+            this.radioButton_xuatvien.Text = "Xuất viện";
+            this.radioButton_xuatvien.UseVisualStyleBackColor = true;
+            this.radioButton_xuatvien.CheckedChanged += new System.EventHandler(this.radioButton_xuatvien_CheckedChanged);
             // 
-            // richTextBox2
+            // groupBox4
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(13, 206);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(249, 131);
-            this.richTextBox2.TabIndex = 32;
-            this.richTextBox2.Text = "";
+            this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.textBox34);
+            this.groupBox4.Controls.Add(this.listView_danhsachbenhnhan);
+            this.groupBox4.Controls.Add(this.radioButton_xuatvien);
+            this.groupBox4.Controls.Add(this.radioButton_dieutri);
+            this.groupBox4.Location = new System.Drawing.Point(12, 16);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(215, 514);
+            this.groupBox4.TabIndex = 6;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Danh sách bệnh nhân";
             // 
-            // label35
+            // textBox34
             // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(10, 190);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(37, 13);
-            this.label35.TabIndex = 33;
-            this.label35.Text = "Y lệnh";
+            this.textBox34.Location = new System.Drawing.Point(36, 40);
+            this.textBox34.Name = "textBox34";
+            this.textBox34.Size = new System.Drawing.Size(173, 20);
+            this.textBox34.TabIndex = 21;
             // 
-            // button_add_dieutri
+            // label1
             // 
-            this.button_add_dieutri.Location = new System.Drawing.Point(13, 343);
-            this.button_add_dieutri.Name = "button_add_dieutri";
-            this.button_add_dieutri.Size = new System.Drawing.Size(75, 23);
-            this.button_add_dieutri.TabIndex = 34;
-            this.button_add_dieutri.Text = "Thêm";
-            this.button_add_dieutri.UseVisualStyleBackColor = true;
-            // 
-            // button_del_dieutri
-            // 
-            this.button_del_dieutri.Location = new System.Drawing.Point(283, 343);
-            this.button_del_dieutri.Name = "button_del_dieutri";
-            this.button_del_dieutri.Size = new System.Drawing.Size(75, 23);
-            this.button_del_dieutri.TabIndex = 35;
-            this.button_del_dieutri.Text = "Xóa";
-            this.button_del_dieutri.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(24, 13);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Tìm";
             // 
             // NgoaitruForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1112, 542);
-            this.Controls.Add(this.radioButton_xuatvien);
-            this.Controls.Add(this.radioButton_dieutri);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.listView_danhsachbenhnhan);
             this.Name = "NgoaitruForm";
             this.Text = "NgoaitruFormnew";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -1980,8 +2005,9 @@
             this.groupBox3.PerformLayout();
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -1995,7 +2021,6 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radioButton_dieutri;
         private System.Windows.Forms.RadioButton radioButton_xuatvien;
         private System.Windows.Forms.DateTimePicker dateTimePicker_Namsinh;
@@ -2156,11 +2181,14 @@
         private System.Windows.Forms.Button button_add_dieutri;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.RichTextBox richTextBox_ylenh;
+        private System.Windows.Forms.RichTextBox richTextBox_dientienbenh;
+        private System.Windows.Forms.ListView listView_dieutri;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox34;
     }
 }

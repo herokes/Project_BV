@@ -18,13 +18,13 @@ namespace QLBV_normal.Class
 
         public Todieutri()
         {
-            _tenbenhnhan = "GOOD";
+            _tenbenhnhan = "";
             _ngaysinh = DateTime.Now;
             _sogiuong = 0;
             _buong = 0;
             _chandoan = "";
             _ngaygio = DateTime.Now;
-            _dientienbenh = "asfdasdsadasdnasdasdasdasdasdnas dasdasdasdasdasdnasdasdas dasdasdasdasdasd";
+            _dientienbenh = "";
             _ylenh = "";
         }
 
