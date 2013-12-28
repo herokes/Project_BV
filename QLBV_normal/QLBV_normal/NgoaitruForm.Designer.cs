@@ -203,8 +203,8 @@
             this.radioButton_dieutri = new System.Windows.Forms.RadioButton();
             this.radioButton_xuatvien = new System.Windows.Forms.RadioButton();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.textBox34 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.textBox_search_benhnhan = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -380,10 +380,10 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Location = new System.Drawing.Point(6, 24);
             this.tabControl1.Name = "tabControl1";
@@ -1950,7 +1950,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Controls.Add(this.textBox34);
+            this.groupBox4.Controls.Add(this.textBox_search_benhnhan);
             this.groupBox4.Controls.Add(this.listView_danhsachbenhnhan);
             this.groupBox4.Controls.Add(this.radioButton_xuatvien);
             this.groupBox4.Controls.Add(this.radioButton_dieutri);
@@ -1961,13 +1961,6 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Danh sách bệnh nhân";
             // 
-            // textBox34
-            // 
-            this.textBox34.Location = new System.Drawing.Point(36, 40);
-            this.textBox34.Name = "textBox34";
-            this.textBox34.Size = new System.Drawing.Size(173, 20);
-            this.textBox34.TabIndex = 21;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -1976,6 +1969,14 @@
             this.label1.Size = new System.Drawing.Size(24, 13);
             this.label1.TabIndex = 22;
             this.label1.Text = "Tìm";
+            // 
+            // textBox_search_benhnhan
+            // 
+            this.textBox_search_benhnhan.Location = new System.Drawing.Point(36, 40);
+            this.textBox_search_benhnhan.Name = "textBox_search_benhnhan";
+            this.textBox_search_benhnhan.Size = new System.Drawing.Size(173, 20);
+            this.textBox_search_benhnhan.TabIndex = 21;
+            this.textBox_search_benhnhan.TextChanged += new System.EventHandler(this.textBox_search_benhnhan_TextChanged);
             // 
             // NgoaitruForm
             // 
@@ -2189,6 +2190,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox34;
+        private System.Windows.Forms.TextBox textBox_search_benhnhan;
     }
 }
