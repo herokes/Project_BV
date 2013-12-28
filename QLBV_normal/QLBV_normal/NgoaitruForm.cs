@@ -169,6 +169,9 @@ namespace QLBV_normal
                         + "\n5.Đã xử lí (thuốc, chăm sóc...): " + read["Xuli"].ToString()
                         + "\n6.Cho vào điều trị tại khoa: " + read["Dieutritaikhoa"].ToString()
                         + "\n7.Chú ý: " + read["Chuy"].ToString();
+                    textBox_Quatrinhbenhly.Text = read["Quatrinhbenhly"].ToString();
+                    textBox_Phuongphapdieutri.Text = read["Xuli"].ToString();
+
                 }
                 Util.con.Close();
             }
@@ -295,7 +298,7 @@ namespace QLBV_normal
 
                 com.CommandText = @"INSERT INTO `todieutri_noidung` (`Dientienbenh`, `Ylenh`, `Ngaygio`, `Todieutri_id`) VALUES (@dientienbenh, @ylenh, @ngaygio, @todieutri_id)";
                 Util.con.Open();
-                if (com.ExecuteNonQuery() == 1)
+                if (com.ExecuteNonQuery() != 0)
                 {
                     //load_Dieutri(currentObject);
                 }
@@ -310,6 +313,26 @@ namespace QLBV_normal
         private void textBox_MaBN_TextChanged(object sender, EventArgs e)
         {
             //MessageBox.Show("ok");
+        }
+
+        private void label37_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label42_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox45_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label45_Click(object sender, EventArgs e)
+        {
+
         }
 
  
