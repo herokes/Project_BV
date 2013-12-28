@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.richTextBox_dsbenh = new System.Windows.Forms.RichTextBox();
+            this.textBox_idICD = new System.Windows.Forms.TextBox();
             this.textBox_tiensubenhgiadinh = new System.Windows.Forms.TextBox();
             this.label50 = new System.Windows.Forms.Label();
             this.comboBox_Loaidieutri = new System.Windows.Forms.ComboBox();
@@ -108,8 +110,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox_Namsinh = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.textBox_Tuoi = new System.Windows.Forms.TextBox();
             this.comboBox_Gioitinh = new System.Windows.Forms.ComboBox();
@@ -122,8 +122,6 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox_idICD = new System.Windows.Forms.TextBox();
-            this.richTextBox_dsbenh = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -208,6 +206,23 @@
             this.groupBox2.TabIndex = 48;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Phiếu Khám bệnh";
+            // 
+            // richTextBox_dsbenh
+            // 
+            this.richTextBox_dsbenh.Location = new System.Drawing.Point(351, 493);
+            this.richTextBox_dsbenh.Name = "richTextBox_dsbenh";
+            this.richTextBox_dsbenh.Size = new System.Drawing.Size(190, 32);
+            this.richTextBox_dsbenh.TabIndex = 164;
+            this.richTextBox_dsbenh.Text = "";
+            // 
+            // textBox_idICD
+            // 
+            this.textBox_idICD.Location = new System.Drawing.Point(153, 463);
+            this.textBox_idICD.Name = "textBox_idICD";
+            this.textBox_idICD.Size = new System.Drawing.Size(61, 20);
+            this.textBox_idICD.TabIndex = 163;
+            this.textBox_idICD.TextChanged += new System.EventHandler(this.textBox_maICD_TextChanged);
+            this.textBox_idICD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_idICD_KeyDown);
             // 
             // textBox_tiensubenhgiadinh
             // 
@@ -835,6 +850,7 @@
             // 
             this.textBox_Ten.Location = new System.Drawing.Point(273, 24);
             this.textBox_Ten.Name = "textBox_Ten";
+            this.textBox_Ten.ReadOnly = true;
             this.textBox_Ten.Size = new System.Drawing.Size(327, 20);
             this.textBox_Ten.TabIndex = 2;
             this.textBox_Ten.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Ten_KeyPress);
@@ -865,22 +881,6 @@
             this.label8.Size = new System.Drawing.Size(45, 13);
             this.label8.TabIndex = 13;
             this.label8.Text = "CMND :";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(214, 59);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(57, 13);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "Năm sinh :";
-            // 
-            // textBox_Namsinh
-            // 
-            this.textBox_Namsinh.Location = new System.Drawing.Point(273, 52);
-            this.textBox_Namsinh.Name = "textBox_Namsinh";
-            this.textBox_Namsinh.Size = new System.Drawing.Size(51, 20);
-            this.textBox_Namsinh.TabIndex = 16;
             // 
             // label14
             // 
@@ -934,6 +934,7 @@
             // 
             this.textBox_CMND.Location = new System.Drawing.Point(202, 81);
             this.textBox_CMND.Name = "textBox_CMND";
+            this.textBox_CMND.ReadOnly = true;
             this.textBox_CMND.Size = new System.Drawing.Size(151, 20);
             this.textBox_CMND.TabIndex = 5;
             this.textBox_CMND.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_CMND_Validating);
@@ -956,8 +957,6 @@
             this.groupBox1.Controls.Add(this.comboBox_Gioitinh);
             this.groupBox1.Controls.Add(this.textBox_Tuoi);
             this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.textBox_Namsinh);
-            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label3);
@@ -977,12 +976,14 @@
             this.listView_Caclankhambenh.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-            this.listView_Caclankhambenh.Location = new System.Drawing.Point(25, 174);
+            this.listView_Caclankhambenh.FullRowSelect = true;
+            this.listView_Caclankhambenh.Location = new System.Drawing.Point(43, 174);
             this.listView_Caclankhambenh.Name = "listView_Caclankhambenh";
-            this.listView_Caclankhambenh.Size = new System.Drawing.Size(150, 197);
+            this.listView_Caclankhambenh.Size = new System.Drawing.Size(197, 257);
             this.listView_Caclankhambenh.TabIndex = 50;
             this.listView_Caclankhambenh.UseCompatibleStateImageBehavior = false;
             this.listView_Caclankhambenh.View = System.Windows.Forms.View.Details;
+            this.listView_Caclankhambenh.SelectedIndexChanged += new System.EventHandler(this.listView_Caclankhambenh_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -992,7 +993,7 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Ngày khám";
-            this.columnHeader2.Width = 107;
+            this.columnHeader2.Width = 151;
             // 
             // label4
             // 
@@ -1002,23 +1003,6 @@
             this.label4.Size = new System.Drawing.Size(99, 13);
             this.label4.TabIndex = 51;
             this.label4.Text = "Các lần khám bệnh";
-            // 
-            // textBox_idICD
-            // 
-            this.textBox_idICD.Location = new System.Drawing.Point(153, 463);
-            this.textBox_idICD.Name = "textBox_idICD";
-            this.textBox_idICD.Size = new System.Drawing.Size(61, 20);
-            this.textBox_idICD.TabIndex = 163;
-            this.textBox_idICD.TextChanged += new System.EventHandler(this.textBox_maICD_TextChanged);
-            this.textBox_idICD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_idICD_KeyDown);
-            // 
-            // richTextBox_dsbenh
-            // 
-            this.richTextBox_dsbenh.Location = new System.Drawing.Point(351, 493);
-            this.richTextBox_dsbenh.Name = "richTextBox_dsbenh";
-            this.richTextBox_dsbenh.Size = new System.Drawing.Size(190, 32);
-            this.richTextBox_dsbenh.TabIndex = 164;
-            this.richTextBox_dsbenh.Text = "";
             // 
             // DangkyForm
             // 
@@ -1130,8 +1114,6 @@
         private System.Windows.Forms.ComboBox comboBox_Gioitinh;
         private System.Windows.Forms.TextBox textBox_Tuoi;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox_Namsinh;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
