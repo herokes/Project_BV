@@ -8,10 +8,13 @@ USE `dbthan` ;
 -- -----------------------------------------------------
 -- Table `dbthan`.`Benhnhan`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Benhnhan` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`Benhnhan` (
   `id` INT NOT NULL ,
-  `ten` VARCHAR(45) NULL DEFAULT NULL ,
-  `gioitinh` TINYINT(1) NULL DEFAULT NULL ,
+  `Ten` VARCHAR(45) NULL DEFAULT NULL ,
+  `Ngaysinh` DATETIME NULL DEFAULT NULL ,
+  `Gioitinh` TINYINT(1) NULL DEFAULT NULL ,
   `Nghenghiep` VARCHAR(45) NULL DEFAULT NULL ,
   `Dantoc` VARCHAR(45) NULL DEFAULT NULL ,
   `CMND` VARCHAR(12) NULL DEFAULT NULL ,
@@ -22,11 +25,6 @@ CREATE  TABLE IF NOT EXISTS `dbthan`.`Benhnhan` (
   `Quan` VARCHAR(45) NULL DEFAULT NULL ,
   `Thanhpho` VARCHAR(45) NULL DEFAULT NULL ,
   `Noilamviec` VARCHAR(45) NULL DEFAULT NULL ,
-  `Doituong` VARCHAR(45) NULL DEFAULT NULL ,
-  `BHYTgiatriden` DATETIME NULL DEFAULT NULL ,
-  `SoBHYT` VARCHAR(45) NULL DEFAULT NULL ,
-  `Nguoithan` VARCHAR(45) NULL DEFAULT NULL ,
-  `Dienthoai` INT NULL DEFAULT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -34,6 +32,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbthan`.`Hosophimanh`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Hosophimanh` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`Hosophimanh` (
   `id` INT NOT NULL ,
   `loai` VARCHAR(100) NULL DEFAULT NULL ,
@@ -45,6 +45,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbthan`.`Benhvien`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Benhvien` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`Benhvien` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `Tenbenhvien` VARCHAR(45) NULL DEFAULT NULL ,
@@ -56,13 +58,24 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbthan`.`Phieukhambenh`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Phieukhambenh` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`Phieukhambenh` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `Doituong` INT NULL ,
+  `DKKCBBD` VARCHAR(45) NULL ,
+  `Bhytgiatritu` DATETIME NULL ,
+  `Bhytgiatriden` DATETIME NULL ,
+  `Sobhyt` VARCHAR(45) NULL ,
+  `Nguoithan` VARCHAR(45) NULL ,
+  `Diachinguoithan` VARCHAR(100) NULL ,
+  `Dienthoai` VARCHAR(45) NULL ,
   `Thoigiandenkham` DATETIME NULL DEFAULT NULL ,
   `Noigioithieu` VARCHAR(45) NULL DEFAULT NULL ,
   `Lydovaovien` VARCHAR(200) NULL DEFAULT NULL ,
   `Quatrinhbenhly` VARCHAR(200) NULL DEFAULT NULL ,
-  `Tiensubenh` VARCHAR(200) NULL DEFAULT NULL ,
+  `Tiensubenhbanthan` VARCHAR(200) NULL DEFAULT NULL ,
+  `Tiensubenhgiadinh` VARCHAR(200) NULL ,
   `Mach` VARCHAR(45) NULL DEFAULT NULL ,
   `Nhietdo` VARCHAR(45) NULL DEFAULT NULL ,
   `Huyetap` VARCHAR(45) NULL DEFAULT NULL ,
@@ -75,26 +88,12 @@ CREATE  TABLE IF NOT EXISTS `dbthan`.`Phieukhambenh` (
   `Xuli` VARCHAR(200) NULL DEFAULT NULL ,
   `Dieutritaikhoa` VARCHAR(45) NULL DEFAULT NULL ,
   `Chuy` VARCHAR(200) NULL DEFAULT NULL ,
-  `Benhvien_id` INT NOT NULL ,
   `Benhnhan_id` INT NOT NULL ,
-  `Hosophimanh_id` INT NOT NULL ,
   PRIMARY KEY (`id`) ,
-  INDEX `fk_Phieukhambenh_Benhvien1` (`Benhvien_id` ASC) ,
   INDEX `fk_Phieukhambenh_Benhnhan1` (`Benhnhan_id` ASC) ,
-  INDEX `fk_Phieukhambenh_Hosophimanh1` (`Hosophimanh_id` ASC) ,
-  CONSTRAINT `fk_Phieukhambenh_Benhvien1`
-    FOREIGN KEY (`Benhvien_id` )
-    REFERENCES `dbthan`.`Benhvien` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_Phieukhambenh_Benhnhan1`
     FOREIGN KEY (`Benhnhan_id` )
     REFERENCES `dbthan`.`Benhnhan` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Phieukhambenh_Hosophimanh1`
-    FOREIGN KEY (`Hosophimanh_id` )
-    REFERENCES `dbthan`.`Hosophimanh` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -103,6 +102,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbthan`.`Ngoaitru`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Ngoaitru` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`Ngoaitru` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `Ngaygiovaovien` DATETIME NULL DEFAULT NULL ,
@@ -110,12 +111,17 @@ CREATE  TABLE IF NOT EXISTS `dbthan`.`Ngoaitru` (
   `Benhkemtheo` VARCHAR(45) NULL DEFAULT NULL ,
   `Dieutritu` DATETIME NULL DEFAULT NULL ,
   `Dieutriden` DATETIME NULL DEFAULT NULL ,
-  `Tinhtrangravien` VARCHAR(45) NULL DEFAULT NULL ,
+  `Tinhtrangravien` INT NULL DEFAULT NULL ,
   `Huongdieutri` VARCHAR(45) NULL DEFAULT NULL ,
   `Bacsikhambenh` VARCHAR(45) NULL DEFAULT NULL ,
   `Bacsidieutri` VARCHAR(45) NULL DEFAULT NULL ,
   `chaythan` TINYINT(1) NULL DEFAULT NULL ,
   `Phieukhambenh_id` INT NOT NULL ,
+  `Soxquang` INT NULL ,
+  `Soctscanner` INT NULL ,
+  `Sosieuam` INT NULL ,
+  `Soxetnghiem` INT NULL ,
+  `Sokhac` INT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_Ngoaitru_Phieukhambenh1` (`Phieukhambenh_id` ASC) ,
   CONSTRAINT `fk_Ngoaitru_Phieukhambenh1`
@@ -129,6 +135,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbthan`.`Bacsi`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Bacsi` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`Bacsi` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `TenBacsi` VARCHAR(45) NULL DEFAULT NULL ,
@@ -143,14 +151,15 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbthan`.`Thuoc`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Thuoc` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`Thuoc` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `Tenthuoc` VARCHAR(45) NULL DEFAULT NULL ,
   `Taduoc` VARCHAR(45) NULL DEFAULT NULL ,
   `Hamluong` VARCHAR(45) NULL DEFAULT NULL ,
   `Duongdung` VARCHAR(45) NULL DEFAULT NULL ,
   `Dang` VARCHAR(45) NULL DEFAULT NULL ,
-  `Soluong` INT NULL DEFAULT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -158,6 +167,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbthan`.`Phieuxetnghiem`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Phieuxetnghiem` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`Phieuxetnghiem` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `Ngayxetnghiemm` DATETIME NULL DEFAULT NULL ,
@@ -176,6 +187,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbthan`.`Hoichuan`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Hoichuan` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`Hoichuan` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `Thoigianhoichuan` DATETIME NULL DEFAULT NULL ,
@@ -194,10 +207,13 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbthan`.`Xetnghiem`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Xetnghiem` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`Xetnghiem` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `TenXetnghiem` VARCHAR(45) NULL DEFAULT NULL ,
   `Thongsobinhthuong` VARCHAR(45) NULL DEFAULT NULL ,
+  `Loaixetnghiem` VARCHAR(45) NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -205,6 +221,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbthan`.`Xutri`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Xutri` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`Xutri` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `Tenxutri` VARCHAR(45) NULL DEFAULT NULL ,
@@ -215,6 +233,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbthan`.`Noitru`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Noitru` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`Noitru` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `Thoigianvaovien` DATETIME NULL DEFAULT NULL ,
@@ -236,7 +256,7 @@ CREATE  TABLE IF NOT EXISTS `dbthan`.`Noitru` (
   `Benhkemtheo` VARCHAR(45) NULL DEFAULT NULL ,
   `Taibien` TINYINT(1) NULL DEFAULT NULL ,
   `Bienchung` TINYINT(1) NULL DEFAULT NULL ,
-  `Ketquadieutri` VARCHAR(45) NULL DEFAULT NULL ,
+  `Ketquadieutri` INT NULL DEFAULT NULL ,
   `Giaiphaubenh` VARCHAR(45) NULL DEFAULT NULL ,
   `Thoigiantuvong` DATETIME NULL DEFAULT NULL ,
   `Lydotuvong` VARCHAR(45) NULL DEFAULT NULL ,
@@ -280,6 +300,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbthan`.`IDC`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`IDC` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`IDC` (
   `id` VARCHAR(10) NOT NULL ,
   `TenIDC` VARCHAR(100) NULL DEFAULT NULL ,
@@ -291,6 +313,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbthan`.`Toathuoc`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Toathuoc` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`Toathuoc` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `Tungay` DATETIME NULL DEFAULT NULL ,
@@ -311,6 +335,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbthan`.`Phieukhambenh_Bacsi`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Phieukhambenh_Bacsi` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`Phieukhambenh_Bacsi` (
   `Bacsi_id` INT NOT NULL ,
   `Phieukhambenh_id` INT NOT NULL ,
@@ -333,6 +359,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbthan`.`Bacsi_Hoichuan`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Bacsi_Hoichuan` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`Bacsi_Hoichuan` (
   `Hoichuan_id` INT NOT NULL ,
   `Bacsi_id` INT NOT NULL ,
@@ -356,6 +384,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbthan`.`Phieukhambenh_Xutri`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Phieukhambenh_Xutri` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`Phieukhambenh_Xutri` (
   `Phieukhambenh_id` INT NOT NULL ,
   `Xutri_id` INT NOT NULL ,
@@ -379,6 +409,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbthan`.`Xetnghiem_Phieuxetnghiem`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Xetnghiem_Phieuxetnghiem` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`Xetnghiem_Phieuxetnghiem` (
   `Xetnghiem_id` INT NOT NULL ,
   `Phieuxetnghiem_id` INT NOT NULL ,
@@ -402,12 +434,15 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbthan`.`Toathuoc_Thuoc`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Toathuoc_Thuoc` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`Toathuoc_Thuoc` (
   `Toathuoc_id` INT NOT NULL ,
   `Thuoc_id` INT NOT NULL ,
   `sang` VARCHAR(45) NULL ,
   `trua` VARCHAR(45) NULL ,
   `toi` VARCHAR(45) NULL ,
+  `soluong` INT NULL ,
   PRIMARY KEY (`Toathuoc_id`, `Thuoc_id`) ,
   INDEX `fk_Toathuoc_has_Thuoc_Thuoc1` (`Thuoc_id` ASC) ,
   INDEX `fk_Toathuoc_has_Thuoc_Toathuoc1` (`Toathuoc_id` ASC) ,
@@ -427,6 +462,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbthan`.`IDC_Phieukhambenh`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`IDC_Phieukhambenh` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`IDC_Phieukhambenh` (
   `IDC_id` VARCHAR(10) NOT NULL ,
   `Phieukhambenh_id` INT NOT NULL ,
@@ -449,6 +486,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dbthan`.`Todieutri`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Todieutri` ;
+
 CREATE  TABLE IF NOT EXISTS `dbthan`.`Todieutri` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `Phieukhambenh_id` INT NOT NULL ,
@@ -463,10 +502,12 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `dbthan`.`Todieutri_bosung`
+-- Table `dbthan`.`Todieutri_noidung`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `dbthan`.`Todieutri_bosung` (
-  `id` INT NOT NULL ,
+DROP TABLE IF EXISTS `dbthan`.`Todieutri_noidung` ;
+
+CREATE  TABLE IF NOT EXISTS `dbthan`.`Todieutri_noidung` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `Dientienbenh` TEXT NULL ,
   `Ngaygio` DATETIME NULL ,
   `Todieutri_id` INT NOT NULL ,
@@ -475,6 +516,99 @@ CREATE  TABLE IF NOT EXISTS `dbthan`.`Todieutri_bosung` (
   CONSTRAINT `fk_Todieutri_bosung_Todieutri1`
     FOREIGN KEY (`Todieutri_id` )
     REFERENCES `dbthan`.`Todieutri` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `dbthan`.`Hosophimanh_Phieukhambenh`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Hosophimanh_Phieukhambenh` ;
+
+CREATE  TABLE IF NOT EXISTS `dbthan`.`Hosophimanh_Phieukhambenh` (
+  `Hosophimanh_id` INT NOT NULL ,
+  `Phieukhambenh_id` INT NOT NULL ,
+  PRIMARY KEY (`Hosophimanh_id`, `Phieukhambenh_id`) ,
+  INDEX `fk_Hosophimanh_has_Phieukhambenh_Phieukhambenh1` (`Phieukhambenh_id` ASC) ,
+  INDEX `fk_Hosophimanh_has_Phieukhambenh_Hosophimanh1` (`Hosophimanh_id` ASC) ,
+  CONSTRAINT `fk_Hosophimanh_has_Phieukhambenh_Hosophimanh1`
+    FOREIGN KEY (`Hosophimanh_id` )
+    REFERENCES `dbthan`.`Hosophimanh` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Hosophimanh_has_Phieukhambenh_Phieukhambenh1`
+    FOREIGN KEY (`Phieukhambenh_id` )
+    REFERENCES `dbthan`.`Phieukhambenh` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `dbthan`.`Ylenh`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Ylenh` ;
+
+CREATE  TABLE IF NOT EXISTS `dbthan`.`Ylenh` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `Mota` VARCHAR(45) NULL ,
+  `Phieukhambenh_id` INT NOT NULL ,
+  `Todieutri_noidung_id` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_Ylenh_Phieukhambenh1_idx` (`Phieukhambenh_id` ASC) ,
+  INDEX `fk_Ylenh_Todieutri_noidung1` (`Todieutri_noidung_id` ASC) ,
+  CONSTRAINT `fk_Ylenh_Phieukhambenh1`
+    FOREIGN KEY (`Phieukhambenh_id` )
+    REFERENCES `dbthan`.`Phieukhambenh` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Ylenh_Todieutri_noidung1`
+    FOREIGN KEY (`Todieutri_noidung_id` )
+    REFERENCES `dbthan`.`Todieutri_noidung` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `dbthan`.`Chaythan`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Chaythan` ;
+
+CREATE  TABLE IF NOT EXISTS `dbthan`.`Chaythan` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `Phieukhambenh_id` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_Chaythan_Phieukhambenh1` (`Phieukhambenh_id` ASC) ,
+  CONSTRAINT `fk_Chaythan_Phieukhambenh1`
+    FOREIGN KEY (`Phieukhambenh_id` )
+    REFERENCES `dbthan`.`Phieukhambenh` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `dbthan`.`Chaythan_Thuoc`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Chaythan_Thuoc` ;
+
+CREATE  TABLE IF NOT EXISTS `dbthan`.`Chaythan_Thuoc` (
+  `Chaythan_id` INT NOT NULL ,
+  `Thuoc_id` INT NOT NULL ,
+  `Soluong` VARCHAR(45) NULL ,
+  PRIMARY KEY (`Chaythan_id`, `Thuoc_id`) ,
+  INDEX `fk_Chaythan_has_Thuoc_Thuoc1` (`Thuoc_id` ASC) ,
+  INDEX `fk_Chaythan_has_Thuoc_Chaythan1` (`Chaythan_id` ASC) ,
+  CONSTRAINT `fk_Chaythan_has_Thuoc_Chaythan1`
+    FOREIGN KEY (`Chaythan_id` )
+    REFERENCES `dbthan`.`Chaythan` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Chaythan_has_Thuoc_Thuoc1`
+    FOREIGN KEY (`Thuoc_id` )
+    REFERENCES `dbthan`.`Thuoc` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
