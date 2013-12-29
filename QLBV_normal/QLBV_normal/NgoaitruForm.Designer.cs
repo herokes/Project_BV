@@ -47,7 +47,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button6 = new System.Windows.Forms.Button();
+            this.button_Inbenhanngoaitru = new System.Windows.Forms.Button();
             this.textBox_idbacsikham = new System.Windows.Forms.TextBox();
             this.comboBox_Bacsikham = new System.Windows.Forms.ComboBox();
             this.textBox_Chuandoan = new System.Windows.Forms.TextBox();
@@ -217,7 +217,7 @@
             this.button_del_dieutri = new System.Windows.Forms.Button();
             this.button_add_dieutri = new System.Windows.Forms.Button();
             this.label35 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
             this.richTextBox_ylenh = new System.Windows.Forms.RichTextBox();
             this.richTextBox_dientienbenh = new System.Windows.Forms.RichTextBox();
             this.button_print_todieutri = new System.Windows.Forms.Button();
@@ -309,8 +309,8 @@
             // 
             this.comboBox_Gioitinh.FormattingEnabled = true;
             this.comboBox_Gioitinh.Items.AddRange(new object[] {
-            "Nam",
-            "Nữ"});
+            "Nữ",
+            "Nam"});
             this.comboBox_Gioitinh.Location = new System.Drawing.Point(484, 17);
             this.comboBox_Gioitinh.Name = "comboBox_Gioitinh";
             this.comboBox_Gioitinh.Size = new System.Drawing.Size(54, 21);
@@ -419,7 +419,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button6);
+            this.tabPage1.Controls.Add(this.button_Inbenhanngoaitru);
             this.tabPage1.Controls.Add(this.textBox_idbacsikham);
             this.tabPage1.Controls.Add(this.comboBox_Bacsikham);
             this.tabPage1.Controls.Add(this.textBox_Chuandoan);
@@ -459,14 +459,15 @@
             this.tabPage1.Text = "Thông tin vào viện";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // button_Inbenhanngoaitru
             // 
-            this.button6.Location = new System.Drawing.Point(54, 280);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(78, 27);
-            this.button6.TabIndex = 187;
-            this.button6.Text = "IN BỆNH ÁN NGOẠI TRÚ";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button_Inbenhanngoaitru.Location = new System.Drawing.Point(186, 280);
+            this.button_Inbenhanngoaitru.Name = "button_Inbenhanngoaitru";
+            this.button_Inbenhanngoaitru.Size = new System.Drawing.Size(78, 27);
+            this.button_Inbenhanngoaitru.TabIndex = 187;
+            this.button_Inbenhanngoaitru.Text = "IN BỆNH ÁN NGOẠI TRÚ";
+            this.button_Inbenhanngoaitru.UseVisualStyleBackColor = true;
+            this.button_Inbenhanngoaitru.Click += new System.EventHandler(this.button_Inbenhanngoaitru_Click);
             // 
             // textBox_idbacsikham
             // 
@@ -2086,7 +2087,7 @@
             this.tabPage7.Controls.Add(this.button_del_dieutri);
             this.tabPage7.Controls.Add(this.button_add_dieutri);
             this.tabPage7.Controls.Add(this.label35);
-            this.tabPage7.Controls.Add(this.label34);
+            this.tabPage7.Controls.Add(this.label48);
             this.tabPage7.Controls.Add(this.richTextBox_ylenh);
             this.tabPage7.Controls.Add(this.richTextBox_dientienbenh);
             this.tabPage7.Controls.Add(this.button_print_todieutri);
@@ -2100,7 +2101,7 @@
             // 
             // button_del_dieutri
             // 
-            this.button_del_dieutri.Location = new System.Drawing.Point(283, 343);
+            this.button_del_dieutri.Location = new System.Drawing.Point(268, 343);
             this.button_del_dieutri.Name = "button_del_dieutri";
             this.button_del_dieutri.Size = new System.Drawing.Size(75, 23);
             this.button_del_dieutri.TabIndex = 35;
@@ -2126,28 +2127,29 @@
             this.label35.TabIndex = 33;
             this.label35.Text = "Y lệnh";
             // 
-            // label34
+            // label48
             // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(10, 25);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(76, 13);
-            this.label34.TabIndex = 33;
-            this.label34.Text = "Diễn tiến bệnh";
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(10, 19);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(76, 13);
+            this.label48.TabIndex = 33;
+            this.label48.Text = "Diễn tiến bệnh";
             // 
             // richTextBox_ylenh
             // 
             this.richTextBox_ylenh.Location = new System.Drawing.Point(13, 206);
             this.richTextBox_ylenh.Name = "richTextBox_ylenh";
+            this.richTextBox_ylenh.ReadOnly = true;
             this.richTextBox_ylenh.Size = new System.Drawing.Size(249, 131);
             this.richTextBox_ylenh.TabIndex = 32;
             this.richTextBox_ylenh.Text = "";
             // 
             // richTextBox_dientienbenh
             // 
-            this.richTextBox_dientienbenh.Location = new System.Drawing.Point(13, 41);
+            this.richTextBox_dientienbenh.Location = new System.Drawing.Point(13, 35);
             this.richTextBox_dientienbenh.Name = "richTextBox_dientienbenh";
-            this.richTextBox_dientienbenh.Size = new System.Drawing.Size(249, 129);
+            this.richTextBox_dientienbenh.Size = new System.Drawing.Size(249, 134);
             this.richTextBox_dientienbenh.TabIndex = 32;
             this.richTextBox_dientienbenh.Text = "";
             // 
@@ -2169,9 +2171,9 @@
             this.columnHeader5});
             this.listView_dieutri.FullRowSelect = true;
             this.listView_dieutri.GridLines = true;
-            this.listView_dieutri.Location = new System.Drawing.Point(283, 15);
+            this.listView_dieutri.Location = new System.Drawing.Point(268, 15);
             this.listView_dieutri.Name = "listView_dieutri";
-            this.listView_dieutri.Size = new System.Drawing.Size(540, 322);
+            this.listView_dieutri.Size = new System.Drawing.Size(555, 322);
             this.listView_dieutri.TabIndex = 0;
             this.listView_dieutri.UseCompatibleStateImageBehavior = false;
             this.listView_dieutri.View = System.Windows.Forms.View.Details;
@@ -2450,9 +2452,6 @@
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.Button button_del_dieutri;
         private System.Windows.Forms.Button button_add_dieutri;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.RichTextBox richTextBox_ylenh;
         private System.Windows.Forms.RichTextBox richTextBox_dientienbenh;
         private System.Windows.Forms.ListView listView_dieutri;
         private System.Windows.Forms.ColumnHeader columnHeader3;
@@ -2485,6 +2484,9 @@
         private System.Windows.Forms.TextBox textBox35;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button_Inbenhanngoaitru;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.RichTextBox richTextBox_ylenh;
+        private System.Windows.Forms.Label label48;
     }
 }

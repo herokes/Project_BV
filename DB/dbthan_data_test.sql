@@ -1,4 +1,4 @@
-﻿
+
 INSERT INTO `benhnhan` (`id`, `Ten`, `Ngaysinh`, `Gioitinh`, `Nghenghiep`, `Dantoc`, `CMND`, `Ngoaikieu`, `Sonha`, `Duong`, `Phuong`, `Quan`, `Thanhpho`, `Noilamviec`) VALUES
 (0, 'HUỲNH CÔNG HINH', '1953-07-17 00:00:00', 1, 'Công nhân', 'Kinh', '025177881', NULL, '183/23a', 'Tân Hòa Đông', '14', '6', 'Hồ Chí Minh', 'Quận 6'),
 (1301, 'QUANG', '1989-11-11 00:00:00', 1, 'Công nhân', 'KINH', '025177881', '', '11', ' LTK', 'P9', 'TB', 'HCM', 'COOPMARK'),
@@ -65,6 +65,34 @@ INSERT INTO `dbthan`.`idc` (`id`, `TenIDC`, `Ghichu`) VALUES
  ('N08.0', 'Nhiễm trùng tiểu', NULL),
  ('A04', 'Nhiễm trùng đường ruột', NULL),
  ('E11', 'Không phụ thuộc Insulin', NULL);
+-- --------------------------------------------------------
+
+INSERT INTO `bacsi` (`id`, `TenBacsi`, `Trinhdo`, `Dienthoai`, `Diachi`, `Namsinh`) VALUES
+(1, 'NGUYỄN THỊ KIM PHƯỢNG', NULL, NULL, NULL, NULL),
+(2, 'DƯƠNG MINH CƯỜNG', NULL, NULL, NULL, NULL),
+(3, 'TRẦN LÝ MỸ CHÂU', NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+INSERT INTO `idc` (`id`, `TenIDC`, `Ghichu`) VALUES 
+('N18.0', 'Suy thận mạn giai đoạn cuối', NULL), 
+('I10', 'Cao huyết áp', NULL),
+('E13', 'Đái tháo đường type 2', NULL),
+('I02.0', 'Thiếu máu cơ tim', NULL),
+('I44.0', 'Block nhĩ thất độ I', NULL),
+('I25.2', 'Nhồi máu cơ tim cũ', NULL),
+('I48', 'Rung nhĩ và cuồng nhĩ', NULL),
+('I50', 'Suy tim', NULL),
+('I73', 'Bệnh mạch máu ngoại biên', NULL),
+('I84', 'Trĩ', NULL),
+('I87.2', 'Suy tĩnh mạch mạn', NULL),
+('B18', 'Viêm gan virus mạn', NULL),
+('J05.2', 'Viêm phế quản', NULL),
+('J20', 'Viêm phế quản cấp', NULL),
+('N08.0', 'Nhiễm trùng tiểu', NULL),
+('A04', 'Nhiễm trùng đường ruột', NULL),
+('E11', 'Không phụ thuộc Insulin', NULL);
+
 -- Table contain contraint ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO `phieukhambenh` (`id`, `Doituong`, `DKKCBBD`, `Bhytgiatritu`, `Bhytgiatriden`, `Sobhyt`, `Nguoithan`, `Diachinguoithan`, `Dienthoai`, `Thoigiandenkham`, `Noigioithieu`, `Lydovaovien`, `Quatrinhbenhly`, `Tiensubenhbanthan`, `Tiensubenhgiadinh`, `Mach`, `Nhietdo`, `Huyetap`, `Nhiptho`, `Trongluong`, `Toanthan`, `Cacbophan`, `Tomtatketqualamsan`, `Chuandoanvaovien`, `Xuli`, `Dieutritaikhoa`, `Chuy`, `Benhnhan_id`) VALUES
@@ -80,12 +108,12 @@ INSERT INTO `phieukhambenh` (`id`, `Doituong`, `DKKCBBD`, `Bhytgiatritu`, `Bhytg
 
 -- --------------------------------------------------------
 
-INSERT INTO `ngoaitru` (`id`, `Ngaygiovaovien`, `Benhchinh`, `Benhkemtheo`, `Dieutritu`, `Dieutriden`, `Tinhtrangravien`, `Huongdieutri`, `Bacsikhambenh`, `Bacsidieutri`, `chaythan`, `Phieukhambenh_id`) VALUES
-(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 3),
-(2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 4),
-(3, NULL, NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, 1, 5),
-(4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 6),
-(5, '2013-12-23 00:00:00', 'Suy thận mạn giai đoạn cuối', 'tăng huyết ap- đái tháo đường type2', '2013-12-23 00:00:00', NULL, '0', 'Đổi hồ sơ tiếp tục điều trị', 'BS. Nguyễn Thị Kim Phượng', 'BS. Nguyễn Thị Kim Phượng', 1, 9);
+INSERT INTO `ngoaitru` (`id`, `Ngaygiovaovien`, `Benhchinh`, `Benhkemtheo`, `Dieutritu`, `Dieutriden`, `Tinhtrangravien`, `Huongdieutri`, `Bacsikhambenh`, `Bacsidieutri`, `Phieukhambenh_id`) VALUES
+(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3),
+(2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4),
+(3, NULL, NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL, 5),
+(4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 6),
+(5, '2013-12-23 00:00:00', 'Suy thận mạn giai đoạn cuối', 'tăng huyết ap- đái tháo đường type2', '2013-12-23 00:00:00', NULL, '0', 'Đổi hồ sơ tiếp tục điều trị', 'BS. Nguyễn Thị Kim Phượng', 'BS. Nguyễn Thị Kim Phượng', 9);
 
 -- --------------------------------------------------------
 
@@ -98,13 +126,6 @@ INSERT INTO `noitru` (`id`, `Thoigianvaovien`, `Tructiepvao`, `Vaolanthu`, `Ngay
 INSERT INTO `phieuxetnghiem` (`id`, `Ngayxetnghiemm`, `Phieukhambenh_id`) VALUES
 (1, '2013-12-11 00:00:00', 9),
 (2, '2013-12-28 11:15:20', 6);
-
--- --------------------------------------------------------
-
-INSERT INTO `bacsi` (`id`, `TenBacsi`, `Trinhdo`, `Dienthoai`, `Diachi`, `Namsinh`) VALUES
-(1, 'NGUYỄN THỊ KIM PHƯỢNG', NULL, NULL, NULL, NULL),
-(2, 'DƯƠNG MINH CƯỜNG', NULL, NULL, NULL, NULL),
-(3, 'TRẦN LÝ MỸ CHÂU', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -138,31 +159,13 @@ INSERT INTO `todieutri` (`id`, `Phieukhambenh_id`) VALUES
 
 -- --------------------------------------------------------
 
-INSERT INTO `todieutri_noidung` (`id`, `Dientienbenh`, `Ylenh`, `Ngaygio`, `Todieutri_id`) VALUES
-(1, 'sdf', 'sdfvcvc', '2013-12-27 15:46:46', 1),
-(3, '345', '546', '2013-12-27 15:47:10', 1),
-(4, 'Diễn tiến', 'Y lệnh', '2013-12-27 18:59:07', 1),
-(5, 'Diễn tiến', 'Y lệnh', '2013-12-27 18:59:07', 1),
-(11, '1.Toàn thân: Tỉnh, niêm nhạt. Phù toàn thân. Tiểu rất ít\n2.Các bộ phận: Tim đều, T1 T2 rõ. Bụng Không rang. Bụng mềm\nMạch: 80 lần/phút\nNhiệt độ: 37 oC\nHuyết áp: 140/90 mmHg\nNhịp thở: 16 lần/phút\nCân nặng: 72 lần/phút\n3.Tóm tắt kết quả lâm sàn: Tim đều, T1 T2 rõ. Bụng Không rang. Bụng mềm\n4.Chuẩn đoán vào viện: suy thận man giai đoạn cuối, tăng huyết áp. bệnh tim thiếu máu cục bộ\n5.Đã xử lí (thuốc, chăm sóc...): Chạy thận nhân tạo định kỳ 3 lần/ tuần. Hạ áp. Epoetin.\n6.Cho vào điều trị tại khoa: Thận\n7.Chú ý:', '1.Toàn thân: Tỉnh, niêm nhạt. Phù toàn thân. Tiểu rất ít\n2.Các bộ phận: Tim đều, T1 T2 rõ. Bụng Không rang. Bụng mềm\nMạch: 80 lần/phút\nNhiệt độ: 37 oC\nHuyết áp: 140/90 mmHg\nNhịp thở: 16 lần/phút\nCân nặng: 72 lần/phút\n3.Tóm tắt kết quả lâm sàn: Tim đều, T1 T2 rõ. Bụng Không rang. Bụng mềm\n4.Chuẩn đoán vào viện: suy thận man giai đoạn cuối, tăng huyết áp. bệnh tim thiếu máu cục bộ\n5.Đã xử lí (thuốc, chăm sóc...): Chạy thận nhân tạo định kỳ 3 lần/ tuần. Hạ áp. Epoetin.\n6.Cho vào điều trị tại khoa: Thận\n7.Chú ý:', '2013-12-28 11:56:46', 1),
-(12, '1.Toàn thân: Tỉnh, niêm nhạt. Phù toàn thân. Tiểu rất ít\n2.Các bộ phận: Tim đều, T1 T2 rõ. Bụng Không rang. Bụng mềm\nMạch: 80 lần/phút\nNhiệt độ: 37 oC\nHuyết áp: 140/90 mmHg\nNhịp thở: 16 lần/phút\nCân nặng: 72 lần/phút\n3.Tóm tắt kết quả lâm sàn: Tim đều, T1 T2 rõ. Bụng Không rang. Bụng mềm\n4.Chuẩn đoán vào viện: suy thận man giai đoạn cuối, tăng huyết áp. bệnh tim thiếu máu cục bộ\n5.Đã xử lí (thuốc, chăm sóc...): Chạy thận nhân tạo định kỳ 3 lần/ tuần. Hạ áp. Epoetin.\n6.Cho vào điều trị tại khoa: Thận\n7.Chú ý:', '1.Toàn thân: Tỉnh, niêm nhạt. Phù toàn thân. Tiểu rất ít\n2.Các bộ phận: Tim đều, T1 T2 rõ. Bụng Không rang. Bụng mềm\nMạch: 80 lần/phút\nNhiệt độ: 37 oC\nHuyết áp: 140/90 mmHg\nNhịp thở: 16 lần/phút\nCân nặng: 72 lần/phút\n3.Tóm tắt kết quả lâm sàn: Tim đều, T1 T2 rõ. Bụng Không rang. Bụng mềm\n4.Chuẩn đoán vào viện: suy thận man giai đoạn cuối, tăng huyết áp. bệnh tim thiếu máu cục bộ\n5.Đã xử lí (thuốc, chăm sóc...): Chạy thận nhân tạo định kỳ 3 lần/ tuần. Hạ áp. Epoetin.\n6.Cho vào điều trị tại khoa: Thận\n7.Chú ý:', '2013-12-28 12:04:41', 1),
-(13, '1.Toàn thân: Tỉnh, niêm nhạt. Phù toàn thân. Tiểu rất ít\n2.Các bộ phận: Tim đều, T1 T2 rõ. Bụng Không rang. Bụng mềm\nMạch: 80 lần/phút\nNhiệt độ: 37 oC\nHuyết áp: 140/90 mmHg\nNhịp thở: 16 lần/phút\nCân nặng: 72 lần/phút\n3.Tóm tắt kết quả lâm sàn: Tim đều, T1 T2 rõ. Bụng Không rang. Bụng mềm\n4.Chuẩn đoán vào viện: suy thận man giai đoạn cuối, tăng huyết áp. bệnh tim thiếu máu cục bộ\n5.Đã xử lí (thuốc, chăm sóc...): Chạy thận nhân tạo định kỳ 3 lần/ tuần. Hạ áp. Epoetin.\n6.Cho vào điều trị tại khoa: Thận\n7.Chú ý:', '1.Toàn thân: Tỉnh, niêm nhạt. Phù toàn thân. Tiểu rất ít\n2.Các bộ phận: Tim đều, T1 T2 rõ. Bụng Không rang. Bụng mềm\nMạch: 80 lần/phút\nNhiệt độ: 37 oC\nHuyết áp: 140/90 mmHg\nNhịp thở: 16 lần/phút\nCân nặng: 72 lần/phút\n3.Tóm tắt kết quả lâm sàn: Tim đều, T1 T2 rõ. Bụng Không rang. Bụng mềm\n4.Chuẩn đoán vào viện: suy thận man giai đoạn cuối, tăng huyết áp. bệnh tim thiếu máu cục bộ\n5.Đã xử lí (thuốc, chăm sóc...): Chạy thận nhân tạo định kỳ 3 lần/ tuần. Hạ áp. Epoetin.\n6.Cho vào điều trị tại khoa: Thận\n7.Chú ý:', '2013-12-28 12:05:32', 1),
-(14, '1.Toàn thân: Tỉnh, niêm nhạt. Phù toàn thân. Tiểu rất ít\n2.Các bộ phận: Tim đều, T1 T2 rõ. Bụng Không rang. Bụng mềm\nMạch: 80 lần/phút\nNhiệt độ: 37 oC\nHuyết áp: 140/90 mmHg\nNhịp thở: 16 lần/phút\nCân nặng: 72 lần/phút\n3.Tóm tắt kết quả lâm sàn: Tim đều, T1 T2 rõ. Bụng Không rang. Bụng mềm\n4.Chuẩn đoán vào viện: suy thận man giai đoạn cuối, tăng huyết áp. bệnh tim thiếu máu cục bộ\n5.Đã xử lí (thuốc, chăm sóc...): Chạy thận nhân tạo định kỳ 3 lần/ tuần. Hạ áp. Epoetin.\n6.Cho vào điều trị tại khoa: Thận\n7.Chú ý:', '1.Toàn thân: Tỉnh, niêm nhạt. Phù toàn thân. Tiểu rất ít\n2.Các bộ phận: Tim đều, T1 T2 rõ. Bụng Không rang. Bụng mềm\nMạch: 80 lần/phút\nNhiệt độ: 37 oC\nHuyết áp: 140/90 mmHg\nNhịp thở: 16 lần/phút\nCân nặng: 72 lần/phút\n3.Tóm tắt kết quả lâm sàn: Tim đều, T1 T2 rõ. Bụng Không rang. Bụng mềm\n4.Chuẩn đoán vào viện: suy thận man giai đoạn cuối, tăng huyết áp. bệnh tim thiếu máu cục bộ\n5.Đã xử lí (thuốc, chăm sóc...): Chạy thận nhân tạo định kỳ 3 lần/ tuần. Hạ áp. Epoetin.\n6.Cho vào điều trị tại khoa: Thận\n7.Chú ý:', '2013-12-28 12:06:36', 1),
-(15, '1.Toàn thân: FGH\n2.Các bộ phận: FGHFGH\nMạch: GFH lần/phút\nNhiệt độ: HFG oC\nHuyết áp: FGHFFG mmHg\nNhịp thở: GHFG lần/phút\nCân nặng: FGH lần/phút\n3.Tóm tắt kết quả lâm sàn: FGHFGH\n4.Chuẩn đoán vào viện: FGHFGHF\n5.Đã xử lí (thuốc, chăm sóc...): GFHFGHF\n6.Cho vào điều trị tại khoa: THẬN\n7.Chú ý: 3', '1.Toàn thân: FGH\n2.Các bộ phận: FGHFGH\nMạch: GFH lần/phút\nNhiệt độ: HFG oC\nHuyết áp: FGHFFG mmHg\nNhịp thở: GHFG lần/phút\nCân nặng: FGH lần/phút\n3.Tóm tắt kết quả lâm sàn: FGHFGH\n4.Chuẩn đoán vào viện: FGHFGHF\n5.Đã xử lí (thuốc, chăm sóc...): GFHFGHF\n6.Cho vào điều trị tại khoa: THẬN\n7.Chú ý: 3', '2013-12-28 12:35:30', 2),
-(16, '1.Toàn thân: FGH\n2.Các bộ phận: FGHFGH\nMạch: GFH lần/phút\nNhiệt độ: HFG oC\nHuyết áp: FGHFFG mmHg\nNhịp thở: GHFG lần/phút\nCân nặng: FGH lần/phút\n3.Tóm tắt kết quả lâm sàn: FGHFGH\n4.Chuẩn đoán vào viện: FGHFGHF\n5.Đã xử lí (thuốc, chăm sóc...): GFHFGHF\n6.Cho vào điều trị tại khoa: THẬN\n7.Chú ý: 3', '1.Toàn thân: FGH\n2.Các bộ phận: FGHFGH\nMạch: GFH lần/phút\nNhiệt độ: HFG oC\nHuyết áp: FGHFFG mmHg\nNhịp thở: GHFG lần/phút\nCân nặng: FGH lần/phút\n3.Tóm tắt kết quả lâm sàn: FGHFGH\n4.Chuẩn đoán vào viện: FGHFGHF\n5.Đã xử lí (thuốc, chăm sóc...): GFHFGHF\n6.Cho vào điều trị tại khoa: THẬN\n7.Chú ý: 3', '2013-12-28 12:36:20', 2);
-
--- --------------------------------------------------------
-
 INSERT INTO `xetnghiem_phieuxetnghiem` (`Xetnghiem_id`, `Phieuxetnghiem_id`, `Thongsoxetnghiem`) VALUES
 (16, 1, '32.4%'),
 (17, 1, '9.66 g/dl');
 
 -- --------------------------------------------------------
 
-
-
-
-
---------------------------------------------------------------------
+INSERT INTO `ylenh` (`loai`, `id_loai`, `Phieukhambenh_id`, `Mota`, `Bacsi_id`) VALUES (1, 2, 9, 'asdasdasd', 1);
 
 
 
