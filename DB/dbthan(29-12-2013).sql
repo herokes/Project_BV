@@ -501,6 +501,28 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `dbthan`.`Ylenh`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `dbthan`.`Ylenh` ;
+
+CREATE TABLE IF NOT EXISTS `dbthan`.`Ylenh` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `loai` INT NULL,
+  `id_loai` INT NULL,
+  `Phieukhambenh_id` INT NOT NULL,
+  `status` INT NULL DEFAULT 1,
+  `Mota` TEXT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_Ylenh_Phieukhambenh1_idx` (`Phieukhambenh_id` ASC),
+  CONSTRAINT `fk_Ylenh_Phieukhambenh1`
+    FOREIGN KEY (`Phieukhambenh_id`)
+    REFERENCES `dbthan`.`Phieukhambenh` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `dbthan`.`Todieutri_noidung`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `dbthan`.`Todieutri_noidung` ;
@@ -510,11 +532,18 @@ CREATE TABLE IF NOT EXISTS `dbthan`.`Todieutri_noidung` (
   `Dientienbenh` TEXT NULL,
   `Ngaygio` DATETIME NULL,
   `Todieutri_id` INT NOT NULL,
+  `Ylenh_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Todieutri_bosung_Todieutri1` (`Todieutri_id` ASC),
+  INDEX `fk_Todieutri_noidung_Ylenh1_idx` (`Ylenh_id` ASC),
   CONSTRAINT `fk_Todieutri_bosung_Todieutri1`
     FOREIGN KEY (`Todieutri_id`)
     REFERENCES `dbthan`.`Todieutri` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Todieutri_noidung_Ylenh1`
+    FOREIGN KEY (`Ylenh_id`)
+    REFERENCES `dbthan`.`Ylenh` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -539,32 +568,6 @@ CREATE TABLE IF NOT EXISTS `dbthan`.`Hosophimanh_Phieukhambenh` (
   CONSTRAINT `fk_Hosophimanh_has_Phieukhambenh_Phieukhambenh1`
     FOREIGN KEY (`Phieukhambenh_id`)
     REFERENCES `dbthan`.`Phieukhambenh` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `dbthan`.`Ylenh`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `dbthan`.`Ylenh` ;
-
-CREATE TABLE IF NOT EXISTS `dbthan`.`Ylenh` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `Mota` VARCHAR(45) NULL,
-  `Phieukhambenh_id` INT NOT NULL,
-  `Todieutri_noidung_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_Ylenh_Phieukhambenh1_idx` (`Phieukhambenh_id` ASC),
-  INDEX `fk_Ylenh_Todieutri_noidung1` (`Todieutri_noidung_id` ASC),
-  CONSTRAINT `fk_Ylenh_Phieukhambenh1`
-    FOREIGN KEY (`Phieukhambenh_id`)
-    REFERENCES `dbthan`.`Phieukhambenh` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Ylenh_Todieutri_noidung1`
-    FOREIGN KEY (`Todieutri_noidung_id`)
-    REFERENCES `dbthan`.`Todieutri_noidung` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

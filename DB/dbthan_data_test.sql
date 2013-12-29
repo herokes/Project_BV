@@ -147,7 +147,7 @@ INSERT INTO `xetnghiem_phieuxetnghiem` (`Xetnghiem_id`, `Phieuxetnghiem_id`, `Th
 
 -- --------------------------------------------------------
 
-
+INSERT INTO `ylenh` (`loai`, `id_loai`, `Phieukhambenh_id`, `Mota`) VALUES (1, 2, 9, 'asdasdasd');
 
 
 
