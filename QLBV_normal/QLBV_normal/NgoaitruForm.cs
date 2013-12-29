@@ -172,21 +172,14 @@ namespace QLBV_normal
                 MySqlDataReader read = com.ExecuteReader();
                 while (read.Read())
                 {
-                    richTextBox_dientienbenh.Text = "1.Toàn thân: " + read["Toanthan"].ToString()
-                        + "\n2.Các bộ phận: " + read["Cacbophan"].ToString()
+                    richTextBox_dientienbenh.Text = read["Toanthan"].ToString()
                         + "\nMạch: " + read["Mach"].ToString() + " lần/phút"
-                        + "\nNhiệt độ: " + read["Nhietdo"].ToString() + " oC"
                         + "\nHuyết áp: " + read["Huyetap"].ToString() + " mmHg"
-                        + "\nNhịp thở: " + read["Nhiptho"].ToString() + " lần/phút"
-                        + "\nCân nặng: " + read["Trongluong"].ToString() + " lần/phút"
-                        + "\n3.Tóm tắt kết quả lâm sàn: " + read["Cacbophan"].ToString()
-                        + "\n4.Chuẩn đoán vào viện: " + read["Chuandoanvaovien"].ToString()
-                        + "\n5.Đã xử lí (thuốc, chăm sóc...): " + read["Xuli"].ToString()
-                        + "\n6.Cho vào điều trị tại khoa: " + read["Dieutritaikhoa"].ToString()
-                        + "\n7.Chú ý: " + read["Chuy"].ToString();
+                        + "\n" + read["Cacbophan"].ToString()
+                        + "\nVấn dề: "
+                        + "\n" + read["Chuandoanvaovien"].ToString();
                     textBox_Quatrinhbenhly.Text = read["Quatrinhbenhly"].ToString();
                     textBox_Phuongphapdieutri.Text = read["Xuli"].ToString();
-
                 }
                 Util.con.Close();
             }
@@ -215,18 +208,12 @@ namespace QLBV_normal
                 MySqlDataReader read = com.ExecuteReader();
                 while (read.Read())
                 {
-                    richTextBox_ylenh.Text = "1.Toàn thân: " + read["Toanthan"].ToString()
-                        + "\n2.Các bộ phận: " + read["Cacbophan"].ToString()
+                    richTextBox_ylenh.Text = read["Toanthan"].ToString()
                         + "\nMạch: " + read["Mach"].ToString() + " lần/phút"
-                        + "\nNhiệt độ: " + read["Nhietdo"].ToString() + " oC"
                         + "\nHuyết áp: " + read["Huyetap"].ToString() + " mmHg"
-                        + "\nNhịp thở: " + read["Nhiptho"].ToString() + " lần/phút"
-                        + "\nCân nặng: " + read["Trongluong"].ToString() + " lần/phút"
-                        + "\n3.Tóm tắt kết quả lâm sàn: " + read["Cacbophan"].ToString()
-                        + "\n4.Chuẩn đoán vào viện: " + read["Chuandoanvaovien"].ToString()
-                        + "\n5.Đã xử lí (thuốc, chăm sóc...): " + read["Xuli"].ToString()
-                        + "\n6.Cho vào điều trị tại khoa: " + read["Dieutritaikhoa"].ToString()
-                        + "\n7.Chú ý: " + read["Chuy"].ToString();
+                        + "\n" + read["Cacbophan"].ToString()
+                        + "\nVấn dề: "
+                        + "\n" + read["Chuandoanvaovien"].ToString();
                 }
                 Util.con.Close();
             }
