@@ -47,7 +47,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button6 = new System.Windows.Forms.Button();
+            this.button_Inbenhanngoaitru = new System.Windows.Forms.Button();
             this.textBox_idbacsikham = new System.Windows.Forms.TextBox();
             this.comboBox_Bacsikham = new System.Windows.Forms.ComboBox();
             this.textBox_Chuandoan = new System.Windows.Forms.TextBox();
@@ -216,6 +216,9 @@
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.button_del_dieutri = new System.Windows.Forms.Button();
             this.button_add_dieutri = new System.Windows.Forms.Button();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.richTextBox_ylenh = new System.Windows.Forms.RichTextBox();
             this.richTextBox_dientienbenh = new System.Windows.Forms.RichTextBox();
             this.button_print_todieutri = new System.Windows.Forms.Button();
             this.listView_dieutri = new System.Windows.Forms.ListView();
@@ -227,9 +230,6 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_search_benhnhan = new System.Windows.Forms.TextBox();
-            this.label35 = new System.Windows.Forms.Label();
-            this.richTextBox_ylenh = new System.Windows.Forms.RichTextBox();
-            this.label48 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -419,7 +419,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button6);
+            this.tabPage1.Controls.Add(this.button_Inbenhanngoaitru);
             this.tabPage1.Controls.Add(this.textBox_idbacsikham);
             this.tabPage1.Controls.Add(this.comboBox_Bacsikham);
             this.tabPage1.Controls.Add(this.textBox_Chuandoan);
@@ -459,14 +459,15 @@
             this.tabPage1.Text = "Thông tin vào viện";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // button_Inbenhanngoaitru
             // 
-            this.button6.Location = new System.Drawing.Point(186, 280);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(78, 27);
-            this.button6.TabIndex = 187;
-            this.button6.Text = "IN BỆNH ÁN NGOẠI TRÚ";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button_Inbenhanngoaitru.Location = new System.Drawing.Point(186, 280);
+            this.button_Inbenhanngoaitru.Name = "button_Inbenhanngoaitru";
+            this.button_Inbenhanngoaitru.Size = new System.Drawing.Size(78, 27);
+            this.button_Inbenhanngoaitru.TabIndex = 187;
+            this.button_Inbenhanngoaitru.Text = "IN BỆNH ÁN NGOẠI TRÚ";
+            this.button_Inbenhanngoaitru.UseVisualStyleBackColor = true;
+            this.button_Inbenhanngoaitru.Click += new System.EventHandler(this.button_Inbenhanngoaitru_Click);
             // 
             // textBox_idbacsikham
             // 
@@ -1518,7 +1519,7 @@
             this.label10.Font = new System.Drawing.Font("Times New Roman", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(310, 283);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 15);
+            this.label10.Size = new System.Drawing.Size(58, 15);
             this.label10.TabIndex = 64;
             this.label10.Text = "V. KHÁC";
             // 
@@ -1528,7 +1529,7 @@
             this.label9.Font = new System.Drawing.Font("Times New Roman", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(310, 237);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(92, 15);
+            this.label9.Size = new System.Drawing.Size(94, 15);
             this.label9.TabIndex = 63;
             this.label9.Text = "IV. NƯỚC TIỂU";
             // 
@@ -2117,6 +2118,33 @@
             this.button_add_dieutri.UseVisualStyleBackColor = true;
             this.button_add_dieutri.Click += new System.EventHandler(this.button_add_dieutri_Click);
             // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(10, 190);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(37, 13);
+            this.label35.TabIndex = 33;
+            this.label35.Text = "Y lệnh";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(10, 19);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(76, 13);
+            this.label48.TabIndex = 33;
+            this.label48.Text = "Diễn tiến bệnh";
+            // 
+            // richTextBox_ylenh
+            // 
+            this.richTextBox_ylenh.Location = new System.Drawing.Point(13, 206);
+            this.richTextBox_ylenh.Name = "richTextBox_ylenh";
+            this.richTextBox_ylenh.ReadOnly = true;
+            this.richTextBox_ylenh.Size = new System.Drawing.Size(249, 131);
+            this.richTextBox_ylenh.TabIndex = 32;
+            this.richTextBox_ylenh.Text = "";
+            // 
             // richTextBox_dientienbenh
             // 
             this.richTextBox_dientienbenh.Location = new System.Drawing.Point(13, 35);
@@ -2219,33 +2247,6 @@
             this.textBox_search_benhnhan.Size = new System.Drawing.Size(173, 20);
             this.textBox_search_benhnhan.TabIndex = 21;
             this.textBox_search_benhnhan.TextChanged += new System.EventHandler(this.textBox_search_benhnhan_TextChanged);
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(10, 190);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(37, 13);
-            this.label35.TabIndex = 33;
-            this.label35.Text = "Y lệnh";
-            // 
-            // richTextBox_ylenh
-            // 
-            this.richTextBox_ylenh.Location = new System.Drawing.Point(13, 206);
-            this.richTextBox_ylenh.Name = "richTextBox_ylenh";
-            this.richTextBox_ylenh.ReadOnly = true;
-            this.richTextBox_ylenh.Size = new System.Drawing.Size(249, 131);
-            this.richTextBox_ylenh.TabIndex = 32;
-            this.richTextBox_ylenh.Text = "";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(10, 19);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(76, 13);
-            this.label48.TabIndex = 33;
-            this.label48.Text = "Diễn tiến bệnh";
             // 
             // NgoaitruForm
             // 
@@ -2483,7 +2484,7 @@
         private System.Windows.Forms.TextBox textBox35;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button_Inbenhanngoaitru;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.RichTextBox richTextBox_ylenh;
         private System.Windows.Forms.Label label48;

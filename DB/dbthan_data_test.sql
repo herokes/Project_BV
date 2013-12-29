@@ -46,7 +46,25 @@ INSERT INTO `xetnghiem` (`id`, `TenXetnghiem`, `Thongsobinhthuong`, `Loaixetnghi
 (22, 'HIV', 'Negative', 'Miễn Dịch'),
 (23, 'TPTNT', NULL, 'Nước Tiểu'),
 (24, 'Phản ứng chéo', NULL, 'Khác');
-
+-- ---------------------------------------------------------------
+INSERT INTO `dbthan`.`idc` (`id`, `TenIDC`, `Ghichu`) VALUES 
+('N18.0', 'Suy thận mạn giai đoạn cuối', NULL), 
+('I10', 'Cao huyết áp', NULL),
+ ('E13', 'Đái tháo đường type 2', NULL),
+ ('I02.0', 'Thiếu máu cơ tim', NULL),
+ ('I44.0', 'Block nhĩ thất độ I', NULL),
+ ('I25.2', 'Nhồi máu cơ tim cũ', NULL),
+ ('I48', 'Rung nhĩ và cuồng nhĩ', NULL),
+ ('I50', 'Suy tim', NULL),
+ ('I73', 'Bệnh mạch máu ngoại biên', NULL),
+ ('I84', 'Trĩ', NULL),
+ ('I87.2', 'Suy tĩnh mạch mạn', NULL),
+ ('B18', 'Viêm gan virus mạn', NULL),
+ ('J05.2', 'Viêm phế quản', NULL),
+ ('J20', 'Viêm phế quản cấp', NULL),
+ ('N08.0', 'Nhiễm trùng tiểu', NULL),
+ ('A04', 'Nhiễm trùng đường ruột', NULL),
+ ('E11', 'Không phụ thuộc Insulin', NULL);
 -- --------------------------------------------------------
 
 INSERT INTO `bacsi` (`id`, `TenBacsi`, `Trinhdo`, `Dienthoai`, `Diachi`, `Namsinh`) VALUES
