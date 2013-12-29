@@ -229,6 +229,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_search_benhnhan = new System.Windows.Forms.TextBox();
+            this.button6 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -418,6 +419,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button6);
             this.tabPage1.Controls.Add(this.textBox_idbacsikham);
             this.tabPage1.Controls.Add(this.comboBox_Bacsikham);
             this.tabPage1.Controls.Add(this.textBox_Chuandoan);
@@ -478,7 +480,6 @@
             this.textBox_Chuandoan.Name = "textBox_Chuandoan";
             this.textBox_Chuandoan.Size = new System.Drawing.Size(283, 20);
             this.textBox_Chuandoan.TabIndex = 182;
-            this.textBox_Chuandoan.Text = "lay ma IDC va ten IDC";
             // 
             // label36
             // 
@@ -714,9 +715,9 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(42, 21);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(68, 13);
+            this.label17.Size = new System.Drawing.Size(66, 13);
             this.label17.TabIndex = 169;
-            this.label17.Text = "Ngày Khám :";
+            this.label17.Text = "Ngày Khoa :";
             // 
             // tabPage2
             // 
@@ -2236,6 +2237,15 @@
             this.textBox_search_benhnhan.TabIndex = 21;
             this.textBox_search_benhnhan.TextChanged += new System.EventHandler(this.textBox_search_benhnhan_TextChanged);
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(186, 280);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(78, 27);
+            this.button6.TabIndex = 187;
+            this.button6.Text = "IN BỆNH ÁN NGOẠI TRÚ";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
             // NgoaitruForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2475,5 +2485,6 @@
         private System.Windows.Forms.TextBox textBox35;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Button button6;
     }
 }

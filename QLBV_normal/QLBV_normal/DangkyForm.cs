@@ -132,7 +132,7 @@ namespace QLBV_normal
                         com1.CommandText = "INSERT INTO  ngoaitru (id,Ngaygiovaovien,Benhchinh ,Benhkemtheo,Dieutritu ,Dieutriden ,Tinhtrangravien ,Huongdieutri ,Bacsikhambenh ,Bacsidieutri ,chaythan ,Phieukhambenh_id)VALUES (NULL , NULL , NULL , NULL , NULL , NULL , 0 , NULL ," + comboBox_Bacsikham.Text + ", NULL , 1 ," + maphieukhambenh + ")";
                     else if (comboBox_Loaidieutri.Text == "NGOẠI TRU KHÔNG CHẠY THẬN")
                         com1.CommandText = "INSERT INTO  ngoaitru (id,Ngaygiovaovien,Benhchinh ,Benhkemtheo,Dieutritu ,Dieutriden ,Tinhtrangravien ,Huongdieutri ,Bacsikhambenh ,Bacsidieutri ,chaythan ,Phieukhambenh_id)VALUES (NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , 0 ," + maphieukhambenh + ")";
-                    else com1.CommandText = "INSERT INTO `dbthan`.`noitru` (`id`, `Thoigianvaovien`, `Tructiepvao`, `Vaolanthu`, `Ngaygiovaokhoa`, `Chuyenkhoa`, `Ngaygiochuyenkhoa`, `Chuyenvien`, `Chuyenden`, `Ngaygioravien`, `Loairavien`, `Noichuyenden`, `KKBCapcuu`, `Khivaokhoadieutri`, `Thuthuat`, `Phauthuat`, `Benhchinh`, `Benhkemtheo`, `Taibien`, `Bienchung`, `Ketquadieutri`, `Giaiphaubenh`, `Thoigiantuvong`, `Lydotuvong`, `Nguyennhanchinhtuvong`, `Khamnghiemtuthi`, `Chuandoangiaiphaututhi`, `Diung`, `Matuy`, `Ruoubia`, `Thuocla`, `Thuoclao`, `Khac`, `Tuanhoan`, `Hohap`, `Tieuhoa`, `Thantietnieusinhduc`, `Thankinh`, `Coxuongkhop`, `Taimuihong`, `Ranghammat`, `Mat`, `Noitietdinhduong`, `Tomtatbenhan`, `Tienluong`, `Huongdieutri`, `Phuongphapdieutri`, `BStruongkhoa`, `Bslambenhan`, `BSdieutri`, `Phieukhambenh_id`) VALUES (NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL," + maphieukhambenh + ")";
+                    else com1.CommandText = "INSERT INTO `dbthan`.`noitru` (`id`, `Thoigianvaovien`, `Tructiepvao`, `Vaolanthu`, `Ngaygiovaokhoa`, `Chuyenkhoa`, `Ngaygiochuyenkhoa`, `Chuyenvien`, `Chuyenden`, `Ngaygioravien`, `Loairavien`, `Noichuyenden`, `KKBCapcuu`, `Khivaokhoadieutri`, `Thuthuat`, `Phauthuat`, `Benhchinh`, `Benhkemtheo`, `Taibien`, `Bienchung`, `Ketquadieutri`, `Giaiphaubenh`, `Thoigiantuvong`, `Lydotuvong`, `Nguyennhanchinhtuvong`, `Khamnghiemtuthi`, `Chuandoangiaiphaututhi`, `Diung`, `Matuy`, `Ruoubia`, `Thuocla`, `Thuoclao`, `Khac`, `Tuanhoan`, `Hohap`, `Tieuhoa`, `Thantietnieusinhduc`, `Thankinh`, `Coxuongkhop`, `Taimuihong`, `Ranghammat`, `Mat`, `Noitietdinhduong`, `Tomtatbenhan`, `Tienluong`, `Huongdieutri`, `Phuongphapdieutri`, `BStruongkhoa`, `Bslambenhan`, `BSdieutri`, `Phieukhambenh_id`) VALUES (NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL," + maphieukhambenh + ")";
                     Util.con.Open();
                     com1.ExecuteNonQuery();
                     Util.con.Close();
@@ -471,9 +471,10 @@ namespace QLBV_normal
                     MySqlDataReader read = com.ExecuteReader();
                     if (read.Read())
                     {
-                       
                         textBox_Chuandoan.Text = read[0].ToString();
+                        Util.con.Close();
                     }
+                    //else MessageBox.Show("Mã ICD Chưa có trong dữ liệu");
                     Util.con.Close();
                 }
             }
@@ -489,16 +490,19 @@ namespace QLBV_normal
         {
             try
             {
+
                 if (e.KeyCode == Keys.Enter)
                 {
-                    richTextBox_dsbenh.Text += textBox_Chuandoan.Text+",";
-                    
-                    arricd.Add(textBox_idICD.Text);
-                    textBox_Chuandoan.Text = null;
-                    textBox_idICD.Text = null;
-                    this.textBox_idICD.Focus();
-
+                    if (textBox_Chuandoan.Text.Length > 0)
+                    {
+                        richTextBox_dsbenh.Text += textBox_Chuandoan.Text + ",";
+                        arricd.Add(textBox_idICD.Text);
+                        textBox_Chuandoan.Text = null;
+                        textBox_idICD.Text = null;
+                        this.textBox_idICD.Focus();
+                    }
                 }
+                else return;
             }
             catch (MySqlException sqlE)
             {
@@ -582,6 +586,11 @@ namespace QLBV_normal
                 MessageBox.Show(sqlE.Source.ToString());
                 return;
             }
+        }
+
+        private void textBox_idICD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = char.Parse(e.KeyChar.ToString().ToUpper());
         }
 
 
