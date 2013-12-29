@@ -47,6 +47,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button6 = new System.Windows.Forms.Button();
             this.textBox_idbacsikham = new System.Windows.Forms.TextBox();
             this.comboBox_Bacsikham = new System.Windows.Forms.ComboBox();
             this.textBox_Chuandoan = new System.Windows.Forms.TextBox();
@@ -229,7 +230,6 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_search_benhnhan = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -458,6 +458,15 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Thông tin vào viện";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(54, 280);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(78, 27);
+            this.button6.TabIndex = 187;
+            this.button6.Text = "IN BỆNH ÁN NGOẠI TRÚ";
+            this.button6.UseVisualStyleBackColor = true;
             // 
             // textBox_idbacsikham
             // 
@@ -1509,7 +1518,7 @@
             this.label10.Font = new System.Drawing.Font("Times New Roman", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(310, 283);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 15);
+            this.label10.Size = new System.Drawing.Size(58, 15);
             this.label10.TabIndex = 64;
             this.label10.Text = "V. KHÁC";
             // 
@@ -1519,7 +1528,7 @@
             this.label9.Font = new System.Drawing.Font("Times New Roman", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(310, 237);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(92, 15);
+            this.label9.Size = new System.Drawing.Size(94, 15);
             this.label9.TabIndex = 63;
             this.label9.Text = "IV. NƯỚC TIỂU";
             // 
@@ -2236,15 +2245,6 @@
             this.textBox_search_benhnhan.Size = new System.Drawing.Size(173, 20);
             this.textBox_search_benhnhan.TabIndex = 21;
             this.textBox_search_benhnhan.TextChanged += new System.EventHandler(this.textBox_search_benhnhan_TextChanged);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(186, 280);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(78, 27);
-            this.button6.TabIndex = 187;
-            this.button6.Text = "IN BỆNH ÁN NGOẠI TRÚ";
-            this.button6.UseVisualStyleBackColor = true;
             // 
             // NgoaitruForm
             // 

@@ -10,14 +10,14 @@ INSERT INTO `benhnhan` (`id`, `Ten`, `Ngaysinh`, `Gioitinh`, `Nghenghiep`, `Dant
 
 -- --------------------------------------------------------
 
-INSERT INTO `thuoc` (`id`, `Tenthuoc`, `Taduoc`, `Hamluong`, `Duongdung`, `Dang`, `Soluong`) VALUES
-(1, 'Adalat LA', NULL, '30mg', NULL, 'Viên', NULL),
-(2, 'Adalat LA', NULL, '30mg', 'Uống', 'Viên', NULL),
-(3, 'Aprovel', NULL, '150mg', 'Uống', 'viên', NULL),
-(4, 'Coversyl', NULL, '10mg', 'Uống', 'viên', NULL),
-(5, 'Concor tab', NULL, '5mg', 'Uống', 'viên', NULL),
-(6, 'Omazolta', NULL, '20mg', 'Uống', 'viên', NULL),
-(7, 'Austriol', NULL, '0.5ug', 'Uống', 'viên', NULL);
+INSERT INTO `thuoc` (`id`, `Tenthuoc`, `Taduoc`, `Hamluong`, `Duongdung`, `Dang`) VALUES
+(1, 'Adalat LA', NULL, '30mg', NULL, 'Viên'),
+(2, 'Adalat LA', NULL, '30mg', 'Uống', 'Viên'),
+(3, 'Aprovel', NULL, '150mg', 'Uống', 'viên'),
+(4, 'Coversyl', NULL, '10mg', 'Uống', 'viên'),
+(5, 'Concor tab', NULL, '5mg', 'Uống', 'viên'),
+(6, 'Omazolta', NULL, '20mg', 'Uống', 'viên'),
+(7, 'Austriol', NULL, '0.5ug', 'Uống', 'viên');
 
 -- --------------------------------------------------------
 
@@ -46,7 +46,25 @@ INSERT INTO `xetnghiem` (`id`, `TenXetnghiem`, `Thongsobinhthuong`, `Loaixetnghi
 (22, 'HIV', 'Negative', 'Miễn Dịch'),
 (23, 'TPTNT', NULL, 'Nước Tiểu'),
 (24, 'Phản ứng chéo', NULL, 'Khác');
-
+-- ---------------------------------------------------------------
+INSERT INTO `dbthan`.`idc` (`id`, `TenIDC`, `Ghichu`) VALUES 
+('N18.0', 'Suy thận mạn giai đoạn cuối', NULL), 
+('I10', 'Cao huyết áp', NULL),
+ ('E13', 'Đái tháo đường type 2', NULL),
+ ('I02.0', 'Thiếu máu cơ tim', NULL),
+ ('I44.0', 'Block nhĩ thất độ I', NULL),
+ ('I25.2', 'Nhồi máu cơ tim cũ', NULL),
+ ('I48', 'Rung nhĩ và cuồng nhĩ', NULL),
+ ('I50', 'Suy tim', NULL),
+ ('I73', 'Bệnh mạch máu ngoại biên', NULL),
+ ('I84', 'Trĩ', NULL),
+ ('I87.2', 'Suy tĩnh mạch mạn', NULL),
+ ('B18', 'Viêm gan virus mạn', NULL),
+ ('J05.2', 'Viêm phế quản', NULL),
+ ('J20', 'Viêm phế quản cấp', NULL),
+ ('N08.0', 'Nhiễm trùng tiểu', NULL),
+ ('A04', 'Nhiễm trùng đường ruột', NULL),
+ ('E11', 'Không phụ thuộc Insulin', NULL);
 -- Table contain contraint ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO `phieukhambenh` (`id`, `Doituong`, `DKKCBBD`, `Bhytgiatritu`, `Bhytgiatriden`, `Sobhyt`, `Nguoithan`, `Diachinguoithan`, `Dienthoai`, `Thoigiandenkham`, `Noigioithieu`, `Lydovaovien`, `Quatrinhbenhly`, `Tiensubenhbanthan`, `Tiensubenhgiadinh`, `Mach`, `Nhietdo`, `Huyetap`, `Nhiptho`, `Trongluong`, `Toanthan`, `Cacbophan`, `Tomtatketqualamsan`, `Chuandoanvaovien`, `Xuli`, `Dieutritaikhoa`, `Chuy`, `Benhnhan_id`) VALUES
@@ -142,24 +160,7 @@ INSERT INTO `xetnghiem_phieuxetnghiem` (`Xetnghiem_id`, `Phieuxetnghiem_id`, `Th
 
 
 
-INSERT INTO `dbthan`.`idc` (`id`, `TenIDC`, `Ghichu`) VALUES 
-('N18.0', 'Suy thận mạn giai đoạn cuối', NULL), 
-('I10', 'Cao huyết áp', NULL),
- ('E13', 'Đái tháo đường type 2', NULL),
- ('I02.0', 'Thiếu máu cơ tim', NULL),
- ('I44.0', 'Block nhĩ thất độ I', NULL),
- ('I25.2', 'Nhồi máu cơ tim cũ', NULL),
- ('I48', 'Rung nhĩ và cuồng nhĩ', NULL),
- ('I50', 'Suy tim', NULL),
- ('I73', 'Bệnh mạch máu ngoại biên', NULL),
- ('I84', 'Trĩ', NULL),
- ('I87.2', 'Suy tĩnh mạch mạn', NULL),
- ('B18', 'Viêm gan virus mạn', NULL),
- ('J05.2', 'Viêm phế quản', NULL),
- ('J20', 'Viêm phế quản cấp', NULL),
- ('N08.0', 'Nhiễm trùng tiểu', NULL),
- ('A04', 'Nhiễm trùng đường ruột', NULL),
- ('E11', 'Không phụ thuộc Insulin', NULL);
+
 
 --------------------------------------------------------------------
 
