@@ -204,7 +204,6 @@
             this.radioButton_xuatvien = new System.Windows.Forms.RadioButton();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox34 = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.textBox_Tomtatketqua = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
@@ -2090,7 +2089,6 @@
             this.label42.Size = new System.Drawing.Size(101, 13);
             this.label42.TabIndex = 191;
             this.label42.Text = "Chuẩn đoán ra viện";
-            this.label42.Click += new System.EventHandler(this.label42_Click);
             // 
             // label43
             // 
@@ -2170,7 +2168,6 @@
             this.label45.Size = new System.Drawing.Size(121, 13);
             this.label45.TabIndex = 204;
             this.label45.Text = "Hướng điều trị tiếp theo:";
-            this.label45.Click += new System.EventHandler(this.label45_Click);
             // 
             // textBox_huongdieutri
             // 
@@ -2179,7 +2176,6 @@
             this.textBox_huongdieutri.Size = new System.Drawing.Size(527, 20);
             this.textBox_huongdieutri.TabIndex = 203;
             this.textBox_huongdieutri.Text = "Đổi hồ sơ tiếp tục điều trị";
-            this.textBox_huongdieutri.TextChanged += new System.EventHandler(this.textBox45_TextChanged);
             // 
             // button4
             // 

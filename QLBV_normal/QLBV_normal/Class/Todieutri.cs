@@ -9,23 +9,25 @@ namespace QLBV_normal.Class
     {
         private string _tenbenhnhan;
         private DateTime _ngaysinh;
-        private int _sogiuong;
-        private int _buong;
+        private string _sogiuong;
+        private string _buong;
         private string _chandoan;
         private DateTime _ngaygio;
         private string _dientienbenh;
         private string _ylenh;
+        private string _bacsi;
 
         public Todieutri()
         {
             _tenbenhnhan = "";
             _ngaysinh = DateTime.Now;
-            _sogiuong = 0;
-            _buong = 0;
+            _sogiuong = "";
+            _buong = "";
             _chandoan = "";
             _ngaygio = DateTime.Now;
             _dientienbenh = "";
             _ylenh = "";
+            _bacsi = "";
         }
 
         public string Tenbenhnhan
@@ -50,7 +52,7 @@ namespace QLBV_normal.Class
                 this._ngaysinh = value;
             }
         }
-        public int Sogiuong
+        public string Sogiuong
         {
             get
             {
@@ -61,7 +63,7 @@ namespace QLBV_normal.Class
                 this._sogiuong = value;
             }
         }
-        public int Buong
+        public string Buong
         {
             get
             {
@@ -114,6 +116,17 @@ namespace QLBV_normal.Class
             set
             {
                 this._ylenh = value;
+            }
+        }
+        public string Bacsi
+        {
+            get
+            {
+                return this._bacsi;
+            }
+            set
+            {
+                this._bacsi = value;
             }
         }
     }
