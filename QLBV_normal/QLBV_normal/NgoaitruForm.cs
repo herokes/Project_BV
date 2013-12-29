@@ -186,6 +186,19 @@ namespace QLBV_normal
                         + "\n7.Chú ý: " + read["Chuy"].ToString();
                     textBox_Quatrinhbenhly.Text = read["Quatrinhbenhly"].ToString();
                     textBox_Phuongphapdieutri.Text = read["Xuli"].ToString();
+                    dateTimePicker_Ngaykham.Value =DateTime.Parse(read["Thoigiandenkham"].ToString());
+
+                    dateTimePicker_Giokham.Value = dateTimePicker_Ngaykham.Value;
+                    comboBox_Doituong.Text = read["Doituong"].ToString();
+                    textBox_Sothe.Text = read["Sobhyt"].ToString();
+                    dateTimePicker_Tu.Value = DateTime.Parse(read["Bhytgiatritu"].ToString());
+                    dateTimePicker_Den.Value = DateTime.Parse(read["Bhytgiatriden"].ToString());
+                    textBox_Nguoithan.Text = read["Nguoithan"].ToString();
+                    textBox_Dienthoai.Text = read["Dienthoai"].ToString();
+                    textBox_Diachinguoithan.Text = read["Diachinguoithan"].ToString();
+                    textBox_Noigioithieu.Text = read["Noigioithieu"].ToString();
+                    textBox_Lydovaovien.Text = read["Lydovaovien"].ToString();
+                    textBox_Chuandoan.Text = read["Chuandoanvaovien"].ToString();
 
                 }
                 Util.con.Close();

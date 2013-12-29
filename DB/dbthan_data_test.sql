@@ -1,4 +1,4 @@
-
+﻿
 INSERT INTO `benhnhan` (`id`, `Ten`, `Ngaysinh`, `Gioitinh`, `Nghenghiep`, `Dantoc`, `CMND`, `Ngoaikieu`, `Sonha`, `Duong`, `Phuong`, `Quan`, `Thanhpho`, `Noilamviec`) VALUES
 (0, 'HUỲNH CÔNG HINH', '1953-07-17 00:00:00', 1, 'Công nhân', 'Kinh', '025177881', NULL, '183/23a', 'Tân Hòa Đông', '14', '6', 'Hồ Chí Minh', 'Quận 6'),
 (1301, 'QUANG', '1989-11-11 00:00:00', 1, 'Công nhân', 'KINH', '025177881', '', '11', ' LTK', 'P9', 'TB', 'HCM', 'COOPMARK'),
@@ -139,3 +139,50 @@ INSERT INTO `xetnghiem_phieuxetnghiem` (`Xetnghiem_id`, `Phieuxetnghiem_id`, `Th
 (17, 1, '9.66 g/dl');
 
 -- --------------------------------------------------------
+
+
+
+INSERT INTO `dbthan`.`idc` (`id`, `TenIDC`, `Ghichu`) VALUES 
+('N18.0', 'Suy thận mạn giai đoạn cuối', NULL), 
+('I10', 'Cao huyết áp', NULL),
+ ('E13', 'Đái tháo đường type 2', NULL),
+ ('I02.0', 'Thiếu máu cơ tim', NULL),
+ ('I44.0', 'Block nhĩ thất độ I', NULL),
+ ('I25.2', 'Nhồi máu cơ tim cũ', NULL),
+ ('I48', 'Rung nhĩ và cuồng nhĩ', NULL),
+ ('I50', 'Suy tim', NULL),
+ ('I73', 'Bệnh mạch máu ngoại biên', NULL),
+ ('I84', 'Trĩ', NULL),
+ ('I87.2', 'Suy tĩnh mạch mạn', NULL),
+ ('B18', 'Viêm gan virus mạn', NULL),
+ ('J05.2', 'Viêm phế quản', NULL),
+ ('J20', 'Viêm phế quản cấp', NULL),
+ ('N08.0', 'Nhiễm trùng tiểu', NULL),
+ ('A04', 'Nhiễm trùng đường ruột', NULL),
+ ('E11', 'Không phụ thuộc Insulin', NULL);
+
+--------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -17,6 +17,8 @@ namespace QLBV_normal
             Application.SetCompatibleTextRenderingDefault(false);
             MainForm frmMain = new MainForm();
             frmMain.Show();
+
+            Application.Run();
             Application.Run();
         }
     }

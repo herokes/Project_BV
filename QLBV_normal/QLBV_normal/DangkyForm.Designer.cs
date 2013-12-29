@@ -223,6 +223,7 @@
             this.textBox_idICD.TabIndex = 163;
             this.textBox_idICD.TextChanged += new System.EventHandler(this.textBox_maICD_TextChanged);
             this.textBox_idICD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_idICD_KeyDown);
+            this.textBox_idICD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_idICD_KeyPress);
             // 
             // textBox_tiensubenhgiadinh
             // 
