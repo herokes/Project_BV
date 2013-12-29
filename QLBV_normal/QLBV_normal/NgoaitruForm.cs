@@ -325,7 +325,7 @@ namespace QLBV_normal
                 MySqlCommand com = new MySqlCommand();
                 com.Connection = Util.con;
                 com.Parameters.Add("@id", MySqlDbType.Int32, 11).Value = int.Parse(textBox_MaBN.Text);
-                com.CommandText = @"SELECT benhnhan.Ten, benhnhan.Ngaysinh, todieutri_noidung.*, ngoaitru.*, ylenh.Mota
+                com.CommandText = @"SELECT benhnhan.Ten, benhnhan.Ngaysinh, todieutri_noidung.*, ngoaitru.*, ylenh.Mota, bacsi.TenBacsi
                                         FROM todieutri_noidung 
                                         LEFT OUTER JOIN todieutri
                                             ON todieutri_noidung.Todieutri_id=todieutri.id
@@ -336,7 +336,9 @@ namespace QLBV_normal
                                         LEFT OUTER JOIN benhnhan
                                             ON benhnhan.id=phieukhambenh.Benhnhan_id 
                                         LEFT OUTER JOIN ylenh
-                                            ON ylenh.id=todieutri_noidung.Ylenh_id                                         
+                                            ON ylenh.id=todieutri_noidung.Ylenh_id
+                                        LEFT OUTER JOIN bacsi
+                                            ON bacsi.id=ylenh.Bacsi_id                                         
                                         WHERE benhnhan.id=@id AND ngoaitru.Tinhtrangravien=0";
                 Util.con.Open();
                 MySqlDataReader read = com.ExecuteReader();
@@ -349,6 +351,7 @@ namespace QLBV_normal
                     obj.Ngaygio = DateTime.Parse(read["Ngaygio"].ToString());
                     obj.Dientienbenh = read["Dientienbenh"].ToString();
                     obj.Ylenh = read["Mota"].ToString();
+                    obj.Bacsi = read["TenBacsi"].ToString();
                     frmMain.frmReport.arrReport.Add(obj);
                 }
                 Util.con.Close();
