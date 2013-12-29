@@ -512,11 +512,18 @@ CREATE TABLE IF NOT EXISTS `dbthan`.`Ylenh` (
   `Phieukhambenh_id` INT NOT NULL,
   `status` INT NULL DEFAULT 1,
   `Mota` TEXT NULL,
+  `Bacsi_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Ylenh_Phieukhambenh1_idx` (`Phieukhambenh_id` ASC),
+  INDEX `fk_Ylenh_Bacsi1_idx` (`Bacsi_id` ASC),
   CONSTRAINT `fk_Ylenh_Phieukhambenh1`
     FOREIGN KEY (`Phieukhambenh_id`)
     REFERENCES `dbthan`.`Phieukhambenh` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Ylenh_Bacsi1`
+    FOREIGN KEY (`Bacsi_id`)
+    REFERENCES `dbthan`.`Bacsi` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

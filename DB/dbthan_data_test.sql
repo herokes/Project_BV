@@ -49,6 +49,13 @@ INSERT INTO `xetnghiem` (`id`, `TenXetnghiem`, `Thongsobinhthuong`, `Loaixetnghi
 
 -- --------------------------------------------------------
 
+INSERT INTO `bacsi` (`id`, `TenBacsi`, `Trinhdo`, `Dienthoai`, `Diachi`, `Namsinh`) VALUES
+(1, 'NGUYỄN THỊ KIM PHƯỢNG', NULL, NULL, NULL, NULL),
+(2, 'DƯƠNG MINH CƯỜNG', NULL, NULL, NULL, NULL),
+(3, 'TRẦN LÝ MỸ CHÂU', NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
 INSERT INTO `idc` (`id`, `TenIDC`, `Ghichu`) VALUES 
 ('N18.0', 'Suy thận mạn giai đoạn cuối', NULL), 
 ('I10', 'Cao huyết áp', NULL),
@@ -104,13 +111,6 @@ INSERT INTO `phieuxetnghiem` (`id`, `Ngayxetnghiemm`, `Phieukhambenh_id`) VALUES
 
 -- --------------------------------------------------------
 
-INSERT INTO `bacsi` (`id`, `TenBacsi`, `Trinhdo`, `Dienthoai`, `Diachi`, `Namsinh`) VALUES
-(1, 'NGUYỄN THỊ KIM PHƯỢNG', NULL, NULL, NULL, NULL),
-(2, 'DƯƠNG MINH CƯỜNG', NULL, NULL, NULL, NULL),
-(3, 'TRẦN LÝ MỸ CHÂU', NULL, NULL, NULL, NULL);
-
--- --------------------------------------------------------
-
 INSERT INTO `hoichuan` (`id`, `Thoigianhoichuan`, `Ketluanhoichuan`, `Phieuxetnghiem_id`) VALUES
 (1, '2013-12-16 11:00:00', 'Dùng thuốc tạo máu :(Pronivel 2000ui, Mirafo 4000ui, Epocassa 2000ui) liều 12,000ui/tuần. Truyền đạm (Kidmin 7,2%, Celemin Nepro 7%): 2 lần/ tuần)', 1);
 
@@ -147,7 +147,7 @@ INSERT INTO `xetnghiem_phieuxetnghiem` (`Xetnghiem_id`, `Phieuxetnghiem_id`, `Th
 
 -- --------------------------------------------------------
 
-INSERT INTO `ylenh` (`loai`, `id_loai`, `Phieukhambenh_id`, `Mota`) VALUES (1, 2, 9, 'asdasdasd');
+INSERT INTO `ylenh` (`loai`, `id_loai`, `Phieukhambenh_id`, `Mota`, `Bacsi_id`) VALUES (1, 2, 9, 'asdasdasd', 1);
 
 
 
