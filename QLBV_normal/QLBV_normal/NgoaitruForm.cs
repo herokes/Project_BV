@@ -74,6 +74,8 @@ namespace QLBV_normal
         private void NgoaitruFormnew_Load(object sender, EventArgs e)
         {
             Show_danhsachbenhnhan();
+            //autocomplete_thuoc();
+           
         }
 
         private void radioButton_xuatvien_CheckedChanged(object sender, EventArgs e)
@@ -113,7 +115,7 @@ namespace QLBV_normal
             }
             catch (MySqlException sqlE)
             {
-                
+
                 return;
 
             }
@@ -185,7 +187,7 @@ namespace QLBV_normal
                         + "\n" + read["Chuandoanvaovien"].ToString();
                     textBox_Quatrinhbenhly.Text = read["Quatrinhbenhly"].ToString();
                     textBox_Phuongphapdieutri.Text = read["Xuli"].ToString();
-                    dateTimePicker_Ngaykham.Value =DateTime.Parse(read["Thoigiandenkham"].ToString());
+                    dateTimePicker_Ngaykham.Value = DateTime.Parse(read["Thoigiandenkham"].ToString());
 
                     dateTimePicker_Giokham.Value = dateTimePicker_Ngaykham.Value;
                     comboBox_Doituong.Text = read["Doituong"].ToString();
@@ -197,7 +199,7 @@ namespace QLBV_normal
                     textBox_Diachinguoithan.Text = read["Diachinguoithan"].ToString();
                     textBox_Noigioithieu.Text = read["Noigioithieu"].ToString();
                     textBox_Lydovaovien.Text = read["Lydovaovien"].ToString();
-                    textBox_Chuandoan.Text = read["Chuandoanvaovien"].ToString();
+                    //textBox_Chuandoan.Text = read["Chuandoanvaovien"].ToString();
 
                 }
                 Util.con.Close();
@@ -570,7 +572,7 @@ namespace QLBV_normal
             }
             catch (Exception ex)
             {
-             
+
             }
             Hashtable currentObject = get_CurrentObject(idBenhnhan);
             if (currentObject.Count == 0)
@@ -590,11 +592,12 @@ namespace QLBV_normal
         {
             Show_danhsachbenhnhan();
         }
-/// <summary>
-///  In Bênh an  ngoai tru
-/// </summary>
-/// <param name="sender"></param>
-/// <param name="e"></param>
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        ///  In Bênh an  ngoai tru
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_Inbenhanngoaitru_Click(object sender, EventArgs e)
         {
             frmMain.frmReport = new ReportForm();
@@ -662,6 +665,34 @@ namespace QLBV_normal
                 return;
             }
         }
+        public void load_Thongtinbenh(int idBenhnhan)
+        {
+            // richTextBox_dientienbenh.Text = "";
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.Parameters.Add("@id", MySqlDbType.Int32, 11).Value = idBenhnhan;
+                com.CommandText = @"SELECT phieukhambenh.*
+                                        FROM phieukhambenh
+                                        LEFT OUTER JOIN ngoaitru
+                                            ON ngoaitru.Phieukhambenh_id=phieukhambenh.id 
+                                        LEFT OUTER JOIN benhnhan
+                                            ON benhnhan.id=phieukhambenh.Benhnhan_id 
+                                        WHERE benhnhan.id=@id AND ngoaitru.Tinhtrangravien=0";
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                while (read.Read())
+                {
+                    richTextBox_dientienbenh.Text = read["Toanthan"].ToString()
+                        + "\nMạch: " + read["Mach"].ToString() + " lần/phút"
+                        + "\nHuyết áp: " + read["Huyetap"].ToString() + " mmHg"
+                        + "\n" + read["Cacbophan"].ToString()
+                        + "\nVấn đề: "
+                        + "\n" + read["Chuandoanvaovien"].ToString();
+                    textBox_Quatrinhbenhly.Text = read["Quatrinhbenhly"].ToString();
+                    textBox_Phuongphapdieutri.Text = read["Xuli"].ToString();
+                    dateTimePicker_Ngaykham.Value = DateTime.Parse(read["Thoigiandenkham"].ToString());
 
         private void button_create_phieuxetnghiem_Click(object sender, EventArgs e)
         {
@@ -722,5 +753,202 @@ namespace QLBV_normal
 
 
        
-    }
+dateTimePicker_Giokham.Value = dateTimePicker_Ngaykham.Value;
+                    comboBox_Doituong.Text = read["Doituong"].ToString();
+                    textBox_Sothe.Text = read["Sobhyt"].ToString();
+                    dateTimePicker_Tu.Value = DateTime.Parse(read["Bhytgiatritu"].ToString());
+                    dateTimePicker_Den.Value = DateTime.Parse(read["Bhytgiatriden"].ToString());
+                    textBox_Nguoithan.Text = read["Nguoithan"].ToString();
+                    textBox_Dienthoai.Text = read["Dienthoai"].ToString();
+                    textBox_Diachinguoithan.Text = read["Diachinguoithan"].ToString();
+                    textBox_Noigioithieu.Text = read["Noigioithieu"].ToString();
+                    textBox_Lydovaovien.Text = read["Lydovaovien"].ToString();
+                    //textBox_Chuandoan.Text = read["Chuandoanvaovien"].ToString();
+
+
+                }
+                Util.con.Close();
+            }
+            catch (MySqlException sqlE)
+            {
+                return;
+            }
+        }
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// cấp thuốc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private void textBox_tenthuoc_TextChanged(object sender, EventArgs e)
+        {
+            //Util.con.Open();
+            
+            MySqlCommand com = new MySqlCommand();
+            com.Connection = Util.con;
+            com.Parameters.Add("@tenthuoc", MySqlDbType.VarChar, 100);
+            com.CommandText = "select * from Thuoc where Tenthuoc  like '" + textBox_tenthuoc.Text +"%'";
+            Util.con.Open();
+            MySqlDataReader read = com.ExecuteReader();
+            listView_thuoc.Items.Clear();
+            while (read.Read())
+            {
+                int i = listView_thuoc.Items.Count;
+                listView_thuoc.Items.Add(read["id"].ToString());
+                listView_thuoc.Items[i].SubItems.Add(read["Tenthuoc"].ToString());
+                listView_thuoc.Items[i].SubItems.Add(read["Hamluong"].ToString());
+                listView_thuoc.Items[i].SubItems.Add(read["Dang"].ToString());
+                listView_thuoc.Items[i].SubItems.Add(read["Duongdung"].ToString());
+            }
+            read.Close();
+            //textBox_tenthuoc.AutoCompleteCustomSource = list;
+            Util.con.Close();
+
+        }
+        public void autocomplete_thuoc()
+        {
+            textBox_tenthuoc.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            textBox_tenthuoc.AutoCompleteSource = AutoCompleteSource.CustomSource;
+           
+            MySqlCommand com = new MySqlCommand();
+            com.Connection = Util.con;
+            com.CommandText = "select * from Thuoc";
+            Util.con.Open();
+            MySqlDataReader read = com.ExecuteReader();
+            AutoCompleteStringCollection list = new AutoCompleteStringCollection();
+            while (read.Read())
+            {
+                list.Add(read["Tenthuoc"].ToString() + " " + read["Hamluong"].ToString() + " " + read["Duongdung"].ToString());
+            }
+            read.Close();
+            textBox_tenthuoc.AutoCompleteCustomSource = list;
+            Util.con.Close();
+        }
+        private void textBox_thuocsongay_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+
+                if (e.KeyCode == Keys.Enter)
+                {
+                    if (textBox_toathuocsongay.Text != null)
+                    {
+                        dateTimePicker_thuocdenngay.Value = dateTimePicker_thuoctungay.Value.AddDays(int.Parse(textBox_toathuocsongay.Text));
+                        this.textBox_tenthuoc.Focus();
+                    }
+                    // this.textBox_idICDkemtheo.Focus();
+                    //richTextBox_Chuandoan.Text = textBox_Benhchinh.Text;
+
+                }
+                else return;
+            }
+            catch (MySqlException sqlE)
+            {
+
+                return;
+            }
+        }
+// tao toa thuoc moi
+        private void button_thuoc_moi_Click(object sender, EventArgs e)
+        {
+
+            int idBenhnhan = 0;
+            try
+            {
+                idBenhnhan = int.Parse(textBox_MaBN.Text);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            Hashtable currentObject = get_CurrentObject(idBenhnhan);
+            if (currentObject.Count == 0)
+            {
+                return;
+            }
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.CommandText = @"INSERT Toathuoc (id,Tungay,Denngay,Loidan,Bacsi,Phieukhambenh_id)
+                                    valuse (null,null,null,'Hạn lạt, hạn chế trái cây. Đo huyết áp hằng ngày.'," + textBox_thuoc_tenbacsi.Text + "," + currentObject["idphieukhambenh"].ToString() + ")";
+                Util.con.Open();
+                MessageBox.Show(com.CommandText.ToString());
+                Util.con.Close();
+                MessageBox.Show("tao toa thuoc thanh cong "); 
+                textBox_tenthuoc.Focus();
+
+        }
+
+        private void button_thuoc_in_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_thuoc_huy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_thuoc_sua_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView_thuoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (listView_thuoc.SelectedItems.Count < 1)
+            {
+                return;
+            }
+           
+            
+                textBox_idthuoc.Text = listView_thuoc.SelectedItems[0].SubItems[0].Text;
+                textBox_tenthuoc.Text = listView_thuoc.SelectedItems[0].SubItems[1].Text;
+               // textBox_donvitinh.Text = listView_thuoc.SelectedItems[0].SubItems[3].Text;
+                textBox_tenthuoc.Focus();
+        }
+
+
+
+    }     
+
 }
