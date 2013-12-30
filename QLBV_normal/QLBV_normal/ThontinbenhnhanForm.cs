@@ -80,9 +80,9 @@ namespace QLBV_normal
                     com.Parameters.Add("@ten", MySqlDbType.VarChar, 200).Value = textBox_Ten.Text;
                     com.Parameters.Add("@ngaysinh", MySqlDbType.Date, 20).Value = dateTimePicker_Namsinh.Value;
                     if (comboBox_Gioitinh.Text == "Nam")
-                        com.Parameters.Add("@gioitinh", MySqlDbType.Int16, 10).Value = 1;
+                        com.Parameters.Add("@gioitinh", MySqlDbType.Int16, 10).Value = 0;
                     else
-                        com.Parameters.Add("@gioitinh", MySqlDbType.Int16, 10).Value = 2;
+                        com.Parameters.Add("@gioitinh", MySqlDbType.Int16, 10).Value = 1;
                     com.Parameters.Add("@nghenghiep", MySqlDbType.VarChar, 20).Value = comboBox_Nghenghiep.Text;
                     com.Parameters.Add("@dantoc", MySqlDbType.VarChar, 20).Value = comboBox_Dantoc.Text;
                     com.Parameters.Add("@cmnd", MySqlDbType.VarChar, 20).Value = textBox_CMND.Text;
