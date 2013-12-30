@@ -318,6 +318,20 @@ namespace QLBV_normal
 
         private void button_print_todieutri_Click(object sender, EventArgs e)
         {
+            int idBenhnhan = -1;
+            try
+            {
+                idBenhnhan = int.Parse(textBox_MaBN.Text);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            Hashtable currentObject = get_CurrentObject(idBenhnhan);
+            if (currentObject.Count == 0)
+            {
+                return;
+            }
             frmMain.frmReport = new ReportForm();
             frmMain.frmReport.frmMain = this.frmMain;
             frmMain.frmReport.MdiParent = this.frmMain;
@@ -327,7 +341,7 @@ namespace QLBV_normal
             {
                 MySqlCommand com = new MySqlCommand();
                 com.Connection = Util.con;
-                com.Parameters.Add("@id", MySqlDbType.Int32, 11).Value = int.Parse(textBox_MaBN.Text);
+                com.Parameters.Add("@id", MySqlDbType.Int32, 11).Value = int.Parse(currentObject["idBenhnhan"].ToString());
                 com.CommandText = @"SELECT benhnhan.Ten, benhnhan.Ngaysinh, todieutri_noidung.*, ngoaitru.*, ylenh.Mota, bacsi.TenBacsi
                                         FROM todieutri_noidung 
                                         LEFT OUTER JOIN todieutri
@@ -368,7 +382,7 @@ namespace QLBV_normal
 
         private void button_add_dieutri_Click(object sender, EventArgs e)
         {
-            int idBenhnhan = 0;
+            int idBenhnhan = -1;
             try
             {
                 idBenhnhan = int.Parse(textBox_MaBN.Text);
@@ -427,6 +441,114 @@ namespace QLBV_normal
             }
         }
 
+        public void load_Xetnhgiem(int idPhieuxetnghiem)
+        {
+            listView_xetnghiem.Items.Clear();
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.CommandText = @"SELECT *
+                                        FROM xetnghiem";
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                while (read.Read())
+                {
+                    Hashtable hash = new Hashtable();
+                    hash.Add("id", read["id"].ToString());
+                    hash.Add("tenxetnghiem", read["TenXetnghiem"].ToString());
+                    ListViewItem item = new ListViewItem();
+                    item.Text = read["TenXetnghiem"].ToString();
+                    item.Tag = hash;
+                    item.Checked = int.Parse(read["Macdinh"].ToString()) == 1 ? true : false;
+                    listView_xetnghiem.Items.Add(item);
+                }
+                Util.con.Close();
+                if (idPhieuxetnghiem != -1)
+                {
+                    com.Parameters.Add("@idPhieuxetnghiem", MySqlDbType.Int32, 11).Value = idPhieuxetnghiem;
+                    com.CommandText = @"SELECT *
+                                        FROM xetnghiem_phieuxetnghiem
+                                        LEFT OUTER JOIN xetnghiem
+                                        	ON xetnghiem_phieuxetnghiem.Xetnghiem_id = xetnghiem.id
+                                        WHERE Phieuxetnghiem_id=@idPhieuxetnghiem";
+                    Util.con.Open();
+                    read = com.ExecuteReader();
+                    //while (read.Read())
+                    //{
+                    //    ListViewItem item = new ListViewItem();
+                    //    item.Text = read["TenXetnghiem"].ToString();
+                    //    item.Tag = hash;
+                    //    item.Checked = int.Parse(read["Macdinh"].ToString()) == 1 ? true : false;
+                    //    listView_xetnghiem.Items.Add(item);
+                    //    listView_ketquaxetnghiem.Items.Add(item);
+                    //}
+                    int list_length = listView_xetnghiem.Items.Count;
+                    for (int i = 0; i < list_length; i++)
+                    {
+                        listView_xetnghiem.Items[i].Checked = false;
+                        while (read.Read())
+                        {
+                            Hashtable hash = (Hashtable)listView_xetnghiem.Items[i].Tag;
+                            if (hash["id"].ToString() == read["Xetnghiem_id"].ToString())
+                            {
+                                listView_xetnghiem.Items[i].Checked = true;
+                            }
+                        }
+                    }
+                    Util.con.Close();
+                }
+            }
+            catch (MySqlException sqlE)
+            {
+                return;
+            }
+        }
+
+        public void load_Phieuxetnhgiem(int idBenhnhan, int idPhieukhambenh)
+        {
+            comboBox_phieuxetnghiem.DataSource = null;
+            comboBox_phieuxetnghiem.Text = "";
+            comboBox_phieuxetnghiem.SelectedIndex = -1;
+            comboBox_phieuxetnghiem.DisplayMember = "Text";
+            comboBox_phieuxetnghiem.ValueMember = "Value";
+            List<object> myCollection = new List<object>();
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.Parameters.Add("@idBenhnhan", MySqlDbType.Int32, 11).Value = idBenhnhan;
+                com.Parameters.Add("@idPhieukhambenh", MySqlDbType.Int32, 11).Value = idPhieukhambenh;
+                com.CommandText = @"SELECT phieuxetnghiem.*
+                                        FROM phieuxetnghiem
+                                        LEFT OUTER JOIN phieukhambenh
+                                            ON phieuxetnghiem.Phieukhambenh_id=phieukhambenh.id 
+                                        LEFT OUTER JOIN ngoaitru
+                                            ON ngoaitru.Phieukhambenh_id=phieukhambenh.id 
+                                        LEFT OUTER JOIN benhnhan
+                                            ON benhnhan.id=phieukhambenh.Benhnhan_id
+                                        WHERE benhnhan.id=@idBenhnhan
+                                            AND phieukhambenh.id=@idPhieukhambenh
+                                        ORDER BY Ngayxetnghiem desc";
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                while (read.Read())
+                {
+                    myCollection.Add(new {Text = DateTime.Parse(read["Ngayxetnghiem"].ToString()).ToString("dd/MM/yyyy"), Value = read["id"].ToString()});
+                }
+                Util.con.Close();
+            }
+            catch (MySqlException sqlE)
+            {
+                return;
+            }
+            comboBox_phieuxetnghiem.DataSource = (object)myCollection;
+            if (comboBox_phieuxetnghiem.Items.Count > 0)
+            {
+                comboBox_phieuxetnghiem.SelectedIndex = 0;
+            }
+        }
+
         private void textBox_MaBN_TextChanged(object sender, EventArgs e)
         {
             int idBenhnhan = -1;
@@ -438,10 +560,18 @@ namespace QLBV_normal
             {
              
             }
+            Hashtable currentObject = get_CurrentObject(idBenhnhan);
+            if (currentObject.Count == 0)
+            {
+                return;
+            }
+            int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
             load_Thongtinhanhchinh(idBenhnhan);
             load_Dieutri(idBenhnhan);
             load_Dientienbenh(idBenhnhan);
             load_Ylenh(idBenhnhan);
+            load_Phieuxetnhgiem(idBenhnhan, idPhieukhambenh);
+            load_Xetnhgiem(-1);
         }
 
         private void textBox_search_benhnhan_TextChanged(object sender, EventArgs e)
@@ -519,6 +649,63 @@ namespace QLBV_normal
             {
                 return;
             }
+        }
+
+        private void button_create_phieuxetnghiem_Click(object sender, EventArgs e)
+        {
+            int idBenhnhan = 0;
+            try
+            {
+                idBenhnhan = int.Parse(textBox_MaBN.Text);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            Hashtable currentObject = get_CurrentObject(idBenhnhan);
+            if (currentObject.Count == 0)
+            {
+                return;
+            }
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+
+                com.Parameters.Add("@ngayxetnghiem", MySqlDbType.DateTime).Value = DateTime.Now;
+                com.Parameters.Add("@phieukhambenh_id", MySqlDbType.Int32, 11).Value = int.Parse(currentObject["idPhieukhambenh"].ToString());
+
+                com.CommandText = @"INSERT INTO phieuxetnghiem(Ngayxetnghiem, Phieukhambenh_id) 
+                                        VALUES (@ngayxetnghiem, @phieukhambenh_id)";
+                Util.con.Open();
+                com.ExecuteNonQuery();
+                Util.con.Close();
+
+                com.CommandText = @"UPDATE ylenh SET status=0 WHERE id=@ylenh_id";
+                Util.con.Open();
+                com.ExecuteNonQuery();
+                Util.con.Close();
+
+                load_Dieutri(int.Parse(currentObject["idBenhnhan"].ToString()));
+            }
+            catch (MySqlException sqlE)
+            {
+                return;
+            }
+        }
+
+        private void comboBox_phieuxetnghiem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int idPhieuxetnghiem = -1;
+            try
+            {
+                idPhieuxetnghiem = int.Parse(comboBox_phieuxetnghiem.SelectedValue.ToString());
+            }
+            catch (Exception)
+            {
+
+            }
+            load_Xetnhgiem(idPhieuxetnghiem);
         }
 
 

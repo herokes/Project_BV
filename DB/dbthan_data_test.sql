@@ -105,7 +105,7 @@ INSERT INTO `noitru` (`id`, `Thoigianvaovien`, `Tructiepvao`, `Vaolanthu`, `Ngay
 
 -- --------------------------------------------------------
 
-INSERT INTO `phieuxetnghiem` (`id`, `Ngayxetnghiemm`, `Phieukhambenh_id`) VALUES
+INSERT INTO `phieuxetnghiem` (`id`, `Ngayxetnghiem`, `Phieukhambenh_id`) VALUES
 (1, '2013-12-11 00:00:00', 9),
 (2, '2013-12-28 11:15:20', 6);
 
