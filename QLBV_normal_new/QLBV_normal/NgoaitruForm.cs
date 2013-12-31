@@ -166,7 +166,7 @@ namespace QLBV_normal
                 MySqlCommand com = new MySqlCommand();
                 com.Connection = Util.con;
                 com.Parameters.Add("@id", MySqlDbType.Int32, 11).Value = idBenhnhan;
-                com.CommandText = @"SELECT phieukhambenh.*
+                com.CommandText = @"SELECT phieukhambenh.*,ngoaitru.*
                                         FROM phieukhambenh
                                         LEFT OUTER JOIN ngoaitru
                                             ON ngoaitru.Phieukhambenh_id=phieukhambenh.id 
@@ -183,12 +183,13 @@ namespace QLBV_normal
                         + "\n" + read["Cacbophan"].ToString()
                         + "\nVấn đề: "
                         + "\n" + read["Chuandoanvaovien"].ToString();
+                    ////////////// thong tin dien bien benh///////
                     textBox_Quatrinhbenhly.Text = read["Quatrinhbenhly"].ToString();
                     textBox_Phuongphapdieutri.Text = read["Xuli"].ToString();
                     dateTimePicker_Ngaykham.Value =DateTime.Parse(read["Thoigiandenkham"].ToString());
-
                     dateTimePicker_Giokham.Value = dateTimePicker_Ngaykham.Value;
-                    comboBox_Doituong.Text = read["Doituong"].ToString();
+                    comboBox_Doituong.SelectedIndex = int.Parse(read["Doituong"].ToString()) - 1;
+                    textBox_NoiDKKCBBD.Text = read["DKKCBBD"].ToString();
                     textBox_Sothe.Text = read["Sobhyt"].ToString();
                     dateTimePicker_Tu.Value = DateTime.Parse(read["Bhytgiatritu"].ToString());
                     dateTimePicker_Den.Value = DateTime.Parse(read["Bhytgiatriden"].ToString());
@@ -198,6 +199,14 @@ namespace QLBV_normal
                     textBox_Noigioithieu.Text = read["Noigioithieu"].ToString();
                     textBox_Lydovaovien.Text = read["Lydovaovien"].ToString();
                     textBox_Chuandoan.Text = read["Chuandoanvaovien"].ToString();
+                    textBox_bskham.Text = read["Bacsikhambenh"].ToString();
+                   /////// thong tin xuat vien/////
+                    textBox_Quatrinhbenhly.Text= read["Quatrinhbenhly"].ToString();
+                    textBox_Benhchinh.Text = read["Benhchinh"].ToString();
+                    textBox_Benhkemtheo.Text = read["Benhkemtheo"].ToString();
+                    textBox_Phuongphapdieutri.Text = read["Xuli"].ToString();
+                    textBox_huongdieutri.Text = read["Huongdieutri"].ToString();
+                    textBox_tenbsdieutri.Text = read["Bacsidieutri"].ToString();
 
                 }
                 Util.con.Close();
@@ -745,6 +754,35 @@ namespace QLBV_normal
             }
             catch (MySqlException sqlE)
             {
+                return;
+            }
+        }
+
+        private void textBox_idbacsi_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox_idbacsi.TextLength > 0)
+                {
+                    MySqlCommand com = new MySqlCommand();
+                    com.Connection = Util.con;
+                    com.CommandText = "SELECT * FROM bacsi WHERE id= " + textBox_idbacsi.Text;
+                    //MessageBox.Show(com.CommandText.te);
+                    Util.con.Open();
+                    MySqlDataReader read = com.ExecuteReader();
+                    if (read.Read())
+                    {
+                        //MessageBox.Show(read[1].ToString());
+                        //comboBox_Bacsikham.Text = read[1].ToString();
+                        textBox_tenbsdieutri.Text = read[1].ToString();
+                    }
+                    Util.con.Close();
+                }
+            }
+            catch (MySqlException sqlE)
+            {
+                Util.con.Close();
+                MessageBox.Show(sqlE.Source.ToString());
                 return;
             }
         }

@@ -512,6 +512,11 @@ namespace QLBV_normal
 
             try
             {
+                //if(listView_Caclankhambenh.SelectedItems[0].
+                if (listView_Caclankhambenh.SelectedItems.Count < 1)
+                {
+                    return;
+                }
                 MySqlCommand com = new MySqlCommand();
                 com.Connection = Util.con;
                 MessageBox.Show(listView_Caclankhambenh.SelectedItems[0].SubItems[0].Text);

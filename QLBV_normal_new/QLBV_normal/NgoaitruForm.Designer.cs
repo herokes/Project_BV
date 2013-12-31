@@ -51,6 +51,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button_Inbenhanngoaitru = new System.Windows.Forms.Button();
             this.textBox_idbacsikham = new System.Windows.Forms.TextBox();
+            this.textBox_bskham = new System.Windows.Forms.TextBox();
             this.textBox_Chuandoan = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
@@ -81,18 +82,12 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.textBox35 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.textBox_idbacsi = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label45 = new System.Windows.Forms.Label();
             this.textBox_huongdieutri = new System.Windows.Forms.TextBox();
-            this.checkBox_Tuvong = new System.Windows.Forms.CheckBox();
-            this.checkBox_Nanghon = new System.Windows.Forms.CheckBox();
-            this.checkBox_Khongdoi = new System.Windows.Forms.CheckBox();
-            this.checkBox_Dogiam = new System.Windows.Forms.CheckBox();
-            this.checkBox_Khoi = new System.Windows.Forms.CheckBox();
             this.label37 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
@@ -248,7 +243,12 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_search_benhnhan = new System.Windows.Forms.TextBox();
-            this.textBox_bskham = new System.Windows.Forms.TextBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.textBox_tenbsdieutri = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -499,11 +499,18 @@
             this.textBox_idbacsikham.Size = new System.Drawing.Size(48, 20);
             this.textBox_idbacsikham.TabIndex = 183;
             // 
+            // textBox_bskham
+            // 
+            this.textBox_bskham.Location = new System.Drawing.Point(182, 239);
+            this.textBox_bskham.Name = "textBox_bskham";
+            this.textBox_bskham.Size = new System.Drawing.Size(283, 20);
+            this.textBox_bskham.TabIndex = 182;
+            // 
             // textBox_Chuandoan
             // 
             this.textBox_Chuandoan.Location = new System.Drawing.Point(132, 210);
             this.textBox_Chuandoan.Name = "textBox_Chuandoan";
-            this.textBox_Chuandoan.Size = new System.Drawing.Size(283, 20);
+            this.textBox_Chuandoan.Size = new System.Drawing.Size(504, 20);
             this.textBox_Chuandoan.TabIndex = 182;
             // 
             // label36
@@ -746,18 +753,18 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.textBox35);
-            this.tabPage2.Controls.Add(this.comboBox2);
+            this.tabPage2.Controls.Add(this.textBox_tenbsdieutri);
+            this.tabPage2.Controls.Add(this.radioButton5);
+            this.tabPage2.Controls.Add(this.radioButton4);
+            this.tabPage2.Controls.Add(this.radioButton3);
+            this.tabPage2.Controls.Add(this.radioButton2);
+            this.tabPage2.Controls.Add(this.radioButton1);
+            this.tabPage2.Controls.Add(this.textBox_idbacsi);
             this.tabPage2.Controls.Add(this.label47);
             this.tabPage2.Controls.Add(this.button5);
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.label45);
             this.tabPage2.Controls.Add(this.textBox_huongdieutri);
-            this.tabPage2.Controls.Add(this.checkBox_Tuvong);
-            this.tabPage2.Controls.Add(this.checkBox_Nanghon);
-            this.tabPage2.Controls.Add(this.checkBox_Khongdoi);
-            this.tabPage2.Controls.Add(this.checkBox_Dogiam);
-            this.tabPage2.Controls.Add(this.checkBox_Khoi);
             this.tabPage2.Controls.Add(this.label37);
             this.tabPage2.Controls.Add(this.label46);
             this.tabPage2.Controls.Add(this.label38);
@@ -778,20 +785,13 @@
             this.tabPage2.Text = "Thông tin xuất khoa";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // textBox35
+            // textBox_idbacsi
             // 
-            this.textBox35.Location = new System.Drawing.Point(204, 219);
-            this.textBox35.Name = "textBox35";
-            this.textBox35.Size = new System.Drawing.Size(48, 20);
-            this.textBox35.TabIndex = 207;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(258, 218);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(229, 21);
-            this.comboBox2.TabIndex = 208;
+            this.textBox_idbacsi.Location = new System.Drawing.Point(204, 219);
+            this.textBox_idbacsi.Name = "textBox_idbacsi";
+            this.textBox_idbacsi.Size = new System.Drawing.Size(48, 20);
+            this.textBox_idbacsi.TabIndex = 207;
+            this.textBox_idbacsi.TextChanged += new System.EventHandler(this.textBox_idbacsi_TextChanged);
             // 
             // label47
             // 
@@ -813,7 +813,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(158, 251);
+            this.button4.Location = new System.Drawing.Point(190, 251);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(142, 23);
             this.button4.TabIndex = 205;
@@ -836,58 +836,6 @@
             this.textBox_huongdieutri.Size = new System.Drawing.Size(527, 20);
             this.textBox_huongdieutri.TabIndex = 203;
             this.textBox_huongdieutri.Text = "Đổi hồ sơ tiếp tục điều trị";
-            // 
-            // checkBox_Tuvong
-            // 
-            this.checkBox_Tuvong.AutoSize = true;
-            this.checkBox_Tuvong.Location = new System.Drawing.Point(604, 173);
-            this.checkBox_Tuvong.Name = "checkBox_Tuvong";
-            this.checkBox_Tuvong.Size = new System.Drawing.Size(76, 17);
-            this.checkBox_Tuvong.TabIndex = 202;
-            this.checkBox_Tuvong.Text = "5.Tử Vong";
-            this.checkBox_Tuvong.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_Nanghon
-            // 
-            this.checkBox_Nanghon.AutoSize = true;
-            this.checkBox_Nanghon.Location = new System.Drawing.Point(504, 173);
-            this.checkBox_Nanghon.Name = "checkBox_Nanghon";
-            this.checkBox_Nanghon.Size = new System.Drawing.Size(80, 17);
-            this.checkBox_Nanghon.TabIndex = 201;
-            this.checkBox_Nanghon.Text = "4.nặng hơn";
-            this.checkBox_Nanghon.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_Khongdoi
-            // 
-            this.checkBox_Khongdoi.AutoSize = true;
-            this.checkBox_Khongdoi.Location = new System.Drawing.Point(404, 173);
-            this.checkBox_Khongdoi.Name = "checkBox_Khongdoi";
-            this.checkBox_Khongdoi.Size = new System.Drawing.Size(87, 17);
-            this.checkBox_Khongdoi.TabIndex = 200;
-            this.checkBox_Khongdoi.Text = "3. Không đổi";
-            this.checkBox_Khongdoi.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_Dogiam
-            // 
-            this.checkBox_Dogiam.AutoSize = true;
-            this.checkBox_Dogiam.Checked = true;
-            this.checkBox_Dogiam.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_Dogiam.Location = new System.Drawing.Point(304, 173);
-            this.checkBox_Dogiam.Name = "checkBox_Dogiam";
-            this.checkBox_Dogiam.Size = new System.Drawing.Size(74, 17);
-            this.checkBox_Dogiam.TabIndex = 199;
-            this.checkBox_Dogiam.Text = "2.Đỡ giảm";
-            this.checkBox_Dogiam.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_Khoi
-            // 
-            this.checkBox_Khoi.AutoSize = true;
-            this.checkBox_Khoi.Location = new System.Drawing.Point(204, 173);
-            this.checkBox_Khoi.Name = "checkBox_Khoi";
-            this.checkBox_Khoi.Size = new System.Drawing.Size(56, 17);
-            this.checkBox_Khoi.TabIndex = 198;
-            this.checkBox_Khoi.Text = "1.Khỏi";
-            this.checkBox_Khoi.UseVisualStyleBackColor = true;
             // 
             // label37
             // 
@@ -957,7 +905,7 @@
             // 
             this.textBox_Quatrinhbenhly.Location = new System.Drawing.Point(205, 17);
             this.textBox_Quatrinhbenhly.Name = "textBox_Quatrinhbenhly";
-            this.textBox_Quatrinhbenhly.Size = new System.Drawing.Size(283, 20);
+            this.textBox_Quatrinhbenhly.Size = new System.Drawing.Size(526, 20);
             this.textBox_Quatrinhbenhly.TabIndex = 186;
             // 
             // label41
@@ -2435,12 +2383,67 @@
             this.textBox_search_benhnhan.TabIndex = 21;
             this.textBox_search_benhnhan.TextChanged += new System.EventHandler(this.textBox_search_benhnhan_TextChanged);
             // 
-            // textBox_bskham
+            // radioButton1
             // 
-            this.textBox_bskham.Location = new System.Drawing.Point(182, 239);
-            this.textBox_bskham.Name = "textBox_bskham";
-            this.textBox_bskham.Size = new System.Drawing.Size(283, 20);
-            this.textBox_bskham.TabIndex = 182;
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(213, 171);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(46, 17);
+            this.radioButton1.TabIndex = 210;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Khỏi";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(315, 171);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(64, 17);
+            this.radioButton2.TabIndex = 210;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Đỡ,giảm";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(420, 170);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(97, 17);
+            this.radioButton3.TabIndex = 210;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Không thay đổi";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(540, 170);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(72, 17);
+            this.radioButton4.TabIndex = 210;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "Nặng hơn";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Location = new System.Drawing.Point(646, 171);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(65, 17);
+            this.radioButton5.TabIndex = 210;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.Text = "Tử vong";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            // 
+            // textBox_tenbsdieutri
+            // 
+            this.textBox_tenbsdieutri.Location = new System.Drawing.Point(264, 219);
+            this.textBox_tenbsdieutri.Name = "textBox_tenbsdieutri";
+            this.textBox_tenbsdieutri.Size = new System.Drawing.Size(264, 20);
+            this.textBox_tenbsdieutri.TabIndex = 211;
             // 
             // NgoaitruForm
             // 
@@ -2668,18 +2671,12 @@
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.TextBox textBox_huongdieutri;
-        private System.Windows.Forms.CheckBox checkBox_Tuvong;
-        private System.Windows.Forms.CheckBox checkBox_Nanghon;
-        private System.Windows.Forms.CheckBox checkBox_Khongdoi;
-        private System.Windows.Forms.CheckBox checkBox_Dogiam;
-        private System.Windows.Forms.CheckBox checkBox_Khoi;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.TextBox textBox_Phuongphapdieutri;
-        private System.Windows.Forms.TextBox textBox35;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.TextBox textBox_idbacsi;
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Button button_Inbenhanngoaitru;
         private System.Windows.Forms.Label label35;
@@ -2703,5 +2700,11 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.TextBox textBox_bskham;
+        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.TextBox textBox_tenbsdieutri;
     }
 }

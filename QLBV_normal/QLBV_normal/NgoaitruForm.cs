@@ -753,7 +753,7 @@ namespace QLBV_normal
 
 
        
-dateTimePicker_Giokham.Value = dateTimePicker_Ngaykham.Value;
+                        dateTimePicker_Giokham.Value = dateTimePicker_Ngaykham.Value;
                     comboBox_Doituong.Text = read["Doituong"].ToString();
                     textBox_Sothe.Text = read["Sobhyt"].ToString();
                     dateTimePicker_Tu.Value = DateTime.Parse(read["Bhytgiatritu"].ToString());

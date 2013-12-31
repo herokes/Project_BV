@@ -48,8 +48,8 @@ namespace QLBV_normal.Class
         private string _chuy;
         private DateTime _Dieutritu;
         private DateTime _Dieutriden;
-        private String _Bacsikham;
-
+        private string _Bacsikham;
+        private string _Chuandoanravien;
         public Benhanngoaitru()
         {
             _tenbenhnhan = "";
@@ -89,6 +89,10 @@ namespace QLBV_normal.Class
             _xuli = "";
             _dieutritaikhoa = "";
             _chuy = "";
+            _Dieutritu = DateTime.Today;
+            _Dieutriden = DateTime.Today;
+            _Bacsikham = "";
+            _Chuandoanravien = "";
 
         }
         private string _Ngay1;
@@ -602,6 +606,16 @@ namespace QLBV_normal.Class
                 this._Bacsikham = value;
             }
         }
-        
+        public string Chuandoanravien
+        {
+            get
+            {
+                return this._Chuandoanravien;
+            }
+            set
+            {
+                this._Chuandoanravien = value;
+            }
+        }
     }
 }
