@@ -53,7 +53,7 @@ namespace QLBV_normal
                                         WHERE ngoaitru.Tinhtrangravien!=0 
 										    AND (benhnhan.id LIKE @seach_string OR benhnhan.Ten LIKE @seach_string)";
                 }
-
+                Util.con.Close();
                 Util.con.Open();
                 MySqlDataReader read = com.ExecuteReader();
                 while (read.Read())
@@ -590,79 +590,6 @@ namespace QLBV_normal
         {
             Show_danhsachbenhnhan();
         }
-/// <summary>
-///  In Bênh an  ngoai tru
-/// </summary>
-/// <param name="sender"></param>
-/// <param name="e"></param>
-        private void button_Inbenhanngoaitru_Click(object sender, EventArgs e)
-        {
-            frmMain.frmReport = new ReportForm();
-            frmMain.frmReport.frmMain = this.frmMain;
-            frmMain.frmReport.MdiParent = this.frmMain;
-            frmMain.frmReport.arrReport = new ArrayList();
-            frmMain.frmReport.typeReport = "benhanngoaitru";
-            try
-            {
-                MySqlCommand com = new MySqlCommand();
-                com.Connection = Util.con;
-                com.Parameters.Add("@id", MySqlDbType.Int32, 11).Value = int.Parse(textBox_MaBN.Text);
-                com.CommandText = "SELECT * FROM phieukhambenh pkb LEFT OUTER JOIN benhnhan bn ON pkb.Benhnhan_id=bn.id LEFT OUTER JOIN ngoaitru ngt ON pkb.id = ngt.Phieukhambenh_id WHERE ngt.phieukhambenh_id=@id";
-                Util.con.Open();
-                MySqlDataReader read = com.ExecuteReader();
-                while (read.Read())
-                {
-                    Benhanngoaitru bant = new Benhanngoaitru();
-                    bant.Tenbenhnhan = read["Ten"].ToString();
-                    bant.Ngaysinh = DateTime.Parse(read["Ngaysinh"].ToString());
-                    bant.Tuoi = DateTime.Today.Year - DateTime.Parse(read["Ngaysinh"].ToString()).Year;
-                    bant.Gioitinh = bool.Parse(read["Gioitinh"].ToString()) ? 1 : 2;
-                    bant.Nghenghiep = read["Nghenghiep"].ToString();
-                    bant.Dantoc = read["Dantoc"].ToString();
-                    bant.Ngoaikieu = read["Ngoaikieu"].ToString();
-                    bant.Sonha = read["Sonha"].ToString();
-                    bant.Duong = read["Duong"].ToString();
-                    bant.Phuong = read["Phuong"].ToString();
-                    bant.Quan = read["Quan"].ToString();
-                    bant.Thanhpho = read["Thanhpho"].ToString();
-                    bant.Noilamviec = read["Noilamviec"].ToString();
-                    bant.Doituong = int.Parse(read["Doituong"].ToString());
-                    bant.Bhytgiatritu = read["Bhytgiatritu"].ToString();
-                    bant.Bhytgiatritu = read["Bhytgiatritu"].ToString();
-                    bant.Sobhyt = read["Sobhyt"].ToString();
-                    bant.Nguoithan = read["Nguoithan"].ToString();
-                    bant.Diachinguoithan = read["Diachinguoithan"].ToString();
-                    bant.Dienthoai = read["Dienthoai"].ToString();
-                    bant.Thoigiandenkham = read["Thoigiandenkham"].ToString();
-                    bant.Noigioithieu = read["Noigioithieu"].ToString();
-                    bant.Lydovaovien = read["Lydovaovien"].ToString();
-                    bant.Quatrinhbenhly = read["Quatrinhbenhly"].ToString();
-                    bant.Tiensubenhbanthan = read["Tiensubenhbanthan"].ToString();
-                    bant.Tiensubenhgiadinh = read["Tiensubenhgiadinh"].ToString();
-                    bant.Mach = read["Mach"].ToString();
-                    bant.Nhietdo = read["Nhietdo"].ToString();
-                    bant.Huyetap = read["Huyetap"].ToString();
-                    bant.Nhiptho = read["Nhiptho"].ToString();
-                    bant.Trongluong = read["Trongluong"].ToString();
-                    bant.Toanthan = read["Toanthan"].ToString();
-                    bant.Cacbophan = read["Cacbophan"].ToString();
-                    bant.Tomtatketqualamsan = read["Tomtatketqualamsan"].ToString();
-                    bant.Chuandoanvaovien = read["Chuandoanvaovien"].ToString();
-                    bant.Xuli = read["Xuli"].ToString();
-                    bant.Dieutritaikhoa = read["Dieutritaikhoa"].ToString();
-                    bant.Chuy = read["Chuy"].ToString();
-
-                    frmMain.frmReport.arrReport.Add(bant);
-                }
-                Util.con.Close();
-                frmMain.frmReport.Show();
-            }
-            catch (MySqlException sqlE)
-            {
-                return;
-            }
-        }
-
         private void button_create_phieuxetnghiem_Click(object sender, EventArgs e)
         {
             int idBenhnhan = 0;
@@ -719,8 +646,110 @@ namespace QLBV_normal
             }
             load_Xetnhgiem(idPhieuxetnghiem);
         }
-
+/// <summary>
+///  In Bênh an  ngoai tru
+/// </summary>
+/// <param name="sender"></param>
+/// <param name="e"></param>
+/// 
+        private void button_Inbenhanngoaitru_Click(object sender, EventArgs e)
+        {
+            frmMain.frmReport = new ReportForm();
+            frmMain.frmReport.frmMain = this.frmMain;
+            frmMain.frmReport.MdiParent = this.frmMain;
+            frmMain.frmReport.arrReport = new ArrayList();
+            frmMain.frmReport.typeReport = "benhanngoaitru";
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.Parameters.Add("@id", MySqlDbType.Int32, 11).Value = int.Parse(textBox_MaBN.Text);
+                com.CommandText = @"SELECT benhnhan.*,phieukhambenh.*,ngoaitru.*
+                                        FROM benhnhan
+                                        LEFT OUTER JOIN phieukhambenh 
+                                            ON benhnhan.id=phieukhambenh.Benhnhan_id 
+                                        LEFT OUTER JOIN ngoaitru
+                                            ON phieukhambenh.id=ngoaitru.Phieukhambenh_id
+                                        WHERE benhnhan.id=@id AND ngoaitru.Tinhtrangravien=0
+                                        GROUP BY benhnhan.id";
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                while (read.Read())
+                {
+                    Benhanngoaitru bant = new Benhanngoaitru();
+                    bant.Tenbenhnhan = read["Ten"].ToString();
+                    bant.Ngaysinh = DateTime.Parse(read["Ngaysinh"].ToString());
+                    // ngay thang nam
+                    string a;
+                    if (bant.Ngaysinh.Day.ToString().Length == 1)
+                        a = "0" + bant.Ngaysinh.Day.ToString();
+                    else
+                        a = bant.Ngaysinh.Day.ToString();
+                    bant.Ngay1 = a.Substring(0, 1);
+                    bant.Ngay2 = a.Substring(1, 1);
+                    if (bant.Ngaysinh.Month.ToString().Length == 1)
+                        a = "0" + bant.Ngaysinh.Month.ToString();
+                    else
+                        a = bant.Ngaysinh.Month.ToString();
+                    bant.Thang1 = a.Substring(0, 1);
+                    bant.Thang2 = a.Substring(1, 1);
+                    bant.Nam1 = bant.Ngaysinh.Year.ToString().Substring(0, 1);
+                    bant.Nam2 = bant.Ngaysinh.Year.ToString().Substring(1, 1);
+                    bant.Nam3 = bant.Ngaysinh.Year.ToString().Substring(2, 1);
+                    bant.Nam4 = bant.Ngaysinh.Year.ToString().Substring(3, 1);
+                    bant.Tuoi = DateTime.Today.Year - DateTime.Parse(read["Ngaysinh"].ToString()).Year;
+                    if (int.Parse(read["Gioitinh"].ToString()) == 0)
+                        bant.Gioitinh = 1;
+                    else bant.Gioitinh = 2;
+                    bant.Nghenghiep = read["Nghenghiep"].ToString();
+                    bant.Dantoc = read["Dantoc"].ToString();
+                    bant.Ngoaikieu = read["Ngoaikieu"].ToString();
+                    bant.Sonha = read["Sonha"].ToString();
+                    bant.Duong = read["Duong"].ToString();
+                    bant.Phuong = read["Phuong"].ToString();
+                    bant.Quan = read["Quan"].ToString();
+                    bant.Thanhpho = read["Thanhpho"].ToString();
+                    bant.Noilamviec = read["Noilamviec"].ToString();
+                    bant.Doituong = int.Parse(read["Doituong"].ToString());
+                    bant.Bhytgiatritu = read["Bhytgiatritu"].ToString();
+                    bant.Bhytgiatritu = read["Bhytgiatritu"].ToString();
+                    bant.Sobhyt = read["Sobhyt"].ToString();
+                    bant.Nguoithan = read["Nguoithan"].ToString();
+                    bant.Diachinguoithan = read["Diachinguoithan"].ToString();
+                    bant.Dienthoai = read["Dienthoai"].ToString();
+                    bant.Thoigiandenkham = read["Thoigiandenkham"].ToString();
+                    bant.Noigioithieu = read["Noigioithieu"].ToString();
+                    bant.Lydovaovien = read["Lydovaovien"].ToString();
+                    bant.Quatrinhbenhly = read["Quatrinhbenhly"].ToString();
+                    bant.Tiensubenhbanthan = read["Tiensubenhbanthan"].ToString();
+                    bant.Tiensubenhgiadinh = read["Tiensubenhgiadinh"].ToString();
+                    bant.Mach = read["Mach"].ToString();
+                    bant.Nhietdo = read["Nhietdo"].ToString();
+                    bant.Huyetap = read["Huyetap"].ToString();
+                    bant.Nhiptho = read["Nhiptho"].ToString();
+                    bant.Trongluong = read["Trongluong"].ToString();
+                    bant.Toanthan = read["Toanthan"].ToString();
+                    bant.Cacbophan = read["Cacbophan"].ToString();
+                    bant.Tomtatketqualamsan = read["Tomtatketqualamsan"].ToString();
+                    bant.Chuandoanvaovien = read["Chuandoanvaovien"].ToString();
+                    bant.Xuli = read["Xuli"].ToString();
+                    bant.Dieutritaikhoa = read["Dieutritaikhoa"].ToString();
+                    bant.Chuy = read["Chuy"].ToString();
+                    bant.Dieutritu = DateTime.Parse(read["Dieutritu"].ToString());
+                   // bant.Dieutriden = DateTime.Parse(read["Dieutriden"].ToString());
+                    bant.Bacsikham= read["Bacsikhambenh"].ToString();
+                    frmMain.frmReport.arrReport.Add(bant);
+                }
+                Util.con.Close();
+                frmMain.frmReport.Show();
+            }
+            catch (MySqlException sqlE)
+            {
+                return;
+            }
+        }
 
        
+
     }
 }

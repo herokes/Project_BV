@@ -31,8 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.richTextBox_dsbenh = new System.Windows.Forms.RichTextBox();
-            this.textBox_idICD = new System.Windows.Forms.TextBox();
+            this.richTextBox_chuandoan = new System.Windows.Forms.RichTextBox();
+            this.textBox_idICD_kemtheo = new System.Windows.Forms.TextBox();
+            this.textBox_idICD_chinh = new System.Windows.Forms.TextBox();
             this.textBox_tiensubenhgiadinh = new System.Windows.Forms.TextBox();
             this.label50 = new System.Windows.Forms.Label();
             this.comboBox_Loaidieutri = new System.Windows.Forms.ComboBox();
@@ -54,8 +55,9 @@
             this.textBox_Diachinguoithan = new System.Windows.Forms.TextBox();
             this.label44 = new System.Windows.Forms.Label();
             this.textBox_Chuy = new System.Windows.Forms.TextBox();
+            this.textBox_chuandoan_kemtheo = new System.Windows.Forms.TextBox();
             this.textBox_Dieutritaikhoa = new System.Windows.Forms.TextBox();
-            this.textBox_Chuandoan = new System.Windows.Forms.TextBox();
+            this.textBox_Chuandoan_chinh = new System.Windows.Forms.TextBox();
             this.textBox_Trongluong = new System.Windows.Forms.TextBox();
             this.textBox_Nhiptho = new System.Windows.Forms.TextBox();
             this.textBox_Huyetap = new System.Windows.Forms.TextBox();
@@ -70,6 +72,7 @@
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
@@ -133,8 +136,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.richTextBox_dsbenh);
-            this.groupBox2.Controls.Add(this.textBox_idICD);
+            this.groupBox2.Controls.Add(this.richTextBox_chuandoan);
+            this.groupBox2.Controls.Add(this.textBox_idICD_kemtheo);
+            this.groupBox2.Controls.Add(this.textBox_idICD_chinh);
             this.groupBox2.Controls.Add(this.textBox_tiensubenhgiadinh);
             this.groupBox2.Controls.Add(this.label50);
             this.groupBox2.Controls.Add(this.comboBox_Loaidieutri);
@@ -156,8 +160,9 @@
             this.groupBox2.Controls.Add(this.textBox_Diachinguoithan);
             this.groupBox2.Controls.Add(this.label44);
             this.groupBox2.Controls.Add(this.textBox_Chuy);
+            this.groupBox2.Controls.Add(this.textBox_chuandoan_kemtheo);
             this.groupBox2.Controls.Add(this.textBox_Dieutritaikhoa);
-            this.groupBox2.Controls.Add(this.textBox_Chuandoan);
+            this.groupBox2.Controls.Add(this.textBox_Chuandoan_chinh);
             this.groupBox2.Controls.Add(this.textBox_Trongluong);
             this.groupBox2.Controls.Add(this.textBox_Nhiptho);
             this.groupBox2.Controls.Add(this.textBox_Huyetap);
@@ -172,6 +177,7 @@
             this.groupBox2.Controls.Add(this.label36);
             this.groupBox2.Controls.Add(this.label37);
             this.groupBox2.Controls.Add(this.label38);
+            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label39);
             this.groupBox2.Controls.Add(this.label40);
             this.groupBox2.Controls.Add(this.label41);
@@ -202,28 +208,38 @@
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Location = new System.Drawing.Point(642, 14);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(682, 621);
+            this.groupBox2.Size = new System.Drawing.Size(682, 695);
             this.groupBox2.TabIndex = 48;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Phiếu Khám bệnh";
             // 
-            // richTextBox_dsbenh
+            // richTextBox_chuandoan
             // 
-            this.richTextBox_dsbenh.Location = new System.Drawing.Point(351, 493);
-            this.richTextBox_dsbenh.Name = "richTextBox_dsbenh";
-            this.richTextBox_dsbenh.Size = new System.Drawing.Size(190, 32);
-            this.richTextBox_dsbenh.TabIndex = 164;
-            this.richTextBox_dsbenh.Text = "";
+            this.richTextBox_chuandoan.Location = new System.Drawing.Point(428, 463);
+            this.richTextBox_chuandoan.Name = "richTextBox_chuandoan";
+            this.richTextBox_chuandoan.Size = new System.Drawing.Size(220, 46);
+            this.richTextBox_chuandoan.TabIndex = 164;
+            this.richTextBox_chuandoan.Text = "";
             // 
-            // textBox_idICD
+            // textBox_idICD_kemtheo
             // 
-            this.textBox_idICD.Location = new System.Drawing.Point(153, 463);
-            this.textBox_idICD.Name = "textBox_idICD";
-            this.textBox_idICD.Size = new System.Drawing.Size(61, 20);
-            this.textBox_idICD.TabIndex = 163;
-            this.textBox_idICD.TextChanged += new System.EventHandler(this.textBox_maICD_TextChanged);
-            this.textBox_idICD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_idICD_KeyDown);
-            this.textBox_idICD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_idICD_KeyPress);
+            this.textBox_idICD_kemtheo.Location = new System.Drawing.Point(153, 486);
+            this.textBox_idICD_kemtheo.Name = "textBox_idICD_kemtheo";
+            this.textBox_idICD_kemtheo.Size = new System.Drawing.Size(61, 20);
+            this.textBox_idICD_kemtheo.TabIndex = 163;
+            this.textBox_idICD_kemtheo.TextChanged += new System.EventHandler(this.textBox_idICD_kemtheo_TextChanged);
+            this.textBox_idICD_kemtheo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_idICD_kemtheo_KeyDown);
+            this.textBox_idICD_kemtheo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_idICD_kemtheo_KeyPress);
+            // 
+            // textBox_idICD_chinh
+            // 
+            this.textBox_idICD_chinh.Location = new System.Drawing.Point(153, 463);
+            this.textBox_idICD_chinh.Name = "textBox_idICD_chinh";
+            this.textBox_idICD_chinh.Size = new System.Drawing.Size(61, 20);
+            this.textBox_idICD_chinh.TabIndex = 163;
+            this.textBox_idICD_chinh.TextChanged += new System.EventHandler(this.textBox_maICD_chinh_TextChanged);
+            this.textBox_idICD_chinh.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_idICD_chinh_KeyDown);
+            this.textBox_idICD_chinh.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_idICD_chinh_KeyPress);
             // 
             // textBox_tiensubenhgiadinh
             // 
@@ -245,13 +261,13 @@
             // 
             this.comboBox_Loaidieutri.FormattingEnabled = true;
             this.comboBox_Loaidieutri.Items.AddRange(new object[] {
-            "NGOẠI TRÚ CHẠY THẬN",
+            "NGOẠI TRÚ",
             "NỘI TRÚ"});
-            this.comboBox_Loaidieutri.Location = new System.Drawing.Point(226, 532);
+            this.comboBox_Loaidieutri.Location = new System.Drawing.Point(226, 555);
             this.comboBox_Loaidieutri.Name = "comboBox_Loaidieutri";
             this.comboBox_Loaidieutri.Size = new System.Drawing.Size(272, 21);
             this.comboBox_Loaidieutri.TabIndex = 126;
-            this.comboBox_Loaidieutri.Text = "NGOẠI TRÚ CHẠY THẬN";
+            this.comboBox_Loaidieutri.Text = "NGOẠI TRÚ";
             // 
             // dateTimePicker_Ngaykham
             // 
@@ -287,7 +303,7 @@
             // 
             // textBox_idbacsikham
             // 
-            this.textBox_idbacsikham.Location = new System.Drawing.Point(153, 584);
+            this.textBox_idbacsikham.Location = new System.Drawing.Point(153, 607);
             this.textBox_idbacsikham.Name = "textBox_idbacsikham";
             this.textBox_idbacsikham.Size = new System.Drawing.Size(48, 20);
             this.textBox_idbacsikham.TabIndex = 130;
@@ -296,16 +312,16 @@
             // comboBox_Bacsikham
             // 
             this.comboBox_Bacsikham.FormattingEnabled = true;
-            this.comboBox_Bacsikham.Location = new System.Drawing.Point(207, 583);
+            this.comboBox_Bacsikham.Location = new System.Drawing.Point(207, 606);
             this.comboBox_Bacsikham.Name = "comboBox_Bacsikham";
             this.comboBox_Bacsikham.Size = new System.Drawing.Size(229, 21);
             this.comboBox_Bacsikham.TabIndex = 131;
             // 
             // richTextBox_Xuly
             // 
-            this.richTextBox_Xuly.Location = new System.Drawing.Point(153, 493);
+            this.richTextBox_Xuly.Location = new System.Drawing.Point(153, 516);
             this.richTextBox_Xuly.Name = "richTextBox_Xuly";
-            this.richTextBox_Xuly.Size = new System.Drawing.Size(190, 32);
+            this.richTextBox_Xuly.Size = new System.Drawing.Size(235, 32);
             this.richTextBox_Xuly.TabIndex = 123;
             this.richTextBox_Xuly.Text = "";
             // 
@@ -396,25 +412,32 @@
             // 
             // textBox_Chuy
             // 
-            this.textBox_Chuy.Location = new System.Drawing.Point(153, 556);
+            this.textBox_Chuy.Location = new System.Drawing.Point(153, 579);
             this.textBox_Chuy.Name = "textBox_Chuy";
             this.textBox_Chuy.Size = new System.Drawing.Size(283, 20);
             this.textBox_Chuy.TabIndex = 128;
             // 
+            // textBox_chuandoan_kemtheo
+            // 
+            this.textBox_chuandoan_kemtheo.Location = new System.Drawing.Point(230, 486);
+            this.textBox_chuandoan_kemtheo.Name = "textBox_chuandoan_kemtheo";
+            this.textBox_chuandoan_kemtheo.Size = new System.Drawing.Size(192, 20);
+            this.textBox_chuandoan_kemtheo.TabIndex = 122;
+            // 
             // textBox_Dieutritaikhoa
             // 
-            this.textBox_Dieutritaikhoa.Location = new System.Drawing.Point(153, 533);
+            this.textBox_Dieutritaikhoa.Location = new System.Drawing.Point(153, 556);
             this.textBox_Dieutritaikhoa.Name = "textBox_Dieutritaikhoa";
             this.textBox_Dieutritaikhoa.Size = new System.Drawing.Size(67, 20);
             this.textBox_Dieutritaikhoa.TabIndex = 125;
             this.textBox_Dieutritaikhoa.Text = "THẬN";
             // 
-            // textBox_Chuandoan
+            // textBox_Chuandoan_chinh
             // 
-            this.textBox_Chuandoan.Location = new System.Drawing.Point(230, 463);
-            this.textBox_Chuandoan.Name = "textBox_Chuandoan";
-            this.textBox_Chuandoan.Size = new System.Drawing.Size(283, 20);
-            this.textBox_Chuandoan.TabIndex = 122;
+            this.textBox_Chuandoan_chinh.Location = new System.Drawing.Point(230, 463);
+            this.textBox_Chuandoan_chinh.Name = "textBox_Chuandoan_chinh";
+            this.textBox_Chuandoan_chinh.Size = new System.Drawing.Size(192, 20);
+            this.textBox_Chuandoan_chinh.TabIndex = 122;
             // 
             // textBox_Trongluong
             // 
@@ -496,7 +519,7 @@
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(48, 583);
+            this.label36.Location = new System.Drawing.Point(48, 606);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(101, 13);
             this.label36.TabIndex = 154;
@@ -505,7 +528,7 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(109, 559);
+            this.label37.Location = new System.Drawing.Point(109, 582);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(40, 13);
             this.label37.TabIndex = 153;
@@ -514,16 +537,25 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(62, 536);
+            this.label38.Location = new System.Drawing.Point(62, 559);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(87, 13);
             this.label38.TabIndex = 152;
             this.label38.Text = "Điều trị tại khoa :";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(67, 493);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(82, 13);
+            this.label6.TabIndex = 150;
+            this.label6.Text = "Bệnh kèm theo:";
+            // 
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(7, 512);
+            this.label39.Location = new System.Drawing.Point(7, 535);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(142, 13);
             this.label39.TabIndex = 151;
@@ -532,11 +564,11 @@
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(33, 467);
+            this.label40.Location = new System.Drawing.Point(83, 467);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(116, 13);
+            this.label40.Size = new System.Drawing.Size(66, 13);
             this.label40.TabIndex = 150;
-            this.label40.Text = "Chuẩn đoán vào viện :";
+            this.label40.Text = "Bệnh chính:";
             // 
             // label41
             // 
@@ -1009,7 +1041,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1336, 647);
+            this.ClientSize = new System.Drawing.Size(1336, 713);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.listView_Caclankhambenh);
             this.Controls.Add(this.button1);
@@ -1059,7 +1091,7 @@
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.TextBox textBox_Chuy;
         private System.Windows.Forms.TextBox textBox_Dieutritaikhoa;
-        private System.Windows.Forms.TextBox textBox_Chuandoan;
+        private System.Windows.Forms.TextBox textBox_Chuandoan_chinh;
         private System.Windows.Forms.TextBox textBox_Trongluong;
         private System.Windows.Forms.TextBox textBox_Nhiptho;
         private System.Windows.Forms.TextBox textBox_Huyetap;
@@ -1128,8 +1160,11 @@
         private System.Windows.Forms.ListView listView_Caclankhambenh;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.TextBox textBox_idICD;
-        private System.Windows.Forms.RichTextBox richTextBox_dsbenh;
+        private System.Windows.Forms.TextBox textBox_idICD_chinh;
+        private System.Windows.Forms.RichTextBox richTextBox_chuandoan;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox_idICD_kemtheo;
+        private System.Windows.Forms.TextBox textBox_chuandoan_kemtheo;
 
     }
 }

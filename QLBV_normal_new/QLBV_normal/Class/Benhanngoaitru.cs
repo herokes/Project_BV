@@ -46,6 +46,9 @@ namespace QLBV_normal.Class
         private string _xuli;
         private string _dieutritaikhoa;
         private string _chuy;
+        private DateTime _Dieutritu;
+        private DateTime _Dieutriden;
+        private String _Bacsikham;
 
         public Benhanngoaitru()
         {
@@ -565,5 +568,40 @@ namespace QLBV_normal.Class
                 this._chuy = value;
             }
         }
+        public DateTime Dieutritu
+        {
+            get
+            {
+                return this._Dieutritu;
+            }
+            set
+            {
+                this._Dieutritu = value;
+            }
+        }
+        public DateTime Dieutriden
+        {
+            get
+            {
+                return this._Dieutriden;
+            }
+            set
+            {
+                this._Dieutriden = value;
+            }
+        }
+
+        public string Bacsikham   
+        {
+            get
+            {
+                return this._Bacsikham;
+            }
+            set
+            {
+                this._Bacsikham = value;
+            }
+        }
+        
     }
 }

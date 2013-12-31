@@ -29,6 +29,7 @@ namespace QLBV_normal
            
             Show_Combobox_Bacsi();
             
+            
 
         }
         public bool Kiemtrabenhnhanxuatvien(String mabn)
@@ -98,22 +99,31 @@ namespace QLBV_normal
                     com1.Parameters.Add("@toanthan", MySqlDbType.VarChar, 20).Value = richText_Toanthan.Text;
                     com1.Parameters.Add("@cacbophan", MySqlDbType.VarChar, 200).Value = richTextBox_Cacbophan.Text;
                     com1.Parameters.Add("@tomtat", MySqlDbType.VarChar, 200).Value = richTextBox_Tomtat.Text;
-                    com1.Parameters.Add("@chuandoan", MySqlDbType.VarChar, 200).Value = textBox_Chuandoan.Text;
+                    com1.Parameters.Add("@chuandoan", MySqlDbType.VarChar, 200).Value = richTextBox_chuandoan.Text;
                     com1.Parameters.Add("@xuli", MySqlDbType.VarChar, 200).Value = richTextBox_Xuly.Text;
                     com1.Parameters.Add("@dieutritaikhoa", MySqlDbType.VarChar, 200).Value = textBox_Dieutritaikhoa.Text;
                     com1.Parameters.Add("@chuy", MySqlDbType.VarChar, 200).Value = textBox_Chuy.Text;
                     com1.Parameters.Add("@idbenhnhan", MySqlDbType.Int64, 20).Value = textBox_MaBN.Text;
+                    com1.Parameters.Add("@benhchinh", MySqlDbType.VarChar, 50).Value = textBox_Chuandoan_chinh.Text;
+                    com1.Parameters.Add("@chuandoankhiravien", MySqlDbType.VarChar, 50).Value =richTextBox_chuandoan.Text;
+                    com1.Parameters.Add("@benhkemtheo", MySqlDbType.VarChar, 100).Value = benhkemtheo;
+                     //string benhkemtheo = chuan
 
 
 
-                    com1.CommandText = "insert into phieukhambenh(Doituong,DKKCBBD,Bhytgiatritu,Bhytgiatriden,Sobhyt,Nguoithan" +
-                        ",Diachinguoithan,Dienthoai,Thoigiandenkham,Noigioithieu,Lydovaovien,Quatrinhbenhly,Tiensubenhbanthan,Tiensubenhgiadinh" +
-                        ",Mach,Nhietdo,Huyetap,Nhiptho,Trongluong,Toanthan,Cacbophan,Tomtatketqualamsan,Chuandoanvaovien" +
-                        ",Xuli,Dieutritaikhoa,Chuy,Benhnhan_id) values (@doituong,@noidkkcbbd,@bhytgiatritu,@bhytgiatriden," +
-                        "@sobhyt,@nguoithan,@diachinguoithan,@dienthoai,@thoigiandenkham,@noigioithieu,@lydovaovien," +
-                        "@quatrinhbenhly,@tiensubenhbanthan,@tiensubenhgiadinh,@mach,@nhietdo,@huyetap,@nhiptho,@trongluong,@toanthan,@cacbophan" +
-                        ",@tomtat,@chuandoan,@xuli,@dieutritaikhoa,@chuy,@idbenhnhan)";
-
+                    com1.CommandText = @"insert into phieukhambenh
+                                        (id,Doituong,DKKCBBD,Bhytgiatritu,Bhytgiatriden,Sobhyt,Nguoithan,
+                                        Diachinguoithan,Dienthoai,Thoigiandenkham,Noigioithieu,
+                                        Lydovaovien,Quatrinhbenhly,Tiensubenhbanthan,Tiensubenhgiadinh,
+                                        Mach,Nhietdo,Huyetap,Nhiptho,Trongluong,
+                                        Toanthan,Cacbophan,Tomtatketqualamsan,Chuandoanvaovien
+                                        ,Xuli,Dieutritaikhoa,Chuy,Benhnhan_id) 
+                                        values (null,@doituong,@noidkkcbbd,@bhytgiatritu,@bhytgiatriden,@sobhyt,@nguoithan
+                                        ,@diachinguoithan,@dienthoai,@thoigiandenkham,@noigioithieu,
+                                        @lydovaovien,@quatrinhbenhly,@tiensubenhbanthan,@tiensubenhgiadinh,
+                                        @mach,@nhietdo,@huyetap,@nhiptho,@trongluong,
+                                        @toanthan,@cacbophan,@tomtat,@chuandoan,@xuli,@dieutritaikhoa,@chuy,@idbenhnhan)";
+                    MessageBox.Show(com1.CommandText);
                     Util.con.Open();
                     com1.ExecuteNonQuery();
                     Util.con.Close();
@@ -121,22 +131,27 @@ namespace QLBV_normal
 
                     /// nhap vao ngoai tru hay noi tru 
                     /// lay ma phieu kham benh
-
-                    com1.CommandText = "SELECT MAX( id )FROM phieukhambenh WHERE benhnhan_id =" + textBox_MaBN.Text;
+                     
+                    com1.CommandText = @"SELECT MAX( phieukhambenh.id ) FROM phieukhambenh WHERE  benhnhan_id = "
+                        + textBox_MaBN.Text  ;
                     //MessageBox.Show("executenonquery select");
                     Util.con.Open();
                     int maphieukhambenh = (int)com1.ExecuteScalar();
                     Util.con.Close();
-                    if (comboBox_Loaidieutri.Text == "NGOẠI TRÚ CHẠY THẬN")
+                    if (comboBox_Loaidieutri.Text == "NGOẠI TRÚ")
                         //MessageBox.Show(maphieukhambenh.ToString());
-                        com1.CommandText = "INSERT INTO  ngoaitru (id,Ngaygiovaovien,Benhchinh ,Benhkemtheo,Dieutritu ,Dieutriden ,Tinhtrangravien ,Huongdieutri ,Bacsikhambenh ,Bacsidieutri ,chaythan ,Phieukhambenh_id)VALUES (NULL , NULL , NULL , NULL , NULL , NULL , 0 , NULL ," + comboBox_Bacsikham.Text + ", NULL , 1 ," + maphieukhambenh + ")";
-                    else if (comboBox_Loaidieutri.Text == "NGOẠI TRU KHÔNG CHẠY THẬN")
-                        com1.CommandText = "INSERT INTO  ngoaitru (id,Ngaygiovaovien,Benhchinh ,Benhkemtheo,Dieutritu ,Dieutriden ,Tinhtrangravien ,Huongdieutri ,Bacsikhambenh ,Bacsidieutri ,chaythan ,Phieukhambenh_id)VALUES (NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , NULL , 0 ," + maphieukhambenh + ")";
+                        com1.CommandText = @"INSERT INTO  ngoaitru 
+                                             (id,Ngaygiovaovien,Benhchinh ,Benhkemtheo,Dieutritu ,Dieutriden ,
+                                                Tinhtrangravien,chuandoankhiravien ,Huongdieutri ,Bacsikhambenh ,Bacsidieutri  ,Phieukhambenh_id,
+                                                Soxquang,Soctscanner,Sosieuam,Soxetnghiem,Sokhac)
+                                                VALUES (NULL , @thoigiandenkham , @benhchinh , @benhkemtheo ,@thoigiandenkham , @thoigiandenkham ,
+                                                0,@chuandoankhiravien , 'đổi hồ sơ tiếp tục điều trị' ,'" + comboBox_Bacsikham.Text + "','" + comboBox_Bacsikham.Text + "'," + maphieukhambenh + ",0,0,0,0,0)";
+                    
                     else com1.CommandText = "INSERT INTO `dbthan`.`noitru` (`id`, `Thoigianvaovien`, `Tructiepvao`, `Vaolanthu`, `Ngaygiovaokhoa`, `Chuyenkhoa`, `Ngaygiochuyenkhoa`, `Chuyenvien`, `Chuyenden`, `Ngaygioravien`, `Loairavien`, `Noichuyenden`, `KKBCapcuu`, `Khivaokhoadieutri`, `Thuthuat`, `Phauthuat`, `Benhchinh`, `Benhkemtheo`, `Taibien`, `Bienchung`, `Ketquadieutri`, `Giaiphaubenh`, `Thoigiantuvong`, `Lydotuvong`, `Nguyennhanchinhtuvong`, `Khamnghiemtuthi`, `Chuandoangiaiphaututhi`, `Diung`, `Matuy`, `Ruoubia`, `Thuocla`, `Thuoclao`, `Khac`, `Tuanhoan`, `Hohap`, `Tieuhoa`, `Thantietnieusinhduc`, `Thankinh`, `Coxuongkhop`, `Taimuihong`, `Ranghammat`, `Mat`, `Noitietdinhduong`, `Tomtatbenhan`, `Tienluong`, `Huongdieutri`, `Phuongphapdieutri`, `BStruongkhoa`, `Bslambenhan`, `BSdieutri`, `Phieukhambenh_id`) VALUES (NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL," + maphieukhambenh + ")";
                     Util.con.Open();
                     com1.ExecuteNonQuery();
                     Util.con.Close();
-                    /// nhap chuan doan benh
+                    ////////////////////// nhap chuan doan benh/////////////////////////
                     foreach (var i in arricd)
                     {
                         com1.CommandText = "INSERT INTO idc_phieukhambenh(idc_phieukhambenh.IDC_id,idc_phieukhambenh.Phieukhambenh_id) values('" + i.ToString() + "'," + maphieukhambenh + ")";
@@ -145,6 +160,7 @@ namespace QLBV_normal
                         Util.con.Close();
                     }
                     arricd.Clear();
+                    benhkemtheo = "";
                     MessageBox.Show("Đăng ký phiếu khám bệnh và nhập khoa thành công");
                 }
                 else MessageBox.Show(" Bệnh nhân chưa xuất viện");
@@ -195,9 +211,9 @@ namespace QLBV_normal
             richText_Toanthan.Text = "";
             richTextBox_Cacbophan.Text = "";
             richTextBox_Tomtat.Text = "";
-            textBox_Chuandoan.Text = "";
+            textBox_Chuandoan_chinh.Text = "";
             richTextBox_Xuly.Text = "";
-            comboBox_Loaidieutri.Text = "NGOẠI TRÚ CHẠY THẬN";
+            comboBox_Loaidieutri.Text = "NGOẠI TRÚ";
             textBox_Chuy.Text = "";
 
           
@@ -365,6 +381,9 @@ namespace QLBV_normal
                         bant.Nam3 = bant.Ngaysinh.Year.ToString().Substring(2, 1);
                         bant.Nam4 = bant.Ngaysinh.Year.ToString().Substring(3, 1);
                         //bant.Gioitinh = read[3].ToString(); 
+                        if (int.Parse(read["Gioitinh"].ToString()) == 0)
+                            bant.Gioitinh = 1;
+                        else bant.Gioitinh = 2;
                         bant.Nghenghiep = read[4].ToString();
                         bant.Dantoc = read[5].ToString();
                         bant.CMND = read[6].ToString();
@@ -457,59 +476,9 @@ namespace QLBV_normal
             }
         }
 
-        private void textBox_maICD_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (textBox_idICD.TextLength > 0)
-                {
-                    MySqlCommand com = new MySqlCommand();
-                    com.Connection = Util.con;
-                    com.CommandText = "select idc.TenIDC from idc where idc.id='"+ textBox_idICD.Text+"'" ;
-                    //MessageBox.Show(com.CommandText.te);
-                    Util.con.Open();
-                    MySqlDataReader read = com.ExecuteReader();
-                    if (read.Read())
-                    {
-                        textBox_Chuandoan.Text = read[0].ToString();
-                        Util.con.Close();
-                    }
-                    //else MessageBox.Show("Mã ICD Chưa có trong dữ liệu");
-                    Util.con.Close();
-                }
-            }
-            catch (MySqlException sqlE)
-            {
-                Util.con.Close();
-                MessageBox.Show(sqlE.Source.ToString());
-                return;
-            }
-        }
+       
 
-        private void textBox_idICD_KeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-
-                if (e.KeyCode == Keys.Enter)
-                {
-                    if (textBox_Chuandoan.Text.Length > 0)
-                    {
-                        richTextBox_dsbenh.Text += textBox_Chuandoan.Text + ",";
-                        arricd.Add(textBox_idICD.Text);
-                        textBox_Chuandoan.Text = null;
-                        textBox_idICD.Text = null;
-                        this.textBox_idICD.Focus();
-                    }
-                }
-                else return;
-            }
-            catch (MySqlException sqlE)
-            {
-               
-                return;
-            }
-        }
+      
 
         public void Show_listview_caclankhac()
         {
@@ -562,19 +531,19 @@ namespace QLBV_normal
                     dateTimePicker_Ngaykham.Value = DateTime.Parse(read[9].ToString());
                     textBox_Noigioithieu.Text = read[10].ToString();
                     textBox_Lydovaovien.Text = read[11].ToString();
-                    textBox_Tiensubenhbanthan.Text = read[12].ToString();
-                    textBox_tiensubenhgiadinh.Text = read[13].ToString();
-                    textBox_Mach.Text = read[14].ToString();
-                    textBox_Nhiet.Text = read[15].ToString();
-                    textBox_Huyetap.Text = read[16].ToString();
-                    textBox_Nhiptho.Text = read[17].ToString();
-                    textBox_Trongluong.Text = read[18].ToString();
-                    richText_Toanthan.Text = read[19].ToString();
-                    richTextBox_Cacbophan.Text = read[20].ToString();
-                    richTextBox_Tomtat.Text = read[21].ToString();
-                    textBox_Chuandoan.Text = read[22].ToString();
-                    textBox_Dieutritaikhoa.Text = read[23].ToString();
-                    textBox_Chuy.Text = read[24].ToString();
+                    textBox_Tiensubenhbanthan.Text = read[13].ToString();
+                    textBox_tiensubenhgiadinh.Text = read[14].ToString();
+                    textBox_Mach.Text = read[15].ToString();
+                    textBox_Nhiet.Text = read[16].ToString();
+                    textBox_Huyetap.Text = read[17].ToString();
+                    textBox_Nhiptho.Text = read[18].ToString();
+                    textBox_Trongluong.Text = read[19].ToString();
+                    richText_Toanthan.Text = read[20].ToString();
+                    richTextBox_Cacbophan.Text = read[21].ToString();
+                    richTextBox_Tomtat.Text = read[22].ToString();
+                    textBox_Chuandoan_chinh.Text = read[23].ToString();
+                    textBox_Dieutritaikhoa.Text = read[24].ToString();
+                    textBox_Chuy.Text = read[25].ToString();
                         
                 }
 
@@ -587,15 +556,131 @@ namespace QLBV_normal
                 return;
             }
         }
+/// <summary>
+/////////////////////////////  su kien chuandoan benh chinh/////////////////////////////
+/// </summary>
+/// <param name="sender"></param>
+/// <param name="e"></param>
+        private void textBox_idICD_chinh_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = char.Parse(e.KeyChar.ToString().ToUpper());
+        }
+        private void textBox_idICD_chinh_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
 
-        private void textBox_idICD_KeyPress(object sender, KeyPressEventArgs e)
+                if (e.KeyCode == Keys.Enter)
+                {
+                    if (textBox_Chuandoan_chinh.Text.Length > 0)
+                    {
+                        richTextBox_chuandoan.Text = textBox_Chuandoan_chinh.Text ;
+                        arricd.Add(textBox_idICD_chinh.Text);
+                        //textBox_Chuandoan_chinh.Text = null;
+                        //textBox_idICD_chinh.Text = null;
+                        this.textBox_idICD_kemtheo.Focus();
+                    }
+                }
+                else return;
+            }
+            catch (MySqlException sqlE)
+            {
+
+                return;
+            }
+        }
+        private void textBox_maICD_chinh_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox_idICD_chinh.TextLength > 0)
+                {
+                    MySqlCommand com = new MySqlCommand();
+                    com.Connection = Util.con;
+                    com.CommandText = "select idc.TenIDC from idc where idc.id='" + textBox_idICD_chinh.Text + "'";
+                    //MessageBox.Show(com.CommandText.te);
+                    Util.con.Open();
+                    MySqlDataReader read = com.ExecuteReader();
+                    if (read.Read())
+                    {
+                        textBox_Chuandoan_chinh.Text = read[0].ToString();
+                        Util.con.Close();
+                    }
+                    //else MessageBox.Show("Mã ICD Chưa có trong dữ liệu");
+                    Util.con.Close();
+                }
+            }
+            catch (MySqlException sqlE)
+            {
+                Util.con.Close();
+                MessageBox.Show(sqlE.Source.ToString());
+                return;
+            }
+        }
+
+
+//////////////////////////// su kien chuan doan benh kem them////////////////
+        private string benhkemtheo;
+        private void textBox_idICD_kemtheo_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.KeyChar = char.Parse(e.KeyChar.ToString().ToUpper());
         }
 
+        private void textBox_idICD_kemtheo_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
 
+                if (e.KeyCode == Keys.Enter)
+                {
+                    if (textBox_chuandoan_kemtheo.Text.Length > 0)
+                    {
+                        richTextBox_chuandoan.Text +=" -"+ textBox_chuandoan_kemtheo.Text;
+                        arricd.Add(textBox_idICD_kemtheo.Text);
+                        benhkemtheo += " -" + textBox_chuandoan_kemtheo.Text;
+                        textBox_chuandoan_kemtheo.Text = null;
+                        textBox_idICD_kemtheo.Text = null;
+                        this.textBox_idICD_kemtheo.Focus();
+                    }
+                }
+                else return;
+            }
+            catch (MySqlException sqlE)
+            {
 
-      
+                return;
+            }
+        }
+
+        private void textBox_idICD_kemtheo_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox_idICD_kemtheo.TextLength > 0)
+                {
+                    MySqlCommand com = new MySqlCommand();
+                    com.Connection = Util.con;
+                    com.CommandText = "select idc.TenIDC from idc where idc.id='" + textBox_idICD_kemtheo.Text + "'";
+                    //MessageBox.Show(com.CommandText.te);
+                    Util.con.Open();
+                    MySqlDataReader read = com.ExecuteReader();
+                    if (read.Read())
+                    {
+                        textBox_chuandoan_kemtheo.Text = read[0].ToString();
+                        Util.con.Close();
+                    }
+                    //else MessageBox.Show("Mã ICD Chưa có trong dữ liệu");
+                    Util.con.Close();
+                }
+            }
+            catch (MySqlException sqlE)
+            {
+                Util.con.Close();
+                MessageBox.Show(sqlE.Source.ToString());
+                return;
+            }
+        }
+       
     }
 }
 

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             this.listView_danhsachbenhnhan = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -51,7 +51,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button_Inbenhanngoaitru = new System.Windows.Forms.Button();
             this.textBox_idbacsikham = new System.Windows.Forms.TextBox();
-            this.comboBox_Bacsikham = new System.Windows.Forms.ComboBox();
             this.textBox_Chuandoan = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
@@ -231,24 +230,25 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.button8 = new System.Windows.Forms.Button();
+            this.comboBox_phieuxetnghiem = new System.Windows.Forms.ComboBox();
             this.button6 = new System.Windows.Forms.Button();
             this.label34 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
             this.textBox34 = new System.Windows.Forms.TextBox();
             this.listView_ketquaxetnghiem = new System.Windows.Forms.ListView();
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.comboBox_phieuxetnghiem = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.button7 = new System.Windows.Forms.Button();
             this.button_create_phieuxetnghiem = new System.Windows.Forms.Button();
             this.listView_xetnghiem = new System.Windows.Forms.ListView();
-            this.label49 = new System.Windows.Forms.Label();
             this.radioButton_dieutri = new System.Windows.Forms.RadioButton();
             this.radioButton_xuatvien = new System.Windows.Forms.RadioButton();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_search_benhnhan = new System.Windows.Forms.TextBox();
+            this.textBox_bskham = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -444,7 +444,7 @@
             // 
             this.tabPage1.Controls.Add(this.button_Inbenhanngoaitru);
             this.tabPage1.Controls.Add(this.textBox_idbacsikham);
-            this.tabPage1.Controls.Add(this.comboBox_Bacsikham);
+            this.tabPage1.Controls.Add(this.textBox_bskham);
             this.tabPage1.Controls.Add(this.textBox_Chuandoan);
             this.tabPage1.Controls.Add(this.label36);
             this.tabPage1.Controls.Add(this.label40);
@@ -486,7 +486,7 @@
             // 
             this.button_Inbenhanngoaitru.Location = new System.Drawing.Point(186, 280);
             this.button_Inbenhanngoaitru.Name = "button_Inbenhanngoaitru";
-            this.button_Inbenhanngoaitru.Size = new System.Drawing.Size(78, 27);
+            this.button_Inbenhanngoaitru.Size = new System.Drawing.Size(148, 27);
             this.button_Inbenhanngoaitru.TabIndex = 187;
             this.button_Inbenhanngoaitru.Text = "IN BỆNH ÁN NGOẠI TRÚ";
             this.button_Inbenhanngoaitru.UseVisualStyleBackColor = true;
@@ -498,14 +498,6 @@
             this.textBox_idbacsikham.Name = "textBox_idbacsikham";
             this.textBox_idbacsikham.Size = new System.Drawing.Size(48, 20);
             this.textBox_idbacsikham.TabIndex = 183;
-            // 
-            // comboBox_Bacsikham
-            // 
-            this.comboBox_Bacsikham.FormattingEnabled = true;
-            this.comboBox_Bacsikham.Location = new System.Drawing.Point(186, 238);
-            this.comboBox_Bacsikham.Name = "comboBox_Bacsikham";
-            this.comboBox_Bacsikham.Size = new System.Drawing.Size(229, 21);
-            this.comboBox_Bacsikham.TabIndex = 184;
             // 
             // textBox_Chuandoan
             // 
@@ -1551,7 +1543,7 @@
             this.label10.Font = new System.Drawing.Font("Times New Roman", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(310, 283);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 15);
+            this.label10.Size = new System.Drawing.Size(58, 15);
             this.label10.TabIndex = 64;
             this.label10.Text = "V. KHÁC";
             // 
@@ -1561,7 +1553,7 @@
             this.label9.Font = new System.Drawing.Font("Times New Roman", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(310, 237);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(92, 15);
+            this.label9.Size = new System.Drawing.Size(94, 15);
             this.label9.TabIndex = 63;
             this.label9.Text = "IV. NƯỚC TIỂU";
             // 
@@ -2261,6 +2253,15 @@
             this.button8.Text = "Lưu";
             this.button8.UseVisualStyleBackColor = true;
             // 
+            // comboBox_phieuxetnghiem
+            // 
+            this.comboBox_phieuxetnghiem.FormattingEnabled = true;
+            this.comboBox_phieuxetnghiem.Location = new System.Drawing.Point(102, 24);
+            this.comboBox_phieuxetnghiem.Name = "comboBox_phieuxetnghiem";
+            this.comboBox_phieuxetnghiem.Size = new System.Drawing.Size(109, 21);
+            this.comboBox_phieuxetnghiem.TabIndex = 117;
+            this.comboBox_phieuxetnghiem.SelectedIndexChanged += new System.EventHandler(this.comboBox_phieuxetnghiem_SelectedIndexChanged);
+            // 
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(347, 322);
@@ -2280,6 +2281,16 @@
             this.label34.Text = "Tên xét nghiệm";
             this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(8, 27);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(88, 13);
+            this.label49.TabIndex = 114;
+            this.label49.Text = "Phiếu xét nghiệm";
+            this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // textBox34
             // 
             this.textBox34.Location = new System.Drawing.Point(102, 53);
@@ -2295,10 +2306,10 @@
             this.columnHeader8});
             this.listView_ketquaxetnghiem.FullRowSelect = true;
             this.listView_ketquaxetnghiem.GridLines = true;
-            listViewGroup1.Header = "ListViewGroup";
-            listViewGroup1.Name = "abc";
+            listViewGroup3.Header = "ListViewGroup";
+            listViewGroup3.Name = "abc";
             this.listView_ketquaxetnghiem.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1});
+            listViewGroup3});
             this.listView_ketquaxetnghiem.Location = new System.Drawing.Point(8, 79);
             this.listView_ketquaxetnghiem.Name = "listView_ketquaxetnghiem";
             this.listView_ketquaxetnghiem.ShowGroups = false;
@@ -2321,15 +2332,6 @@
             // 
             this.columnHeader8.Text = "Kết quả";
             this.columnHeader8.Width = 104;
-            // 
-            // comboBox_phieuxetnghiem
-            // 
-            this.comboBox_phieuxetnghiem.FormattingEnabled = true;
-            this.comboBox_phieuxetnghiem.Location = new System.Drawing.Point(102, 24);
-            this.comboBox_phieuxetnghiem.Name = "comboBox_phieuxetnghiem";
-            this.comboBox_phieuxetnghiem.Size = new System.Drawing.Size(109, 21);
-            this.comboBox_phieuxetnghiem.TabIndex = 117;
-            this.comboBox_phieuxetnghiem.SelectedIndexChanged += new System.EventHandler(this.comboBox_phieuxetnghiem_SelectedIndexChanged);
             // 
             // groupBox5
             // 
@@ -2366,10 +2368,10 @@
             // 
             this.listView_xetnghiem.CheckBoxes = true;
             this.listView_xetnghiem.GridLines = true;
-            listViewGroup2.Header = "ListViewGroup";
-            listViewGroup2.Name = "abc";
+            listViewGroup4.Header = "ListViewGroup";
+            listViewGroup4.Name = "abc";
             this.listView_xetnghiem.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup2});
+            listViewGroup4});
             this.listView_xetnghiem.Location = new System.Drawing.Point(6, 24);
             this.listView_xetnghiem.Name = "listView_xetnghiem";
             this.listView_xetnghiem.ShowGroups = false;
@@ -2377,16 +2379,6 @@
             this.listView_xetnghiem.TabIndex = 112;
             this.listView_xetnghiem.UseCompatibleStateImageBehavior = false;
             this.listView_xetnghiem.View = System.Windows.Forms.View.List;
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(8, 27);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(88, 13);
-            this.label49.TabIndex = 114;
-            this.label49.Text = "Phiếu xét nghiệm";
-            this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // radioButton_dieutri
             // 
@@ -2442,6 +2434,13 @@
             this.textBox_search_benhnhan.Size = new System.Drawing.Size(173, 20);
             this.textBox_search_benhnhan.TabIndex = 21;
             this.textBox_search_benhnhan.TextChanged += new System.EventHandler(this.textBox_search_benhnhan_TextChanged);
+            // 
+            // textBox_bskham
+            // 
+            this.textBox_bskham.Location = new System.Drawing.Point(182, 239);
+            this.textBox_bskham.Name = "textBox_bskham";
+            this.textBox_bskham.Size = new System.Drawing.Size(283, 20);
+            this.textBox_bskham.TabIndex = 182;
             // 
             // NgoaitruForm
             // 
@@ -2613,7 +2612,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox textBox_idbacsikham;
-        private System.Windows.Forms.ComboBox comboBox_Bacsikham;
         private System.Windows.Forms.TextBox textBox_Chuandoan;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label40;
@@ -2704,5 +2702,6 @@
         private System.Windows.Forms.ComboBox comboBox_phieuxetnghiem;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.TextBox textBox_bskham;
     }
 }
