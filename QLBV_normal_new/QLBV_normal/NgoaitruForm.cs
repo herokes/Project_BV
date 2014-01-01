@@ -22,6 +22,9 @@ namespace QLBV_normal
         /// <summary>
         /// to dieu tri va y lenh
         /// </summary>
+        /// 
+        private int idpkb;
+        private int idbn;
         public void Show_danhsachbenhnhan()
         {
             listView_danhsachbenhnhan.Items.Clear();
@@ -53,7 +56,7 @@ namespace QLBV_normal
                                         WHERE ngoaitru.Tinhtrangravien!=0 
 										    AND (benhnhan.id LIKE @seach_string OR benhnhan.Ten LIKE @seach_string)";
                 }
-                Util.con.Close();
+                //Util.con.Close();
                 Util.con.Open();
                 MySqlDataReader read = com.ExecuteReader();
                 while (read.Read())
@@ -67,6 +70,7 @@ namespace QLBV_normal
             }
             catch (MySqlException sqlE)
             {
+                MessageBox.Show("show_dsbenhnhan");
                 return;
             }
         }
@@ -74,6 +78,7 @@ namespace QLBV_normal
         private void NgoaitruFormnew_Load(object sender, EventArgs e)
         {
             Show_danhsachbenhnhan();
+            //Util.con.Close();
         }
 
         private void radioButton_xuatvien_CheckedChanged(object sender, EventArgs e)
@@ -113,7 +118,7 @@ namespace QLBV_normal
             }
             catch (MySqlException sqlE)
             {
-                
+                MessageBox.Show("load thong tin hanh chinh");
                 return;
 
             }
@@ -154,6 +159,7 @@ namespace QLBV_normal
             }
             catch (MySqlException sqlE)
             {
+                MessageBox.Show("Load dieutri");
                 return;
             }
         }
@@ -161,8 +167,10 @@ namespace QLBV_normal
         public void load_Dientienbenh(int idBenhnhan)
         {
             richTextBox_dientienbenh.Text = "";
-            try
-            {
+            //try
+            //{
+                if (Util.con.State == ConnectionState.Open)
+                    Util.con.Close();
                 MySqlCommand com = new MySqlCommand();
                 com.Connection = Util.con;
                 com.Parameters.Add("@id", MySqlDbType.Int32, 11).Value = idBenhnhan;
@@ -207,14 +215,29 @@ namespace QLBV_normal
                     textBox_Phuongphapdieutri.Text = read["Xuli"].ToString();
                     textBox_huongdieutri.Text = read["Huongdieutri"].ToString();
                     textBox_tenbsdieutri.Text = read["Bacsidieutri"].ToString();
-
+                    
+                    //richTextBox_tomtatketquaxetnghiem.Text = ketqua_xetnghiem_gannhat_chotongketbenh(timkiem_idphieuxetnghiem_gannhat(idpkb.ToString()));
                 }
                 Util.con.Close();
-            }
-            catch (MySqlException sqlE)
-            {
-                return;
-            }
+                //MessageBox.Show(timkiem_idphieuxetnghiem_gannhat(idpkb.ToString()).Length.ToString());
+                if (check_xetnghiem(idpkb))
+                {
+                    //MessageBox.Show(timkiem_idphieuxetnghiem_gannhat(idpkb.ToString()));
+                    int idxetnghiem1 = int.Parse(timkiem_idphieuxetnghiem_gannhat(idpkb.ToString()));
+                    if (check_xetnghiemketqua(idxetnghiem1))
+                    {
+                        richTextBox_tomtatketquaxetnghiem.Text = ketqua_xetnghiem_gannhat_chotongketbenh(timkiem_idphieuxetnghiem_gannhat(idpkb.ToString()));
+                    }
+                }
+                else richTextBox_tomtatketquaxetnghiem.Text = null;
+                textBox_soxetnghiem.Text =solanxetnghiem(idpkb.ToString());
+                textBox_toanbohoso.Text = (int.Parse(textBox_soxquang.Text) + int.Parse(textBox_soCtscanner.Text) + int.Parse(textBox_sosieuam.Text) + int.Parse(textBox_soxetnghiem.Text) + int.Parse(textBox_sokhac.Text)).ToString(); 
+            //}
+            //catch (MySqlException sqlE)
+            //{
+            //    MessageBox.Show("load dien bien benh");
+            //    return;
+            //}
         }
 
         public void load_Ylenh(int idBenhnhan)
@@ -222,6 +245,8 @@ namespace QLBV_normal
             richTextBox_ylenh.Text = "";
             try
             {
+                if (Util.con.State == ConnectionState.Open)
+                    Util.con.Close();
                 MySqlCommand com = new MySqlCommand();
                 com.Connection = Util.con;
                 com.Parameters.Add("@id", MySqlDbType.Int32, 11).Value = idBenhnhan;
@@ -236,6 +261,7 @@ namespace QLBV_normal
                                         WHERE benhnhan.id=@id 
                                             AND ngoaitru.Tinhtrangravien=0
                                             AND ylenh.status=1";
+                
                 Util.con.Open();
                 MySqlDataReader read = com.ExecuteReader();
                 while (read.Read())
@@ -246,6 +272,7 @@ namespace QLBV_normal
             }
             catch (MySqlException sqlE)
             {
+                MessageBox.Show("load y lenh");
                 return;
             }
         }
@@ -286,7 +313,7 @@ namespace QLBV_normal
             }
             catch (MySqlException sqlE)
             {
-
+                MessageBox.Show(" get current object");
             }
             return hash;
         }
@@ -312,7 +339,7 @@ namespace QLBV_normal
             }
             catch (MySqlException sqlE)
             {
-
+                MessageBox.Show(" get current y lenh");
             }
             return idYlenh;
         }
@@ -385,6 +412,7 @@ namespace QLBV_normal
             }
             catch (MySqlException sqlE)
             {
+                MessageBox.Show("in to dieu tri");
                 return;
             }
         }
@@ -446,6 +474,7 @@ namespace QLBV_normal
             }
             catch (MySqlException sqlE)
             {
+                MessageBox.Show("add dieu tri");
                 return;
             }
         }
@@ -522,6 +551,7 @@ namespace QLBV_normal
             }
             catch (MySqlException sqlE)
             {
+                MessageBox.Show("Load xet nghiem");
                 return;
             }
         }
@@ -561,6 +591,7 @@ namespace QLBV_normal
             }
             catch (MySqlException sqlE)
             {
+                MessageBox.Show("Load phieu xet nghiem");
                 return;
             }
             comboBox_phieuxetnghiem.DataSource = (object)myCollection;
@@ -587,6 +618,7 @@ namespace QLBV_normal
                 return;
             }
             int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
+            idpkb = int.Parse(currentObject["idPhieukhambenh"].ToString());
             load_Thongtinhanhchinh(idBenhnhan);
             load_Dieutri(idBenhnhan);
             load_Dientienbenh(idBenhnhan);
@@ -638,6 +670,7 @@ namespace QLBV_normal
             }
             catch (MySqlException sqlE)
             {
+                MessageBox.Show("create phieuxet nghiem");
                 return;
             }
         }
@@ -754,6 +787,7 @@ namespace QLBV_normal
             }
             catch (MySqlException sqlE)
             {
+                MessageBox.Show("in benh an ngoai tru");
                 return;
             }
         }
@@ -781,11 +815,181 @@ namespace QLBV_normal
             }
             catch (MySqlException sqlE)
             {
-                Util.con.Close();
+                //Util.con.Close();
                 MessageBox.Show(sqlE.Source.ToString());
                 return;
             }
         }
+        public string timkiem_idphieuxetnghiem_gannhat(string idphieukhambenh)
+        {
+            //try
+            //{
+            if(Util.con.State == ConnectionState.Open)
+                Util.con.Close();
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.CommandText = @"select max(phieuxetnghiem.id)
+                                    from phieuxetnghiem 
+                                    where phieuxetnghiem.Phieukhambenh_id=" + idphieukhambenh;
+                Util.con.Open();
+                MySqlDataReader read=  com.ExecuteReader();
+                read.Read();
+                string id= read[0].ToString();
+                Util.con.Close();
+                //MessageBox.Show(id.ToString());
+            //if(id=null) return id= -1;
+                return id;
+            //}
+            //catch (MySqlException sqlE)
+            //{
+            //    Util.con.Close();
+            //    MessageBox.Show(sqlE.Source.ToString());
+            //    return null;
+            //}
+        }
+        
+        public string ketqua_xetnghiem_gannhat_chotongketbenh (string idphieuxetnghiem)
+        {
+            //try
+            //{
+                string ketqua = "";
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.CommandText = @"SELECT xetnghiem_phieuxetnghiem.*, xetnghiem.TenXetnghiem ,xetnghiem.Donvi
+                                    FROM xetnghiem_phieuxetnghiem,xetnghiem
+                                    WHERE (
+                                    xetnghiem_phieuxetnghiem.Xetnghiem_id =3
+                                    OR xetnghiem_phieuxetnghiem.Xetnghiem_id =4
+                                    OR xetnghiem_phieuxetnghiem.Xetnghiem_id =16
+                                    OR xetnghiem_phieuxetnghiem.Xetnghiem_id =17
+                                    )
+                                    AND xetnghiem_phieuxetnghiem.Phieuxetnghiem_id = " + idphieuxetnghiem +
+                                    @" AND xetnghiem_phieuxetnghiem.Xetnghiem_id= xetnghiem.id
+                                    ORDER BY xetnghiem.id DESC ";
+                                                                                      ;
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+               // Xetnghiem xn = new Xetnghiem();
+                while (read.Read())
+                {
+                    ketqua += read["Tenxetnghiem"].ToString() + ":  " + read["Thongsoxetnghiem"].ToString()+ read["Donvi"].ToString() + "\n ";
+                }
+                Util.con.Close();
+                return ketqua;
+            //}
+            //catch (MySqlException sqlE)
+            //{
+            //    Util.con.Close();
+            //    MessageBox.Show(sqlE.Source.ToString());
+            //    return null;
+            //}
+        
+        }
+
+        public bool check_xetnghiemketqua (int idphieuxetnghiem)
+        {
+            //string id= timkiem_idphieuxetnghiem_gannhat(idpkb.ToString());
+            MySqlCommand com = new MySqlCommand();
+            com.Connection = Util.con;
+            com.CommandText = @"select COUNT(xetnghiem_phieuxetnghiem.Phieuxetnghiem_id)
+                                from xetnghiem_phieuxetnghiem 
+                                where xetnghiem_phieuxetnghiem.Phieuxetnghiem_id= " + idphieuxetnghiem;
+           
+            Util.con.Open();
+            MySqlDataReader read = com.ExecuteReader();
+            read.Read();
+            int b = int.Parse(read[0].ToString());
+            Util.con.Close();
+            
+            if (b > 0) return true;
+            return false;
+            
+        }
+        public bool check_xetnghiem(int idphieukhambenh)
+        {
+            //string id= timkiem_idphieuxetnghiem_gannhat(idpkb.ToString());
+            MySqlCommand com = new MySqlCommand();
+            com.Connection = Util.con;
+            com.CommandText = @"select COUNT(phieuxetnghiem.id)
+                                    from phieuxetnghiem
+                                    where phieuxetnghiem.Phieukhambenh_id= " + idphieukhambenh;
+
+            Util.con.Open();
+            MySqlDataReader read = com.ExecuteReader();
+            read.Read();
+
+            if (int.Parse(read[0].ToString()) > 0)
+            {
+                Util.con.Close();
+                return true;
+            }
+            return false;
+            
+
+        }
+        private void textBox_soxquang_TextChanged(object sender, EventArgs e)
+        {
+            textBox_toanbohoso.Text = (int.Parse(textBox_soxquang.Text) + int.Parse(textBox_soCtscanner.Text) + int.Parse(textBox_sosieuam.Text) + int.Parse(textBox_soxetnghiem.Text) + int.Parse(textBox_sokhac.Text)).ToString(); 
+        }
+
+        private void textBox_Ctscanner_TextChanged(object sender, EventArgs e)
+        {
+            textBox_toanbohoso.Text = (int.Parse(textBox_soxquang.Text) + int.Parse(textBox_soCtscanner.Text) + int.Parse(textBox_sosieuam.Text) + int.Parse(textBox_soxetnghiem.Text) + int.Parse(textBox_sokhac.Text)).ToString(); 
+        }
+
+        private void textBox_sieuam_TextChanged(object sender, EventArgs e)
+        {
+            textBox_toanbohoso.Text = (int.Parse(textBox_soxquang.Text) + int.Parse(textBox_soCtscanner.Text) + int.Parse(textBox_sosieuam.Text) + int.Parse(textBox_soxetnghiem.Text) + int.Parse(textBox_sokhac.Text)).ToString(); 
+        }
+        public string solanxetnghiem(String idphieukhambenh)
+        {
+            MySqlCommand com = new MySqlCommand();
+            com.Connection = Util.con;
+            com.CommandText = @"select COUNT(phieuxetnghiem.id)
+                                    from phieuxetnghiem
+                                    where phieuxetnghiem.Phieukhambenh_id= " + idphieukhambenh;
+
+            Util.con.Open();
+            MySqlDataReader read = com.ExecuteReader();
+            read.Read();
+            int b = int.Parse(read[0].ToString());
+            Util.con.Close();
+            return b.ToString();
+        }
+        private void textBox_xetnghiem_TextChanged(object sender, EventArgs e)
+        {
+            //string id= timkiem_idphieuxetnghiem_gannhat(idpkb.ToString());
+            
+            textBox_soxetnghiem.Text = solanxetnghiem(idpkb.ToString());
+            textBox_toanbohoso.Text = (int.Parse(textBox_soxquang.Text) + int.Parse(textBox_soCtscanner.Text) + int.Parse(textBox_sosieuam.Text) + int.Parse(textBox_soxetnghiem.Text) + int.Parse(textBox_sokhac.Text)).ToString(); 
+        }
+
+        private void textBox_khac_TextChanged(object sender, EventArgs e)
+        {
+            textBox_toanbohoso.Text = (int.Parse(textBox_soxquang.Text) + int.Parse(textBox_soCtscanner.Text) + int.Parse(textBox_sosieuam.Text) + int.Parse(textBox_soxetnghiem.Text) + int.Parse(textBox_sokhac.Text)).ToString(); 
+        }
+        private void button_Xuatvien_Click(object sender, EventArgs e)
+        {
+           string a= @"UPDATE ngoaitru 
+            SET Ngaygiovaovien = '2014-01-13 00:00:00', 
+            `Benhchinh` = 'benh chinh', 
+            `Benhkemtheo` = 'benh kem theo', 
+            `Dieutritu` = '2014-01-07 00:00:00', 
+            `Dieutriden` = '2014-01-21 00:00:00', 
+            `Tinhtrangravien` = '2', 
+            `Chuandoankhiravien` = 'chuan doan', 
+            `Huongdieutri` = 'huong dieu tri', 
+            `Bacsikhambenh` = 'bs kham', 
+            `Bacsidieutri` = 'bs dieu tri', 
+            `Soxquang` = '01', 
+            `Soctscanner` = '01', 
+            `Sosieuam` = '01', 
+            `Soxetnghiem` = '01', 
+            `Sokhac` = '01' 
+            WHERE `ngoaitru`.`id` = 1";
+        }
+
+       
 
        
 

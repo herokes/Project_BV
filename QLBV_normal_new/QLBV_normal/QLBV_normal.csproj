@@ -79,6 +79,7 @@
     <Compile Include="Class\Todieutri.cs" />
     <Compile Include="Class\Phieukhambenh.cs" />
     <Compile Include="Class\Tongketbenhanngoaitru.cs" />
+    <Compile Include="Class\Xetnghiem.cs" />
     <Compile Include="DangkyForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -97,7 +97,6 @@
             this.label37 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
-            this.textBox_Tomtatketqua = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
             this.textBox_Phuongphapdieutri = new System.Windows.Forms.TextBox();
             this.textBox_Benhkemtheo = new System.Windows.Forms.TextBox();
@@ -295,6 +294,20 @@
             this.textBox_search_benhnhan = new System.Windows.Forms.TextBox();
             this.label61 = new System.Windows.Forms.Label();
             this.label62 = new System.Windows.Forms.Label();
+            this.richTextBox_tomtatketquaxetnghiem = new System.Windows.Forms.RichTextBox();
+            this.label63 = new System.Windows.Forms.Label();
+            this.textBox_soxquang = new System.Windows.Forms.TextBox();
+            this.textBox_soCtscanner = new System.Windows.Forms.TextBox();
+            this.label65 = new System.Windows.Forms.Label();
+            this.textBox_sosieuam = new System.Windows.Forms.TextBox();
+            this.label66 = new System.Windows.Forms.Label();
+            this.textBox48 = new System.Windows.Forms.TextBox();
+            this.textBox_toanbohoso = new System.Windows.Forms.TextBox();
+            this.label67 = new System.Windows.Forms.Label();
+            this.label68 = new System.Windows.Forms.Label();
+            this.textBox_soxetnghiem = new System.Windows.Forms.TextBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.textBox_sokhac = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -800,12 +813,26 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.richTextBox_tomtatketquaxetnghiem);
             this.tabPage2.Controls.Add(this.textBox_tenbsdieutri);
             this.tabPage2.Controls.Add(this.radioButton5);
             this.tabPage2.Controls.Add(this.radioButton4);
             this.tabPage2.Controls.Add(this.radioButton3);
             this.tabPage2.Controls.Add(this.radioButton2);
             this.tabPage2.Controls.Add(this.radioButton1);
+            this.tabPage2.Controls.Add(this.textBox_sokhac);
+            this.tabPage2.Controls.Add(this.label70);
+            this.tabPage2.Controls.Add(this.textBox_sosieuam);
+            this.tabPage2.Controls.Add(this.label65);
+            this.tabPage2.Controls.Add(this.textBox_soxetnghiem);
+            this.tabPage2.Controls.Add(this.label68);
+            this.tabPage2.Controls.Add(this.textBox_soCtscanner);
+            this.tabPage2.Controls.Add(this.label67);
+            this.tabPage2.Controls.Add(this.textBox_toanbohoso);
+            this.tabPage2.Controls.Add(this.textBox48);
+            this.tabPage2.Controls.Add(this.label66);
+            this.tabPage2.Controls.Add(this.textBox_soxquang);
+            this.tabPage2.Controls.Add(this.label63);
             this.tabPage2.Controls.Add(this.textBox_idbacsi);
             this.tabPage2.Controls.Add(this.label47);
             this.tabPage2.Controls.Add(this.button_Intongketbenhan);
@@ -815,7 +842,6 @@
             this.tabPage2.Controls.Add(this.label37);
             this.tabPage2.Controls.Add(this.label46);
             this.tabPage2.Controls.Add(this.label38);
-            this.tabPage2.Controls.Add(this.textBox_Tomtatketqua);
             this.tabPage2.Controls.Add(this.label39);
             this.tabPage2.Controls.Add(this.textBox_Phuongphapdieutri);
             this.tabPage2.Controls.Add(this.textBox_Benhkemtheo);
@@ -834,7 +860,7 @@
             // 
             // textBox_tenbsdieutri
             // 
-            this.textBox_tenbsdieutri.Location = new System.Drawing.Point(264, 219);
+            this.textBox_tenbsdieutri.Location = new System.Drawing.Point(264, 260);
             this.textBox_tenbsdieutri.Name = "textBox_tenbsdieutri";
             this.textBox_tenbsdieutri.Size = new System.Drawing.Size(264, 20);
             this.textBox_tenbsdieutri.TabIndex = 211;
@@ -842,7 +868,7 @@
             // radioButton5
             // 
             this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(646, 171);
+            this.radioButton5.Location = new System.Drawing.Point(646, 211);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(65, 17);
             this.radioButton5.TabIndex = 210;
@@ -852,7 +878,7 @@
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(540, 170);
+            this.radioButton4.Location = new System.Drawing.Point(540, 211);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(72, 17);
             this.radioButton4.TabIndex = 210;
@@ -862,7 +888,7 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(420, 170);
+            this.radioButton3.Location = new System.Drawing.Point(420, 211);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(97, 17);
             this.radioButton3.TabIndex = 210;
@@ -873,7 +899,7 @@
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Checked = true;
-            this.radioButton2.Location = new System.Drawing.Point(315, 171);
+            this.radioButton2.Location = new System.Drawing.Point(315, 212);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(64, 17);
             this.radioButton2.TabIndex = 210;
@@ -884,7 +910,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(213, 171);
+            this.radioButton1.Location = new System.Drawing.Point(213, 212);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(46, 17);
             this.radioButton1.TabIndex = 210;
@@ -893,7 +919,7 @@
             // 
             // textBox_idbacsi
             // 
-            this.textBox_idbacsi.Location = new System.Drawing.Point(204, 219);
+            this.textBox_idbacsi.Location = new System.Drawing.Point(204, 260);
             this.textBox_idbacsi.Name = "textBox_idbacsi";
             this.textBox_idbacsi.Size = new System.Drawing.Size(48, 20);
             this.textBox_idbacsi.TabIndex = 207;
@@ -902,7 +928,7 @@
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(113, 223);
+            this.label47.Location = new System.Drawing.Point(113, 264);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(77, 13);
             this.label47.TabIndex = 209;
@@ -910,7 +936,7 @@
             // 
             // button_Intongketbenhan
             // 
-            this.button_Intongketbenhan.Location = new System.Drawing.Point(340, 251);
+            this.button_Intongketbenhan.Location = new System.Drawing.Point(340, 357);
             this.button_Intongketbenhan.Name = "button_Intongketbenhan";
             this.button_Intongketbenhan.Size = new System.Drawing.Size(142, 23);
             this.button_Intongketbenhan.TabIndex = 206;
@@ -919,17 +945,18 @@
             // 
             // button_Xuatvien
             // 
-            this.button_Xuatvien.Location = new System.Drawing.Point(190, 251);
+            this.button_Xuatvien.Location = new System.Drawing.Point(190, 357);
             this.button_Xuatvien.Name = "button_Xuatvien";
             this.button_Xuatvien.Size = new System.Drawing.Size(142, 23);
             this.button_Xuatvien.TabIndex = 205;
             this.button_Xuatvien.Text = "Xuất viện";
             this.button_Xuatvien.UseVisualStyleBackColor = true;
+            this.button_Xuatvien.Click += new System.EventHandler(this.button_Xuatvien_Click);
             // 
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(73, 196);
+            this.label45.Location = new System.Drawing.Point(73, 237);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(121, 13);
             this.label45.TabIndex = 204;
@@ -937,7 +964,7 @@
             // 
             // textBox_huongdieutri
             // 
-            this.textBox_huongdieutri.Location = new System.Drawing.Point(205, 193);
+            this.textBox_huongdieutri.Location = new System.Drawing.Point(205, 234);
             this.textBox_huongdieutri.Name = "textBox_huongdieutri";
             this.textBox_huongdieutri.Size = new System.Drawing.Size(527, 20);
             this.textBox_huongdieutri.TabIndex = 203;
@@ -946,7 +973,7 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(99, 175);
+            this.label37.Location = new System.Drawing.Point(99, 216);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(93, 13);
             this.label37.TabIndex = 197;
@@ -955,7 +982,7 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(89, 150);
+            this.label46.Location = new System.Drawing.Point(89, 191);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(109, 13);
             this.label46.TabIndex = 195;
@@ -964,18 +991,11 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(114, 124);
+            this.label38.Location = new System.Drawing.Point(114, 165);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(79, 13);
             this.label38.TabIndex = 195;
             this.label38.Text = "Bệnh kèm theo";
-            // 
-            // textBox_Tomtatketqua
-            // 
-            this.textBox_Tomtatketqua.Location = new System.Drawing.Point(205, 43);
-            this.textBox_Tomtatketqua.Name = "textBox_Tomtatketqua";
-            this.textBox_Tomtatketqua.Size = new System.Drawing.Size(527, 20);
-            this.textBox_Tomtatketqua.TabIndex = 187;
             // 
             // label39
             // 
@@ -988,21 +1008,21 @@
             // 
             // textBox_Phuongphapdieutri
             // 
-            this.textBox_Phuongphapdieutri.Location = new System.Drawing.Point(204, 147);
+            this.textBox_Phuongphapdieutri.Location = new System.Drawing.Point(204, 188);
             this.textBox_Phuongphapdieutri.Name = "textBox_Phuongphapdieutri";
             this.textBox_Phuongphapdieutri.Size = new System.Drawing.Size(527, 20);
             this.textBox_Phuongphapdieutri.TabIndex = 189;
             // 
             // textBox_Benhkemtheo
             // 
-            this.textBox_Benhkemtheo.Location = new System.Drawing.Point(205, 121);
+            this.textBox_Benhkemtheo.Location = new System.Drawing.Point(205, 162);
             this.textBox_Benhkemtheo.Name = "textBox_Benhkemtheo";
             this.textBox_Benhkemtheo.Size = new System.Drawing.Size(527, 20);
             this.textBox_Benhkemtheo.TabIndex = 189;
             // 
             // textBox_Benhchinh
             // 
-            this.textBox_Benhchinh.Location = new System.Drawing.Point(205, 95);
+            this.textBox_Benhchinh.Location = new System.Drawing.Point(205, 136);
             this.textBox_Benhchinh.Name = "textBox_Benhchinh";
             this.textBox_Benhchinh.Size = new System.Drawing.Size(527, 20);
             this.textBox_Benhchinh.TabIndex = 188;
@@ -1017,7 +1037,7 @@
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(133, 98);
+            this.label41.Location = new System.Drawing.Point(133, 139);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(66, 13);
             this.label41.TabIndex = 192;
@@ -1026,7 +1046,7 @@
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(98, 73);
+            this.label42.Location = new System.Drawing.Point(98, 114);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(101, 13);
             this.label42.TabIndex = 191;
@@ -2891,6 +2911,128 @@
             this.label62.TabIndex = 36;
             this.label62.Text = "Số ngày thuốc:";
             // 
+            // richTextBox_tomtatketquaxetnghiem
+            // 
+            this.richTextBox_tomtatketquaxetnghiem.Location = new System.Drawing.Point(204, 50);
+            this.richTextBox_tomtatketquaxetnghiem.Name = "richTextBox_tomtatketquaxetnghiem";
+            this.richTextBox_tomtatketquaxetnghiem.Size = new System.Drawing.Size(390, 64);
+            this.richTextBox_tomtatketquaxetnghiem.TabIndex = 212;
+            this.richTextBox_tomtatketquaxetnghiem.Text = "";
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(145, 287);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(52, 13);
+            this.label63.TabIndex = 209;
+            this.label63.Text = "X-Quang:";
+            // 
+            // textBox_soxquang
+            // 
+            this.textBox_soxquang.Location = new System.Drawing.Point(206, 283);
+            this.textBox_soxquang.Name = "textBox_soxquang";
+            this.textBox_soxquang.Size = new System.Drawing.Size(31, 20);
+            this.textBox_soxquang.TabIndex = 207;
+            this.textBox_soxquang.Text = "0";
+            this.textBox_soxquang.TextChanged += new System.EventHandler(this.textBox_soxquang_TextChanged);
+            // 
+            // textBox_soCtscanner
+            // 
+            this.textBox_soCtscanner.Location = new System.Drawing.Point(329, 283);
+            this.textBox_soCtscanner.Name = "textBox_soCtscanner";
+            this.textBox_soCtscanner.Size = new System.Drawing.Size(31, 20);
+            this.textBox_soCtscanner.TabIndex = 207;
+            this.textBox_soCtscanner.Text = "0";
+            this.textBox_soCtscanner.TextChanged += new System.EventHandler(this.textBox_Ctscanner_TextChanged);
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(385, 287);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(48, 13);
+            this.label65.TabIndex = 209;
+            this.label65.Text = "Siêu âm:";
+            // 
+            // textBox_sosieuam
+            // 
+            this.textBox_sosieuam.Location = new System.Drawing.Point(433, 283);
+            this.textBox_sosieuam.Name = "textBox_sosieuam";
+            this.textBox_sosieuam.Size = new System.Drawing.Size(31, 20);
+            this.textBox_sosieuam.TabIndex = 207;
+            this.textBox_sosieuam.Text = "0";
+            this.textBox_sosieuam.TextChanged += new System.EventHandler(this.textBox_sieuam_TextChanged);
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.Location = new System.Drawing.Point(115, 316);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(79, 13);
+            this.label66.TabIndex = 209;
+            this.label66.Text = "Toàn bộ hồ sơ:";
+            // 
+            // textBox48
+            // 
+            this.textBox48.Location = new System.Drawing.Point(204, 312);
+            this.textBox48.Name = "textBox48";
+            this.textBox48.Size = new System.Drawing.Size(48, 20);
+            this.textBox48.TabIndex = 207;
+            this.textBox48.TextChanged += new System.EventHandler(this.textBox_idbacsi_TextChanged);
+            // 
+            // textBox_toanbohoso
+            // 
+            this.textBox_toanbohoso.Location = new System.Drawing.Point(204, 312);
+            this.textBox_toanbohoso.Name = "textBox_toanbohoso";
+            this.textBox_toanbohoso.Size = new System.Drawing.Size(48, 20);
+            this.textBox_toanbohoso.TabIndex = 207;
+            this.textBox_toanbohoso.TextChanged += new System.EventHandler(this.textBox_idbacsi_TextChanged);
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(262, 286);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(64, 13);
+            this.label67.TabIndex = 209;
+            this.label67.Text = "CT Scanne:";
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(489, 287);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(63, 13);
+            this.label68.TabIndex = 209;
+            this.label68.Text = "Xét nghiệm:";
+            // 
+            // textBox_soxetnghiem
+            // 
+            this.textBox_soxetnghiem.Location = new System.Drawing.Point(555, 283);
+            this.textBox_soxetnghiem.Name = "textBox_soxetnghiem";
+            this.textBox_soxetnghiem.Size = new System.Drawing.Size(31, 20);
+            this.textBox_soxetnghiem.TabIndex = 207;
+            this.textBox_soxetnghiem.TextChanged += new System.EventHandler(this.textBox_xetnghiem_TextChanged);
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Location = new System.Drawing.Point(611, 287);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(35, 13);
+            this.label70.TabIndex = 209;
+            this.label70.Text = "Khác:";
+            // 
+            // textBox_sokhac
+            // 
+            this.textBox_sokhac.Location = new System.Drawing.Point(649, 283);
+            this.textBox_sokhac.Name = "textBox_sokhac";
+            this.textBox_sokhac.Size = new System.Drawing.Size(31, 20);
+            this.textBox_sokhac.TabIndex = 207;
+            this.textBox_sokhac.Text = "0";
+            this.textBox_sokhac.TextChanged += new System.EventHandler(this.textBox_khac_TextChanged);
+            // 
             // NgoaitruForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3109,7 +3251,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox_search_benhnhan;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.TextBox textBox_Tomtatketqua;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.TextBox textBox_Benhkemtheo;
         private System.Windows.Forms.TextBox textBox_Benhchinh;
@@ -3200,5 +3341,19 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker_thuoctungay;
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.RichTextBox richTextBox_tomtatketquaxetnghiem;
+        private System.Windows.Forms.TextBox textBox_sokhac;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.TextBox textBox_sosieuam;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.TextBox textBox_soxetnghiem;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.TextBox textBox_soCtscanner;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.TextBox textBox_toanbohoso;
+        private System.Windows.Forms.TextBox textBox48;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.TextBox textBox_soxquang;
+        private System.Windows.Forms.Label label63;
     }
 }
