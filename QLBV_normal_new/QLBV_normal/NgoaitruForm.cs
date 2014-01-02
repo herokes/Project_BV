@@ -481,8 +481,9 @@ namespace QLBV_normal
 
         public void load_Xetnhgiem(int idPhieuxetnghiem)
         {
+            textBox_tenxetnghiem.Text = "";
+            textBox_ketquaxetnghiem.Text = "";
             listView_xetnghiem.Items.Clear();
-            listView_ketquaxetnghiem.Items.Clear();
             try
             {
                 MySqlCommand com = new MySqlCommand();
@@ -506,6 +507,7 @@ namespace QLBV_normal
 
                 if (idPhieuxetnghiem != -1)
                 {
+                    listView_ketquaxetnghiem.Items.Clear();
                     com.Parameters.Add("@idPhieuxetnghiem", MySqlDbType.Int32, 11).Value = idPhieuxetnghiem;
                     com.CommandText = @"SELECT *
                                         FROM xetnghiem_phieuxetnghiem
@@ -519,6 +521,7 @@ namespace QLBV_normal
                         Hashtable hash = new Hashtable();
                         hash.Add("xetnghiem_id", read["Xetnghiem_id"].ToString());
                         hash.Add("phieuxetnghiem_id", read["Phieuxetnghiem_id"].ToString());
+                        hash.Add("thongsoxetnghiem", read["Thongsoxetnghiem"].ToString());
                         ListViewItem item = new ListViewItem();
                         item.Text = read["TenXetnghiem"].ToString();
                         item.Tag = hash;
@@ -979,7 +982,9 @@ namespace QLBV_normal
                                         WHERE Phieuxetnghiem_id=@idPhieuxetnghiem";
                     Util.con.Open();
                     MySqlDataReader read = com.ExecuteReader();
-                    if (read.Read())
+                    bool hasData = read.Read();
+                    Util.con.Close();
+                    if (hasData)
                     {
                         if (MessageBox.Show("Phiếu xét nghiệm này vẫn còn kết quả xét nghiệm. Vui lòng xóa các kết quả xét nghiệm trước khi xóa phiếu xét nghiệm này!!!", "Lỗi khi xóa phiếu xét nghiệm", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK)
                         {
@@ -990,12 +995,13 @@ namespace QLBV_normal
                     {
                         if (MessageBox.Show("Bạn có muốn xóa phiếu xét nghiệm này?", "Xác nhận xóa phiếu xét nghiệm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
+                            Util.con.Open();
                             com.CommandText = @"DELETE FROM phieuxetnghiem WHERE id=@idPhieuxetnghiem";
                             com.ExecuteNonQuery();
+                            Util.con.Close();
+                            load_Phieuxetnhgiem(idBenhnhan, idPhieukhambenh);
                         }
                     }
-                    Util.con.Close();
-                    load_Phieuxetnhgiem(idBenhnhan, idPhieukhambenh);
                 }
                 catch (MySqlException mye)
                 {
@@ -1006,9 +1012,12 @@ namespace QLBV_normal
 
         private void listView_ketquaxetnghiem_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = listView_ketquaxetnghiem.SelectedIndices[0];
-            textBox_tenxetnghiem.Text = listView_ketquaxetnghiem.Items[index].SubItems[0].Text;
-            textBox_ketquaxetnghiem.Text = listView_ketquaxetnghiem.Items[index].SubItems[2].Text;
+            if (listView_ketquaxetnghiem.SelectedItems.Count < 1)
+            {
+                return;
+            }
+            textBox_tenxetnghiem.Text = listView_ketquaxetnghiem.SelectedItems[0].SubItems[0].Text;
+            textBox_ketquaxetnghiem.Text = listView_ketquaxetnghiem.SelectedItems[0].SubItems[2].Text;
         }
 
         public string timkiem_idphieuxetnghiem_gannhat(string idphieukhambenh)
@@ -1179,7 +1188,98 @@ namespace QLBV_normal
             `Sokhac` = '01' 
             WHERE `ngoaitru`.`id` = 1";
         }
-     
+
+        private void button_nhapketquaxetnghiem_Click(object sender, EventArgs e)
+        {
+            int items_count = listView_ketquaxetnghiem.Items.Count;
+            if (listView_ketquaxetnghiem.SelectedItems.Count < 1)
+            {
+                return;
+            }
+            Hashtable hash = (Hashtable)listView_ketquaxetnghiem.SelectedItems[0].Tag;
+            hash["thongsoxetnghiem"] = textBox_ketquaxetnghiem.Text;
+            listView_ketquaxetnghiem.SelectedItems[0].SubItems[2].Text = hash["thongsoxetnghiem"].ToString();
+            listView_ketquaxetnghiem.SelectedItems[0].Tag = hash;
+            int index = listView_ketquaxetnghiem.SelectedIndices[0];
+            if (index + 1 < items_count)
+            {
+                listView_ketquaxetnghiem.Items[index + 1].Selected = true;
+                listView_ketquaxetnghiem.Items[index + 1].EnsureVisible();
+            }
+            textBox_ketquaxetnghiem.Focus();
+        }
+
+        private void textBox_ketquaxetnghiem_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button_nhapketquaxetnghiem_Click(sender, e);
+            }
+        }
+
+        private void button_save_ketquaxetnghiem_Click(object sender, EventArgs e)
+        {
+            int idPhieuxetnghiem = -1;
+            try
+            {
+                idPhieuxetnghiem = int.Parse(comboBox_phieuxetnghiem.SelectedValue.ToString());
+            }
+            catch (Exception)
+            {
+
+            }
+            if (idPhieuxetnghiem == -1)
+            {
+                return;
+            }
+            int listView_ketquaxetnghiem_length = listView_ketquaxetnghiem.Items.Count;
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+
+                string valueString1 = "", valueString2 = "";
+                for (int i = 0; i < listView_ketquaxetnghiem_length; i++)
+                {
+                    Hashtable hash = (Hashtable)listView_ketquaxetnghiem.Items[i].Tag;
+                    com.Parameters.Add("@xetnghiem_id" + i.ToString(), MySqlDbType.Int32, 11).Value = int.Parse(hash["xetnghiem_id"].ToString());
+                    com.Parameters.Add("@thongsoxetnghiem" + i.ToString(), MySqlDbType.VarChar, 45).Value = hash["thongsoxetnghiem"].ToString();
+                    valueString1 += " WHEN @xetnghiem_id" + i.ToString() + " THEN @thongsoxetnghiem" + i.ToString();
+                    if (i == 0)
+                    {
+                        valueString2 += "@xetnghiem_id" + i.ToString();
+                    }
+                    else
+                    {
+                        valueString2 += ", @xetnghiem_id" + i.ToString();
+                    }
+                }
+                
+                com.Parameters.Add("@phieuxetnghiem_id", MySqlDbType.Int32, 11).Value = idPhieuxetnghiem;
+
+                com.CommandText = @"UPDATE xetnghiem_phieuxetnghiem SET Thongsoxetnghiem = CASE Xetnghiem_id" + valueString1 + " END WHERE Xetnghiem_id IN ("+ valueString2 + ") AND Phieuxetnghiem_id=@phieuxetnghiem_id";
+
+                if (MessageBox.Show("Bạn có muốn lưu kết quả phiếu xét nghiệm này?", "Xác nhận cập nhật kết quả phiếu xét nghiệm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Util.con.Open();
+                    com.ExecuteNonQuery();
+                    Util.con.Close();
+
+                    load_Xetnhgiem(idPhieuxetnghiem);
+                }
+                
+            }
+            catch (MySqlException sqlE)
+            {
+                MessageBox.Show("update kết quả xét nghiệm");
+                return;
+            }
+        }
+
+        public void updateYlenh(int loai, int idLoai)
+        {
+
+        }
 
     }
 }
