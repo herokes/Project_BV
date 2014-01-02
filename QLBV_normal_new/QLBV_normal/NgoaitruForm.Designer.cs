@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             this.listView_danhsachbenhnhan = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -258,6 +258,7 @@
             this.columnHeader2});
             this.listView_danhsachbenhnhan.FullRowSelect = true;
             this.listView_danhsachbenhnhan.GridLines = true;
+            this.listView_danhsachbenhnhan.HideSelection = false;
             this.listView_danhsachbenhnhan.Location = new System.Drawing.Point(6, 66);
             this.listView_danhsachbenhnhan.MultiSelect = false;
             this.listView_danhsachbenhnhan.Name = "listView_danhsachbenhnhan";
@@ -418,8 +419,8 @@
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage8);
+            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Location = new System.Drawing.Point(6, 24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -2083,10 +2084,10 @@
             this.columnHeader17});
             this.listView_ketquaxetnghiem.FullRowSelect = true;
             this.listView_ketquaxetnghiem.GridLines = true;
-            listViewGroup5.Header = "ListViewGroup";
-            listViewGroup5.Name = "abc";
+            listViewGroup3.Header = "ListViewGroup";
+            listViewGroup3.Name = "abc";
             this.listView_ketquaxetnghiem.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup5});
+            listViewGroup3});
             this.listView_ketquaxetnghiem.HideSelection = false;
             this.listView_ketquaxetnghiem.Location = new System.Drawing.Point(8, 70);
             this.listView_ketquaxetnghiem.MultiSelect = false;
@@ -2154,10 +2155,10 @@
             // 
             this.listView_xetnghiem.CheckBoxes = true;
             this.listView_xetnghiem.GridLines = true;
-            listViewGroup6.Header = "ListViewGroup";
-            listViewGroup6.Name = "abc";
+            listViewGroup4.Header = "ListViewGroup";
+            listViewGroup4.Name = "abc";
             this.listView_xetnghiem.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup6});
+            listViewGroup4});
             this.listView_xetnghiem.Location = new System.Drawing.Point(6, 24);
             this.listView_xetnghiem.Name = "listView_xetnghiem";
             this.listView_xetnghiem.ShowGroups = false;
