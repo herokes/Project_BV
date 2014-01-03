@@ -13,6 +13,12 @@ namespace QLBV_normal.Class
             set { _Quatrinhbenh = value; }
             get { return _Quatrinhbenh; }
         }
+        private string _Ketqualamsang;
+        public string Ketqualamsang
+        {
+            set { _Ketqualamsang = value; }
+            get { return _Ketqualamsang; }
+        }
         private string _lamsan_hct;
         public string lamsan_hct
         {

@@ -73,6 +73,7 @@ namespace QLBV_normal
                 MessageBox.Show("show_dsbenhnhan");
                 return;
             }
+
         }
 
         private void NgoaitruFormnew_Load(object sender, EventArgs e)
@@ -193,7 +194,7 @@ namespace QLBV_normal
                         + "\n" + read["Chuandoanvaovien"].ToString();
                     ////////////// thong tin dien bien benh///////
                     textBox_Quatrinhbenhly.Text = read["Quatrinhbenhly"].ToString();
-                    textBox_Phuongphapdieutri.Text = read["Xuli"].ToString();
+                    richTextBox_phuongphapdieutri.Text = read["Xuli"].ToString();
                     dateTimePicker_Ngaykham.Value =DateTime.Parse(read["Thoigiandenkham"].ToString());
                     dateTimePicker_Giokham.Value = dateTimePicker_Ngaykham.Value;
                     comboBox_Doituong.SelectedIndex = int.Parse(read["Doituong"].ToString()) - 1;
@@ -212,7 +213,7 @@ namespace QLBV_normal
                     textBox_Quatrinhbenhly.Text= read["Quatrinhbenhly"].ToString();
                     textBox_Benhchinh.Text = read["Benhchinh"].ToString();
                     textBox_Benhkemtheo.Text = read["Benhkemtheo"].ToString();
-                    textBox_Phuongphapdieutri.Text = read["Xuli"].ToString();
+                    richTextBox_phuongphapdieutri.Text = read["Xuli"].ToString();
                     textBox_huongdieutri.Text = read["Huongdieutri"].ToString();
                     textBox_tenbsdieutri.Text = read["Bacsidieutri"].ToString();
                     
@@ -1034,7 +1035,12 @@ namespace QLBV_normal
                 Util.con.Open();
                 MySqlDataReader read=  com.ExecuteReader();
                 read.Read();
-                string id= read[0].ToString();
+                string id="";
+                if (read[0].ToString() != "")
+                {
+                    id = read[0].ToString();
+                    Util.con.Close();
+                }
                 Util.con.Close();
                 //MessageBox.Show(id.ToString());
             //if(id=null) return id= -1;
@@ -1072,7 +1078,7 @@ namespace QLBV_normal
                // Xetnghiem xn = new Xetnghiem();
                 while (read.Read())
                 {
-                    ketqua += read["Tenxetnghiem"].ToString() + ":  " + read["Thongsoxetnghiem"].ToString()+ read["Donvi"].ToString() + "\n ";
+                    ketqua += read["Tenxetnghiem"].ToString() + ":  " + read["Thongsoxetnghiem"].ToString()+ read["Donvi"].ToString() + "\n";
                 }
                 Util.con.Close();
                 return ketqua;
@@ -1123,6 +1129,7 @@ namespace QLBV_normal
                 Util.con.Close();
                 return true;
             }
+            Util.con.Close();
             return false;
             
 
@@ -1170,23 +1177,106 @@ namespace QLBV_normal
         }
         private void button_Xuatvien_Click(object sender, EventArgs e)
         {
-           string a= @"UPDATE ngoaitru 
-            SET Ngaygiovaovien = '2014-01-13 00:00:00', 
-            `Benhchinh` = 'benh chinh', 
-            `Benhkemtheo` = 'benh kem theo', 
-            `Dieutritu` = '2014-01-07 00:00:00', 
-            `Dieutriden` = '2014-01-21 00:00:00', 
-            `Tinhtrangravien` = '2', 
-            `Chuandoankhiravien` = 'chuan doan', 
-            `Huongdieutri` = 'huong dieu tri', 
-            `Bacsikhambenh` = 'bs kham', 
-            `Bacsidieutri` = 'bs dieu tri', 
-            `Soxquang` = '01', 
-            `Soctscanner` = '01', 
-            `Sosieuam` = '01', 
-            `Soxetnghiem` = '01', 
-            `Sokhac` = '01' 
-            WHERE `ngoaitru`.`id` = 1";
+            int tinhtrangravien = 0;
+
+            if (radioButton_khoi.Checked)
+                tinhtrangravien = 1;
+            else
+                if (radioButton_dogiam.Checked)
+                    tinhtrangravien = 2;
+                else
+                    if (radioButton_khongdoi.Checked)
+                        tinhtrangravien = 3;
+                    else
+                        if (radioButton_nanghon.Checked)
+                            tinhtrangravien = 4;
+                        else
+                            if (radioButton_tuvong.Checked)
+                                tinhtrangravien = 5;
+
+            MySqlCommand com = new MySqlCommand();
+            com.Connection = Util.con;
+            com.CommandText = @"UPDATE ngoaitru 
+            SET Ngaygiovaovien ='" + dateTimePicker_Ngaykham.Value +
+            "', Benhchinh ='" + textBox_Benhchinh.Text +
+            "', Benhkemtheo = '" + textBox_Benhkemtheo.Text +
+            "', Dieutritu = '" + dateTimePicker_Ngaykham.Value +
+            "', Dieutriden = '" + DateTime.Today +
+            "', Tinhtrangravien =" + tinhtrangravien.ToString() +
+            ", Chuandoankhiravien = '" + textBox_Chuandoan.Text +
+            "', Huongdieutri = '" + textBox_huongdieutri.Text +
+            "', Bacsidieutri ='" + textBox_tenbsdieutri.Text +
+            "',Soxquang =" + textBox_soxquang.Text +
+            ", Soctscanner = " + textBox_soCtscanner.Text +
+            ", Sosieuam = " + textBox_sosieuam.Text +
+            ", Soxetnghiem = " + textBox_soxetnghiem.Text +
+            ", Sokhac = " + textBox_sokhac.Text +
+            "  WHERE ngoaitru.Phieukhambenh_id= " + idpkb;
+            //MessageBox.Show(com.CommandText);
+            Util.con.Open();
+            com.ExecuteNonQuery();
+            Util.con.Close();
+            MessageBox.Show("update thanhcong va xuat vien thanh cong");
+        }
+
+        private void button_Intongketbenhan_Click(object sender, EventArgs e)
+        {
+            frmMain.frmReport = new ReportForm();
+            frmMain.frmReport.frmMain = this.frmMain;
+            frmMain.frmReport.MdiParent = this.frmMain;
+            frmMain.frmReport.arrReport = new ArrayList();
+            frmMain.frmReport.typeReport = "Tongketbenhanngoaitru";
+            string ketqualamsang="";
+            if(check_xetnghiem(idpkb))
+            {
+            int idxetnghiem1 = int.Parse(timkiem_idphieuxetnghiem_gannhat(idpkb.ToString()));
+                    if (check_xetnghiemketqua(idxetnghiem1))
+                    {
+                        ketqualamsang = ketqua_xetnghiem_gannhat_chotongketbenh(timkiem_idphieuxetnghiem_gannhat(idpkb.ToString()));
+                    }
+            }   
+                else ketqualamsang= " Chưa có kết quả lâm sàng";
+            int soxetnghiem=int.Parse(solanxetnghiem(idpkb.ToString()));
+            MySqlCommand com = new MySqlCommand();
+            com.Connection = Util.con;
+            com.CommandText = @"select * from ngoaitru, phieukhambenh
+                                    where  ngoaitru.Phieukhambenh_id= phieukhambenh.id
+                                    and ngoaitru.Phieukhambenh_id="+idpkb;
+            Util.con.Open();
+            MySqlDataReader read = com.ExecuteReader();
+            
+            while (read.Read())
+            {
+                Tongketbenhanngoaitru bant = new Tongketbenhanngoaitru();
+                bant.Quatrinhbenh = read["Quatrinhbenhly"].ToString();
+                bant.Ketqualamsang = ketqualamsang;
+                bant.Benhchinh = read["Benhchinh"].ToString();
+                bant.Benhkemtheo = read["Benhkemtheo"].ToString(); ;
+                
+                if (read["Tinhtrangravien"].ToString() == "1")
+                    bant.Tinhtrangravien = "Khỏi";
+                if (read["Tinhtrangravien"].ToString() == "2")
+                    bant.Tinhtrangravien = "Đỡ,Giảm";
+                if (read["Tinhtrangravien"].ToString() == "3")
+                    bant.Tinhtrangravien = "Không Thay đổi";
+                if (read["Tinhtrangravien"].ToString() == "4")
+                    bant.Tinhtrangravien = "Nặng hơn";
+                if (read["Tinhtrangravien"].ToString() == "5")
+                    bant.Tinhtrangravien = "Tử vong";
+                else bant.Tinhtrangravien = "BN Chưa ra viện";
+                bant.Phuongphapdieutri = read["Xuli"].ToString();
+                bant.Huongdieutri = read["Huongdieutri"].ToString();
+                bant.SotoXquang = int.Parse(read["Soxquang"].ToString());
+                bant.SotoCTscanner = int.Parse(read["Soctscanner"].ToString());
+                bant.SotoSieuam = int.Parse(read["Sosieuam"].ToString());
+                bant.SotoXetnghiem=soxetnghiem ;
+                bant.Khac= int.Parse(read["Sokhac"].ToString());
+                bant.Toanbohoso = bant.SotoXquang + bant.SotoCTscanner + bant.SotoSieuam + bant.SotoXetnghiem + bant.Khac;
+                bant.Bsdieutri = read["Bacsidieutri"].ToString();
+                frmMain.frmReport.arrReport.Add(bant);
+            }
+            Util.con.Close();
+            frmMain.frmReport.Show();
         }
 
         private void button_nhapketquaxetnghiem_Click(object sender, EventArgs e)
@@ -1280,6 +1370,16 @@ namespace QLBV_normal
         {
 
         }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+ 
+
 
     }
 }
