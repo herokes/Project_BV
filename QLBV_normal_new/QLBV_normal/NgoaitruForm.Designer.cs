@@ -271,6 +271,7 @@
             this.columnHeader2});
             this.listView_danhsachbenhnhan.FullRowSelect = true;
             this.listView_danhsachbenhnhan.GridLines = true;
+            this.listView_danhsachbenhnhan.HideSelection = false;
             this.listView_danhsachbenhnhan.Location = new System.Drawing.Point(6, 66);
             this.listView_danhsachbenhnhan.MultiSelect = false;
             this.listView_danhsachbenhnhan.Name = "listView_danhsachbenhnhan";
@@ -431,8 +432,8 @@
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage8);
+            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(6, 24);
             this.tabControl1.Name = "tabControl1";

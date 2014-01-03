@@ -485,6 +485,10 @@ namespace QLBV_normal
             textBox_tenxetnghiem.Text = "";
             textBox_ketquaxetnghiem.Text = "";
             listView_xetnghiem.Items.Clear();
+            if (idPhieuxetnghiem != -2)
+            {
+                listView_ketquaxetnghiem.Items.Clear();
+            }
             try
             {
                 MySqlCommand com = new MySqlCommand();
@@ -508,7 +512,6 @@ namespace QLBV_normal
 
                 if (idPhieuxetnghiem != -1)
                 {
-                    listView_ketquaxetnghiem.Items.Clear();
                     com.Parameters.Add("@idPhieuxetnghiem", MySqlDbType.Int32, 11).Value = idPhieuxetnghiem;
                     com.CommandText = @"SELECT *
                                         FROM xetnghiem_phieuxetnghiem
@@ -738,7 +741,7 @@ namespace QLBV_normal
                 {
 
                 }
-                if (idPhieuxetnghiem == -1)
+                if (idPhieuxetnghiem < 0)
                 {
                     return;
                 }
@@ -800,6 +803,22 @@ namespace QLBV_normal
                 }
                 load_Xetnhgiem(idPhieuxetnghiem);
                 //load_Phieuxetnhgiem(idBenhnhan, idPhieukhambenh);
+                int idBenhnhan = -1;
+                try
+                {
+                    idBenhnhan = int.Parse(textBox_MaBN.Text);
+                }
+                catch (Exception ex)
+                {
+
+                }
+                Hashtable currentObject = get_CurrentObject(idBenhnhan);
+                if (currentObject.Count == 0)
+                {
+                    return;
+                }
+                int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
+                updateYlenh(1, idPhieuxetnghiem, idPhieukhambenh);
             }
             catch (MySqlException sqlE)
             {
@@ -1349,13 +1368,29 @@ namespace QLBV_normal
 
                 com.CommandText = @"UPDATE xetnghiem_phieuxetnghiem SET Thongsoxetnghiem = CASE Xetnghiem_id" + valueString1 + " END WHERE Xetnghiem_id IN ("+ valueString2 + ") AND Phieuxetnghiem_id=@phieuxetnghiem_id";
 
-                if (MessageBox.Show("Bạn có muốn lưu kết quả phiếu xét nghiệm này?", "Xác nhận cập nhật kết quả phiếu xét nghiệm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Bạn có muốn lưu kết quả xét nghiệm này?", "Xác nhận cập nhật kết quả xét nghiệm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Util.con.Open();
                     com.ExecuteNonQuery();
                     Util.con.Close();
 
                     load_Xetnhgiem(idPhieuxetnghiem);
+                    int idBenhnhan = -1;
+                    try
+                    {
+                        idBenhnhan = int.Parse(textBox_MaBN.Text);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    Hashtable currentObject = get_CurrentObject(idBenhnhan);
+                    if (currentObject.Count == 0)
+                    {
+                        return;
+                    }
+                    int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
+                    updateYlenh(2, idPhieuxetnghiem, idPhieukhambenh);
                 }
                 
             }
@@ -1366,9 +1401,102 @@ namespace QLBV_normal
             }
         }
 
-        public void updateYlenh(int loai, int idLoai)
+        public void updateYlenh(int loai, int idLoai, int idPhieukhambenh)
         {
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.Parameters.Add("@idPhieukhambenh", MySqlDbType.Int32, 11).Value = idPhieukhambenh;
+                com.Parameters.Add("@loai", MySqlDbType.Int32, 11).Value = loai;
+                com.Parameters.Add("@idLoai", MySqlDbType.Int32, 11).Value = idLoai;
+                com.Parameters.Add("@mota", MySqlDbType.Text).Value = formatterYlenh(loai, idLoai);
+                com.CommandText = @"SELECT ylenh.*
+                                        FROM ylenh
+                                        WHERE phieukhambenh_id=@idPhieukhambenh
+                                            AND status=1";
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                bool hasYlenhNoComplete = false;
+                int idYlenhNoComplete = -1;
+                while (read.Read())
+                {
+                    hasYlenhNoComplete = true;
+                    idYlenhNoComplete = int.Parse(read["id"].ToString());
+                }
+                Util.con.Close();
 
+                if (hasYlenhNoComplete)
+                {
+                    if (MessageBox.Show("Bạn có muốn hủy y lệnh chưa hoàn thành trước đó và sử dụng y lệnh vừa tạo?", "Xác nhận xóa y lệnh chưa hoàn thành", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        com.Parameters.Add("@idYlenh", MySqlDbType.Int32, 11).Value = idYlenhNoComplete;
+                        com.CommandText = "DELETE FROM ylenh WHERE id=@idYlenh";
+                        Util.con.Open();
+                        com.ExecuteNonQuery();
+                        Util.con.Close();
+                    }
+                }
+                com.CommandText = @"INSERT INTO ylenh (loai, id_loai, Phieukhambenh_id, Mota, Bacsi_id) 
+                                                VALUES (@loai, @idLoai, @idPhieukhambenh, @mota, 1)";
+                Util.con.Open();
+                com.ExecuteNonQuery();
+                Util.con.Close();
+            }
+            catch (MySqlException sqlE)
+            {
+                MessageBox.Show("Load phieu xet nghiem");
+                return;
+            }
+        }
+
+        public string formatterYlenh(int loai, int idLoai)
+        {
+            string valueString = "";
+            MySqlCommand com = new MySqlCommand();
+            com.Connection = Util.con;
+            com.Parameters.Add("@idLoai", MySqlDbType.Int32, 11).Value = idLoai;
+            MySqlDataReader read;
+            switch (loai)
+            {
+                case 1:
+                    valueString = "Xét nghiệm:\n";
+                    com.CommandText = @"SELECT xetnghiem_phieuxetnghiem.*, xetnghiem.*
+                                        FROM xetnghiem_phieuxetnghiem
+                                        LEFT OUTER JOIN ylenh
+                                            ON ylenh.id_loai=xetnghiem_phieuxetnghiem.Phieuxetnghiem_id
+                                        LEFT OUTER JOIN xetnghiem
+                                            ON xetnghiem.id=xetnghiem_phieuxetnghiem.Xetnghiem_id 
+                                        WHERE xetnghiem_phieuxetnghiem.Phieuxetnghiem_id=@idLoai";
+                    Util.con.Open();
+                    read = com.ExecuteReader();
+                    while (read.Read())
+                    {
+                        valueString += read["Tenxetnghiem"].ToString() + "\n";
+                    }
+                    Util.con.Close();
+                    break;
+                case 2:
+                    valueString = "Kết quả xét nghiệm:\n";
+                    com.CommandText = @"SELECT xetnghiem_phieuxetnghiem.*, xetnghiem.*
+                                        FROM xetnghiem_phieuxetnghiem
+                                        LEFT OUTER JOIN ylenh
+                                            ON ylenh.id_loai=xetnghiem_phieuxetnghiem.Phieuxetnghiem_id
+                                        LEFT OUTER JOIN xetnghiem
+                                            ON xetnghiem.id=xetnghiem_phieuxetnghiem.Xetnghiem_id 
+                                        WHERE xetnghiem_phieuxetnghiem.Phieuxetnghiem_id=@idLoai";
+                    Util.con.Open();
+                    read = com.ExecuteReader();
+                    while (read.Read())
+                    {
+                        valueString += read["Tenxetnghiem"].ToString() + ": " + read["Thongsoxetnghiem"].ToString() + read["Donvi"].ToString() + "\n";
+                    }
+                    Util.con.Close();
+                    break;
+                default:
+                    break;
+            }
+            return valueString;
         }
 
         private void label7_Click(object sender, EventArgs e)
