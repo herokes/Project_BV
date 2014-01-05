@@ -480,15 +480,11 @@ namespace QLBV_normal
             }
         }
 
-        public void load_Xetnhgiem(int idPhieuxetnghiem)
+        public void load_Xetnghiem()
         {
-            textBox_tenxetnghiem.Text = "";
+            textBox_tenxetnghiem.Text = 
             textBox_ketquaxetnghiem.Text = "";
             listView_xetnghiem.Items.Clear();
-            if (idPhieuxetnghiem != -2)
-            {
-                listView_ketquaxetnghiem.Items.Clear();
-            }
             try
             {
                 MySqlCommand com = new MySqlCommand();
@@ -509,49 +505,64 @@ namespace QLBV_normal
                     listView_xetnghiem.Items.Add(item);
                 }
                 Util.con.Close();
+            }
+            catch (MySqlException sqlE)
+            {
+                MessageBox.Show("Load xét nghiệm mặc định");
+                return;
+            }
+        }
 
-                if (idPhieuxetnghiem != -1)
-                {
-                    com.Parameters.Add("@idPhieuxetnghiem", MySqlDbType.Int32, 11).Value = idPhieuxetnghiem;
-                    com.CommandText = @"SELECT *
+        public void load_Ketquaxetnghiem(int idPhieuxetnghiem)
+        {
+            listView_ketquaxetnghiem.Items.Clear();
+            if (idPhieuxetnghiem == -1)
+            {
+                return;
+            }
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.Parameters.Add("@idPhieuxetnghiem", MySqlDbType.Int32, 11).Value = idPhieuxetnghiem;
+                com.CommandText = @"SELECT *
                                         FROM xetnghiem_phieuxetnghiem
                                         LEFT OUTER JOIN xetnghiem
                                         	ON xetnghiem_phieuxetnghiem.Xetnghiem_id = xetnghiem.id
                                         WHERE Phieuxetnghiem_id=@idPhieuxetnghiem";
-                    Util.con.Open();
-                    read = com.ExecuteReader();
-                    while (read.Read())
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                while (read.Read())
+                {
+                    Hashtable hash = new Hashtable();
+                    hash.Add("xetnghiem_id", read["Xetnghiem_id"].ToString());
+                    hash.Add("phieuxetnghiem_id", read["Phieuxetnghiem_id"].ToString());
+                    hash.Add("thongsoxetnghiem", read["Thongsoxetnghiem"].ToString());
+                    ListViewItem item = new ListViewItem();
+                    item.Text = read["TenXetnghiem"].ToString();
+                    item.Tag = hash;
+                    item.SubItems.Add(read["Thongsobinhthuong"].ToString());
+                    item.SubItems.Add(read["Thongsoxetnghiem"].ToString());
+                    item.SubItems.Add(read["Donvi"].ToString());
+                    listView_ketquaxetnghiem.Items.Add(item);
+                }
+                Util.con.Close();
+                //Đồng bộ với list chọn xét nghiệm
+                int listView_xetnghiem_length = listView_xetnghiem.Items.Count;
+                int listView_ketquaxetnghiem_length = listView_ketquaxetnghiem.Items.Count;
+                if (listView_ketquaxetnghiem_length > 0)
+                {
+                    for (int i = 0; i < listView_xetnghiem_length; i++)
                     {
-                        Hashtable hash = new Hashtable();
-                        hash.Add("xetnghiem_id", read["Xetnghiem_id"].ToString());
-                        hash.Add("phieuxetnghiem_id", read["Phieuxetnghiem_id"].ToString());
-                        hash.Add("thongsoxetnghiem", read["Thongsoxetnghiem"].ToString());
-                        ListViewItem item = new ListViewItem();
-                        item.Text = read["TenXetnghiem"].ToString();
-                        item.Tag = hash;
-                        item.SubItems.Add(read["Thongsobinhthuong"].ToString());
-                        item.SubItems.Add(read["Thongsoxetnghiem"].ToString());
-                        item.SubItems.Add(read["Donvi"].ToString());
-                        listView_ketquaxetnghiem.Items.Add(item);
-                    }
-                    Util.con.Close();
-
-                    int listView_xetnghiem_length = listView_xetnghiem.Items.Count;
-                    int listView_ketquaxetnghiem_length = listView_ketquaxetnghiem.Items.Count;
-                    if (listView_ketquaxetnghiem_length > 0)
-                    {
-                        for (int i = 0; i < listView_xetnghiem_length; i++)
+                        listView_xetnghiem.Items[i].Checked = false;
+                        Hashtable hashi = (Hashtable)listView_xetnghiem.Items[i].Tag;
+                        for (int j = 0; j < listView_ketquaxetnghiem_length; j++)
                         {
-                            listView_xetnghiem.Items[i].Checked = false;
-                            Hashtable hashi = (Hashtable)listView_xetnghiem.Items[i].Tag;
-                            for (int j = 0; j < listView_ketquaxetnghiem_length; j++)
+                            Hashtable hashj = (Hashtable)listView_ketquaxetnghiem.Items[j].Tag;
+                            if (hashi["id"].ToString() == hashj["xetnghiem_id"].ToString())
                             {
-                                Hashtable hashj = (Hashtable)listView_ketquaxetnghiem.Items[j].Tag;
-                                if (hashi["id"].ToString() == hashj["xetnghiem_id"].ToString())
-                                {
-                                    listView_xetnghiem.Items[i].Checked = true;
-                                    break;
-                                }
+                                listView_xetnghiem.Items[i].Checked = true;
+                                break;
                             }
                         }
                     }
@@ -559,7 +570,7 @@ namespace QLBV_normal
             }
             catch (MySqlException sqlE)
             {
-                MessageBox.Show("Load xet nghiem");
+                MessageBox.Show("Load kết quả xét nghiem");
                 return;
             }
         }
@@ -632,13 +643,16 @@ namespace QLBV_normal
             load_Dientienbenh(idBenhnhan);
             load_Ylenh(idBenhnhan);
             load_Phieuxetnhgiem(idBenhnhan, idPhieukhambenh);
-            load_Xetnhgiem(-1);
+            load_Xetnghiem();
+            load_Toathuoc(idBenhnhan, idPhieukhambenh);
         }
 
         private void textBox_search_benhnhan_TextChanged(object sender, EventArgs e)
         {
             Show_danhsachbenhnhan();
         }
+
+//Phiếu xét nghiệm section---------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void button_create_phieuxetnghiem_Click(object sender, EventArgs e)
         {
             int idBenhnhan = 0;
@@ -690,7 +704,8 @@ namespace QLBV_normal
             {
 
             }
-            load_Xetnhgiem(idPhieuxetnghiem);
+            load_Xetnghiem();
+            load_Ketquaxetnghiem(idPhieuxetnghiem);
         }
 
         public bool cotrongKetquaxetnghiem(string id)
@@ -801,7 +816,7 @@ namespace QLBV_normal
                     com.ExecuteNonQuery();
                     Util.con.Close();
                 }
-                load_Xetnhgiem(idPhieuxetnghiem);
+                load_Ketquaxetnghiem(idPhieuxetnghiem);
                 //load_Phieuxetnhgiem(idBenhnhan, idPhieukhambenh);
                 int idBenhnhan = -1;
                 try
@@ -824,6 +839,198 @@ namespace QLBV_normal
             {
                 return;
             }
+        }
+
+        private void button_refresh_xetnghiem_status_Click(object sender, EventArgs e)
+        {
+            load_Xetnghiem();
+        }
+
+        private void button_delete_phieuxetnghiem_Click(object sender, EventArgs e)
+        {
+            int idPhieuxetnghiem = -1;
+            try
+            {
+                idPhieuxetnghiem = int.Parse(comboBox_phieuxetnghiem.SelectedValue.ToString());
+            }
+            catch (Exception)
+            {
+
+            }
+            if (idPhieuxetnghiem != -1)
+            {
+                int idBenhnhan = -1;
+                try
+                {
+                    idBenhnhan = int.Parse(textBox_MaBN.Text);
+                }
+                catch (Exception ex)
+                {
+
+                }
+                Hashtable currentObject = get_CurrentObject(idBenhnhan);
+                if (currentObject.Count == 0)
+                {
+                    return;
+                }
+                int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
+                try
+                {
+                    MySqlCommand com = new MySqlCommand();
+                    com.Connection = Util.con;
+                    com.Parameters.Add("@idPhieuxetnghiem", MySqlDbType.Int32, 11).Value = idPhieuxetnghiem;
+                    com.CommandText = @"SELECT *
+                                        FROM xetnghiem_phieuxetnghiem
+                                        WHERE Phieuxetnghiem_id=@idPhieuxetnghiem";
+                    Util.con.Open();
+                    MySqlDataReader read = com.ExecuteReader();
+                    bool hasData = read.Read();
+                    Util.con.Close();
+                    if (hasData)
+                    {
+                        if (MessageBox.Show("Phiếu xét nghiệm này vẫn còn kết quả xét nghiệm. Vui lòng xóa các kết quả xét nghiệm trước khi xóa phiếu xét nghiệm này!!!", "Lỗi khi xóa phiếu xét nghiệm", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK)
+                        {
+
+                        }
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("Bạn có muốn xóa phiếu xét nghiệm này?", "Xác nhận xóa phiếu xét nghiệm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            Util.con.Open();
+                            com.CommandText = @"DELETE FROM phieuxetnghiem WHERE id=@idPhieuxetnghiem";
+                            com.ExecuteNonQuery();
+                            Util.con.Close();
+                            load_Phieuxetnhgiem(idBenhnhan, idPhieukhambenh);
+                        }
+                    }
+                }
+                catch (MySqlException mye)
+                {
+
+                }
+            }
+        }
+
+        private void listView_ketquaxetnghiem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBox_tenxetnghiem.Text =
+            textBox_ketquaxetnghiem.Text = "";
+            if (listView_ketquaxetnghiem.SelectedItems.Count < 1)
+            {
+                return;
+            }
+            Hashtable hash = (Hashtable)listView_ketquaxetnghiem.SelectedItems[0].Tag;
+            textBox_tenxetnghiem.Text = listView_ketquaxetnghiem.SelectedItems[0].SubItems[0].Text;
+            textBox_ketquaxetnghiem.Text = hash["thongsoxetnghiem"].ToString();
+        }
+
+        private void button_nhapketquaxetnghiem_Click(object sender, EventArgs e)
+        {
+            int items_count = listView_ketquaxetnghiem.Items.Count;
+            if (listView_ketquaxetnghiem.SelectedItems.Count < 1)
+            {
+                return;
+            }
+            Hashtable hash = (Hashtable)listView_ketquaxetnghiem.SelectedItems[0].Tag;
+            hash["thongsoxetnghiem"] = textBox_ketquaxetnghiem.Text;
+            listView_ketquaxetnghiem.SelectedItems[0].SubItems[2].Text = hash["thongsoxetnghiem"].ToString();
+            listView_ketquaxetnghiem.SelectedItems[0].Tag = hash;
+            int index = listView_ketquaxetnghiem.SelectedIndices[0];
+            if (index + 1 < items_count)
+            {
+                listView_ketquaxetnghiem.Items[index + 1].Selected = true;
+                listView_ketquaxetnghiem.Items[index + 1].EnsureVisible();
+            }
+            textBox_ketquaxetnghiem.Focus();
+        }
+
+        private void textBox_ketquaxetnghiem_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button_nhapketquaxetnghiem_Click(sender, e);
+            }
+        }
+
+        private void button_save_ketquaxetnghiem_Click(object sender, EventArgs e)
+        {
+            int idPhieuxetnghiem = -1;
+            try
+            {
+                idPhieuxetnghiem = int.Parse(comboBox_phieuxetnghiem.SelectedValue.ToString());
+            }
+            catch (Exception)
+            {
+
+            }
+            if (idPhieuxetnghiem == -1)
+            {
+                return;
+            }
+            int listView_ketquaxetnghiem_length = listView_ketquaxetnghiem.Items.Count;
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+
+                string valueString1 = "", valueString2 = "";
+                for (int i = 0; i < listView_ketquaxetnghiem_length; i++)
+                {
+                    Hashtable hash = (Hashtable)listView_ketquaxetnghiem.Items[i].Tag;
+                    com.Parameters.Add("@xetnghiem_id" + i.ToString(), MySqlDbType.Int32, 11).Value = int.Parse(hash["xetnghiem_id"].ToString());
+                    com.Parameters.Add("@thongsoxetnghiem" + i.ToString(), MySqlDbType.VarChar, 45).Value = hash["thongsoxetnghiem"].ToString();
+                    valueString1 += " WHEN @xetnghiem_id" + i.ToString() + " THEN @thongsoxetnghiem" + i.ToString();
+                    if (i == 0)
+                    {
+                        valueString2 += "@xetnghiem_id" + i.ToString();
+                    }
+                    else
+                    {
+                        valueString2 += ", @xetnghiem_id" + i.ToString();
+                    }
+                }
+
+                com.Parameters.Add("@phieuxetnghiem_id", MySqlDbType.Int32, 11).Value = idPhieuxetnghiem;
+
+                com.CommandText = @"UPDATE xetnghiem_phieuxetnghiem SET Thongsoxetnghiem = CASE Xetnghiem_id" + valueString1 + " END WHERE Xetnghiem_id IN (" + valueString2 + ") AND Phieuxetnghiem_id=@phieuxetnghiem_id";
+
+                if (MessageBox.Show("Bạn có muốn lưu kết quả xét nghiệm này?", "Xác nhận cập nhật kết quả xét nghiệm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Util.con.Open();
+                    com.ExecuteNonQuery();
+                    Util.con.Close();
+
+                    load_Ketquaxetnghiem(idPhieuxetnghiem);
+                    int idBenhnhan = -1;
+                    try
+                    {
+                        idBenhnhan = int.Parse(textBox_MaBN.Text);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    Hashtable currentObject = get_CurrentObject(idBenhnhan);
+                    if (currentObject.Count == 0)
+                    {
+                        return;
+                    }
+                    int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
+                    updateYlenh(2, idPhieuxetnghiem, idPhieukhambenh);
+                }
+
+            }
+            catch (MySqlException sqlE)
+            {
+                MessageBox.Show("update kết quả xét nghiệm");
+                return;
+            }
+        }
+
+        private void listView_ketquaxetnghiem_DoubleClick(object sender, EventArgs e)
+        {
+            textBox_ketquaxetnghiem.Focus();
         }
 /// <summary>
 ///  In Bênh an  ngoai tru
@@ -956,88 +1163,6 @@ namespace QLBV_normal
                 MessageBox.Show(sqlE.Source.ToString());
                 return;
             }
-        }
-
-        private void button_refresh_xetnghiem_status_Click(object sender, EventArgs e)
-        {
-            load_Xetnhgiem(-1);
-        }
-
-
-        private void button_delete_phieuxetnghiem_Click(object sender, EventArgs e)
-        {
-            int idPhieuxetnghiem = -1;
-            try
-            {
-                idPhieuxetnghiem = int.Parse(comboBox_phieuxetnghiem.SelectedValue.ToString());
-            }
-            catch (Exception)
-            {
-
-            }
-            if (idPhieuxetnghiem != -1)
-            {
-                int idBenhnhan = -1;
-                try
-                {
-                    idBenhnhan = int.Parse(textBox_MaBN.Text);
-                }
-                catch (Exception ex)
-                {
-
-                }
-                Hashtable currentObject = get_CurrentObject(idBenhnhan);
-                if (currentObject.Count == 0)
-                {
-                    return;
-                }
-                int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
-                try
-                {
-                    MySqlCommand com = new MySqlCommand();
-                    com.Connection = Util.con;
-                    com.Parameters.Add("@idPhieuxetnghiem", MySqlDbType.Int32, 11).Value = idPhieuxetnghiem;
-                    com.CommandText = @"SELECT *
-                                        FROM xetnghiem_phieuxetnghiem
-                                        WHERE Phieuxetnghiem_id=@idPhieuxetnghiem";
-                    Util.con.Open();
-                    MySqlDataReader read = com.ExecuteReader();
-                    bool hasData = read.Read();
-                    Util.con.Close();
-                    if (hasData)
-                    {
-                        if (MessageBox.Show("Phiếu xét nghiệm này vẫn còn kết quả xét nghiệm. Vui lòng xóa các kết quả xét nghiệm trước khi xóa phiếu xét nghiệm này!!!", "Lỗi khi xóa phiếu xét nghiệm", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK)
-                        {
-                            
-                        }
-                    }
-                    else
-                    {
-                        if (MessageBox.Show("Bạn có muốn xóa phiếu xét nghiệm này?", "Xác nhận xóa phiếu xét nghiệm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            Util.con.Open();
-                            com.CommandText = @"DELETE FROM phieuxetnghiem WHERE id=@idPhieuxetnghiem";
-                            com.ExecuteNonQuery();
-                            Util.con.Close();
-                            load_Phieuxetnhgiem(idBenhnhan, idPhieukhambenh);
-                        }
-                    }
-                }
-                catch (MySqlException mye)
-                {
-
-                }
-            }
-        }
-
-        private void listView_ketquaxetnghiem_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listView_ketquaxetnghiem.SelectedItems.Count < 1)
-            {
-                return;
-            }
-            textBox_tenxetnghiem.Text = listView_ketquaxetnghiem.SelectedItems[0].SubItems[0].Text;
-            textBox_ketquaxetnghiem.Text = listView_ketquaxetnghiem.SelectedItems[0].SubItems[2].Text;
         }
 
         public string timkiem_idphieuxetnghiem_gannhat(string idphieukhambenh)
@@ -1298,109 +1423,7 @@ namespace QLBV_normal
             frmMain.frmReport.Show();
         }
 
-        private void button_nhapketquaxetnghiem_Click(object sender, EventArgs e)
-        {
-            int items_count = listView_ketquaxetnghiem.Items.Count;
-            if (listView_ketquaxetnghiem.SelectedItems.Count < 1)
-            {
-                return;
-            }
-            Hashtable hash = (Hashtable)listView_ketquaxetnghiem.SelectedItems[0].Tag;
-            hash["thongsoxetnghiem"] = textBox_ketquaxetnghiem.Text;
-            listView_ketquaxetnghiem.SelectedItems[0].SubItems[2].Text = hash["thongsoxetnghiem"].ToString();
-            listView_ketquaxetnghiem.SelectedItems[0].Tag = hash;
-            int index = listView_ketquaxetnghiem.SelectedIndices[0];
-            if (index + 1 < items_count)
-            {
-                listView_ketquaxetnghiem.Items[index + 1].Selected = true;
-                listView_ketquaxetnghiem.Items[index + 1].EnsureVisible();
-            }
-            textBox_ketquaxetnghiem.Focus();
-        }
-
-        private void textBox_ketquaxetnghiem_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                button_nhapketquaxetnghiem_Click(sender, e);
-            }
-        }
-
-        private void button_save_ketquaxetnghiem_Click(object sender, EventArgs e)
-        {
-            int idPhieuxetnghiem = -1;
-            try
-            {
-                idPhieuxetnghiem = int.Parse(comboBox_phieuxetnghiem.SelectedValue.ToString());
-            }
-            catch (Exception)
-            {
-
-            }
-            if (idPhieuxetnghiem == -1)
-            {
-                return;
-            }
-            int listView_ketquaxetnghiem_length = listView_ketquaxetnghiem.Items.Count;
-            try
-            {
-                MySqlCommand com = new MySqlCommand();
-                com.Connection = Util.con;
-
-                string valueString1 = "", valueString2 = "";
-                for (int i = 0; i < listView_ketquaxetnghiem_length; i++)
-                {
-                    Hashtable hash = (Hashtable)listView_ketquaxetnghiem.Items[i].Tag;
-                    com.Parameters.Add("@xetnghiem_id" + i.ToString(), MySqlDbType.Int32, 11).Value = int.Parse(hash["xetnghiem_id"].ToString());
-                    com.Parameters.Add("@thongsoxetnghiem" + i.ToString(), MySqlDbType.VarChar, 45).Value = hash["thongsoxetnghiem"].ToString();
-                    valueString1 += " WHEN @xetnghiem_id" + i.ToString() + " THEN @thongsoxetnghiem" + i.ToString();
-                    if (i == 0)
-                    {
-                        valueString2 += "@xetnghiem_id" + i.ToString();
-                    }
-                    else
-                    {
-                        valueString2 += ", @xetnghiem_id" + i.ToString();
-                    }
-                }
-                
-                com.Parameters.Add("@phieuxetnghiem_id", MySqlDbType.Int32, 11).Value = idPhieuxetnghiem;
-
-                com.CommandText = @"UPDATE xetnghiem_phieuxetnghiem SET Thongsoxetnghiem = CASE Xetnghiem_id" + valueString1 + " END WHERE Xetnghiem_id IN ("+ valueString2 + ") AND Phieuxetnghiem_id=@phieuxetnghiem_id";
-
-                if (MessageBox.Show("Bạn có muốn lưu kết quả xét nghiệm này?", "Xác nhận cập nhật kết quả xét nghiệm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    Util.con.Open();
-                    com.ExecuteNonQuery();
-                    Util.con.Close();
-
-                    load_Xetnhgiem(idPhieuxetnghiem);
-                    int idBenhnhan = -1;
-                    try
-                    {
-                        idBenhnhan = int.Parse(textBox_MaBN.Text);
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-                    Hashtable currentObject = get_CurrentObject(idBenhnhan);
-                    if (currentObject.Count == 0)
-                    {
-                        return;
-                    }
-                    int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
-                    updateYlenh(2, idPhieuxetnghiem, idPhieukhambenh);
-                }
-                
-            }
-            catch (MySqlException sqlE)
-            {
-                MessageBox.Show("update kết quả xét nghiệm");
-                return;
-            }
-        }
-
+//Y lệnh section---------------------------------------------------------------------------------------------------------------------------------------------------------------------
         public void updateYlenh(int loai, int idLoai, int idPhieukhambenh)
         {
             try
@@ -1467,7 +1490,8 @@ namespace QLBV_normal
                                             ON ylenh.id_loai=xetnghiem_phieuxetnghiem.Phieuxetnghiem_id
                                         LEFT OUTER JOIN xetnghiem
                                             ON xetnghiem.id=xetnghiem_phieuxetnghiem.Xetnghiem_id 
-                                        WHERE xetnghiem_phieuxetnghiem.Phieuxetnghiem_id=@idLoai";
+                                        WHERE xetnghiem_phieuxetnghiem.Phieuxetnghiem_id=@idLoai
+                                            AND ylenh.loai=1";
                     Util.con.Open();
                     read = com.ExecuteReader();
                     while (read.Read())
@@ -1484,7 +1508,8 @@ namespace QLBV_normal
                                             ON ylenh.id_loai=xetnghiem_phieuxetnghiem.Phieuxetnghiem_id
                                         LEFT OUTER JOIN xetnghiem
                                             ON xetnghiem.id=xetnghiem_phieuxetnghiem.Xetnghiem_id 
-                                        WHERE xetnghiem_phieuxetnghiem.Phieuxetnghiem_id=@idLoai";
+                                        WHERE xetnghiem_phieuxetnghiem.Phieuxetnghiem_id=@idLoai
+                                            AND ylenh.loai=2";
                     Util.con.Open();
                     read = com.ExecuteReader();
                     while (read.Read())
@@ -1493,20 +1518,453 @@ namespace QLBV_normal
                     }
                     Util.con.Close();
                     break;
+                case 3:
+                    string titleString = "", toathuocString = "";
+                    valueString = "Cấp thuốc:\n";
+                    com.CommandText = @"SELECT toathuoc_thuoc.*, thuoc.*, toathuoc.*
+                                        FROM toathuoc_thuoc
+                                        LEFT OUTER JOIN ylenh
+                                            ON ylenh.id_loai=toathuoc_thuoc.toathuoc_id
+                                        LEFT OUTER JOIN thuoc
+                                            ON thuoc.id=toathuoc_thuoc.thuoc_id 
+                                        LEFT OUTER JOIN toathuoc
+                                            ON toathuoc.id=toathuoc_thuoc.toathuoc_id 
+                                        WHERE toathuoc_thuoc.toathuoc_id=@idLoai
+                                            AND ylenh.loai=3";
+                    Util.con.Open();
+                    read = com.ExecuteReader();
+                    while (read.Read())
+                    {
+                        double ngaythuoc = Math.Round((DateTime.Parse(read["denngay"].ToString()) - DateTime.Parse(read["Tungay"].ToString())).TotalDays + 1);
+                        string sangStr = "\t\t", truaStr = "\t\t", toiStr = "\t\t";
+                        if (read["sang"].ToString() != "" && read["sang"].ToString() != "0")
+                        {
+                            sangStr = "Sáng " + read["sang"].ToString() + " " + read["Dang"].ToString();
+                        }
+                        if (read["trua"].ToString() != "" && read["trua"].ToString() != "0")
+                        {
+                            truaStr = "Trưa " + read["trua"].ToString() + " " + read["Dang"].ToString();
+                        }
+                        if (read["toi"].ToString() != "" && read["toi"].ToString() != "0")
+                        {
+                            toiStr = "Tối " + read["toi"].ToString() + " " + read["Dang"].ToString();
+                        }
+                        //double thuoc1ngay = double.Parse(read["sang"].ToString()) + double.Parse(read["sang"].ToString()) + double.Parse(read["sang"].ToString());
+                        titleString = "Thuốc đợt\t" + DateTime.Parse(read["Tungay"].ToString()).ToString("dd/MM/yyyy") + "\tđến\t" + DateTime.Parse(read["denngay"].ToString()).ToString("dd/MM/yyyy");
+                        toathuocString += "\n" + read["Tenthuoc"].ToString() + " " + read["Hamluong"].ToString() + "\t\t\t ";
+                        toathuocString += "\n\t" + read["Duongdung"].ToString() + " " + sangStr + " " + truaStr + " " + toiStr;
+                    }
+                    Util.con.Close();
+                    valueString += titleString + toathuocString;
+                    break;
                 default:
                     break;
             }
             return valueString;
         }
 
-        private void label7_Click(object sender, EventArgs e)
+//Toa thuốc section---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        public void load_Toathuoc(int idBenhnhan, int idPhieukhambenh)
         {
-
+            comboBox_toathuoc.DataSource = null;
+            comboBox_toathuoc.Text = "";
+            comboBox_toathuoc.SelectedIndex = -1;
+            comboBox_toathuoc.DisplayMember = "Text";
+            comboBox_toathuoc.ValueMember = "Value";
+            List<object> myCollection = new List<object>();
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.Parameters.Add("@idBenhnhan", MySqlDbType.Int32, 11).Value = idBenhnhan;
+                com.Parameters.Add("@idPhieukhambenh", MySqlDbType.Int32, 11).Value = idPhieukhambenh;
+                com.CommandText = @"SELECT toathuoc.*
+                                        FROM toathuoc
+                                        LEFT OUTER JOIN phieukhambenh
+                                            ON toathuoc.Phieukhambenh_id=phieukhambenh.id 
+                                        LEFT OUTER JOIN ngoaitru
+                                            ON ngoaitru.Phieukhambenh_id=phieukhambenh.id 
+                                        LEFT OUTER JOIN benhnhan
+                                            ON benhnhan.id=phieukhambenh.Benhnhan_id
+                                        WHERE benhnhan.id=@idBenhnhan
+                                            AND phieukhambenh.id=@idPhieukhambenh
+                                        ORDER BY toathuoc.id DESC";
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                while (read.Read())
+                {
+                    myCollection.Add(new { Text = DateTime.Parse(read["Tungay"].ToString()).ToString("dd/MM/yyyy") + " - " + DateTime.Parse(read["Denngay"].ToString()).ToString("dd/MM/yyyy"), Value = read["id"].ToString() });
+                }
+                Util.con.Close();
+            }
+            catch (MySqlException sqlE)
+            {
+                MessageBox.Show("Load toa thuốc");
+                return;
+            }
+            comboBox_toathuoc.DataSource = (object)myCollection;
+            if (comboBox_toathuoc.Items.Count > 0)
+            {
+                comboBox_toathuoc.SelectedIndex = 0;
+            }
         }
 
+        public void load_ChitietToathuoc(int idToathuoc)
+        {
+            dateTimePicker_thuoctungay.Value = dateTimePicker_thuocdenngay.Value = DateTime.Now;
+            richTextBox_loidan.Text = "";
+            if (idToathuoc == -1)
+            {
+                return;
+            }
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                if (idToathuoc != -1)
+                {
+                    com.Parameters.Add("@idToathuoc", MySqlDbType.Int32, 11).Value = idToathuoc;
+                    com.CommandText = @"SELECT *
+                                        FROM toathuoc
+                                        WHERE id=@idToathuoc";
+                    Util.con.Open();
+                    MySqlDataReader read = com.ExecuteReader();
+                    while (read.Read())
+                    {
+                        dateTimePicker_thuoctungay.Value = DateTime.Parse(read["Tungay"].ToString());
+                        dateTimePicker_thuocdenngay.Value = DateTime.Parse(read["Denngay"].ToString());
+                        richTextBox_loidan.Text = read["Loidan"].ToString();
+                    }
+                    Util.con.Close();
+                }
+            }
+            catch (MySqlException sqlE)
+            {
+                MessageBox.Show("Load chi tiết toa thuốc");
+                return;
+            }
+        }
 
+        public void load_ChitietToathuoc_Thuoc(int idToathuoc)
+        {
+            listView_chitiettoathuoc.Items.Clear();
+            if (idToathuoc == -1)
+            {
+                return;
+            }
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.Parameters.Add("@idToathuoc", MySqlDbType.Int32, 11).Value = idToathuoc;
+                com.CommandText = @"SELECT *
+                                        FROM toathuoc_thuoc
+                                        LEFT OUTER JOIN thuoc
+                                            ON toathuoc_thuoc.thuoc_id=thuoc.id
+                                        WHERE toathuoc_thuoc.toathuoc_id=@idToathuoc";
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                int i = 1;
+                while (read.Read())
+                {
+                    Hashtable hash = new Hashtable();
+                    hash.Add("toathuoc_id", read["Toathuoc_id"].ToString());
+                    hash.Add("thuoc_id", read["Thuoc_id"].ToString());
+                    hash.Add("sang", read["sang"].ToString());
+                    hash.Add("trua", read["trua"].ToString());
+                    hash.Add("toi", read["toi"].ToString());
+                    hash.Add("ghichu", read["ghichu"].ToString());
+                    ListViewItem item = new ListViewItem();
+                    item.Text = i.ToString();
+                    item.Tag = hash;
+                    item.SubItems.Add(read["Tenthuoc"].ToString() + " " + read["Hamluong"].ToString());
+                    item.SubItems.Add(read["ghichu"].ToString());
+                    item.SubItems.Add(read["Duongdung"].ToString());
+                    item.SubItems.Add(read["sang"].ToString());
+                    item.SubItems.Add(read["trua"].ToString());
+                    item.SubItems.Add(read["toi"].ToString());
+                    item.SubItems.Add(read["Dang"].ToString());
+                    listView_chitiettoathuoc.Items.Add(item);
+                    i++;
+                }
+                Util.con.Close();
+            }
+            catch (MySqlException sqlE)
+            {
+                MessageBox.Show("Load chi tiết toa thuốc và thuốc");
+                return;
+            }
+        }
 
- 
+        public double soNgaythuoc()
+        {
+            double ngaythuoc = (dateTimePicker_thuocdenngay.Value - dateTimePicker_thuoctungay.Value).TotalDays + 1;
+            return Math.Round(ngaythuoc);          
+        }
+
+        private void comboBox_toathuoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int idToathuoc = -1;
+            try
+            {
+                idToathuoc = int.Parse(comboBox_toathuoc.SelectedValue.ToString());
+            }
+            catch (Exception)
+            {
+
+            }
+            load_ChitietToathuoc(idToathuoc);
+            load_ChitietToathuoc_Thuoc(idToathuoc);
+        }
+
+        private void dateTimePicker_thuoctungay_ValueChanged(object sender, EventArgs e)
+        {
+            double ngaythuoc = soNgaythuoc();
+            if (ngaythuoc > 0)
+            {
+                textBox_songaythuoc.Text = ngaythuoc.ToString();
+            }
+            else
+            {
+                dateTimePicker_thuoctungay.Value = DateTime.Now;
+            }
+        }
+
+        private void dateTimePicker_thuocdenngay_ValueChanged(object sender, EventArgs e)
+        {
+            double ngaythuoc = soNgaythuoc();
+            if (ngaythuoc > 0)
+            {
+                textBox_songaythuoc.Text = ngaythuoc.ToString();
+            }
+            else
+            {
+                dateTimePicker_thuocdenngay.Value = DateTime.Now;
+            }
+        }
+
+        private void textBox_searchthuoc_TextChanged(object sender, EventArgs e)
+        {
+            listView_thuoc.Items.Clear();
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.Parameters.AddWithValue("@tenthuoc", "%" + textBox_searchthuoc.Text + "%");
+                com.CommandText = @"SELECT *
+                                        FROM thuoc
+                                        WHERE tenthuoc LIKE @tenthuoc";
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                int i = 1;
+                while (read.Read())
+                {
+                    Hashtable hash = new Hashtable();
+                    hash.Add("thuoc_id", read["id"].ToString());
+                    ListViewItem item = new ListViewItem();
+                    item.Text = i.ToString();
+                    item.Tag = hash;
+                    item.SubItems.Add(read["Tenthuoc"].ToString() + " " + read["Hamluong"].ToString());
+                    item.SubItems.Add(read["Duongdung"].ToString());
+                    item.SubItems.Add(read["Dang"].ToString());
+                    listView_thuoc.Items.Add(item);
+                    i++;
+                }
+                Util.con.Close();
+            }
+            catch (MySqlException sqlE)
+            {
+                MessageBox.Show("Tìm thuốc theo tên thuốc");
+                return;
+            }
+        }
+
+        private void button_addtoToathuoc_Click(object sender, EventArgs e)
+        {
+            int idToathuoc = -1;
+            try
+            {
+                idToathuoc = int.Parse(comboBox_toathuoc.SelectedValue.ToString());
+            }
+            catch (Exception)
+            {
+
+            }
+            if (idToathuoc == -1 || listView_thuoc.SelectedItems.Count < 1)
+            {
+                return;
+            }
+            Hashtable hash = (Hashtable)listView_thuoc.SelectedItems[0].Tag;
+            int idThuoc = int.Parse(hash["thuoc_id"].ToString());
+            if (cotrongToathuoc(idThuoc.ToString()))
+            {
+                return;
+            }
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.Parameters.Add("@idToathuoc", MySqlDbType.Int32, 11).Value = idToathuoc;
+                com.Parameters.Add("@idThuoc", MySqlDbType.Int32, 11).Value = idThuoc;
+                com.CommandText = @"INSERT INTO `toathuoc_thuoc` (`Toathuoc_id`, `Thuoc_id`) VALUES (@idToathuoc, @idThuoc)";
+                Util.con.Open();
+                com.ExecuteNonQuery();
+                Util.con.Close();
+            }
+            catch (MySqlException sqlE)
+            {
+                MessageBox.Show("Thêm thuốc vào toa thuốc");
+                return;
+            }
+            load_ChitietToathuoc_Thuoc(idToathuoc);
+        }
+
+        public bool cotrongToathuoc(string id)
+        {
+            int listView_chitiettoathuoc_length = listView_chitiettoathuoc.Items.Count;
+            for (int i = 0; i < listView_chitiettoathuoc_length; i++)
+            {
+                Hashtable hash = (Hashtable)listView_chitiettoathuoc.Items[i].Tag;
+                if (hash["thuoc_id"].ToString() == id)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void listView_chitiettoathuoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBox_tenthuoc.Text =
+            textBox_ghichuthuoc.Text =
+            textBox_lieusang.Text =
+            textBox_lieutrua.Text =
+            textBox_lieutoi.Text = "";
+            if (listView_chitiettoathuoc.SelectedItems.Count < 1)
+            {
+                return;
+            }
+            Hashtable hash = (Hashtable)listView_chitiettoathuoc.SelectedItems[0].Tag;
+            textBox_tenthuoc.Text = listView_chitiettoathuoc.SelectedItems[0].SubItems[1].Text;
+            textBox_ghichuthuoc.Text = hash["ghichu"].ToString();
+            textBox_lieusang.Text = hash["sang"].ToString();
+            textBox_lieutrua.Text = hash["trua"].ToString();
+            textBox_lieutoi.Text = hash["toi"].ToString();
+        }
+
+        private void button_capnhat_chitietthuoc_Click(object sender, EventArgs e)
+        {
+            int items_count = listView_chitiettoathuoc.Items.Count;
+            if (listView_chitiettoathuoc.SelectedItems.Count < 1)
+            {
+                return;
+            }
+            Hashtable hash = (Hashtable)listView_chitiettoathuoc.SelectedItems[0].Tag;
+            hash["ghichu"] = textBox_ghichuthuoc.Text;
+            hash["sang"] = textBox_lieusang.Text;
+            hash["trua"] = textBox_lieutrua.Text;
+            hash["toi"] = textBox_lieutoi.Text;
+            listView_chitiettoathuoc.SelectedItems[0].SubItems[2].Text = hash["ghichu"].ToString();
+            listView_chitiettoathuoc.SelectedItems[0].SubItems[4].Text = hash["sang"].ToString();
+            listView_chitiettoathuoc.SelectedItems[0].SubItems[5].Text = hash["trua"].ToString();
+            listView_chitiettoathuoc.SelectedItems[0].SubItems[6].Text = hash["toi"].ToString();
+            listView_chitiettoathuoc.SelectedItems[0].Tag = hash;
+            int index = listView_chitiettoathuoc.SelectedIndices[0];
+            if (index + 1 < items_count)
+            {
+                listView_chitiettoathuoc.Items[index + 1].Selected = true;
+                listView_chitiettoathuoc.Items[index + 1].EnsureVisible();
+            }
+            textBox_ghichuthuoc.Focus();
+        }
+
+        private void listView_chitiettoathuoc_DoubleClick(object sender, EventArgs e)
+        {
+            textBox_ghichuthuoc.Focus();
+        }
+
+        private void button_save_toathuoc_Click(object sender, EventArgs e)
+        {
+            int idToathuoc = -1;
+            try
+            {
+                idToathuoc = int.Parse(comboBox_toathuoc.SelectedValue.ToString());
+            }
+            catch (Exception)
+            {
+
+            }
+            if (idToathuoc == -1)
+            {
+                return;
+            }
+            int listView_chitiettoathuoc_length = listView_chitiettoathuoc.Items.Count;
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+
+                string valueString1 = "", valueString2 = "", valueString3 = "", valueString4 = "", valueString5 = "";
+                for (int i = 0; i < listView_chitiettoathuoc_length; i++)
+                {
+                    Hashtable hash = (Hashtable)listView_chitiettoathuoc.Items[i].Tag;
+                    com.Parameters.Add("@thuoc_id" + i.ToString(), MySqlDbType.Int32, 11).Value = int.Parse(hash["thuoc_id"].ToString());
+                    com.Parameters.Add("@ghichu" + i.ToString(), MySqlDbType.Text).Value = hash["ghichu"].ToString();
+                    com.Parameters.Add("@sang" + i.ToString(), MySqlDbType.VarChar, 45).Value = hash["sang"].ToString();
+                    com.Parameters.Add("@trua" + i.ToString(), MySqlDbType.VarChar, 45).Value = hash["trua"].ToString();
+                    com.Parameters.Add("@toi" + i.ToString(), MySqlDbType.VarChar, 45).Value = hash["toi"].ToString();
+                    valueString2 += " WHEN @thuoc_id" + i.ToString() + " THEN @ghichu" + i.ToString();
+                    valueString3 += " WHEN @thuoc_id" + i.ToString() + " THEN @sang" + i.ToString();
+                    valueString4 += " WHEN @thuoc_id" + i.ToString() + " THEN @trua" + i.ToString();
+                    valueString5 += " WHEN @thuoc_id" + i.ToString() + " THEN @toi" + i.ToString();
+                    if (i == 0)
+                    {
+                        valueString1 += "@thuoc_id" + i.ToString();
+                    }
+                    else
+                    {
+                        valueString1 += ", @thuoc_id" + i.ToString();
+                    }
+                }
+
+                com.Parameters.Add("@toathuoc_id", MySqlDbType.Int32, 11).Value = idToathuoc;
+
+                com.CommandText = @"UPDATE toathuoc_thuoc SET ghichu = CASE thuoc_id" + valueString2 + " END, sang = CASE thuoc_id" + valueString3 + " END, trua = CASE thuoc_id" + valueString4 + " END, toi = CASE thuoc_id" + valueString5 + " END WHERE Thuoc_id IN (" + valueString1 + ") AND Toathuoc_id=@toathuoc_id";
+
+                if (MessageBox.Show("Bạn có muốn lưu toa thuốc này?", "Xác nhận cập nhật toa thuốc", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Util.con.Open();
+                    com.ExecuteNonQuery();
+                    Util.con.Close();
+
+                    load_ChitietToathuoc(idToathuoc);
+                    load_ChitietToathuoc_Thuoc(idToathuoc);
+                    int idBenhnhan = -1;
+                    try
+                    {
+                        idBenhnhan = int.Parse(textBox_MaBN.Text);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    Hashtable currentObject = get_CurrentObject(idBenhnhan);
+                    if (currentObject.Count == 0)
+                    {
+                        return;
+                    }
+                    int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
+                    updateYlenh(3, idToathuoc, idPhieukhambenh);
+                }
+
+            }
+            catch (MySqlException sqlE)
+            {
+                MessageBox.Show("update chi tiết toa thuốc");
+                return;
+            }
+        }
+
 
 
     }
