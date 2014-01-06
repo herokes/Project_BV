@@ -152,24 +152,25 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.richTextBox_loidan = new System.Windows.Forms.RichTextBox();
+            this.button_fix_toathuoc = new System.Windows.Forms.Button();
+            this.button_del_toathuoc = new System.Windows.Forms.Button();
             this.button_addnew_toathuoc = new System.Windows.Forms.Button();
+            this.textBox_songaythuoc = new System.Windows.Forms.TextBox();
+            this.label60 = new System.Windows.Forms.Label();
             this.comboBox_toathuoc = new System.Windows.Forms.ComboBox();
             this.label71 = new System.Windows.Forms.Label();
+            this.dateTimePicker_thuocdenngay = new System.Windows.Forms.DateTimePicker();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label72 = new System.Windows.Forms.Label();
+            this.dateTimePicker_thuoctungay = new System.Windows.Forms.DateTimePicker();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.richTextBox_loidan = new System.Windows.Forms.RichTextBox();
+            this.textBox_ghichuthuoc = new System.Windows.Forms.TextBox();
             this.label75 = new System.Windows.Forms.Label();
             this.textBox_tenthuoc = new System.Windows.Forms.TextBox();
+            this.button_thuoc_toathuoc = new System.Windows.Forms.Button();
             this.button_capnhat_chitietthuoc = new System.Windows.Forms.Button();
-            this.label73 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
-            this.textBox_lieutoi = new System.Windows.Forms.TextBox();
-            this.label56 = new System.Windows.Forms.Label();
-            this.textBox_lieutrua = new System.Windows.Forms.TextBox();
-            this.label55 = new System.Windows.Forms.Label();
-            this.textBox_lieusang = new System.Windows.Forms.TextBox();
-            this.textBox_songaythuoc = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.listView_chitiettoathuoc = new System.Windows.Forms.ListView();
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -179,14 +180,15 @@
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label73 = new System.Windows.Forms.Label();
             this.button_intoathuoc = new System.Windows.Forms.Button();
+            this.label54 = new System.Windows.Forms.Label();
             this.button_save_toathuoc = new System.Windows.Forms.Button();
-            this.label72 = new System.Windows.Forms.Label();
-            this.dateTimePicker_thuoctungay = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker_thuocdenngay = new System.Windows.Forms.DateTimePicker();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label60 = new System.Windows.Forms.Label();
+            this.textBox_lieutoi = new System.Windows.Forms.TextBox();
+            this.textBox_lieusang = new System.Windows.Forms.TextBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.textBox_lieutrua = new System.Windows.Forms.TextBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.button_addtoToathuoc = new System.Windows.Forms.Button();
             this.label61 = new System.Windows.Forms.Label();
@@ -246,8 +248,6 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_search_benhnhan = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox_ghichuthuoc = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -1462,8 +1462,8 @@
             // groupBox11
             // 
             this.groupBox11.Controls.Add(this.richTextBox_loidan);
-            this.groupBox11.Controls.Add(this.button1);
-            this.groupBox11.Controls.Add(this.button4);
+            this.groupBox11.Controls.Add(this.button_fix_toathuoc);
+            this.groupBox11.Controls.Add(this.button_del_toathuoc);
             this.groupBox11.Controls.Add(this.button_addnew_toathuoc);
             this.groupBox11.Controls.Add(this.textBox_songaythuoc);
             this.groupBox11.Controls.Add(this.label60);
@@ -1481,14 +1481,33 @@
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Toa thuốc";
             // 
-            // button4
+            // richTextBox_loidan
             // 
-            this.button4.Location = new System.Drawing.Point(165, 181);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(65, 23);
-            this.button4.TabIndex = 116;
-            this.button4.Text = "Xóa";
-            this.button4.UseVisualStyleBackColor = true;
+            this.richTextBox_loidan.Location = new System.Drawing.Point(64, 124);
+            this.richTextBox_loidan.Name = "richTextBox_loidan";
+            this.richTextBox_loidan.Size = new System.Drawing.Size(166, 46);
+            this.richTextBox_loidan.TabIndex = 119;
+            this.richTextBox_loidan.Text = "";
+            // 
+            // button_fix_toathuoc
+            // 
+            this.button_fix_toathuoc.Location = new System.Drawing.Point(87, 181);
+            this.button_fix_toathuoc.Name = "button_fix_toathuoc";
+            this.button_fix_toathuoc.Size = new System.Drawing.Size(72, 23);
+            this.button_fix_toathuoc.TabIndex = 116;
+            this.button_fix_toathuoc.Text = "Sửa";
+            this.button_fix_toathuoc.UseVisualStyleBackColor = true;
+            this.button_fix_toathuoc.Click += new System.EventHandler(this.button_fix_toathuoc_Click);
+            // 
+            // button_del_toathuoc
+            // 
+            this.button_del_toathuoc.Location = new System.Drawing.Point(165, 181);
+            this.button_del_toathuoc.Name = "button_del_toathuoc";
+            this.button_del_toathuoc.Size = new System.Drawing.Size(65, 23);
+            this.button_del_toathuoc.TabIndex = 116;
+            this.button_del_toathuoc.Text = "Xóa";
+            this.button_del_toathuoc.UseVisualStyleBackColor = true;
+            this.button_del_toathuoc.Click += new System.EventHandler(this.button_del_toathuoc_Click);
             // 
             // button_addnew_toathuoc
             // 
@@ -1498,6 +1517,24 @@
             this.button_addnew_toathuoc.TabIndex = 116;
             this.button_addnew_toathuoc.Text = "Tạo mới";
             this.button_addnew_toathuoc.UseVisualStyleBackColor = true;
+            this.button_addnew_toathuoc.Click += new System.EventHandler(this.button_addnew_toathuoc_Click);
+            // 
+            // textBox_songaythuoc
+            // 
+            this.textBox_songaythuoc.Location = new System.Drawing.Point(64, 98);
+            this.textBox_songaythuoc.Name = "textBox_songaythuoc";
+            this.textBox_songaythuoc.ReadOnly = true;
+            this.textBox_songaythuoc.Size = new System.Drawing.Size(65, 20);
+            this.textBox_songaythuoc.TabIndex = 117;
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(13, 127);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(45, 13);
+            this.label60.TabIndex = 55;
+            this.label60.Text = "Lời dặn:";
             // 
             // comboBox_toathuoc
             // 
@@ -1518,12 +1555,60 @@
             this.label71.Text = "Ngày:";
             this.label71.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // dateTimePicker_thuocdenngay
+            // 
+            this.dateTimePicker_thuocdenngay.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker_thuocdenngay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker_thuocdenngay.Location = new System.Drawing.Point(64, 72);
+            this.dateTimePicker_thuocdenngay.Name = "dateTimePicker_thuocdenngay";
+            this.dateTimePicker_thuocdenngay.Size = new System.Drawing.Size(101, 20);
+            this.dateTimePicker_thuocdenngay.TabIndex = 32;
+            this.dateTimePicker_thuocdenngay.ValueChanged += new System.EventHandler(this.dateTimePicker_thuocdenngay_ValueChanged);
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(2, 75);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(56, 13);
+            this.label51.TabIndex = 37;
+            this.label51.Text = "Đến ngày:";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(9, 49);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(49, 13);
+            this.label50.TabIndex = 36;
+            this.label50.Text = "Từ ngày:";
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Location = new System.Drawing.Point(135, 101);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(30, 13);
+            this.label72.TabIndex = 115;
+            this.label72.Text = "ngày";
+            this.label72.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // dateTimePicker_thuoctungay
+            // 
+            this.dateTimePicker_thuoctungay.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker_thuoctungay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker_thuoctungay.Location = new System.Drawing.Point(64, 46);
+            this.dateTimePicker_thuoctungay.Name = "dateTimePicker_thuoctungay";
+            this.dateTimePicker_thuoctungay.Size = new System.Drawing.Size(101, 20);
+            this.dateTimePicker_thuoctungay.TabIndex = 31;
+            this.dateTimePicker_thuoctungay.ValueChanged += new System.EventHandler(this.dateTimePicker_thuoctungay_ValueChanged);
+            // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.textBox_ghichuthuoc);
             this.groupBox8.Controls.Add(this.label75);
             this.groupBox8.Controls.Add(this.textBox_tenthuoc);
-            this.groupBox8.Controls.Add(this.button2);
+            this.groupBox8.Controls.Add(this.button_thuoc_toathuoc);
             this.groupBox8.Controls.Add(this.button_capnhat_chitietthuoc);
             this.groupBox8.Controls.Add(this.listView_chitiettoathuoc);
             this.groupBox8.Controls.Add(this.label73);
@@ -1542,13 +1627,12 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Chỉnh sửa toa thuốc";
             // 
-            // richTextBox_loidan
+            // textBox_ghichuthuoc
             // 
-            this.richTextBox_loidan.Location = new System.Drawing.Point(64, 124);
-            this.richTextBox_loidan.Name = "richTextBox_loidan";
-            this.richTextBox_loidan.Size = new System.Drawing.Size(166, 46);
-            this.richTextBox_loidan.TabIndex = 119;
-            this.richTextBox_loidan.Text = "";
+            this.textBox_ghichuthuoc.Location = new System.Drawing.Point(77, 45);
+            this.textBox_ghichuthuoc.Name = "textBox_ghichuthuoc";
+            this.textBox_ghichuthuoc.Size = new System.Drawing.Size(259, 20);
+            this.textBox_ghichuthuoc.TabIndex = 117;
             // 
             // label75
             // 
@@ -1564,8 +1648,18 @@
             this.textBox_tenthuoc.Location = new System.Drawing.Point(77, 19);
             this.textBox_tenthuoc.Name = "textBox_tenthuoc";
             this.textBox_tenthuoc.ReadOnly = true;
-            this.textBox_tenthuoc.Size = new System.Drawing.Size(174, 20);
+            this.textBox_tenthuoc.Size = new System.Drawing.Size(259, 20);
             this.textBox_tenthuoc.TabIndex = 55;
+            // 
+            // button_thuoc_toathuoc
+            // 
+            this.button_thuoc_toathuoc.Location = new System.Drawing.Point(746, 68);
+            this.button_thuoc_toathuoc.Name = "button_thuoc_toathuoc";
+            this.button_thuoc_toathuoc.Size = new System.Drawing.Size(84, 23);
+            this.button_thuoc_toathuoc.TabIndex = 116;
+            this.button_thuoc_toathuoc.Text = "Xóa";
+            this.button_thuoc_toathuoc.UseVisualStyleBackColor = true;
+            this.button_thuoc_toathuoc.Click += new System.EventHandler(this.button_thuoc_toathuoc_Click);
             // 
             // button_capnhat_chitietthuoc
             // 
@@ -1576,80 +1670,6 @@
             this.button_capnhat_chitietthuoc.Text = "Cập nhật";
             this.button_capnhat_chitietthuoc.UseVisualStyleBackColor = true;
             this.button_capnhat_chitietthuoc.Click += new System.EventHandler(this.button_capnhat_chitietthuoc_Click);
-            // 
-            // label73
-            // 
-            this.label73.AutoSize = true;
-            this.label73.Location = new System.Drawing.Point(24, 48);
-            this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(47, 13);
-            this.label73.TabIndex = 50;
-            this.label73.Text = "Ghi chú:";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(36, 74);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(35, 13);
-            this.label54.TabIndex = 43;
-            this.label54.Text = "Sáng:";
-            // 
-            // textBox_lieutoi
-            // 
-            this.textBox_lieutoi.Location = new System.Drawing.Point(289, 71);
-            this.textBox_lieutoi.Name = "textBox_lieutoi";
-            this.textBox_lieutoi.Size = new System.Drawing.Size(47, 20);
-            this.textBox_lieutoi.TabIndex = 48;
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(258, 74);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(25, 13);
-            this.label56.TabIndex = 47;
-            this.label56.Text = "Tối:";
-            // 
-            // textBox_lieutrua
-            // 
-            this.textBox_lieutrua.Location = new System.Drawing.Point(183, 71);
-            this.textBox_lieutrua.Name = "textBox_lieutrua";
-            this.textBox_lieutrua.Size = new System.Drawing.Size(47, 20);
-            this.textBox_lieutrua.TabIndex = 46;
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(145, 74);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(32, 13);
-            this.label55.TabIndex = 45;
-            this.label55.Text = "Trưa:";
-            // 
-            // textBox_lieusang
-            // 
-            this.textBox_lieusang.Location = new System.Drawing.Point(77, 71);
-            this.textBox_lieusang.Name = "textBox_lieusang";
-            this.textBox_lieusang.Size = new System.Drawing.Size(47, 20);
-            this.textBox_lieusang.TabIndex = 44;
-            // 
-            // textBox_songaythuoc
-            // 
-            this.textBox_songaythuoc.Location = new System.Drawing.Point(64, 98);
-            this.textBox_songaythuoc.Name = "textBox_songaythuoc";
-            this.textBox_songaythuoc.ReadOnly = true;
-            this.textBox_songaythuoc.Size = new System.Drawing.Size(65, 20);
-            this.textBox_songaythuoc.TabIndex = 117;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(746, 68);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(84, 23);
-            this.button2.TabIndex = 116;
-            this.button2.Text = "Xóa";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // listView_chitiettoathuoc
             // 
@@ -1684,40 +1704,49 @@
             // columnHeader14
             // 
             this.columnHeader14.Text = "Tên thuốc";
-            this.columnHeader14.Width = 199;
+            this.columnHeader14.Width = 245;
             // 
             // columnHeader15
             // 
             this.columnHeader15.Text = "Ghi chú";
-            this.columnHeader15.Width = 97;
+            this.columnHeader15.Width = 144;
             // 
             // columnHeader16
             // 
             this.columnHeader16.Text = "Cách dùng";
-            this.columnHeader16.Width = 75;
+            this.columnHeader16.Width = 95;
             // 
             // columnHeader18
             // 
             this.columnHeader18.Text = "Sáng";
             this.columnHeader18.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader18.Width = 49;
+            this.columnHeader18.Width = 66;
             // 
             // columnHeader19
             // 
             this.columnHeader19.Text = "Trưa";
             this.columnHeader19.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader19.Width = 47;
+            this.columnHeader19.Width = 65;
             // 
             // columnHeader20
             // 
             this.columnHeader20.Text = "Tối";
             this.columnHeader20.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader20.Width = 51;
+            this.columnHeader20.Width = 69;
             // 
             // columnHeader22
             // 
             this.columnHeader22.Text = "Dạng";
-            this.columnHeader22.Width = 54;
+            this.columnHeader22.Width = 76;
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Location = new System.Drawing.Point(24, 48);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(47, 13);
+            this.label73.TabIndex = 50;
+            this.label73.Text = "Ghi chú:";
             // 
             // button_intoathuoc
             // 
@@ -1727,6 +1756,16 @@
             this.button_intoathuoc.TabIndex = 116;
             this.button_intoathuoc.Text = "In toa thuốc";
             this.button_intoathuoc.UseVisualStyleBackColor = true;
+            this.button_intoathuoc.Click += new System.EventHandler(this.button_intoathuoc_Click);
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(36, 74);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(35, 13);
+            this.label54.TabIndex = 43;
+            this.label54.Text = "Sáng:";
             // 
             // button_save_toathuoc
             // 
@@ -1738,62 +1777,44 @@
             this.button_save_toathuoc.UseVisualStyleBackColor = true;
             this.button_save_toathuoc.Click += new System.EventHandler(this.button_save_toathuoc_Click);
             // 
-            // label72
+            // textBox_lieutoi
             // 
-            this.label72.AutoSize = true;
-            this.label72.Location = new System.Drawing.Point(135, 101);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(30, 13);
-            this.label72.TabIndex = 115;
-            this.label72.Text = "ngày";
-            this.label72.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.textBox_lieutoi.Location = new System.Drawing.Point(289, 71);
+            this.textBox_lieutoi.Name = "textBox_lieutoi";
+            this.textBox_lieutoi.Size = new System.Drawing.Size(47, 20);
+            this.textBox_lieutoi.TabIndex = 48;
             // 
-            // dateTimePicker_thuoctungay
+            // textBox_lieusang
             // 
-            this.dateTimePicker_thuoctungay.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePicker_thuoctungay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker_thuoctungay.Location = new System.Drawing.Point(64, 46);
-            this.dateTimePicker_thuoctungay.Name = "dateTimePicker_thuoctungay";
-            this.dateTimePicker_thuoctungay.Size = new System.Drawing.Size(101, 20);
-            this.dateTimePicker_thuoctungay.TabIndex = 31;
-            this.dateTimePicker_thuoctungay.ValueChanged += new System.EventHandler(this.dateTimePicker_thuoctungay_ValueChanged);
+            this.textBox_lieusang.Location = new System.Drawing.Point(77, 71);
+            this.textBox_lieusang.Name = "textBox_lieusang";
+            this.textBox_lieusang.Size = new System.Drawing.Size(47, 20);
+            this.textBox_lieusang.TabIndex = 44;
             // 
-            // dateTimePicker_thuocdenngay
+            // label56
             // 
-            this.dateTimePicker_thuocdenngay.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePicker_thuocdenngay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker_thuocdenngay.Location = new System.Drawing.Point(64, 72);
-            this.dateTimePicker_thuocdenngay.Name = "dateTimePicker_thuocdenngay";
-            this.dateTimePicker_thuocdenngay.Size = new System.Drawing.Size(101, 20);
-            this.dateTimePicker_thuocdenngay.TabIndex = 32;
-            this.dateTimePicker_thuocdenngay.ValueChanged += new System.EventHandler(this.dateTimePicker_thuocdenngay_ValueChanged);
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(258, 74);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(25, 13);
+            this.label56.TabIndex = 47;
+            this.label56.Text = "Tối:";
             // 
-            // label50
+            // label55
             // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(9, 49);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(49, 13);
-            this.label50.TabIndex = 36;
-            this.label50.Text = "Từ ngày:";
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(145, 74);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(32, 13);
+            this.label55.TabIndex = 45;
+            this.label55.Text = "Trưa:";
             // 
-            // label51
+            // textBox_lieutrua
             // 
-            this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(2, 75);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(56, 13);
-            this.label51.TabIndex = 37;
-            this.label51.Text = "Đến ngày:";
-            // 
-            // label60
-            // 
-            this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(13, 127);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(45, 13);
-            this.label60.TabIndex = 55;
-            this.label60.Text = "Lời dặn:";
+            this.textBox_lieutrua.Location = new System.Drawing.Point(183, 71);
+            this.textBox_lieutrua.Name = "textBox_lieutrua";
+            this.textBox_lieutrua.Size = new System.Drawing.Size(47, 20);
+            this.textBox_lieutrua.TabIndex = 46;
             // 
             // groupBox10
             // 
@@ -2377,22 +2398,6 @@
             this.textBox_search_benhnhan.TabIndex = 21;
             this.textBox_search_benhnhan.TextChanged += new System.EventHandler(this.textBox_search_benhnhan_TextChanged);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(87, 181);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(72, 23);
-            this.button1.TabIndex = 116;
-            this.button1.Text = "Sửa";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox_ghichuthuoc
-            // 
-            this.textBox_ghichuthuoc.Location = new System.Drawing.Point(77, 45);
-            this.textBox_ghichuthuoc.Name = "textBox_ghichuthuoc";
-            this.textBox_ghichuthuoc.Size = new System.Drawing.Size(259, 20);
-            this.textBox_ghichuthuoc.TabIndex = 117;
-            // 
             // NgoaitruForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2637,7 +2642,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.TextBox textBox_songaythuoc;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button_thuoc_toathuoc;
         private System.Windows.Forms.Button button_save_toathuoc;
         private System.Windows.Forms.Label label72;
         private System.Windows.Forms.Label label71;
@@ -2654,13 +2659,13 @@
         private System.Windows.Forms.RichTextBox richTextBox_loidan;
         private System.Windows.Forms.Button button_intoathuoc;
         private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button_del_toathuoc;
         private System.Windows.Forms.Button button_addnew_toathuoc;
         private System.Windows.Forms.Button button_addtoToathuoc;
         private System.Windows.Forms.ColumnHeader columnHeader13;
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ColumnHeader columnHeader12;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_fix_toathuoc;
         private System.Windows.Forms.TextBox textBox_ghichuthuoc;
     }
 }

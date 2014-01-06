@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 using QLBV_normal.Report;
+using CrystalDecisions.Shared;
 
 namespace QLBV_normal
 {
@@ -31,13 +32,28 @@ namespace QLBV_normal
                     rp = new Report_Benhanngoaitru();
                     break;
                 case "Phieukhambenh":
-					rp = new Phieukhambenhvaovien();
-					break;
+                    rp = new Phieukhambenhvaovien();
+                    break;
                 case "todieutri":
                     rp = new Report_Todieutri();
                     break;
                 case "Tongketbenhanngoaitru":
                     rp = new Report_Tongketbenhanngoaitru();
+                    break;
+                case "toathuoc":
+                    rp = new Report_Toathuoc();
+                    ParameterValues a = new ParameterValues();
+                    ParameterDiscreteValue b = new ParameterDiscreteValue();
+
+                    //Tu ngay
+                    //b.Value = DateTime.Now.ToString("dd/MM/yyyy");
+                    //a.Add(b);
+                    //rp.DataDefinition.ParameterFields["fromDay"].ApplyCurrentValues(a);
+
+                    ////Den ngay
+                    //b.Value = DateTime.Now.ToString("dd/MM/yyyy");
+                    //a.Add(b);
+                    //rp.DataDefinition.ParameterFields["toDay"].ApplyCurrentValues(a);
                     break;
                 default:
                     rp = new Report_Todieutri();

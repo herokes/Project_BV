@@ -75,6 +75,7 @@
     <Compile Include="Class\Bienbanhoichuan.cs" />
     <Compile Include="Class\Common\Server.cs" />
     <Compile Include="Class\Common\Session.cs" />
+    <Compile Include="Class\Toathuoc.cs" />
     <Compile Include="Class\Common\Util.cs" />
     <Compile Include="Class\Common\Extension\DateExtension.cs" />
     <Compile Include="Class\Todieutri.cs" />
@@ -154,10 +155,10 @@
       <DependentUpon>Report_Tongketbenhanngoaitru.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Report\Toathuoc.cs">
+    <Compile Include="Report\Report_Toathuoc.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Toathuoc.rpt</DependentUpon>
+      <DependentUpon>Report_Toathuoc.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SearchPhieukhambenhForm.cs">
@@ -230,9 +231,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Report_Tongketbenhanngoaitru.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\Toathuoc.rpt">
+    <EmbeddedResource Include="Report\Report_Toathuoc.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Toathuoc.cs</LastGenOutput>
+      <LastGenOutput>Report_Toathuoc.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchPhieukhambenhForm.resx">
       <DependentUpon>SearchPhieukhambenhForm.cs</DependentUpon>
