@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             this.listView_danhsachbenhnhan = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -152,24 +152,25 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.richTextBox_loidan = new System.Windows.Forms.RichTextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button_addnew_toathuoc = new System.Windows.Forms.Button();
+            this.textBox_songaythuoc = new System.Windows.Forms.TextBox();
+            this.label60 = new System.Windows.Forms.Label();
             this.comboBox_toathuoc = new System.Windows.Forms.ComboBox();
             this.label71 = new System.Windows.Forms.Label();
+            this.dateTimePicker_thuocdenngay = new System.Windows.Forms.DateTimePicker();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label72 = new System.Windows.Forms.Label();
+            this.dateTimePicker_thuoctungay = new System.Windows.Forms.DateTimePicker();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.richTextBox_loidan = new System.Windows.Forms.RichTextBox();
+            this.textBox_ghichuthuoc = new System.Windows.Forms.TextBox();
             this.label75 = new System.Windows.Forms.Label();
             this.textBox_tenthuoc = new System.Windows.Forms.TextBox();
-            this.button_capnhat_chitietthuoc = new System.Windows.Forms.Button();
-            this.label73 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
-            this.textBox_lieutoi = new System.Windows.Forms.TextBox();
-            this.label56 = new System.Windows.Forms.Label();
-            this.textBox_lieutrua = new System.Windows.Forms.TextBox();
-            this.label55 = new System.Windows.Forms.Label();
-            this.textBox_lieusang = new System.Windows.Forms.TextBox();
-            this.textBox_songaythuoc = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.button_capnhat_chitietthuoc = new System.Windows.Forms.Button();
             this.listView_chitiettoathuoc = new System.Windows.Forms.ListView();
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -179,14 +180,15 @@
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label73 = new System.Windows.Forms.Label();
             this.button_intoathuoc = new System.Windows.Forms.Button();
+            this.label54 = new System.Windows.Forms.Label();
             this.button_save_toathuoc = new System.Windows.Forms.Button();
-            this.label72 = new System.Windows.Forms.Label();
-            this.dateTimePicker_thuoctungay = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker_thuocdenngay = new System.Windows.Forms.DateTimePicker();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label60 = new System.Windows.Forms.Label();
+            this.textBox_lieutoi = new System.Windows.Forms.TextBox();
+            this.textBox_lieusang = new System.Windows.Forms.TextBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.textBox_lieutrua = new System.Windows.Forms.TextBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.button_addtoToathuoc = new System.Windows.Forms.Button();
             this.label61 = new System.Windows.Forms.Label();
@@ -232,13 +234,24 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button_sua_hoichuan = new System.Windows.Forms.Button();
+            this.button_inbienban_hoichuan = new System.Windows.Forms.Button();
+            this.button_luu_hoichuan = new System.Windows.Forms.Button();
+            this.textBox_bacsihoichuan_hoichuan = new System.Windows.Forms.TextBox();
+            this.textBox_idbacsihoichuan = new System.Windows.Forms.TextBox();
             this.label69 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox_thieumaumucdo_hoichuan = new System.Windows.Forms.ComboBox();
+            this.comboBox_ngayxetnghiem_hoichuan = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.dateTimePicker7 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
+            this.richTextBox_ketquaxetnghiem_hoichuan = new System.Windows.Forms.RichTextBox();
+            this.richTextBox_ketluanhoichuan_hoichuan = new System.Windows.Forms.RichTextBox();
+            this.richTextBox_chuandoan_hoichuan = new System.Windows.Forms.RichTextBox();
+            this.dateTimePicker_ngayhoichuan_hoichuan = new System.Windows.Forms.DateTimePicker();
+            this.label57 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.dateTimePicker_giohoichuan_hoichuan = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.radioButton_dieutri = new System.Windows.Forms.RadioButton();
@@ -246,8 +259,6 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_search_benhnhan = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox_ghichuthuoc = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -1481,6 +1492,23 @@
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Toa thuốc";
             // 
+            // richTextBox_loidan
+            // 
+            this.richTextBox_loidan.Location = new System.Drawing.Point(64, 124);
+            this.richTextBox_loidan.Name = "richTextBox_loidan";
+            this.richTextBox_loidan.Size = new System.Drawing.Size(166, 46);
+            this.richTextBox_loidan.TabIndex = 119;
+            this.richTextBox_loidan.Text = "";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(87, 181);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(72, 23);
+            this.button1.TabIndex = 116;
+            this.button1.Text = "Sửa";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(165, 181);
@@ -1498,6 +1526,23 @@
             this.button_addnew_toathuoc.TabIndex = 116;
             this.button_addnew_toathuoc.Text = "Tạo mới";
             this.button_addnew_toathuoc.UseVisualStyleBackColor = true;
+            // 
+            // textBox_songaythuoc
+            // 
+            this.textBox_songaythuoc.Location = new System.Drawing.Point(64, 98);
+            this.textBox_songaythuoc.Name = "textBox_songaythuoc";
+            this.textBox_songaythuoc.ReadOnly = true;
+            this.textBox_songaythuoc.Size = new System.Drawing.Size(65, 20);
+            this.textBox_songaythuoc.TabIndex = 117;
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(13, 127);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(45, 13);
+            this.label60.TabIndex = 55;
+            this.label60.Text = "Lời dặn:";
             // 
             // comboBox_toathuoc
             // 
@@ -1517,6 +1562,54 @@
             this.label71.TabIndex = 115;
             this.label71.Text = "Ngày:";
             this.label71.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // dateTimePicker_thuocdenngay
+            // 
+            this.dateTimePicker_thuocdenngay.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker_thuocdenngay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker_thuocdenngay.Location = new System.Drawing.Point(64, 72);
+            this.dateTimePicker_thuocdenngay.Name = "dateTimePicker_thuocdenngay";
+            this.dateTimePicker_thuocdenngay.Size = new System.Drawing.Size(101, 20);
+            this.dateTimePicker_thuocdenngay.TabIndex = 32;
+            this.dateTimePicker_thuocdenngay.ValueChanged += new System.EventHandler(this.dateTimePicker_thuocdenngay_ValueChanged);
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(2, 75);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(56, 13);
+            this.label51.TabIndex = 37;
+            this.label51.Text = "Đến ngày:";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(9, 49);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(49, 13);
+            this.label50.TabIndex = 36;
+            this.label50.Text = "Từ ngày:";
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Location = new System.Drawing.Point(135, 101);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(30, 13);
+            this.label72.TabIndex = 115;
+            this.label72.Text = "ngày";
+            this.label72.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // dateTimePicker_thuoctungay
+            // 
+            this.dateTimePicker_thuoctungay.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker_thuoctungay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker_thuoctungay.Location = new System.Drawing.Point(64, 46);
+            this.dateTimePicker_thuoctungay.Name = "dateTimePicker_thuoctungay";
+            this.dateTimePicker_thuoctungay.Size = new System.Drawing.Size(101, 20);
+            this.dateTimePicker_thuoctungay.TabIndex = 31;
+            this.dateTimePicker_thuoctungay.ValueChanged += new System.EventHandler(this.dateTimePicker_thuoctungay_ValueChanged);
             // 
             // groupBox8
             // 
@@ -1542,13 +1635,12 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Chỉnh sửa toa thuốc";
             // 
-            // richTextBox_loidan
+            // textBox_ghichuthuoc
             // 
-            this.richTextBox_loidan.Location = new System.Drawing.Point(64, 124);
-            this.richTextBox_loidan.Name = "richTextBox_loidan";
-            this.richTextBox_loidan.Size = new System.Drawing.Size(166, 46);
-            this.richTextBox_loidan.TabIndex = 119;
-            this.richTextBox_loidan.Text = "";
+            this.textBox_ghichuthuoc.Location = new System.Drawing.Point(77, 45);
+            this.textBox_ghichuthuoc.Name = "textBox_ghichuthuoc";
+            this.textBox_ghichuthuoc.Size = new System.Drawing.Size(259, 20);
+            this.textBox_ghichuthuoc.TabIndex = 117;
             // 
             // label75
             // 
@@ -1567,6 +1659,15 @@
             this.textBox_tenthuoc.Size = new System.Drawing.Size(174, 20);
             this.textBox_tenthuoc.TabIndex = 55;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(746, 68);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(84, 23);
+            this.button2.TabIndex = 116;
+            this.button2.Text = "Xóa";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // button_capnhat_chitietthuoc
             // 
             this.button_capnhat_chitietthuoc.Location = new System.Drawing.Point(359, 68);
@@ -1576,80 +1677,6 @@
             this.button_capnhat_chitietthuoc.Text = "Cập nhật";
             this.button_capnhat_chitietthuoc.UseVisualStyleBackColor = true;
             this.button_capnhat_chitietthuoc.Click += new System.EventHandler(this.button_capnhat_chitietthuoc_Click);
-            // 
-            // label73
-            // 
-            this.label73.AutoSize = true;
-            this.label73.Location = new System.Drawing.Point(24, 48);
-            this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(47, 13);
-            this.label73.TabIndex = 50;
-            this.label73.Text = "Ghi chú:";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(36, 74);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(35, 13);
-            this.label54.TabIndex = 43;
-            this.label54.Text = "Sáng:";
-            // 
-            // textBox_lieutoi
-            // 
-            this.textBox_lieutoi.Location = new System.Drawing.Point(289, 71);
-            this.textBox_lieutoi.Name = "textBox_lieutoi";
-            this.textBox_lieutoi.Size = new System.Drawing.Size(47, 20);
-            this.textBox_lieutoi.TabIndex = 48;
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(258, 74);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(25, 13);
-            this.label56.TabIndex = 47;
-            this.label56.Text = "Tối:";
-            // 
-            // textBox_lieutrua
-            // 
-            this.textBox_lieutrua.Location = new System.Drawing.Point(183, 71);
-            this.textBox_lieutrua.Name = "textBox_lieutrua";
-            this.textBox_lieutrua.Size = new System.Drawing.Size(47, 20);
-            this.textBox_lieutrua.TabIndex = 46;
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(145, 74);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(32, 13);
-            this.label55.TabIndex = 45;
-            this.label55.Text = "Trưa:";
-            // 
-            // textBox_lieusang
-            // 
-            this.textBox_lieusang.Location = new System.Drawing.Point(77, 71);
-            this.textBox_lieusang.Name = "textBox_lieusang";
-            this.textBox_lieusang.Size = new System.Drawing.Size(47, 20);
-            this.textBox_lieusang.TabIndex = 44;
-            // 
-            // textBox_songaythuoc
-            // 
-            this.textBox_songaythuoc.Location = new System.Drawing.Point(64, 98);
-            this.textBox_songaythuoc.Name = "textBox_songaythuoc";
-            this.textBox_songaythuoc.ReadOnly = true;
-            this.textBox_songaythuoc.Size = new System.Drawing.Size(65, 20);
-            this.textBox_songaythuoc.TabIndex = 117;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(746, 68);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(84, 23);
-            this.button2.TabIndex = 116;
-            this.button2.Text = "Xóa";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // listView_chitiettoathuoc
             // 
@@ -1719,6 +1746,15 @@
             this.columnHeader22.Text = "Dạng";
             this.columnHeader22.Width = 54;
             // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Location = new System.Drawing.Point(24, 48);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(47, 13);
+            this.label73.TabIndex = 50;
+            this.label73.Text = "Ghi chú:";
+            // 
             // button_intoathuoc
             // 
             this.button_intoathuoc.Location = new System.Drawing.Point(746, 39);
@@ -1727,6 +1763,15 @@
             this.button_intoathuoc.TabIndex = 116;
             this.button_intoathuoc.Text = "In toa thuốc";
             this.button_intoathuoc.UseVisualStyleBackColor = true;
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(36, 74);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(35, 13);
+            this.label54.TabIndex = 43;
+            this.label54.Text = "Sáng:";
             // 
             // button_save_toathuoc
             // 
@@ -1738,62 +1783,44 @@
             this.button_save_toathuoc.UseVisualStyleBackColor = true;
             this.button_save_toathuoc.Click += new System.EventHandler(this.button_save_toathuoc_Click);
             // 
-            // label72
+            // textBox_lieutoi
             // 
-            this.label72.AutoSize = true;
-            this.label72.Location = new System.Drawing.Point(135, 101);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(30, 13);
-            this.label72.TabIndex = 115;
-            this.label72.Text = "ngày";
-            this.label72.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.textBox_lieutoi.Location = new System.Drawing.Point(289, 71);
+            this.textBox_lieutoi.Name = "textBox_lieutoi";
+            this.textBox_lieutoi.Size = new System.Drawing.Size(47, 20);
+            this.textBox_lieutoi.TabIndex = 48;
             // 
-            // dateTimePicker_thuoctungay
+            // textBox_lieusang
             // 
-            this.dateTimePicker_thuoctungay.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePicker_thuoctungay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker_thuoctungay.Location = new System.Drawing.Point(64, 46);
-            this.dateTimePicker_thuoctungay.Name = "dateTimePicker_thuoctungay";
-            this.dateTimePicker_thuoctungay.Size = new System.Drawing.Size(101, 20);
-            this.dateTimePicker_thuoctungay.TabIndex = 31;
-            this.dateTimePicker_thuoctungay.ValueChanged += new System.EventHandler(this.dateTimePicker_thuoctungay_ValueChanged);
+            this.textBox_lieusang.Location = new System.Drawing.Point(77, 71);
+            this.textBox_lieusang.Name = "textBox_lieusang";
+            this.textBox_lieusang.Size = new System.Drawing.Size(47, 20);
+            this.textBox_lieusang.TabIndex = 44;
             // 
-            // dateTimePicker_thuocdenngay
+            // label56
             // 
-            this.dateTimePicker_thuocdenngay.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePicker_thuocdenngay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker_thuocdenngay.Location = new System.Drawing.Point(64, 72);
-            this.dateTimePicker_thuocdenngay.Name = "dateTimePicker_thuocdenngay";
-            this.dateTimePicker_thuocdenngay.Size = new System.Drawing.Size(101, 20);
-            this.dateTimePicker_thuocdenngay.TabIndex = 32;
-            this.dateTimePicker_thuocdenngay.ValueChanged += new System.EventHandler(this.dateTimePicker_thuocdenngay_ValueChanged);
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(258, 74);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(25, 13);
+            this.label56.TabIndex = 47;
+            this.label56.Text = "Tối:";
             // 
-            // label50
+            // label55
             // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(9, 49);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(49, 13);
-            this.label50.TabIndex = 36;
-            this.label50.Text = "Từ ngày:";
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(145, 74);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(32, 13);
+            this.label55.TabIndex = 45;
+            this.label55.Text = "Trưa:";
             // 
-            // label51
+            // textBox_lieutrua
             // 
-            this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(2, 75);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(56, 13);
-            this.label51.TabIndex = 37;
-            this.label51.Text = "Đến ngày:";
-            // 
-            // label60
-            // 
-            this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(13, 127);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(45, 13);
-            this.label60.TabIndex = 55;
-            this.label60.Text = "Lời dặn:";
+            this.textBox_lieutrua.Location = new System.Drawing.Point(183, 71);
+            this.textBox_lieutrua.Name = "textBox_lieutrua";
+            this.textBox_lieutrua.Size = new System.Drawing.Size(47, 20);
+            this.textBox_lieutrua.TabIndex = 46;
             // 
             // groupBox10
             // 
@@ -2029,10 +2056,10 @@
             this.columnHeader17});
             this.listView_ketquaxetnghiem.FullRowSelect = true;
             this.listView_ketquaxetnghiem.GridLines = true;
-            listViewGroup3.Header = "ListViewGroup";
-            listViewGroup3.Name = "abc";
+            listViewGroup1.Header = "ListViewGroup";
+            listViewGroup1.Name = "abc";
             this.listView_ketquaxetnghiem.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup3});
+            listViewGroup1});
             this.listView_ketquaxetnghiem.HideSelection = false;
             this.listView_ketquaxetnghiem.Location = new System.Drawing.Point(8, 70);
             this.listView_ketquaxetnghiem.MultiSelect = false;
@@ -2101,10 +2128,10 @@
             // 
             this.listView_xetnghiem.CheckBoxes = true;
             this.listView_xetnghiem.GridLines = true;
-            listViewGroup4.Header = "ListViewGroup";
-            listViewGroup4.Name = "abc";
+            listViewGroup2.Header = "ListViewGroup";
+            listViewGroup2.Name = "abc";
             this.listView_xetnghiem.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup4});
+            listViewGroup2});
             this.listView_xetnghiem.Location = new System.Drawing.Point(6, 24);
             this.listView_xetnghiem.Name = "listView_xetnghiem";
             this.listView_xetnghiem.ShowGroups = false;
@@ -2226,13 +2253,24 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button_sua_hoichuan);
+            this.tabPage3.Controls.Add(this.button_inbienban_hoichuan);
+            this.tabPage3.Controls.Add(this.button_luu_hoichuan);
+            this.tabPage3.Controls.Add(this.textBox_bacsihoichuan_hoichuan);
+            this.tabPage3.Controls.Add(this.textBox_idbacsihoichuan);
             this.tabPage3.Controls.Add(this.label69);
-            this.tabPage3.Controls.Add(this.comboBox2);
+            this.tabPage3.Controls.Add(this.comboBox_thieumaumucdo_hoichuan);
+            this.tabPage3.Controls.Add(this.comboBox_ngayxetnghiem_hoichuan);
             this.tabPage3.Controls.Add(this.label12);
             this.tabPage3.Controls.Add(this.label10);
-            this.tabPage3.Controls.Add(this.richTextBox1);
-            this.tabPage3.Controls.Add(this.dateTimePicker7);
-            this.tabPage3.Controls.Add(this.dateTimePicker6);
+            this.tabPage3.Controls.Add(this.richTextBox_ketquaxetnghiem_hoichuan);
+            this.tabPage3.Controls.Add(this.richTextBox_ketluanhoichuan_hoichuan);
+            this.tabPage3.Controls.Add(this.richTextBox_chuandoan_hoichuan);
+            this.tabPage3.Controls.Add(this.dateTimePicker_ngayhoichuan_hoichuan);
+            this.tabPage3.Controls.Add(this.label57);
+            this.tabPage3.Controls.Add(this.label53);
+            this.tabPage3.Controls.Add(this.label52);
+            this.tabPage3.Controls.Add(this.dateTimePicker_giohoichuan_hoichuan);
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.label7);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -2243,31 +2281,90 @@
             this.tabPage3.Text = "Hội Chuẩn";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // button_sua_hoichuan
+            // 
+            this.button_sua_hoichuan.Location = new System.Drawing.Point(456, 460);
+            this.button_sua_hoichuan.Name = "button_sua_hoichuan";
+            this.button_sua_hoichuan.Size = new System.Drawing.Size(99, 26);
+            this.button_sua_hoichuan.TabIndex = 12;
+            this.button_sua_hoichuan.Text = "Sửa";
+            this.button_sua_hoichuan.UseVisualStyleBackColor = true;
+            this.button_sua_hoichuan.Click += new System.EventHandler(this.button_sua_hoichuan_Click);
+            // 
+            // button_inbienban_hoichuan
+            // 
+            this.button_inbienban_hoichuan.Location = new System.Drawing.Point(288, 457);
+            this.button_inbienban_hoichuan.Name = "button_inbienban_hoichuan";
+            this.button_inbienban_hoichuan.Size = new System.Drawing.Size(119, 30);
+            this.button_inbienban_hoichuan.TabIndex = 11;
+            this.button_inbienban_hoichuan.Text = "In biên bản hội chuẩn";
+            this.button_inbienban_hoichuan.UseVisualStyleBackColor = true;
+            this.button_inbienban_hoichuan.Click += new System.EventHandler(this.button_inbienban_hoichuan_Click);
+            // 
+            // button_luu_hoichuan
+            // 
+            this.button_luu_hoichuan.Location = new System.Drawing.Point(118, 457);
+            this.button_luu_hoichuan.Name = "button_luu_hoichuan";
+            this.button_luu_hoichuan.Size = new System.Drawing.Size(119, 30);
+            this.button_luu_hoichuan.TabIndex = 10;
+            this.button_luu_hoichuan.Text = "Lưu";
+            this.button_luu_hoichuan.UseVisualStyleBackColor = true;
+            this.button_luu_hoichuan.Click += new System.EventHandler(this.button_luu_hoichuan_Click);
+            // 
+            // textBox_bacsihoichuan_hoichuan
+            // 
+            this.textBox_bacsihoichuan_hoichuan.Location = new System.Drawing.Point(279, 366);
+            this.textBox_bacsihoichuan_hoichuan.Name = "textBox_bacsihoichuan_hoichuan";
+            this.textBox_bacsihoichuan_hoichuan.ReadOnly = true;
+            this.textBox_bacsihoichuan_hoichuan.Size = new System.Drawing.Size(256, 20);
+            this.textBox_bacsihoichuan_hoichuan.TabIndex = 9;
+            // 
+            // textBox_idbacsihoichuan
+            // 
+            this.textBox_idbacsihoichuan.Location = new System.Drawing.Point(229, 366);
+            this.textBox_idbacsihoichuan.Name = "textBox_idbacsihoichuan";
+            this.textBox_idbacsihoichuan.Size = new System.Drawing.Size(48, 20);
+            this.textBox_idbacsihoichuan.TabIndex = 8;
+            this.textBox_idbacsihoichuan.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_idbacsihoichuan_KeyDown);
+            // 
             // label69
             // 
             this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(37, 206);
+            this.label69.Location = new System.Drawing.Point(122, 262);
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(101, 13);
             this.label69.TabIndex = 7;
             this.label69.Text = "Kết quả xét nghiệm:";
             // 
-            // comboBox2
+            // comboBox_thieumaumucdo_hoichuan
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.comboBox_thieumaumucdo_hoichuan.FormattingEnabled = true;
+            this.comboBox_thieumaumucdo_hoichuan.Items.AddRange(new object[] {
             "Nhiều",
             "Trung bình",
             "Nhẹ"});
-            this.comboBox2.Location = new System.Drawing.Point(272, 164);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 6;
+            this.comboBox_thieumaumucdo_hoichuan.Location = new System.Drawing.Point(229, 144);
+            this.comboBox_thieumaumucdo_hoichuan.Name = "comboBox_thieumaumucdo_hoichuan";
+            this.comboBox_thieumaumucdo_hoichuan.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_thieumaumucdo_hoichuan.TabIndex = 6;
+            // 
+            // comboBox_ngayxetnghiem_hoichuan
+            // 
+            this.comboBox_ngayxetnghiem_hoichuan.FormattingEnabled = true;
+            this.comboBox_ngayxetnghiem_hoichuan.Items.AddRange(new object[] {
+            "Nhiều",
+            "Trung bình",
+            "Nhẹ"});
+            this.comboBox_ngayxetnghiem_hoichuan.Location = new System.Drawing.Point(229, 182);
+            this.comboBox_ngayxetnghiem_hoichuan.Name = "comboBox_ngayxetnghiem_hoichuan";
+            this.comboBox_ngayxetnghiem_hoichuan.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_ngayxetnghiem_hoichuan.TabIndex = 6;
+            this.comboBox_ngayxetnghiem_hoichuan.SelectedIndexChanged += new System.EventHandler(this.comboBox_ngayxetnghiem_hoichuan_SelectedIndexChanged);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(67, 173);
+            this.label12.Location = new System.Drawing.Point(19, 152);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(198, 13);
             this.label12.TabIndex = 5;
@@ -2276,38 +2373,83 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(37, 148);
+            this.label10.Location = new System.Drawing.Point(37, 127);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(79, 13);
             this.label10.TabIndex = 4;
             this.label10.Text = "Diễn tiến bệnh:";
             // 
-            // richTextBox1
+            // richTextBox_ketquaxetnghiem_hoichuan
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(116, 222);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(317, 67);
-            this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "";
+            this.richTextBox_ketquaxetnghiem_hoichuan.Location = new System.Drawing.Point(229, 209);
+            this.richTextBox_ketquaxetnghiem_hoichuan.Name = "richTextBox_ketquaxetnghiem_hoichuan";
+            this.richTextBox_ketquaxetnghiem_hoichuan.Size = new System.Drawing.Size(436, 77);
+            this.richTextBox_ketquaxetnghiem_hoichuan.TabIndex = 3;
+            this.richTextBox_ketquaxetnghiem_hoichuan.Text = "";
             // 
-            // dateTimePicker7
+            // richTextBox_ketluanhoichuan_hoichuan
             // 
-            this.dateTimePicker7.Location = new System.Drawing.Point(305, 18);
-            this.dateTimePicker7.Name = "dateTimePicker7";
-            this.dateTimePicker7.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker7.TabIndex = 1;
+            this.richTextBox_ketluanhoichuan_hoichuan.Location = new System.Drawing.Point(229, 292);
+            this.richTextBox_ketluanhoichuan_hoichuan.Name = "richTextBox_ketluanhoichuan_hoichuan";
+            this.richTextBox_ketluanhoichuan_hoichuan.Size = new System.Drawing.Size(412, 67);
+            this.richTextBox_ketluanhoichuan_hoichuan.TabIndex = 3;
+            this.richTextBox_ketluanhoichuan_hoichuan.Text = "";
             // 
-            // dateTimePicker6
+            // richTextBox_chuandoan_hoichuan
             // 
-            this.dateTimePicker6.Location = new System.Drawing.Point(150, 199);
-            this.dateTimePicker6.Name = "dateTimePicker6";
-            this.dateTimePicker6.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker6.TabIndex = 1;
+            this.richTextBox_chuandoan_hoichuan.Location = new System.Drawing.Point(229, 54);
+            this.richTextBox_chuandoan_hoichuan.Name = "richTextBox_chuandoan_hoichuan";
+            this.richTextBox_chuandoan_hoichuan.Size = new System.Drawing.Size(436, 67);
+            this.richTextBox_chuandoan_hoichuan.TabIndex = 3;
+            this.richTextBox_chuandoan_hoichuan.Text = "";
+            // 
+            // dateTimePicker_ngayhoichuan_hoichuan
+            // 
+            this.dateTimePicker_ngayhoichuan_hoichuan.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_ngayhoichuan_hoichuan.Location = new System.Drawing.Point(318, 12);
+            this.dateTimePicker_ngayhoichuan_hoichuan.Name = "dateTimePicker_ngayhoichuan_hoichuan";
+            this.dateTimePicker_ngayhoichuan_hoichuan.Size = new System.Drawing.Size(90, 20);
+            this.dateTimePicker_ngayhoichuan_hoichuan.TabIndex = 1;
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(148, 373);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(69, 13);
+            this.label57.TabIndex = 0;
+            this.label57.Text = "Chuẩn đoán:";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(127, 185);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(89, 13);
+            this.label53.TabIndex = 0;
+            this.label53.Text = "Ngày xét nghiệm:";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(116, 322);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(96, 13);
+            this.label52.TabIndex = 0;
+            this.label52.Text = "Kết luận hội chuẩn";
+            // 
+            // dateTimePicker_giohoichuan_hoichuan
+            // 
+            this.dateTimePicker_giohoichuan_hoichuan.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker_giohoichuan_hoichuan.Location = new System.Drawing.Point(229, 12);
+            this.dateTimePicker_giohoichuan_hoichuan.Name = "dateTimePicker_giohoichuan_hoichuan";
+            this.dateTimePicker_giohoichuan_hoichuan.Size = new System.Drawing.Size(81, 20);
+            this.dateTimePicker_giohoichuan_hoichuan.TabIndex = 1;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(37, 57);
+            this.label9.Location = new System.Drawing.Point(148, 57);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(69, 13);
             this.label9.TabIndex = 0;
@@ -2316,11 +2458,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(37, 18);
+            this.label7.Location = new System.Drawing.Point(115, 18);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(99, 13);
+            this.label7.Size = new System.Drawing.Size(102, 13);
             this.label7.TabIndex = 0;
-            this.label7.Text = "Ngày giờ hội chuẩn";
+            this.label7.Text = "Ngày giờ hội chuẩn:";
             // 
             // radioButton_dieutri
             // 
@@ -2376,22 +2518,6 @@
             this.textBox_search_benhnhan.Size = new System.Drawing.Size(173, 20);
             this.textBox_search_benhnhan.TabIndex = 21;
             this.textBox_search_benhnhan.TextChanged += new System.EventHandler(this.textBox_search_benhnhan_TextChanged);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(87, 181);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(72, 23);
-            this.button1.TabIndex = 116;
-            this.button1.Text = "Sửa";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox_ghichuthuoc
-            // 
-            this.textBox_ghichuthuoc.Location = new System.Drawing.Point(77, 45);
-            this.textBox_ghichuthuoc.Name = "textBox_ghichuthuoc";
-            this.textBox_ghichuthuoc.Size = new System.Drawing.Size(259, 20);
-            this.textBox_ghichuthuoc.TabIndex = 117;
             // 
             // NgoaitruForm
             // 
@@ -2626,14 +2752,13 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label69;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox_ngayxetnghiem_hoichuan;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker7;
+        private System.Windows.Forms.RichTextBox richTextBox_chuandoan_hoichuan;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_giohoichuan_hoichuan;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.TextBox textBox_songaythuoc;
@@ -2662,5 +2787,17 @@
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox_ghichuthuoc;
+        private System.Windows.Forms.Button button_inbienban_hoichuan;
+        private System.Windows.Forms.Button button_luu_hoichuan;
+        private System.Windows.Forms.TextBox textBox_bacsihoichuan_hoichuan;
+        private System.Windows.Forms.TextBox textBox_idbacsihoichuan;
+        private System.Windows.Forms.ComboBox comboBox_thieumaumucdo_hoichuan;
+        private System.Windows.Forms.RichTextBox richTextBox_ketquaxetnghiem_hoichuan;
+        private System.Windows.Forms.RichTextBox richTextBox_ketluanhoichuan_hoichuan;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_ngayhoichuan_hoichuan;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.Button button_sua_hoichuan;
     }
 }

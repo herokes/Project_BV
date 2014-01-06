@@ -123,42 +123,41 @@
     <Compile Include="ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Report\Report_Benhanngoaitru.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Report_Benhanngoaitru.rpt</DependentUpon>
-      <DependentUpon>Report_Benhanngoaitru.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Report\Bienbanhoichuan.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Bienbanhoichuan.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Report\Phieukhambenhvaovien.cs">
+      <DependentUpon>Phieukhambenhvaovien.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Report\Report_Benhanngoaitru.cs">
+      <DependentUpon>Report_Benhanngoaitru.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Report\Report_Bienbanhoichuan.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Phieukhambenhvaovien.rpt</DependentUpon>
+      <DependentUpon>Report_Bienbanhoichuan.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report\Report_Todieutri.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>Report_Todieutri.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Report\Report_Tongketbenhanngoaitru.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>Report_Tongketbenhanngoaitru.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Report\Toathuoc.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>Toathuoc.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="SearchPhieukhambenhForm.cs">
       <SubType>Form</SubType>
@@ -210,17 +209,17 @@
     <EmbeddedResource Include="ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\Phieukhambenhvaovien.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Phieukhambenhvaovien.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\Report_Benhanngoaitru.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Report_Benhanngoaitru.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\Bienbanhoichuan.rpt">
+    <EmbeddedResource Include="Report\Report_Bienbanhoichuan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Bienbanhoichuan.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\Phieukhambenhvaovien.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Phieukhambenhvaovien.cs</LastGenOutput>
+      <LastGenOutput>Report_Bienbanhoichuan.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Report_Todieutri.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

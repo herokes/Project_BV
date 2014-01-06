@@ -39,6 +39,9 @@ namespace QLBV_normal
                 case "Tongketbenhanngoaitru":
                     rp = new Report_Tongketbenhanngoaitru();
                     break;
+                case "Bienbanhoichuan":
+                    rp = new Report_Bienbanhoichuan();
+                    break;
                 default:
                     rp = new Report_Todieutri();
                     break;
