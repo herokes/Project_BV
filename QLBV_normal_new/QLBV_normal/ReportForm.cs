@@ -42,18 +42,9 @@ namespace QLBV_normal
                     break;
                 case "toathuoc":
                     rp = new Report_Toathuoc();
-                    ParameterValues a = new ParameterValues();
-                    ParameterDiscreteValue b = new ParameterDiscreteValue();
-
-                    //Tu ngay
-                    //b.Value = DateTime.Now.ToString("dd/MM/yyyy");
-                    //a.Add(b);
-                    //rp.DataDefinition.ParameterFields["fromDay"].ApplyCurrentValues(a);
-
-                    ////Den ngay
-                    //b.Value = DateTime.Now.ToString("dd/MM/yyyy");
-                    //a.Add(b);
-                    //rp.DataDefinition.ParameterFields["toDay"].ApplyCurrentValues(a);
+                    break;
+                case "Bienbanhoichuan":
+                    rp = new Report_Bienbanhoichuan();
                     break;
                 default:
                     rp = new Report_Todieutri();
