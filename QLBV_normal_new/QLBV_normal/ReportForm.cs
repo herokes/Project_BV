@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 using QLBV_normal.Report;
+using CrystalDecisions.Shared;
 
 namespace QLBV_normal
 {
@@ -31,13 +32,16 @@ namespace QLBV_normal
                     rp = new Report_Benhanngoaitru();
                     break;
                 case "Phieukhambenh":
-					rp = new Phieukhambenhvaovien();
-					break;
+                    rp = new Phieukhambenhvaovien();
+                    break;
                 case "todieutri":
                     rp = new Report_Todieutri();
                     break;
                 case "Tongketbenhanngoaitru":
                     rp = new Report_Tongketbenhanngoaitru();
+                    break;
+                case "toathuoc":
+                    rp = new Report_Toathuoc();
                     break;
                 case "Bienbanhoichuan":
                     rp = new Report_Bienbanhoichuan();

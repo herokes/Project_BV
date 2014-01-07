@@ -153,8 +153,8 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.richTextBox_loidan = new System.Windows.Forms.RichTextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.button_fix_toathuoc = new System.Windows.Forms.Button();
+            this.button_del_toathuoc = new System.Windows.Forms.Button();
             this.button_addnew_toathuoc = new System.Windows.Forms.Button();
             this.textBox_songaythuoc = new System.Windows.Forms.TextBox();
             this.label60 = new System.Windows.Forms.Label();
@@ -169,7 +169,7 @@
             this.textBox_ghichuthuoc = new System.Windows.Forms.TextBox();
             this.label75 = new System.Windows.Forms.Label();
             this.textBox_tenthuoc = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button_thuoc_toathuoc = new System.Windows.Forms.Button();
             this.button_capnhat_chitietthuoc = new System.Windows.Forms.Button();
             this.listView_chitiettoathuoc = new System.Windows.Forms.ListView();
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -1473,8 +1473,8 @@
             // groupBox11
             // 
             this.groupBox11.Controls.Add(this.richTextBox_loidan);
-            this.groupBox11.Controls.Add(this.button1);
-            this.groupBox11.Controls.Add(this.button4);
+            this.groupBox11.Controls.Add(this.button_fix_toathuoc);
+            this.groupBox11.Controls.Add(this.button_del_toathuoc);
             this.groupBox11.Controls.Add(this.button_addnew_toathuoc);
             this.groupBox11.Controls.Add(this.textBox_songaythuoc);
             this.groupBox11.Controls.Add(this.label60);
@@ -1500,23 +1500,34 @@
             this.richTextBox_loidan.TabIndex = 119;
             this.richTextBox_loidan.Text = "";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(87, 181);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(72, 23);
-            this.button1.TabIndex = 116;
-            this.button1.Text = "Sửa";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
+
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(165, 181);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(65, 23);
-            this.button4.TabIndex = 116;
-            this.button4.Text = "Xóa";
-            this.button4.UseVisualStyleBackColor = true;
+            this.richTextBox_loidan.Location = new System.Drawing.Point(64, 124);
+            this.richTextBox_loidan.Name = "richTextBox_loidan";
+            this.richTextBox_loidan.Size = new System.Drawing.Size(166, 46);
+            this.richTextBox_loidan.TabIndex = 119;
+            this.richTextBox_loidan.Text = "";
+            // 
+            // button_fix_toathuoc
+            // 
+            this.button_fix_toathuoc.Location = new System.Drawing.Point(87, 181);
+            this.button_fix_toathuoc.Name = "button_fix_toathuoc";
+            this.button_fix_toathuoc.Size = new System.Drawing.Size(72, 23);
+            this.button_fix_toathuoc.TabIndex = 116;
+            this.button_fix_toathuoc.Text = "Sửa";
+            this.button_fix_toathuoc.UseVisualStyleBackColor = true;
+            this.button_fix_toathuoc.Click += new System.EventHandler(this.button_fix_toathuoc_Click);
+            // 
+            // button_del_toathuoc
+            // 
+            this.button_del_toathuoc.Location = new System.Drawing.Point(165, 181);
+            this.button_del_toathuoc.Name = "button_del_toathuoc";
+            this.button_del_toathuoc.Size = new System.Drawing.Size(65, 23);
+            this.button_del_toathuoc.TabIndex = 116;
+            this.button_del_toathuoc.Text = "Xóa";
+            this.button_del_toathuoc.UseVisualStyleBackColor = true;
+            this.button_del_toathuoc.Click += new System.EventHandler(this.button_del_toathuoc_Click);
             // 
             // button_addnew_toathuoc
             // 
@@ -1526,6 +1537,7 @@
             this.button_addnew_toathuoc.TabIndex = 116;
             this.button_addnew_toathuoc.Text = "Tạo mới";
             this.button_addnew_toathuoc.UseVisualStyleBackColor = true;
+            this.button_addnew_toathuoc.Click += new System.EventHandler(this.button_addnew_toathuoc_Click);
             // 
             // textBox_songaythuoc
             // 
@@ -1616,7 +1628,7 @@
             this.groupBox8.Controls.Add(this.textBox_ghichuthuoc);
             this.groupBox8.Controls.Add(this.label75);
             this.groupBox8.Controls.Add(this.textBox_tenthuoc);
-            this.groupBox8.Controls.Add(this.button2);
+            this.groupBox8.Controls.Add(this.button_thuoc_toathuoc);
             this.groupBox8.Controls.Add(this.button_capnhat_chitietthuoc);
             this.groupBox8.Controls.Add(this.listView_chitiettoathuoc);
             this.groupBox8.Controls.Add(this.label73);
@@ -1656,17 +1668,18 @@
             this.textBox_tenthuoc.Location = new System.Drawing.Point(77, 19);
             this.textBox_tenthuoc.Name = "textBox_tenthuoc";
             this.textBox_tenthuoc.ReadOnly = true;
-            this.textBox_tenthuoc.Size = new System.Drawing.Size(174, 20);
+            this.textBox_tenthuoc.Size = new System.Drawing.Size(259, 20);
             this.textBox_tenthuoc.TabIndex = 55;
             // 
-            // button2
+            // button_thuoc_toathuoc
             // 
-            this.button2.Location = new System.Drawing.Point(746, 68);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(84, 23);
-            this.button2.TabIndex = 116;
-            this.button2.Text = "Xóa";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button_thuoc_toathuoc.Location = new System.Drawing.Point(746, 68);
+            this.button_thuoc_toathuoc.Name = "button_thuoc_toathuoc";
+            this.button_thuoc_toathuoc.Size = new System.Drawing.Size(84, 23);
+            this.button_thuoc_toathuoc.TabIndex = 116;
+            this.button_thuoc_toathuoc.Text = "Xóa";
+            this.button_thuoc_toathuoc.UseVisualStyleBackColor = true;
+            this.button_thuoc_toathuoc.Click += new System.EventHandler(this.button_thuoc_toathuoc_Click);
             // 
             // button_capnhat_chitietthuoc
             // 
@@ -1711,40 +1724,40 @@
             // columnHeader14
             // 
             this.columnHeader14.Text = "Tên thuốc";
-            this.columnHeader14.Width = 199;
+            this.columnHeader14.Width = 245;
             // 
             // columnHeader15
             // 
             this.columnHeader15.Text = "Ghi chú";
-            this.columnHeader15.Width = 97;
+            this.columnHeader15.Width = 144;
             // 
             // columnHeader16
             // 
             this.columnHeader16.Text = "Cách dùng";
-            this.columnHeader16.Width = 75;
+            this.columnHeader16.Width = 95;
             // 
             // columnHeader18
             // 
             this.columnHeader18.Text = "Sáng";
             this.columnHeader18.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader18.Width = 49;
+            this.columnHeader18.Width = 66;
             // 
             // columnHeader19
             // 
             this.columnHeader19.Text = "Trưa";
             this.columnHeader19.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader19.Width = 47;
+            this.columnHeader19.Width = 65;
             // 
             // columnHeader20
             // 
             this.columnHeader20.Text = "Tối";
             this.columnHeader20.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader20.Width = 51;
+            this.columnHeader20.Width = 69;
             // 
             // columnHeader22
             // 
             this.columnHeader22.Text = "Dạng";
-            this.columnHeader22.Width = 54;
+            this.columnHeader22.Width = 76;
             // 
             // label73
             // 
@@ -1763,6 +1776,7 @@
             this.button_intoathuoc.TabIndex = 116;
             this.button_intoathuoc.Text = "In toa thuốc";
             this.button_intoathuoc.UseVisualStyleBackColor = true;
+            this.button_intoathuoc.Click += new System.EventHandler(this.button_intoathuoc_Click);
             // 
             // label54
             // 
@@ -2762,7 +2776,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.TextBox textBox_songaythuoc;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button_thuoc_toathuoc;
         private System.Windows.Forms.Button button_save_toathuoc;
         private System.Windows.Forms.Label label72;
         private System.Windows.Forms.Label label71;
@@ -2779,13 +2793,13 @@
         private System.Windows.Forms.RichTextBox richTextBox_loidan;
         private System.Windows.Forms.Button button_intoathuoc;
         private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button_del_toathuoc;
         private System.Windows.Forms.Button button_addnew_toathuoc;
         private System.Windows.Forms.Button button_addtoToathuoc;
         private System.Windows.Forms.ColumnHeader columnHeader13;
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ColumnHeader columnHeader12;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_fix_toathuoc;
         private System.Windows.Forms.TextBox textBox_ghichuthuoc;
         private System.Windows.Forms.Button button_inbienban_hoichuan;
         private System.Windows.Forms.Button button_luu_hoichuan;
