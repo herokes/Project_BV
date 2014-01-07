@@ -1975,7 +1975,27 @@ namespace QLBV_normal
 /// //////////////////////////////////hoi chuan///////////////////////
 /// </summary>
 /// <param name="idphieuxetnghiem"></param>
-/// <returns></returns>
+/// <returns></returns>\
+        public void load_hoichuan(int idphieuxetnghiem)
+        {
+            MySqlCommand com = new MySqlCommand();
+            com.Connection = Util.con;
+            com.Parameters.Add("@idpheiuxetnghiem", MySqlDbType.Int32, 11).Value = idphieuxetnghiem;
+            com.CommandText = "SELECT * FROM hoichuan,phieuxetnghiem WHERE hoichuan.phieuxetnghiem_id = phieuxetnghiem.id AND phieuxetnghiem_id=" + idphieuxetnghiem.ToString();
+            Util.con.Open();
+           MySqlDataReader read = com.ExecuteReader();
+            while (read.Read())
+            {
+                richTextBox_chuandoan_hoichuan.Text = "cau sql";
+                comboBox_thieumaumucdo_hoichuan.Text = read["Mucdothieumau"].ToString();
+              
+                richTextBox_ketluanhoichuan_hoichuan.Text = read["Ketluanhoichuan"].ToString();
+
+            }
+            Util.con.Close();
+            ketqua_xetnghiem_gannhat_chohoichuan(idphieuxetnghiem);
+            
+        }
         public void load_Phieuxetnhgiem_hoichuan(int idBenhnhan, int idPhieukhambenh)
         {
 
@@ -2039,7 +2059,7 @@ namespace QLBV_normal
                                     AND xetnghiem_phieuxetnghiem.Phieuxetnghiem_id = " + idphieuxetnghiem +
                                 @" AND xetnghiem_phieuxetnghiem.Xetnghiem_id= xetnghiem.id
                                     ORDER BY xetnghiem.id DESC ";
-            ;
+            
             Util.con.Open();
             MySqlDataReader read = com.ExecuteReader();
             // Xetnghiem xn = new Xetnghiem();
@@ -2147,6 +2167,7 @@ namespace QLBV_normal
 
             }
             ketqua_xetnghiem_gannhat_chohoichuan(idPhieuxetnghiem);
+            load_hoichuan(idPhieuxetnghiem); 
 
         }
 
