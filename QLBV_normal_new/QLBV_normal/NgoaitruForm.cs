@@ -81,7 +81,7 @@ namespace QLBV_normal
         private void NgoaitruFormnew_Load(object sender, EventArgs e)
         {
             Show_danhsachbenhnhan();
-            //Util.con.Close();
+            load_Bacsi();
         }
 
         private void radioButton_xuatvien_CheckedChanged(object sender, EventArgs e)
@@ -369,6 +369,10 @@ namespace QLBV_normal
             {
 
             }
+            if (idBenhnhan == -1)
+            {
+                return;
+            }
             Hashtable currentObject = get_CurrentObject(idBenhnhan);
             if (currentObject.Count == 0)
             {
@@ -404,6 +408,7 @@ namespace QLBV_normal
                 while (read.Read())
                 {
                     Todieutri obj = new Todieutri();
+                    obj.Mabenhnhan = idBenhnhan;
                     obj.Tenbenhnhan = read["Ten"].ToString();
                     obj.Ngaysinh = DateTime.Parse(read["Ngaysinh"].ToString());
                     obj.Chandoan = read["Benhchinh"].ToString() + " - " + read["Benhkemtheo"].ToString();
@@ -840,7 +845,8 @@ namespace QLBV_normal
                     return;
                 }
                 int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
-                updateYlenh(1, idPhieuxetnghiem, idPhieukhambenh);
+                int idBacsi = int.Parse(comboBox_bacsi_phieuxetnghiem.SelectedValue.ToString());
+                updateYlenh(1, idPhieuxetnghiem, idPhieukhambenh, idBacsi);
             }
             catch (MySqlException sqlE)
             {
@@ -1024,7 +1030,8 @@ namespace QLBV_normal
                         return;
                     }
                     int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
-                    updateYlenh(2, idPhieuxetnghiem, idPhieukhambenh);
+                    int idBacsi = int.Parse(comboBox_bacsi_phieuxetnghiem.SelectedValue.ToString());
+                    updateYlenh(2, idPhieuxetnghiem, idPhieukhambenh, idBacsi);
                 }
 
             }
@@ -1431,51 +1438,60 @@ namespace QLBV_normal
         }
 
 //Y lệnh section---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        public void updateYlenh(int loai, int idLoai, int idPhieukhambenh)
+        public void updateYlenh(int loai, int idLoai, int idPhieukhambenh, int idBacsi)
         {
             try
             {
                 MySqlCommand com = new MySqlCommand();
                 com.Connection = Util.con;
                 com.Parameters.Add("@idPhieukhambenh", MySqlDbType.Int32, 11).Value = idPhieukhambenh;
+                com.Parameters.Add("@idBacsi", MySqlDbType.Int32, 11).Value = idBacsi;
                 com.Parameters.Add("@loai", MySqlDbType.Int32, 11).Value = loai;
                 com.Parameters.Add("@idLoai", MySqlDbType.Int32, 11).Value = idLoai;
                 com.Parameters.Add("@mota", MySqlDbType.Text).Value = formatterYlenh(loai, idLoai);
+
                 com.CommandText = @"SELECT ylenh.*
                                         FROM ylenh
                                         WHERE phieukhambenh_id=@idPhieukhambenh
-                                            AND status=1";
+                                            AND loai=@loai
+                                            AND id_loai=@idLoai";
                 Util.con.Open();
                 MySqlDataReader read = com.ExecuteReader();
-                bool hasYlenhNoComplete = false;
-                int idYlenhNoComplete = -1;
-                while (read.Read())
+                bool hasYlenh = false;
+                int idYlenh = -1;
+                if (read.Read())
                 {
-                    hasYlenhNoComplete = true;
-                    idYlenhNoComplete = int.Parse(read["id"].ToString());
+                    hasYlenh = true;
+                    idYlenh = int.Parse(read["id"].ToString());
                 }
                 Util.con.Close();
-
-                if (hasYlenhNoComplete)
+                if (hasYlenh)
+                {
+                    com.CommandText = @"UPDATE ylenh SET Mota=@mota, Bacsi_id=@idBacsi WHERE id=" + idYlenh.ToString();
+                    Util.con.Open();
+                    com.ExecuteNonQuery();
+                    Util.con.Close();
+                }
+                else
                 {
                     if (MessageBox.Show("Bạn có muốn hủy y lệnh chưa hoàn thành trước đó và sử dụng y lệnh vừa tạo?", "Xác nhận xóa y lệnh chưa hoàn thành", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        com.Parameters.Add("@idYlenh", MySqlDbType.Int32, 11).Value = idYlenhNoComplete;
-                        com.CommandText = "DELETE FROM ylenh WHERE id=@idYlenh";
+                        com.CommandText = "DELETE FROM ylenh WHERE phieukhambenh_id=@idPhieukhambenh AND status=1";
+                        Util.con.Open();
+                        com.ExecuteNonQuery();
+                        Util.con.Close();
+
+                        com.CommandText = @"INSERT INTO ylenh (loai, id_loai, Mota, Phieukhambenh_id, Bacsi_id) 
+                                                VALUES (@loai, @idLoai, @mota, @idPhieukhambenh, @idBacsi)";
                         Util.con.Open();
                         com.ExecuteNonQuery();
                         Util.con.Close();
                     }
                 }
-                com.CommandText = @"INSERT INTO ylenh (loai, id_loai, Phieukhambenh_id, Mota, Bacsi_id) 
-                                                VALUES (@loai, @idLoai, @idPhieukhambenh, @mota, 1)";
-                Util.con.Open();
-                com.ExecuteNonQuery();
-                Util.con.Close();
             }
             catch (MySqlException sqlE)
             {
-                MessageBox.Show("Load phieu xet nghiem");
+                MessageBox.Show("Update y lệnh");
                 return;
             }
         }
@@ -1485,6 +1501,7 @@ namespace QLBV_normal
             string valueString = "";
             MySqlCommand com = new MySqlCommand();
             com.Connection = Util.con;
+            com.Parameters.Add("@loai", MySqlDbType.Int32, 11).Value = loai;
             com.Parameters.Add("@idLoai", MySqlDbType.Int32, 11).Value = idLoai;
             MySqlDataReader read;
             switch (loai)
@@ -1498,7 +1515,7 @@ namespace QLBV_normal
                                         LEFT OUTER JOIN xetnghiem
                                             ON xetnghiem.id=xetnghiem_phieuxetnghiem.Xetnghiem_id 
                                         WHERE xetnghiem_phieuxetnghiem.Phieuxetnghiem_id=@idLoai
-                                            AND ylenh.loai=1";
+                                            AND ylenh.loai=@loai";
                     Util.con.Open();
                     read = com.ExecuteReader();
                     while (read.Read())
@@ -1516,7 +1533,7 @@ namespace QLBV_normal
                                         LEFT OUTER JOIN xetnghiem
                                             ON xetnghiem.id=xetnghiem_phieuxetnghiem.Xetnghiem_id 
                                         WHERE xetnghiem_phieuxetnghiem.Phieuxetnghiem_id=@idLoai
-                                            AND ylenh.loai=2";
+                                            AND ylenh.loai=@loai";
                     Util.con.Open();
                     read = com.ExecuteReader();
                     while (read.Read())
@@ -1537,7 +1554,7 @@ namespace QLBV_normal
                                         LEFT OUTER JOIN toathuoc
                                             ON toathuoc.id=toathuoc_thuoc.toathuoc_id 
                                         WHERE toathuoc_thuoc.toathuoc_id=@idLoai
-                                            AND ylenh.loai=3";
+                                            AND ylenh.loai=@loai";
                     Util.con.Open();
                     read = com.ExecuteReader();
                     while (read.Read())
@@ -1641,6 +1658,7 @@ namespace QLBV_normal
                         dateTimePicker_thuoctungay.Value = DateTime.Parse(read["Tungay"].ToString());
                         dateTimePicker_thuocdenngay.Value = DateTime.Parse(read["Denngay"].ToString());
                         richTextBox_loidan.Text = read["Loidan"].ToString();
+                        comboBox_bacsi_toathuoc.SelectedValue = read["Bacsi_id"].ToString();
                     }
                     Util.con.Close();
                 }
@@ -1733,7 +1751,7 @@ namespace QLBV_normal
             }
             else
             {
-                dateTimePicker_thuoctungay.Value = DateTime.Now;
+                dateTimePicker_thuoctungay.Value = dateTimePicker_thuocdenngay.Value;
             }
         }
 
@@ -1746,7 +1764,7 @@ namespace QLBV_normal
             }
             else
             {
-                dateTimePicker_thuocdenngay.Value = DateTime.Now;
+                dateTimePicker_thuocdenngay.Value = dateTimePicker_thuoctungay.Value;
             }
         }
 
@@ -1961,7 +1979,8 @@ namespace QLBV_normal
                         return;
                     }
                     int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
-                    updateYlenh(3, idToathuoc, idPhieukhambenh);
+                    int idBacsi = int.Parse(comboBox_bacsi_toathuoc.SelectedValue.ToString());
+                    updateYlenh(3, idToathuoc, idPhieukhambenh, idBacsi);
                 }
 
             }
@@ -2205,6 +2224,43 @@ namespace QLBV_normal
 
 //////////////////////////////////////////////////////////////////////////
  
+        public void load_Bacsi() {
+            comboBox_bacsi_toathuoc.DataSource = comboBox_bacsi_phieuxetnghiem.DataSource = null;
+            comboBox_bacsi_toathuoc.Text = comboBox_bacsi_phieuxetnghiem.Text = "";
+            comboBox_bacsi_toathuoc.SelectedIndex = comboBox_bacsi_phieuxetnghiem.SelectedIndex = - 1;
+            comboBox_bacsi_toathuoc.DisplayMember = comboBox_bacsi_phieuxetnghiem.DisplayMember = "Text";
+            comboBox_bacsi_toathuoc.ValueMember = comboBox_bacsi_phieuxetnghiem.ValueMember = "Value";
+            List<object> myCollection = new List<object>();
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.CommandText = @"SELECT *
+                                        FROM bacsi
+                                        ORDER BY TenBacsi ASC";
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                while (read.Read())
+                {
+                    myCollection.Add(new { Text = read["TenBacsi"].ToString(), Value = read["id"].ToString() });
+                }
+                Util.con.Close();
+            }
+            catch (MySqlException sqlE)
+            {
+                MessageBox.Show("Load bác sĩ");
+                return;
+            }
+            comboBox_bacsi_toathuoc.DataSource = comboBox_bacsi_phieuxetnghiem.DataSource = (object)myCollection;
+            if (comboBox_bacsi_toathuoc.Items.Count > 0)
+            {
+                comboBox_bacsi_toathuoc.SelectedIndex = 0;
+            }
+            if (comboBox_bacsi_phieuxetnghiem.Items.Count > 0)
+            {
+                comboBox_bacsi_phieuxetnghiem.SelectedIndex = 0;
+            }
+        }
 
         private void button_addnew_toathuoc_Click(object sender, EventArgs e)
         {
@@ -2232,9 +2288,10 @@ namespace QLBV_normal
                 com.Parameters.Add("@denngay", MySqlDbType.DateTime).Value = dateTimePicker_thuocdenngay.Value;
                 com.Parameters.Add("@loidan", MySqlDbType.Text).Value = richTextBox_loidan.Text;
                 com.Parameters.Add("@phieukhambenh_id", MySqlDbType.Int32, 11).Value = idPhieukhambenh;
+                com.Parameters.Add("@bacsi_id", MySqlDbType.Int32, 11).Value = int.Parse(comboBox_bacsi_toathuoc.SelectedValue.ToString());
 
-                com.CommandText = @"INSERT INTO toathuoc(tungay, denngay, loidan, Phieukhambenh_id) 
-                                        VALUES (@tungay, @denngay, @loidan, @phieukhambenh_id)";
+                com.CommandText = @"INSERT INTO toathuoc(tungay, denngay, loidan, Phieukhambenh_id, Bacsi_id) 
+                                        VALUES (@tungay, @denngay, @loidan, @phieukhambenh_id, @bacsi_id)";
                 Util.con.Open();
                 com.ExecuteNonQuery();
                 Util.con.Close();
@@ -2363,7 +2420,7 @@ namespace QLBV_normal
             }
         }
 
-        private void button_thuoc_toathuoc_Click(object sender, EventArgs e)
+        private void button_xoa_thuoc_toathuoc_Click(object sender, EventArgs e)
         {
             int listView_chitiettoathuoc_select_length = listView_chitiettoathuoc.SelectedItems.Count;
             int idToathuoc = -1;
@@ -2430,7 +2487,8 @@ namespace QLBV_normal
                     return;
                 }
                 int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
-                updateYlenh(3, idToathuoc, idPhieukhambenh);
+                int idBacsi = int.Parse(comboBox_bacsi_toathuoc.SelectedValue.ToString());
+                updateYlenh(3, idToathuoc, idPhieukhambenh, idBacsi);
             }
             catch (MySqlException sqlE)
             {
@@ -2440,17 +2498,16 @@ namespace QLBV_normal
 
         private void button_intoathuoc_Click(object sender, EventArgs e)
         {
-            int idBenhnhan = -1;
+            int idToathuoc = -1;
             try
             {
-                idBenhnhan = int.Parse(textBox_MaBN.Text);
+                idToathuoc = int.Parse(comboBox_toathuoc.SelectedValue.ToString());
             }
             catch (Exception ex)
             {
 
             }
-            Hashtable currentObject = get_CurrentObject(idBenhnhan);
-            if (currentObject.Count == 0)
+            if (idToathuoc == -1)
             {
                 return;
             }
@@ -2463,7 +2520,7 @@ namespace QLBV_normal
             {
                 MySqlCommand com = new MySqlCommand();
                 com.Connection = Util.con;
-                com.Parameters.Add("@id", MySqlDbType.Int32, 11).Value = int.Parse(currentObject["idBenhnhan"].ToString());
+                com.Parameters.Add("@toathuoc_id", MySqlDbType.Int32, 11).Value = idToathuoc;
                 com.CommandText = @"SELECT benhnhan.*, phieukhambenh.*, ngoaitru.*, toathuoc.*, bacsi.TenBacsi, thuoc.*, toathuoc_thuoc.*
                                         FROM toathuoc_thuoc 
                                         LEFT OUTER JOIN toathuoc
@@ -2478,7 +2535,7 @@ namespace QLBV_normal
                                             ON benhnhan.id=phieukhambenh.Benhnhan_id 
                                         LEFT OUTER JOIN bacsi
                                             ON bacsi.id=toathuoc.Bacsi_id                                         
-                                        WHERE benhnhan.id=@id AND ngoaitru.Tinhtrangravien=0";
+                                        WHERE toathuoc_thuoc.Toathuoc_id=@toathuoc_id";
                 Util.con.Open();
                 MySqlDataReader read = com.ExecuteReader();
                 while (read.Read())

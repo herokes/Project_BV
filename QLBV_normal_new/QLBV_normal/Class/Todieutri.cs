@@ -7,6 +7,7 @@ namespace QLBV_normal.Class
 {
     public class Todieutri
     {
+        private int _mabenhnhan;
         private string _tenbenhnhan;
         private DateTime _ngaysinh;
         private string _sogiuong;
@@ -30,6 +31,17 @@ namespace QLBV_normal.Class
             _bacsi = "";
         }
 
+        public int Mabenhnhan
+        {
+            get
+            {
+                return this._mabenhnhan;
+            }
+            set
+            {
+                this._mabenhnhan = value;
+            }
+        }
         public string Tenbenhnhan
         {
             get

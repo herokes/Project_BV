@@ -10,14 +10,13 @@ INSERT INTO `benhnhan` (`id`, `Ten`, `Ngaysinh`, `Gioitinh`, `Nghenghiep`, `Dant
 
 -- --------------------------------------------------------
 
-INSERT INTO `thuoc` (`id`, `Tenthuoc`, `Taduoc`, `Hamluong`, `Duongdung`, `Dang`) VALUES
-(1, 'Adalat LA', NULL, '30mg', NULL, 'Viên'),
-(2, 'Adalat LA', NULL, '30mg', 'Uống', 'Viên'),
-(3, 'Aprovel', NULL, '150mg', 'Uống', 'viên'),
-(4, 'Coversyl', NULL, '10mg', 'Uống', 'viên'),
-(5, 'Concor tab', NULL, '5mg', 'Uống', 'viên'),
-(6, 'Omazolta', NULL, '20mg', 'Uống', 'viên'),
-(7, 'Austriol', NULL, '0.5ug', 'Uống', 'viên');
+INSERT INTO `thuoc` (`id`, `Tenthuoc`, `Taduoc`, `Hamluong`, `Duongdung`, `Dang`) VALUES 
+(1, 'Adalat LA', NULL, '30mg', 'Uống', 'viên'),
+(2, 'Aprovel', NULL, '150mg', 'Uống', 'viên'),
+(3, 'Coversyl', NULL, '10mg', 'Uống', 'viên'),
+(4, 'Concor tab', NULL, '5mg', 'Uống', 'viên'),
+(5, 'Omazolta', NULL, '20mg', 'Uống', 'viên'),
+(6, 'Austriol', NULL, '0.5ug', 'Uống', 'viên');
 
 -- --------------------------------------------------------
 
@@ -106,8 +105,8 @@ INSERT INTO `noitru` (`id`, `Thoigianvaovien`, `Tructiepvao`, `Vaolanthu`, `Ngay
 -- --------------------------------------------------------
 
 INSERT INTO `phieuxetnghiem` (`id`, `Ngayxetnghiem`, `Phieukhambenh_id`) VALUES
-(1, '2013-12-11 00:00:00', 9),
-(2, '2013-12-28 11:15:20', 6);
+(1, '2013-12-11 00:00:00', 9, 1),
+(2, '2013-12-28 11:15:20', 6, 2);
 
 -- --------------------------------------------------------
 
@@ -121,17 +120,17 @@ INSERT INTO `bacsi_hoichuan` (`Hoichuan_id`, `Bacsi_id`, `NgaygioHoichuan`) VALU
 
 -- --------------------------------------------------------
 
-INSERT INTO `toathuoc` (`id`, `Tungay`, `Denngay`, `Loidan`, `Bacsi`, `Phieukhambenh_id`) VALUES
-(1, '2013-12-04 00:00:00', '2013-12-16 00:00:00', 'Ăn lạt, hạn chế trái cây, Đo HA hằng ngày', 'BS: Nguyễn Kim Phượng', 9);
+INSERT INTO `toathuoc` (`id`, `Tungay`, `Denngay`, `Loidan`, `Bacsi_id`, `Phieukhambenh_id`) VALUES
+(1, '2013-12-04 00:00:00', '2013-12-16 00:00:00', 'Ăn lạt, hạn chế trái cây, Đo HA hằng ngày', 1, 9);
 
 -- --------------------------------------------------------
 
-INSERT INTO `toathuoc_thuoc` (`Toathuoc_id`, `Thuoc_id`, `sang`, `trua`, `toi`) VALUES
-(1, 1, '2', '1', '1'),
-(1, 2, '1', '0', '1'),
-(1, 3, '1', '0', '1'),
-(1, 4, '1/2', '0', '0'),
-(1, 5, '1', '0', '0');
+INSERT INTO `toathuoc_thuoc` (`Toathuoc_id`, `Thuoc_id`, `sang`, `trua`, `toi`, `ghichu`) VALUES
+(1, 1, '2', '1', '1', 'sau ăn'),
+(1, 2, '1', '0', '1', ''),
+(1, 3, '1', '0', '1', ''),
+(1, 4, '1/2', '0', '0', ''),
+(1, 5, '1', '0', '0', '');
 
 -- --------------------------------------------------------
 
@@ -142,8 +141,8 @@ INSERT INTO `todieutri` (`id`, `Phieukhambenh_id`) VALUES
 -- --------------------------------------------------------
 
 INSERT INTO `xetnghiem_phieuxetnghiem` (`Xetnghiem_id`, `Phieuxetnghiem_id`, `Thongsoxetnghiem`) VALUES
-(16, 1, '32.4%'),
-(17, 1, '9.66 g/dl');
+(16, 1, '32.4'),
+(17, 1, '9.66');
 
 -- --------------------------------------------------------
 
