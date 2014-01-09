@@ -1500,15 +1500,6 @@
             this.richTextBox_loidan.TabIndex = 119;
             this.richTextBox_loidan.Text = "";
             // 
-
-            // button4
-            // 
-            this.richTextBox_loidan.Location = new System.Drawing.Point(64, 124);
-            this.richTextBox_loidan.Name = "richTextBox_loidan";
-            this.richTextBox_loidan.Size = new System.Drawing.Size(166, 46);
-            this.richTextBox_loidan.TabIndex = 119;
-            this.richTextBox_loidan.Text = "";
-            // 
             // button_fix_toathuoc
             // 
             this.button_fix_toathuoc.Location = new System.Drawing.Point(87, 181);
@@ -2357,7 +2348,7 @@
             "Nhiều",
             "Trung bình",
             "Nhẹ"});
-            this.comboBox_thieumaumucdo_hoichuan.Location = new System.Drawing.Point(229, 144);
+            this.comboBox_thieumaumucdo_hoichuan.Location = new System.Drawing.Point(229, 180);
             this.comboBox_thieumaumucdo_hoichuan.Name = "comboBox_thieumaumucdo_hoichuan";
             this.comboBox_thieumaumucdo_hoichuan.Size = new System.Drawing.Size(121, 21);
             this.comboBox_thieumaumucdo_hoichuan.TabIndex = 6;
@@ -2369,7 +2360,7 @@
             "Nhiều",
             "Trung bình",
             "Nhẹ"});
-            this.comboBox_ngayxetnghiem_hoichuan.Location = new System.Drawing.Point(229, 182);
+            this.comboBox_ngayxetnghiem_hoichuan.Location = new System.Drawing.Point(229, 21);
             this.comboBox_ngayxetnghiem_hoichuan.Name = "comboBox_ngayxetnghiem_hoichuan";
             this.comboBox_ngayxetnghiem_hoichuan.Size = new System.Drawing.Size(121, 21);
             this.comboBox_ngayxetnghiem_hoichuan.TabIndex = 6;
@@ -2378,7 +2369,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(19, 152);
+            this.label12.Location = new System.Drawing.Point(19, 188);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(198, 13);
             this.label12.TabIndex = 5;
@@ -2387,7 +2378,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(37, 127);
+            this.label10.Location = new System.Drawing.Point(37, 163);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(79, 13);
             this.label10.TabIndex = 4;
@@ -2411,7 +2402,7 @@
             // 
             // richTextBox_chuandoan_hoichuan
             // 
-            this.richTextBox_chuandoan_hoichuan.Location = new System.Drawing.Point(229, 54);
+            this.richTextBox_chuandoan_hoichuan.Location = new System.Drawing.Point(229, 90);
             this.richTextBox_chuandoan_hoichuan.Name = "richTextBox_chuandoan_hoichuan";
             this.richTextBox_chuandoan_hoichuan.Size = new System.Drawing.Size(436, 67);
             this.richTextBox_chuandoan_hoichuan.TabIndex = 3;
@@ -2420,7 +2411,7 @@
             // dateTimePicker_ngayhoichuan_hoichuan
             // 
             this.dateTimePicker_ngayhoichuan_hoichuan.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker_ngayhoichuan_hoichuan.Location = new System.Drawing.Point(318, 12);
+            this.dateTimePicker_ngayhoichuan_hoichuan.Location = new System.Drawing.Point(318, 48);
             this.dateTimePicker_ngayhoichuan_hoichuan.Name = "dateTimePicker_ngayhoichuan_hoichuan";
             this.dateTimePicker_ngayhoichuan_hoichuan.Size = new System.Drawing.Size(90, 20);
             this.dateTimePicker_ngayhoichuan_hoichuan.TabIndex = 1;
@@ -2437,7 +2428,7 @@
             // label53
             // 
             this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(127, 185);
+            this.label53.Location = new System.Drawing.Point(127, 24);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(89, 13);
             this.label53.TabIndex = 0;
@@ -2455,7 +2446,7 @@
             // dateTimePicker_giohoichuan_hoichuan
             // 
             this.dateTimePicker_giohoichuan_hoichuan.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker_giohoichuan_hoichuan.Location = new System.Drawing.Point(229, 12);
+            this.dateTimePicker_giohoichuan_hoichuan.Location = new System.Drawing.Point(229, 48);
             this.dateTimePicker_giohoichuan_hoichuan.Name = "dateTimePicker_giohoichuan_hoichuan";
             this.dateTimePicker_giohoichuan_hoichuan.Size = new System.Drawing.Size(81, 20);
             this.dateTimePicker_giohoichuan_hoichuan.TabIndex = 1;
@@ -2463,7 +2454,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(148, 57);
+            this.label9.Location = new System.Drawing.Point(148, 93);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(69, 13);
             this.label9.TabIndex = 0;
@@ -2472,7 +2463,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(115, 18);
+            this.label7.Location = new System.Drawing.Point(115, 54);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(102, 13);
             this.label7.TabIndex = 0;

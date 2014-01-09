@@ -7,6 +7,12 @@ namespace QLBV_normal.Class
 {
     class Bienbanhoichuan
     {
+        private string _Mabenhnhan;
+        public string Mabenhnhan
+        {
+            set { _Mabenhnhan = value; }
+            get { return _Mabenhnhan; }
+        }
         private string _Tenbenhnhan;
         public string Tenbenhnhan
         {
