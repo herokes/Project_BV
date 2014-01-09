@@ -655,7 +655,7 @@ namespace QLBV_normal
             load_Phieuxetnhgiem(idBenhnhan, idPhieukhambenh);
             load_Xetnghiem();
             load_Toathuoc(idBenhnhan, idPhieukhambenh);
-
+            load_Chaythan(idBenhnhan, idPhieukhambenh);
             load_Phieuxetnhgiem_hoichuan(idBenhnhan, idPhieukhambenh);// load xet nghiem vao hoi chuan
         }
 
@@ -1510,12 +1510,9 @@ namespace QLBV_normal
                     valueString = "Xét nghiệm:\n";
                     com.CommandText = @"SELECT xetnghiem_phieuxetnghiem.*, xetnghiem.*
                                         FROM xetnghiem_phieuxetnghiem
-                                        LEFT OUTER JOIN ylenh
-                                            ON ylenh.id_loai=xetnghiem_phieuxetnghiem.Phieuxetnghiem_id
                                         LEFT OUTER JOIN xetnghiem
                                             ON xetnghiem.id=xetnghiem_phieuxetnghiem.Xetnghiem_id 
-                                        WHERE xetnghiem_phieuxetnghiem.Phieuxetnghiem_id=@idLoai
-                                            AND ylenh.loai=@loai";
+                                        WHERE xetnghiem_phieuxetnghiem.Phieuxetnghiem_id=@idLoai";
                     Util.con.Open();
                     read = com.ExecuteReader();
                     while (read.Read())
@@ -1528,12 +1525,9 @@ namespace QLBV_normal
                     valueString = "Kết quả xét nghiệm:\n";
                     com.CommandText = @"SELECT xetnghiem_phieuxetnghiem.*, xetnghiem.*
                                         FROM xetnghiem_phieuxetnghiem
-                                        LEFT OUTER JOIN ylenh
-                                            ON ylenh.id_loai=xetnghiem_phieuxetnghiem.Phieuxetnghiem_id
                                         LEFT OUTER JOIN xetnghiem
                                             ON xetnghiem.id=xetnghiem_phieuxetnghiem.Xetnghiem_id 
-                                        WHERE xetnghiem_phieuxetnghiem.Phieuxetnghiem_id=@idLoai
-                                            AND ylenh.loai=@loai";
+                                        WHERE xetnghiem_phieuxetnghiem.Phieuxetnghiem_id=@idLoai";
                     Util.con.Open();
                     read = com.ExecuteReader();
                     while (read.Read())
@@ -1547,14 +1541,11 @@ namespace QLBV_normal
                     valueString = "Cấp thuốc:\n";
                     com.CommandText = @"SELECT toathuoc_thuoc.*, thuoc.*, toathuoc.*
                                         FROM toathuoc_thuoc
-                                        LEFT OUTER JOIN ylenh
-                                            ON ylenh.id_loai=toathuoc_thuoc.toathuoc_id
                                         LEFT OUTER JOIN thuoc
                                             ON thuoc.id=toathuoc_thuoc.thuoc_id 
                                         LEFT OUTER JOIN toathuoc
                                             ON toathuoc.id=toathuoc_thuoc.toathuoc_id 
-                                        WHERE toathuoc_thuoc.toathuoc_id=@idLoai
-                                            AND ylenh.loai=@loai";
+                                        WHERE toathuoc_thuoc.toathuoc_id=@idLoai";
                     Util.con.Open();
                     read = com.ExecuteReader();
                     while (read.Read())
@@ -1573,13 +1564,32 @@ namespace QLBV_normal
                         {
                             toiStr = "Tối " + read["toi"].ToString() + " " + read["Dang"].ToString();
                         }
-                        //double thuoc1ngay = double.Parse(read["sang"].ToString()) + double.Parse(read["sang"].ToString()) + double.Parse(read["sang"].ToString());
+                        double sang = FractionToDouble(read["sang"].ToString() != "" ? read["sang"].ToString() : "0"),
+                                trua = FractionToDouble(read["trua"].ToString() != "" ? read["trua"].ToString() : "0"),
+                                toi = FractionToDouble(read["toi"].ToString() != "" ? read["toi"].ToString() : "0");
+                        double Tongcong = Math.Round(ngaythuoc * (sang + trua + toi));
+                        string strTong = Tongcong < 10 ? ("0" + Tongcong.ToString()) : Tongcong.ToString();
                         titleString = "Thuốc đợt\t" + DateTime.Parse(read["Tungay"].ToString()).ToString("dd/MM/yyyy") + "\tđến\t" + DateTime.Parse(read["denngay"].ToString()).ToString("dd/MM/yyyy");
-                        toathuocString += "\n" + read["Tenthuoc"].ToString() + " " + read["Hamluong"].ToString() + "\t\t\t ";
-                        toathuocString += "\n\t" + read["Duongdung"].ToString() + " " + sangStr + " " + truaStr + " " + toiStr;
+                        toathuocString += "\n" + read["Tenthuoc"].ToString() + " " + read["Hamluong"].ToString() + "\t\t\t\t\t\t    " + strTong + " " + read["Dang"].ToString();
+                        toathuocString += "\n   " + read["Duongdung"].ToString() + "\t " + sangStr + "\t " + truaStr + "\t " + toiStr;
                     }
                     Util.con.Close();
                     valueString += titleString + toathuocString;
+                    break;
+                case 4:
+                    valueString = "Chạy thận:\n";
+                    com.CommandText = @"SELECT chaythan_thuoc.*, thuoc.*
+                                        FROM chaythan_thuoc
+                                        LEFT OUTER JOIN thuoc
+                                            ON thuoc.id=chaythan_thuoc.thuoc_id
+                                        WHERE chaythan_thuoc.chaythan_id=@idLoai";
+                    Util.con.Open();
+                    read = com.ExecuteReader();
+                    while (read.Read())
+                    {
+                        valueString += read["Tenthuoc"].ToString() + " " + read["Hamluong"].ToString() + " " + read["Soluong"].ToString() + " " + read["Dang"].ToString() + " " + read["Duongdung"].ToString() + "\n";
+                    }
+                    Util.con.Close();
                     break;
                 default:
                     break;
@@ -2225,12 +2235,14 @@ namespace QLBV_normal
 //////////////////////////////////////////////////////////////////////////
  
         public void load_Bacsi() {
-            comboBox_bacsi_toathuoc.DataSource = comboBox_bacsi_phieuxetnghiem.DataSource = null;
-            comboBox_bacsi_toathuoc.Text = comboBox_bacsi_phieuxetnghiem.Text = "";
-            comboBox_bacsi_toathuoc.SelectedIndex = comboBox_bacsi_phieuxetnghiem.SelectedIndex = - 1;
-            comboBox_bacsi_toathuoc.DisplayMember = comboBox_bacsi_phieuxetnghiem.DisplayMember = "Text";
-            comboBox_bacsi_toathuoc.ValueMember = comboBox_bacsi_phieuxetnghiem.ValueMember = "Value";
+            comboBox_bacsi_toathuoc.DataSource = comboBox_bacsi_phieuxetnghiem.DataSource = comboBox_bacsi_chaythan.DataSource = null;
+            comboBox_bacsi_toathuoc.Text = comboBox_bacsi_phieuxetnghiem.Text = comboBox_bacsi_chaythan.Text = "";
+            comboBox_bacsi_toathuoc.SelectedIndex = comboBox_bacsi_phieuxetnghiem.SelectedIndex = comboBox_bacsi_chaythan.SelectedIndex = -1;
+            comboBox_bacsi_toathuoc.DisplayMember = comboBox_bacsi_phieuxetnghiem.DisplayMember = comboBox_bacsi_chaythan.DisplayMember = "Text";
+            comboBox_bacsi_toathuoc.ValueMember = comboBox_bacsi_phieuxetnghiem.ValueMember = comboBox_bacsi_chaythan.ValueMember = "Value";
             List<object> myCollection = new List<object>();
+            List<object> myCollection1 = new List<object>();
+            List<object> myCollection2 = new List<object>();
             try
             {
                 MySqlCommand com = new MySqlCommand();
@@ -2243,6 +2255,8 @@ namespace QLBV_normal
                 while (read.Read())
                 {
                     myCollection.Add(new { Text = read["TenBacsi"].ToString(), Value = read["id"].ToString() });
+                    myCollection1.Add(new { Text = read["TenBacsi"].ToString(), Value = read["id"].ToString() });
+                    myCollection2.Add(new { Text = read["TenBacsi"].ToString(), Value = read["id"].ToString() });
                 }
                 Util.con.Close();
             }
@@ -2251,7 +2265,9 @@ namespace QLBV_normal
                 MessageBox.Show("Load bác sĩ");
                 return;
             }
-            comboBox_bacsi_toathuoc.DataSource = comboBox_bacsi_phieuxetnghiem.DataSource = (object)myCollection;
+            comboBox_bacsi_toathuoc.DataSource = (object)myCollection;
+            comboBox_bacsi_phieuxetnghiem.DataSource = (object)myCollection1;
+            comboBox_bacsi_chaythan.DataSource = (object)myCollection2;
             if (comboBox_bacsi_toathuoc.Items.Count > 0)
             {
                 comboBox_bacsi_toathuoc.SelectedIndex = 0;
@@ -2259,6 +2275,10 @@ namespace QLBV_normal
             if (comboBox_bacsi_phieuxetnghiem.Items.Count > 0)
             {
                 comboBox_bacsi_phieuxetnghiem.SelectedIndex = 0;
+            }
+            if (comboBox_bacsi_chaythan.Items.Count > 0)
+            {
+                comboBox_bacsi_chaythan.SelectedIndex = 0;
             }
         }
 
@@ -2331,8 +2351,9 @@ namespace QLBV_normal
                     com.Parameters.Add("@denngay", MySqlDbType.DateTime).Value = dateTimePicker_thuocdenngay.Value;
                     com.Parameters.Add("@loidan", MySqlDbType.Text).Value = richTextBox_loidan.Text;
                     com.Parameters.Add("@idToathuoc", MySqlDbType.Int32, 11).Value = idToathuoc;
+                    com.Parameters.Add("@idBacsi", MySqlDbType.Int32, 11).Value = int.Parse(comboBox_bacsi_toathuoc.SelectedValue.ToString());
 
-                    com.CommandText = @"UPDATE toathuoc SET tungay=@tungay, denngay=@denngay, loidan=@loidan WHERE id=@idToathuoc";
+                    com.CommandText = @"UPDATE toathuoc SET tungay=@tungay, denngay=@denngay, loidan=@loidan, bacsi_id=@idBacsi WHERE id=@idToathuoc";
                     Util.con.Open();
                     if (com.ExecuteNonQuery() != 0)
                     {
@@ -2608,7 +2629,584 @@ namespace QLBV_normal
 
             throw new FormatException("Not a valid fraction.");
         }
+//Chạy thận section----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        public void load_Chaythan(int idBenhnhan, int idPhieukhambenh)
+        {
+            comboBox_chaythan.DataSource = null;
+            comboBox_chaythan.Text = "";
+            comboBox_chaythan.SelectedIndex = -1;
+            comboBox_chaythan.DisplayMember = "Text";
+            comboBox_chaythan.ValueMember = "Value";
+            List<object> myCollection = new List<object>();
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.Parameters.Add("@idBenhnhan", MySqlDbType.Int32, 11).Value = idBenhnhan;
+                com.Parameters.Add("@idPhieukhambenh", MySqlDbType.Int32, 11).Value = idPhieukhambenh;
+                com.CommandText = @"SELECT chaythan.*
+                                        FROM chaythan
+                                        LEFT OUTER JOIN phieukhambenh
+                                            ON chaythan.Phieukhambenh_id=phieukhambenh.id 
+                                        LEFT OUTER JOIN ngoaitru
+                                            ON ngoaitru.Phieukhambenh_id=phieukhambenh.id 
+                                        LEFT OUTER JOIN benhnhan
+                                            ON benhnhan.id=phieukhambenh.Benhnhan_id
+                                        WHERE benhnhan.id=@idBenhnhan
+                                            AND phieukhambenh.id=@idPhieukhambenh
+                                        ORDER BY chaythan.id ASC";
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                int i = 1;
+                while (read.Read())
+                {
+                    myCollection.Add(new { Text = "Lần " + i.ToString(), Value = read["id"].ToString() });
+                    i++;
+                }
+                Util.con.Close();
+            }
+            catch (MySqlException sqlE)
+            {
+                MessageBox.Show("Load chạy thận");
+                return;
+            }
+            comboBox_chaythan.DataSource = (object)myCollection;
+            if (comboBox_chaythan.Items.Count > 0)
+            {
+                comboBox_chaythan.SelectedIndex = comboBox_chaythan.Items.Count - 1;
+            }
+        }
 
+        public void load_ChitietChaythan(int idChaythan)
+        {
+            if (idChaythan == -1)
+            {
+                return;
+            }
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                if (idChaythan != -1)
+                {
+                    com.Parameters.Add("@idChaythan", MySqlDbType.Int32, 11).Value = idChaythan;
+                    com.CommandText = @"SELECT *
+                                        FROM chaythan
+                                        WHERE id=@idChaythan";
+                    Util.con.Open();
+                    MySqlDataReader read = com.ExecuteReader();
+                    while (read.Read())
+                    {
+                        comboBox_bacsi_chaythan.SelectedValue = read["Bacsi_id"].ToString();
+                    }
+                    Util.con.Close();
+                }
+            }
+            catch (MySqlException sqlE)
+            {
+                MessageBox.Show("Load chi tiết chạy thận");
+                return;
+            }
+        }
 
+        public void load_ChitietChaythan_Thuoc(int idChaythan)
+        {
+            listView_chitiet_thuoc_chaythan.Items.Clear();
+            if (idChaythan == -1)
+            {
+                return;
+            }
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.Parameters.Add("@idChaythan", MySqlDbType.Int32, 11).Value = idChaythan;
+                com.CommandText = @"SELECT *
+                                        FROM chaythan_thuoc
+                                        LEFT OUTER JOIN thuoc
+                                            ON chaythan_thuoc.thuoc_id=thuoc.id
+                                        WHERE chaythan_thuoc.chaythan_id=@idChaythan";
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                int i = 1;
+                while (read.Read())
+                {
+                    Hashtable hash = new Hashtable();
+                    hash.Add("chaythan_id", read["chaythan_id"].ToString());
+                    hash.Add("thuoc_id", read["Thuoc_id"].ToString());
+                    hash.Add("soluong", read["soluong"].ToString());
+                    ListViewItem item = new ListViewItem();
+                    item.Text = i.ToString();
+                    item.Tag = hash;
+                    item.SubItems.Add(read["Tenthuoc"].ToString() + " " + read["Hamluong"].ToString());
+                    item.SubItems.Add(read["Duongdung"].ToString());
+                    item.SubItems.Add(read["soluong"].ToString());
+                    item.SubItems.Add(read["Dang"].ToString());
+                    listView_chitiet_thuoc_chaythan.Items.Add(item);
+                    i++;
+                }
+                Util.con.Close();
+            }
+            catch (MySqlException sqlE)
+            {
+                MessageBox.Show("Load chi tiết chạy thận và thuốc");
+                return;
+            }
+        }
+
+        private void textBox_search_thuoc_chaythan_TextChanged(object sender, EventArgs e)
+        {
+            listView_search_thuoc_chaythan.Items.Clear();
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.Parameters.AddWithValue("@tenthuoc", "%" + textBox_searchthuoc.Text + "%");
+                com.CommandText = @"SELECT *
+                                        FROM thuoc
+                                        WHERE tenthuoc LIKE @tenthuoc";
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                int i = 1;
+                while (read.Read())
+                {
+                    Hashtable hash = new Hashtable();
+                    hash.Add("thuoc_id", read["id"].ToString());
+                    ListViewItem item = new ListViewItem();
+                    item.Text = i.ToString();
+                    item.Tag = hash;
+                    item.SubItems.Add(read["Tenthuoc"].ToString() + " " + read["Hamluong"].ToString());
+                    item.SubItems.Add(read["Duongdung"].ToString());
+                    item.SubItems.Add(read["Dang"].ToString());
+                    listView_search_thuoc_chaythan.Items.Add(item);
+                    i++;
+                }
+                Util.con.Close();
+            }
+            catch (MySqlException sqlE)
+            {
+                MessageBox.Show("Tìm thuốc theo tên thuốc");
+                return;
+            }
+        }
+
+        private void button_nhap_thuoc_chaythan_Click(object sender, EventArgs e)
+        {
+            int idChaythan = -1;
+            try
+            {
+                idChaythan = int.Parse(comboBox_chaythan.SelectedValue.ToString());
+            }
+            catch (Exception)
+            {
+
+            }
+            if (idChaythan == -1 || listView_search_thuoc_chaythan.SelectedItems.Count < 1)
+            {
+                return;
+            }
+            Hashtable hash = (Hashtable)listView_search_thuoc_chaythan.SelectedItems[0].Tag;
+            int idThuoc = int.Parse(hash["thuoc_id"].ToString());
+            if (cotrongChaythan(idThuoc.ToString()))
+            {
+                return;
+            }
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.Parameters.Add("@idChaythan", MySqlDbType.Int32, 11).Value = idChaythan;
+                com.Parameters.Add("@idThuoc", MySqlDbType.Int32, 11).Value = idThuoc;
+                com.CommandText = @"INSERT INTO `chaythan_thuoc` (`Chaythan_id`, `Thuoc_id`) VALUES (@idChaythan, @idThuoc)";
+                Util.con.Open();
+                com.ExecuteNonQuery();
+                Util.con.Close();
+            }
+            catch (MySqlException sqlE)
+            {
+                MessageBox.Show("Thêm thuốc vào chạy thận");
+                return;
+            }
+            load_ChitietChaythan_Thuoc(idChaythan);
+        }
+
+        public bool cotrongChaythan(string id)
+        {
+            int listView_chitiet_thuoc_chaythan_length = listView_chitiet_thuoc_chaythan.Items.Count;
+            for (int i = 0; i < listView_chitiet_thuoc_chaythan_length; i++)
+            {
+                Hashtable hash = (Hashtable)listView_chitiet_thuoc_chaythan.Items[i].Tag;
+                if (hash["thuoc_id"].ToString() == id)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void button_create_chaythan_Click(object sender, EventArgs e)
+        {
+            int idBenhnhan = -1;
+            try
+            {
+                idBenhnhan = int.Parse(textBox_MaBN.Text);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            if (idBenhnhan == -1)
+            {
+                return;
+            }
+            Hashtable currentObject = get_CurrentObject(idBenhnhan);
+            if (currentObject.Count == 0)
+            {
+                return;
+            }
+            try
+            {
+                int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+
+                com.Parameters.Add("@phieukhambenh_id", MySqlDbType.Int32, 11).Value = idPhieukhambenh;
+                com.Parameters.Add("@bacsi_id", MySqlDbType.Int32, 11).Value = int.Parse(comboBox_bacsi_chaythan.SelectedValue.ToString());
+
+                com.CommandText = @"INSERT INTO chaythan(Phieukhambenh_id, Bacsi_id) 
+                                        VALUES (@phieukhambenh_id, @bacsi_id)";
+                Util.con.Open();
+                com.ExecuteNonQuery();
+                Util.con.Close();
+
+                load_Chaythan(idBenhnhan, idPhieukhambenh);
+            }
+            catch (MySqlException sqlE)
+            {
+                MessageBox.Show("create Chạy thận");
+                return;
+            }
+        }
+
+        private void button_fix_chaythan_Click(object sender, EventArgs e)
+        {
+            int idChaythan = -1;
+            try
+            {
+                idChaythan = int.Parse(comboBox_chaythan.SelectedValue.ToString());
+            }
+            catch (Exception ex)
+            {
+
+            }
+            if (idChaythan == -1)
+            {
+                return;
+            }
+            if (MessageBox.Show("Bạn có muốn sửa thông tin chạy thận này?", "Xác nhận cập nhật chạy thận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+                    MySqlCommand com = new MySqlCommand();
+                    com.Connection = Util.con;
+
+                    com.Parameters.Add("@idChaythan", MySqlDbType.Int32, 11).Value = idChaythan;
+                    com.Parameters.Add("@idBacsi", MySqlDbType.Int32, 11).Value = int.Parse(comboBox_bacsi_chaythan.SelectedValue.ToString());
+
+                    com.CommandText = @"UPDATE chaythan SET Bacsi_id=@idBacsi WHERE id=@idChaythan";
+                    Util.con.Open();
+                    if (com.ExecuteNonQuery() != 0)
+                    {
+                        MessageBox.Show("Sửa thông tin thành công!!!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sửa thông tin thất bại!!! Vui lòng kiểm tra lại");
+                    }
+                    Util.con.Close();
+                }
+                catch (MySqlException sqlE)
+                {
+                    MessageBox.Show("fix chạy thận");
+                    return;
+                }
+            }
+        }
+
+        private void comboBox_chaythan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int idChaythan = -1;
+            try
+            {
+                idChaythan = int.Parse(comboBox_chaythan.SelectedValue.ToString());
+            }
+            catch (Exception)
+            {
+
+            }
+            load_ChitietChaythan(idChaythan);
+            load_ChitietChaythan_Thuoc(idChaythan);
+        }
+
+        private void button_del_chaythan_Click(object sender, EventArgs e)
+        {
+            int idChaythan = -1;
+            try
+            {
+                idChaythan = int.Parse(comboBox_chaythan.SelectedValue.ToString());
+            }
+            catch (Exception ex)
+            {
+
+            }
+            if (idChaythan == -1)
+            {
+                return;
+            }
+
+            int idBenhnhan = -1;
+            try
+            {
+                idBenhnhan = int.Parse(textBox_MaBN.Text);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            Hashtable currentObject = get_CurrentObject(idBenhnhan);
+            if (currentObject.Count == 0)
+            {
+                return;
+            }
+            int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.Parameters.Add("@idChaythan", MySqlDbType.Int32, 11).Value = idChaythan;
+                com.CommandText = @"SELECT *
+                                        FROM chaythan_thuoc
+                                        WHERE Chaythan_id=@idChaythan";
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                bool hasData = read.Read();
+                Util.con.Close();
+                if (hasData)
+                {
+                    if (MessageBox.Show("Chạy thận này vẫn còn thuốc. Vui lòng xóa các thuốc trước khi xóa chạy thận này!!!", "Lỗi khi xóa chạy thận", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK)
+                    {
+
+                    }
+                }
+                else
+                {
+                    if (MessageBox.Show("Bạn có muốn xóa chạy thận này?", "Xác nhận xóa chạy thận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        Util.con.Open();
+                        com.CommandText = @"DELETE FROM chaythan WHERE id=@idChaythan";
+                        com.ExecuteNonQuery();
+                        Util.con.Close();
+                        load_Chaythan(idBenhnhan, idPhieukhambenh);
+                    }
+                }
+            }
+            catch (MySqlException mye)
+            {
+
+            }
+        }
+
+        private void listView_chitiet_thuoc_chaythan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBox_tenthuoc_chaythan.Text =
+            textBox_soluong_thuoc_chaythan.Text = "";
+            if (listView_chitiet_thuoc_chaythan.SelectedItems.Count < 1)
+            {
+                return;
+            }
+            Hashtable hash = (Hashtable)listView_chitiet_thuoc_chaythan.SelectedItems[0].Tag;
+            textBox_tenthuoc_chaythan.Text = listView_chitiet_thuoc_chaythan.SelectedItems[0].SubItems[1].Text;
+            textBox_soluong_thuoc_chaythan.Text = hash["soluong"].ToString();
+        }
+
+        private void button_capnhat_chitiet_thuoc_chaythan_Click(object sender, EventArgs e)
+        {
+            int items_count = listView_chitiet_thuoc_chaythan.Items.Count;
+            if (listView_chitiet_thuoc_chaythan.SelectedItems.Count < 1)
+            {
+                return;
+            }
+            Hashtable hash = (Hashtable)listView_chitiet_thuoc_chaythan.SelectedItems[0].Tag;
+            hash["soluong"] = textBox_soluong_thuoc_chaythan.Text;
+            listView_chitiet_thuoc_chaythan.SelectedItems[0].SubItems[3].Text = hash["soluong"].ToString();
+            listView_chitiet_thuoc_chaythan.SelectedItems[0].Tag = hash;
+            int index = listView_chitiet_thuoc_chaythan.SelectedIndices[0];
+            if (index + 1 < items_count)
+            {
+                listView_chitiet_thuoc_chaythan.Items[index + 1].Selected = true;
+                listView_chitiet_thuoc_chaythan.Items[index + 1].EnsureVisible();
+            }
+            textBox_soluong_thuoc_chaythan.Focus();
+        }
+
+        private void textBox_soluong_thuoc_chaythan_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button_capnhat_chitiet_thuoc_chaythan_Click(sender, e);
+            }
+        }
+
+        private void button_save_thuoc_chaythan_Click(object sender, EventArgs e)
+        {
+            int idChaythan = -1;
+            try
+            {
+                idChaythan = int.Parse(comboBox_chaythan.SelectedValue.ToString());
+            }
+            catch (Exception)
+            {
+
+            }
+            if (idChaythan == -1)
+            {
+                return;
+            }
+            int listView_chitiet_thuoc_chaythan_length = listView_chitiet_thuoc_chaythan.Items.Count;
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+
+                string valueString1 = "", valueString2 = "";
+                for (int i = 0; i < listView_chitiet_thuoc_chaythan_length; i++)
+                {
+                    Hashtable hash = (Hashtable)listView_chitiet_thuoc_chaythan.Items[i].Tag;
+                    com.Parameters.Add("@thuoc_id" + i.ToString(), MySqlDbType.Int32, 11).Value = int.Parse(hash["thuoc_id"].ToString());
+                    com.Parameters.Add("@soluong" + i.ToString(), MySqlDbType.VarChar, 45).Value = hash["soluong"].ToString();
+                    valueString2 += " WHEN @thuoc_id" + i.ToString() + " THEN @soluong" + i.ToString();
+                    if (i == 0)
+                    {
+                        valueString1 += "@thuoc_id" + i.ToString();
+                    }
+                    else
+                    {
+                        valueString1 += ", @thuoc_id" + i.ToString();
+                    }
+                }
+
+                com.Parameters.Add("@chaythan_id", MySqlDbType.Int32, 11).Value = idChaythan;
+
+                com.CommandText = @"UPDATE chaythan_thuoc SET soluong = CASE thuoc_id" + valueString2 + " END WHERE Thuoc_id IN (" + valueString1 + ") AND Chaythan_id=@chaythan_id";
+
+                if (MessageBox.Show("Bạn có muốn lưu thuốc chạy thận này?", "Xác nhận cập nhật thuốc chạy thận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Util.con.Open();
+                    com.ExecuteNonQuery();
+                    Util.con.Close();
+
+                    load_ChitietChaythan(idChaythan);
+                    load_ChitietChaythan_Thuoc(idChaythan);
+                    int idBenhnhan = -1;
+                    try
+                    {
+                        idBenhnhan = int.Parse(textBox_MaBN.Text);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    Hashtable currentObject = get_CurrentObject(idBenhnhan);
+                    if (currentObject.Count == 0)
+                    {
+                        return;
+                    }
+                    int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
+                    int idBacsi = int.Parse(comboBox_bacsi_toathuoc.SelectedValue.ToString());
+                    updateYlenh(4, idChaythan, idPhieukhambenh, idBacsi);
+                }
+
+            }
+            catch (MySqlException sqlE)
+            {
+                MessageBox.Show("update chi tiết thuốc chạy thận");
+                return;
+            }
+        }
+
+        private void button_del_thuoc_chaythan_Click(object sender, EventArgs e)
+        {
+            int listView_chitiet_thuoc_chaythan_select_length = listView_chitiet_thuoc_chaythan.SelectedItems.Count;
+            int idChaythan = -1;
+            try
+            {
+                idChaythan = int.Parse(comboBox_chaythan.SelectedValue.ToString());
+            }
+            catch (Exception)
+            {
+
+            }
+            if (idChaythan == -1 || listView_chitiet_thuoc_chaythan_select_length == 0)
+            {
+                return;
+            }
+
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+
+                com.Parameters.Add("@chaythan_id", MySqlDbType.Int32, 11).Value = idChaythan;
+                string valueString = "";
+                for (int i = 0; i < listView_chitiet_thuoc_chaythan_select_length; i++)
+                {
+                    Hashtable hash = (Hashtable)listView_chitiet_thuoc_chaythan.SelectedItems[i].Tag;
+                    com.Parameters.Add("@thuoc_id" + i.ToString(), MySqlDbType.Int32, 11).Value = int.Parse(hash["thuoc_id"].ToString());
+                    if (i == 0)
+                    {
+                        valueString += "thuoc_id=@thuoc_id" + i.ToString();
+                    }
+                    else
+                    {
+                        valueString += " OR thuoc_id=@thuoc_id" + i.ToString();
+                    }
+                }
+
+                if (MessageBox.Show("Bạn có muốn xóa thuốc trong chạy thận này?", "Xác nhận xóa thuốc chạy thận", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    com.CommandText = @"DELETE FROM chaythan_thuoc WHERE Chaythan_id=@chaythan_id AND (" + valueString + ")";
+                    Util.con.Open();
+                    com.ExecuteNonQuery();
+                    Util.con.Close();
+                }
+                else
+                {
+                    return;
+                }
+
+                load_ChitietChaythan_Thuoc(idChaythan);
+                int idBenhnhan = -1;
+                try
+                {
+                    idBenhnhan = int.Parse(textBox_MaBN.Text);
+                }
+                catch (Exception ex)
+                {
+
+                }
+                Hashtable currentObject = get_CurrentObject(idBenhnhan);
+                if (currentObject.Count == 0)
+                {
+                    return;
+                }
+                int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
+                int idBacsi = int.Parse(comboBox_bacsi_toathuoc.SelectedValue.ToString());
+                updateYlenh(4, idChaythan, idPhieukhambenh, idBacsi);
+            }
+            catch (MySqlException sqlE)
+            {
+                return;
+            }
+        }
     }
 }

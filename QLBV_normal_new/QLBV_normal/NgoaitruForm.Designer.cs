@@ -150,6 +150,37 @@
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.comboBox_bacsi_chaythan = new System.Windows.Forms.ComboBox();
+            this.button_fix_chaythan = new System.Windows.Forms.Button();
+            this.button_del_chaythan = new System.Windows.Forms.Button();
+            this.button_create_chaythan = new System.Windows.Forms.Button();
+            this.label62 = new System.Windows.Forms.Label();
+            this.comboBox_chaythan = new System.Windows.Forms.ComboBox();
+            this.label76 = new System.Windows.Forms.Label();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.textBox_soluong_thuoc_chaythan = new System.Windows.Forms.TextBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.textBox_tenthuoc_chaythan = new System.Windows.Forms.TextBox();
+            this.button_del_thuoc_chaythan = new System.Windows.Forms.Button();
+            this.button_capnhat_chitiet_thuoc_chaythan = new System.Windows.Forms.Button();
+            this.listView_chitiet_thuoc_chaythan = new System.Windows.Forms.ListView();
+            this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader29 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label81 = new System.Windows.Forms.Label();
+            this.button_save_thuoc_chaythan = new System.Windows.Forms.Button();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.button_nhap_thuoc_chaythan = new System.Windows.Forms.Button();
+            this.label85 = new System.Windows.Forms.Label();
+            this.textBox_search_thuoc_chaythan = new System.Windows.Forms.TextBox();
+            this.listView_search_thuoc_chaythan = new System.Windows.Forms.ListView();
+            this.columnHeader30 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader31 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader32 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader33 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.comboBox_bacsi_toathuoc = new System.Windows.Forms.ComboBox();
@@ -202,6 +233,8 @@
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.comboBox_bacsi_phieuxetnghiem = new System.Windows.Forms.ComboBox();
+            this.label59 = new System.Windows.Forms.Label();
             this.button_delete_phieuxetnghiem = new System.Windows.Forms.Button();
             this.label49 = new System.Windows.Forms.Label();
             this.button_create_phieuxetnghiem = new System.Windows.Forms.Button();
@@ -261,8 +294,6 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_search_benhnhan = new System.Windows.Forms.TextBox();
-            this.comboBox_bacsi_phieuxetnghiem = new System.Windows.Forms.ComboBox();
-            this.label59 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -270,6 +301,10 @@
             this.tabPage2.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            this.groupBox13.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -294,7 +329,7 @@
             this.listView_danhsachbenhnhan.Location = new System.Drawing.Point(6, 66);
             this.listView_danhsachbenhnhan.MultiSelect = false;
             this.listView_danhsachbenhnhan.Name = "listView_danhsachbenhnhan";
-            this.listView_danhsachbenhnhan.Size = new System.Drawing.Size(203, 442);
+            this.listView_danhsachbenhnhan.Size = new System.Drawing.Size(203, 596);
             this.listView_danhsachbenhnhan.TabIndex = 0;
             this.listView_danhsachbenhnhan.UseCompatibleStateImageBehavior = false;
             this.listView_danhsachbenhnhan.View = System.Windows.Forms.View.Details;
@@ -1453,6 +1488,9 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.groupBox9);
+            this.tabPage4.Controls.Add(this.groupBox12);
+            this.tabPage4.Controls.Add(this.groupBox13);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -1460,6 +1498,295 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Chạy thận";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.comboBox_bacsi_chaythan);
+            this.groupBox9.Controls.Add(this.button_fix_chaythan);
+            this.groupBox9.Controls.Add(this.button_del_chaythan);
+            this.groupBox9.Controls.Add(this.button_create_chaythan);
+            this.groupBox9.Controls.Add(this.label62);
+            this.groupBox9.Controls.Add(this.comboBox_chaythan);
+            this.groupBox9.Controls.Add(this.label76);
+            this.groupBox9.Location = new System.Drawing.Point(6, 6);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(236, 210);
+            this.groupBox9.TabIndex = 73;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Chạy thận";
+            // 
+            // comboBox_bacsi_chaythan
+            // 
+            this.comboBox_bacsi_chaythan.FormattingEnabled = true;
+            this.comboBox_bacsi_chaythan.Location = new System.Drawing.Point(64, 45);
+            this.comboBox_bacsi_chaythan.Name = "comboBox_bacsi_chaythan";
+            this.comboBox_bacsi_chaythan.Size = new System.Drawing.Size(166, 21);
+            this.comboBox_bacsi_chaythan.TabIndex = 120;
+            // 
+            // button_fix_chaythan
+            // 
+            this.button_fix_chaythan.Location = new System.Drawing.Point(87, 181);
+            this.button_fix_chaythan.Name = "button_fix_chaythan";
+            this.button_fix_chaythan.Size = new System.Drawing.Size(72, 23);
+            this.button_fix_chaythan.TabIndex = 116;
+            this.button_fix_chaythan.Text = "Sửa";
+            this.button_fix_chaythan.UseVisualStyleBackColor = true;
+            this.button_fix_chaythan.Click += new System.EventHandler(this.button_fix_chaythan_Click);
+            // 
+            // button_del_chaythan
+            // 
+            this.button_del_chaythan.Location = new System.Drawing.Point(165, 181);
+            this.button_del_chaythan.Name = "button_del_chaythan";
+            this.button_del_chaythan.Size = new System.Drawing.Size(65, 23);
+            this.button_del_chaythan.TabIndex = 116;
+            this.button_del_chaythan.Text = "Xóa";
+            this.button_del_chaythan.UseVisualStyleBackColor = true;
+            this.button_del_chaythan.Click += new System.EventHandler(this.button_del_chaythan_Click);
+            // 
+            // button_create_chaythan
+            // 
+            this.button_create_chaythan.Location = new System.Drawing.Point(6, 181);
+            this.button_create_chaythan.Name = "button_create_chaythan";
+            this.button_create_chaythan.Size = new System.Drawing.Size(75, 23);
+            this.button_create_chaythan.TabIndex = 116;
+            this.button_create_chaythan.Text = "Tạo mới";
+            this.button_create_chaythan.UseVisualStyleBackColor = true;
+            this.button_create_chaythan.Click += new System.EventHandler(this.button_create_chaythan_Click);
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(16, 48);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(42, 13);
+            this.label62.TabIndex = 55;
+            this.label62.Text = "Bác sĩ:";
+            // 
+            // comboBox_chaythan
+            // 
+            this.comboBox_chaythan.FormattingEnabled = true;
+            this.comboBox_chaythan.Location = new System.Drawing.Point(64, 19);
+            this.comboBox_chaythan.Name = "comboBox_chaythan";
+            this.comboBox_chaythan.Size = new System.Drawing.Size(166, 21);
+            this.comboBox_chaythan.TabIndex = 0;
+            this.comboBox_chaythan.SelectedIndexChanged += new System.EventHandler(this.comboBox_chaythan_SelectedIndexChanged);
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Location = new System.Drawing.Point(0, 22);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(58, 13);
+            this.label76.TabIndex = 115;
+            this.label76.Text = "Chạy thận:";
+            this.label76.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.textBox_soluong_thuoc_chaythan);
+            this.groupBox12.Controls.Add(this.label80);
+            this.groupBox12.Controls.Add(this.textBox_tenthuoc_chaythan);
+            this.groupBox12.Controls.Add(this.button_del_thuoc_chaythan);
+            this.groupBox12.Controls.Add(this.button_capnhat_chitiet_thuoc_chaythan);
+            this.groupBox12.Controls.Add(this.listView_chitiet_thuoc_chaythan);
+            this.groupBox12.Controls.Add(this.label81);
+            this.groupBox12.Controls.Add(this.button_save_thuoc_chaythan);
+            this.groupBox12.Location = new System.Drawing.Point(6, 222);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(836, 302);
+            this.groupBox12.TabIndex = 71;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Chỉnh sửa thuốc chạy thận";
+            // 
+            // textBox_soluong_thuoc_chaythan
+            // 
+            this.textBox_soluong_thuoc_chaythan.Location = new System.Drawing.Point(77, 45);
+            this.textBox_soluong_thuoc_chaythan.Name = "textBox_soluong_thuoc_chaythan";
+            this.textBox_soluong_thuoc_chaythan.Size = new System.Drawing.Size(109, 20);
+            this.textBox_soluong_thuoc_chaythan.TabIndex = 117;
+            this.textBox_soluong_thuoc_chaythan.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_soluong_thuoc_chaythan_KeyUp);
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(12, 22);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(59, 13);
+            this.label80.TabIndex = 56;
+            this.label80.Text = "Tên thuốc:";
+            // 
+            // textBox_tenthuoc_chaythan
+            // 
+            this.textBox_tenthuoc_chaythan.Location = new System.Drawing.Point(77, 19);
+            this.textBox_tenthuoc_chaythan.Name = "textBox_tenthuoc_chaythan";
+            this.textBox_tenthuoc_chaythan.ReadOnly = true;
+            this.textBox_tenthuoc_chaythan.Size = new System.Drawing.Size(190, 20);
+            this.textBox_tenthuoc_chaythan.TabIndex = 55;
+            // 
+            // button_del_thuoc_chaythan
+            // 
+            this.button_del_thuoc_chaythan.Location = new System.Drawing.Point(706, 43);
+            this.button_del_thuoc_chaythan.Name = "button_del_thuoc_chaythan";
+            this.button_del_thuoc_chaythan.Size = new System.Drawing.Size(124, 23);
+            this.button_del_thuoc_chaythan.TabIndex = 116;
+            this.button_del_thuoc_chaythan.Text = "Xóa";
+            this.button_del_thuoc_chaythan.UseVisualStyleBackColor = true;
+            this.button_del_thuoc_chaythan.Click += new System.EventHandler(this.button_del_thuoc_chaythan_Click);
+            // 
+            // button_capnhat_chitiet_thuoc_chaythan
+            // 
+            this.button_capnhat_chitiet_thuoc_chaythan.Location = new System.Drawing.Point(192, 43);
+            this.button_capnhat_chitiet_thuoc_chaythan.Name = "button_capnhat_chitiet_thuoc_chaythan";
+            this.button_capnhat_chitiet_thuoc_chaythan.Size = new System.Drawing.Size(75, 23);
+            this.button_capnhat_chitiet_thuoc_chaythan.TabIndex = 53;
+            this.button_capnhat_chitiet_thuoc_chaythan.Text = "Cập nhật";
+            this.button_capnhat_chitiet_thuoc_chaythan.UseVisualStyleBackColor = true;
+            this.button_capnhat_chitiet_thuoc_chaythan.Click += new System.EventHandler(this.button_capnhat_chitiet_thuoc_chaythan_Click);
+            // 
+            // listView_chitiet_thuoc_chaythan
+            // 
+            this.listView_chitiet_thuoc_chaythan.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader21,
+            this.columnHeader23,
+            this.columnHeader25,
+            this.columnHeader24,
+            this.columnHeader29});
+            this.listView_chitiet_thuoc_chaythan.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView_chitiet_thuoc_chaythan.FullRowSelect = true;
+            this.listView_chitiet_thuoc_chaythan.GridLines = true;
+            this.listView_chitiet_thuoc_chaythan.HideSelection = false;
+            this.listView_chitiet_thuoc_chaythan.Location = new System.Drawing.Point(5, 72);
+            this.listView_chitiet_thuoc_chaythan.MultiSelect = false;
+            this.listView_chitiet_thuoc_chaythan.Name = "listView_chitiet_thuoc_chaythan";
+            this.listView_chitiet_thuoc_chaythan.Size = new System.Drawing.Size(825, 224);
+            this.listView_chitiet_thuoc_chaythan.TabIndex = 33;
+            this.listView_chitiet_thuoc_chaythan.UseCompatibleStateImageBehavior = false;
+            this.listView_chitiet_thuoc_chaythan.View = System.Windows.Forms.View.Details;
+            this.listView_chitiet_thuoc_chaythan.SelectedIndexChanged += new System.EventHandler(this.listView_chitiet_thuoc_chaythan_SelectedIndexChanged);
+            // 
+            // columnHeader21
+            // 
+            this.columnHeader21.Text = "STT";
+            this.columnHeader21.Width = 33;
+            // 
+            // columnHeader23
+            // 
+            this.columnHeader23.Text = "Tên thuốc";
+            this.columnHeader23.Width = 370;
+            // 
+            // columnHeader25
+            // 
+            this.columnHeader25.Text = "Cách dùng";
+            this.columnHeader25.Width = 179;
+            // 
+            // columnHeader24
+            // 
+            this.columnHeader24.Text = "Số lượng";
+            this.columnHeader24.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader24.Width = 69;
+            // 
+            // columnHeader29
+            // 
+            this.columnHeader29.Text = "Dạng";
+            this.columnHeader29.Width = 76;
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Location = new System.Drawing.Point(19, 48);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(52, 13);
+            this.label81.TabIndex = 50;
+            this.label81.Text = "Số lượng:";
+            // 
+            // button_save_thuoc_chaythan
+            // 
+            this.button_save_thuoc_chaythan.Location = new System.Drawing.Point(706, 14);
+            this.button_save_thuoc_chaythan.Name = "button_save_thuoc_chaythan";
+            this.button_save_thuoc_chaythan.Size = new System.Drawing.Size(124, 23);
+            this.button_save_thuoc_chaythan.TabIndex = 116;
+            this.button_save_thuoc_chaythan.Text = "Lưu thuốc chạy thận";
+            this.button_save_thuoc_chaythan.UseVisualStyleBackColor = true;
+            this.button_save_thuoc_chaythan.Click += new System.EventHandler(this.button_save_thuoc_chaythan_Click);
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.button_nhap_thuoc_chaythan);
+            this.groupBox13.Controls.Add(this.label85);
+            this.groupBox13.Controls.Add(this.textBox_search_thuoc_chaythan);
+            this.groupBox13.Controls.Add(this.listView_search_thuoc_chaythan);
+            this.groupBox13.Location = new System.Drawing.Point(248, 6);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(594, 210);
+            this.groupBox13.TabIndex = 72;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Thuốc";
+            // 
+            // button_nhap_thuoc_chaythan
+            // 
+            this.button_nhap_thuoc_chaythan.Location = new System.Drawing.Point(422, 181);
+            this.button_nhap_thuoc_chaythan.Name = "button_nhap_thuoc_chaythan";
+            this.button_nhap_thuoc_chaythan.Size = new System.Drawing.Size(166, 23);
+            this.button_nhap_thuoc_chaythan.TabIndex = 69;
+            this.button_nhap_thuoc_chaythan.Text = "Nhập sang thuốc chạy thận";
+            this.button_nhap_thuoc_chaythan.UseVisualStyleBackColor = true;
+            this.button_nhap_thuoc_chaythan.Click += new System.EventHandler(this.button_nhap_thuoc_chaythan_Click);
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.Location = new System.Drawing.Point(17, 25);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(24, 13);
+            this.label85.TabIndex = 67;
+            this.label85.Text = "Tìm";
+            // 
+            // textBox_search_thuoc_chaythan
+            // 
+            this.textBox_search_thuoc_chaythan.Location = new System.Drawing.Point(47, 22);
+            this.textBox_search_thuoc_chaythan.Name = "textBox_search_thuoc_chaythan";
+            this.textBox_search_thuoc_chaythan.Size = new System.Drawing.Size(114, 20);
+            this.textBox_search_thuoc_chaythan.TabIndex = 34;
+            this.textBox_search_thuoc_chaythan.TextChanged += new System.EventHandler(this.textBox_search_thuoc_chaythan_TextChanged);
+            // 
+            // listView_search_thuoc_chaythan
+            // 
+            this.listView_search_thuoc_chaythan.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader30,
+            this.columnHeader31,
+            this.columnHeader32,
+            this.columnHeader33});
+            this.listView_search_thuoc_chaythan.FullRowSelect = true;
+            this.listView_search_thuoc_chaythan.GridLines = true;
+            this.listView_search_thuoc_chaythan.HideSelection = false;
+            this.listView_search_thuoc_chaythan.Location = new System.Drawing.Point(6, 48);
+            this.listView_search_thuoc_chaythan.MultiSelect = false;
+            this.listView_search_thuoc_chaythan.Name = "listView_search_thuoc_chaythan";
+            this.listView_search_thuoc_chaythan.Size = new System.Drawing.Size(582, 122);
+            this.listView_search_thuoc_chaythan.TabIndex = 53;
+            this.listView_search_thuoc_chaythan.UseCompatibleStateImageBehavior = false;
+            this.listView_search_thuoc_chaythan.View = System.Windows.Forms.View.Details;
+            this.listView_search_thuoc_chaythan.DoubleClick += new System.EventHandler(this.button_nhap_thuoc_chaythan_Click);
+            // 
+            // columnHeader30
+            // 
+            this.columnHeader30.Text = "STT";
+            this.columnHeader30.Width = 37;
+            // 
+            // columnHeader31
+            // 
+            this.columnHeader31.Text = "Tên thuốc";
+            this.columnHeader31.Width = 236;
+            // 
+            // columnHeader32
+            // 
+            this.columnHeader32.Text = "Đường dùng";
+            this.columnHeader32.Width = 82;
+            // 
+            // columnHeader33
+            // 
+            this.columnHeader33.Text = "Dạng";
+            this.columnHeader33.Width = 70;
             // 
             // tabPage5
             // 
@@ -1956,6 +2283,23 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Phiếu xét nghiệm";
             // 
+            // comboBox_bacsi_phieuxetnghiem
+            // 
+            this.comboBox_bacsi_phieuxetnghiem.FormattingEnabled = true;
+            this.comboBox_bacsi_phieuxetnghiem.Location = new System.Drawing.Point(61, 45);
+            this.comboBox_bacsi_phieuxetnghiem.Name = "comboBox_bacsi_phieuxetnghiem";
+            this.comboBox_bacsi_phieuxetnghiem.Size = new System.Drawing.Size(166, 21);
+            this.comboBox_bacsi_phieuxetnghiem.TabIndex = 122;
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(13, 48);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(42, 13);
+            this.label59.TabIndex = 121;
+            this.label59.Text = "Bác sĩ:";
+            // 
             // button_delete_phieuxetnghiem
             // 
             this.button_delete_phieuxetnghiem.Location = new System.Drawing.Point(329, 46);
@@ -2189,7 +2533,7 @@
             // 
             // button_del_dieutri
             // 
-            this.button_del_dieutri.Location = new System.Drawing.Point(268, 343);
+            this.button_del_dieutri.Location = new System.Drawing.Point(3, 504);
             this.button_del_dieutri.Name = "button_del_dieutri";
             this.button_del_dieutri.Size = new System.Drawing.Size(75, 23);
             this.button_del_dieutri.TabIndex = 35;
@@ -2198,7 +2542,7 @@
             // 
             // button_add_dieutri
             // 
-            this.button_add_dieutri.Location = new System.Drawing.Point(13, 343);
+            this.button_add_dieutri.Location = new System.Drawing.Point(728, 238);
             this.button_add_dieutri.Name = "button_add_dieutri";
             this.button_add_dieutri.Size = new System.Drawing.Size(117, 23);
             this.button_add_dieutri.TabIndex = 34;
@@ -2209,7 +2553,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(10, 190);
+            this.label35.Location = new System.Drawing.Point(357, 19);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(37, 13);
             this.label35.TabIndex = 33;
@@ -2226,10 +2570,10 @@
             // 
             // richTextBox_ylenh
             // 
-            this.richTextBox_ylenh.Location = new System.Drawing.Point(13, 206);
+            this.richTextBox_ylenh.Location = new System.Drawing.Point(360, 35);
             this.richTextBox_ylenh.Name = "richTextBox_ylenh";
             this.richTextBox_ylenh.ReadOnly = true;
-            this.richTextBox_ylenh.Size = new System.Drawing.Size(249, 131);
+            this.richTextBox_ylenh.Size = new System.Drawing.Size(362, 226);
             this.richTextBox_ylenh.TabIndex = 32;
             this.richTextBox_ylenh.Text = "";
             // 
@@ -2237,13 +2581,13 @@
             // 
             this.richTextBox_dientienbenh.Location = new System.Drawing.Point(13, 35);
             this.richTextBox_dientienbenh.Name = "richTextBox_dientienbenh";
-            this.richTextBox_dientienbenh.Size = new System.Drawing.Size(249, 134);
+            this.richTextBox_dientienbenh.Size = new System.Drawing.Size(341, 226);
             this.richTextBox_dientienbenh.TabIndex = 32;
             this.richTextBox_dientienbenh.Text = "";
             // 
             // button_print_todieutri
             // 
-            this.button_print_todieutri.Location = new System.Drawing.Point(748, 343);
+            this.button_print_todieutri.Location = new System.Drawing.Point(770, 504);
             this.button_print_todieutri.Name = "button_print_todieutri";
             this.button_print_todieutri.Size = new System.Drawing.Size(75, 23);
             this.button_print_todieutri.TabIndex = 31;
@@ -2259,9 +2603,9 @@
             this.columnHeader5});
             this.listView_dieutri.FullRowSelect = true;
             this.listView_dieutri.GridLines = true;
-            this.listView_dieutri.Location = new System.Drawing.Point(268, 15);
+            this.listView_dieutri.Location = new System.Drawing.Point(4, 267);
             this.listView_dieutri.Name = "listView_dieutri";
-            this.listView_dieutri.Size = new System.Drawing.Size(555, 322);
+            this.listView_dieutri.Size = new System.Drawing.Size(841, 231);
             this.listView_dieutri.TabIndex = 0;
             this.listView_dieutri.UseCompatibleStateImageBehavior = false;
             this.listView_dieutri.View = System.Windows.Forms.View.Details;
@@ -2274,12 +2618,12 @@
             // columnHeader4
             // 
             this.columnHeader4.Text = "Diễn tiến bệnh";
-            this.columnHeader4.Width = 185;
+            this.columnHeader4.Width = 296;
             // 
             // columnHeader5
             // 
             this.columnHeader5.Text = "Y lệnh";
-            this.columnHeader5.Width = 193;
+            this.columnHeader5.Width = 384;
             // 
             // tabPage3
             // 
@@ -2527,7 +2871,7 @@
             this.groupBox4.Controls.Add(this.radioButton_dieutri);
             this.groupBox4.Location = new System.Drawing.Point(12, 16);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(215, 514);
+            this.groupBox4.Size = new System.Drawing.Size(215, 668);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Danh sách bệnh nhân";
@@ -2548,23 +2892,6 @@
             this.textBox_search_benhnhan.Size = new System.Drawing.Size(173, 20);
             this.textBox_search_benhnhan.TabIndex = 21;
             this.textBox_search_benhnhan.TextChanged += new System.EventHandler(this.textBox_search_benhnhan_TextChanged);
-            // 
-            // comboBox_bacsi_phieuxetnghiem
-            // 
-            this.comboBox_bacsi_phieuxetnghiem.FormattingEnabled = true;
-            this.comboBox_bacsi_phieuxetnghiem.Location = new System.Drawing.Point(61, 45);
-            this.comboBox_bacsi_phieuxetnghiem.Name = "comboBox_bacsi_phieuxetnghiem";
-            this.comboBox_bacsi_phieuxetnghiem.Size = new System.Drawing.Size(166, 21);
-            this.comboBox_bacsi_phieuxetnghiem.TabIndex = 122;
-            // 
-            // label59
-            // 
-            this.label59.AutoSize = true;
-            this.label59.Location = new System.Drawing.Point(13, 48);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(42, 13);
-            this.label59.TabIndex = 121;
-            this.label59.Text = "Bác sĩ:";
             // 
             // NgoaitruForm
             // 
@@ -2592,6 +2919,13 @@
             this.tabPage6.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
@@ -2850,5 +3184,36 @@
         private System.Windows.Forms.Label label58;
         private System.Windows.Forms.ComboBox comboBox_bacsi_phieuxetnghiem;
         private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.ComboBox comboBox_bacsi_chaythan;
+        private System.Windows.Forms.Button button_fix_chaythan;
+        private System.Windows.Forms.Button button_del_chaythan;
+        private System.Windows.Forms.Button button_create_chaythan;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.ComboBox comboBox_chaythan;
+        private System.Windows.Forms.Label label76;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.TextBox textBox_soluong_thuoc_chaythan;
+        private System.Windows.Forms.Label label80;
+        private System.Windows.Forms.TextBox textBox_tenthuoc_chaythan;
+        private System.Windows.Forms.Button button_del_thuoc_chaythan;
+        private System.Windows.Forms.Button button_capnhat_chitiet_thuoc_chaythan;
+        private System.Windows.Forms.ListView listView_chitiet_thuoc_chaythan;
+        private System.Windows.Forms.ColumnHeader columnHeader21;
+        private System.Windows.Forms.ColumnHeader columnHeader23;
+        private System.Windows.Forms.ColumnHeader columnHeader25;
+        private System.Windows.Forms.ColumnHeader columnHeader24;
+        private System.Windows.Forms.ColumnHeader columnHeader29;
+        private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.Button button_save_thuoc_chaythan;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.Button button_nhap_thuoc_chaythan;
+        private System.Windows.Forms.Label label85;
+        private System.Windows.Forms.TextBox textBox_search_thuoc_chaythan;
+        private System.Windows.Forms.ListView listView_search_thuoc_chaythan;
+        private System.Windows.Forms.ColumnHeader columnHeader30;
+        private System.Windows.Forms.ColumnHeader columnHeader31;
+        private System.Windows.Forms.ColumnHeader columnHeader32;
+        private System.Windows.Forms.ColumnHeader columnHeader33;
     }
 }
