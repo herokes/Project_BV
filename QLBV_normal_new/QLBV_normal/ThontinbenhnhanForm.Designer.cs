@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThontinbenhnhanForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker_Namsinh = new System.Windows.Forms.DateTimePicker();
             this.textBox_Phuong = new System.Windows.Forms.TextBox();
@@ -65,7 +67,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button_Capnhat = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.errorProvider_error = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider_true = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider_error)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider_true)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -122,7 +128,7 @@
             // 
             // textBox_Phuong
             // 
-            this.textBox_Phuong.Location = new System.Drawing.Point(148, 257);
+            this.textBox_Phuong.Location = new System.Drawing.Point(148, 197);
             this.textBox_Phuong.Name = "textBox_Phuong";
             this.textBox_Phuong.Size = new System.Drawing.Size(452, 20);
             this.textBox_Phuong.TabIndex = 12;
@@ -136,7 +142,7 @@
             // 
             // textBox_Thanhpho
             // 
-            this.textBox_Thanhpho.Location = new System.Drawing.Point(148, 200);
+            this.textBox_Thanhpho.Location = new System.Drawing.Point(148, 255);
             this.textBox_Thanhpho.Name = "textBox_Thanhpho";
             this.textBox_Thanhpho.Size = new System.Drawing.Size(452, 20);
             this.textBox_Thanhpho.TabIndex = 10;
@@ -172,7 +178,7 @@
             // 
             // textBox12
             // 
-            this.textBox12.Location = new System.Drawing.Point(78, 258);
+            this.textBox12.Location = new System.Drawing.Point(78, 198);
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(64, 20);
             this.textBox12.TabIndex = 32;
@@ -186,7 +192,7 @@
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(78, 200);
+            this.textBox10.Location = new System.Drawing.Point(78, 255);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(64, 20);
             this.textBox10.TabIndex = 28;
@@ -306,7 +312,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 271);
+            this.label11.Location = new System.Drawing.Point(3, 204);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(71, 13);
             this.label11.TabIndex = 11;
@@ -315,7 +321,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(22, 241);
+            this.label12.Location = new System.Drawing.Point(22, 235);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(52, 13);
             this.label12.TabIndex = 10;
@@ -324,7 +330,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(18, 211);
+            this.label13.Location = new System.Drawing.Point(18, 260);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(56, 13);
             this.label13.TabIndex = 9;
@@ -333,7 +339,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(18, 181);
+            this.label6.Location = new System.Drawing.Point(18, 176);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 13);
             this.label6.TabIndex = 8;
@@ -399,6 +405,8 @@
             this.textBox_MaBN.Size = new System.Drawing.Size(121, 20);
             this.textBox_MaBN.TabIndex = 1;
             this.textBox_MaBN.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_MaBN_KeyDown);
+            this.textBox_MaBN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_MaBN_KeyPress);
+            this.textBox_MaBN.Validating += new System.ComponentModel.CancelEventHandler(this.textBox_MaBN_Validating);
             this.textBox_MaBN.Validated += new System.EventHandler(this.textBox_MaBN_Validated);
             // 
             // label1
@@ -429,6 +437,15 @@
             this.button1.Text = "Close";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // errorProvider_error
+            // 
+            this.errorProvider_error.ContainerControl = this;
+            // 
+            // errorProvider_true
+            // 
+            this.errorProvider_true.ContainerControl = this;
+            this.errorProvider_true.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider_true.Icon")));
+            // 
             // ThontinbenhnhanForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -441,6 +458,8 @@
             this.Text = "ThontinbenhnhanForm";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider_error)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider_true)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -484,5 +503,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_Capnhat;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ErrorProvider errorProvider_error;
+        private System.Windows.Forms.ErrorProvider errorProvider_true;
     }
 }
