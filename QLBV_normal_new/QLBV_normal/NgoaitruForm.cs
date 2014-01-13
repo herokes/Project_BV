@@ -490,6 +490,35 @@ namespace QLBV_normal
             }
         }
 
+        public void load_ChitietPhieuxetnghiem(int idPhieuxetnghiem)
+        {
+            if (idPhieuxetnghiem == -1)
+            {
+                return;
+            }
+            try
+            {
+                MySqlCommand com = new MySqlCommand();
+                com.Connection = Util.con;
+                com.Parameters.Add("@idPhieuxetnghiem", MySqlDbType.Int32, 11).Value = idPhieuxetnghiem;
+                com.CommandText = @"SELECT *
+                                        FROM phieuxetnghiem
+                                        WHERE id=@idPhieuxetnghiem";
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                while (read.Read())
+                {
+                    comboBox_bacsi_phieuxetnghiem.SelectedValue = read["Bacsi_id"].ToString();
+                }
+                Util.con.Close();
+            }
+            catch (MySqlException sqlE)
+            {
+                MessageBox.Show("Load chi tiết phiếu xét nghiệm");
+                return;
+            }
+        }
+
         public void load_Xetnghiem()
         {
             textBox_tenxetnghiem.Text = 
@@ -689,9 +718,10 @@ namespace QLBV_normal
 
                 com.Parameters.Add("@ngayxetnghiem", MySqlDbType.DateTime).Value = DateTime.Now;
                 com.Parameters.Add("@phieukhambenh_id", MySqlDbType.Int32, 11).Value = idPhieukhambenh;
+                com.Parameters.Add("@bacsi_id", MySqlDbType.Int32, 11).Value = int.Parse(comboBox_bacsi_phieuxetnghiem.SelectedValue.ToString());
 
-                com.CommandText = @"INSERT INTO phieuxetnghiem(Ngayxetnghiem, Phieukhambenh_id) 
-                                        VALUES (@ngayxetnghiem, @phieukhambenh_id)";
+                com.CommandText = @"INSERT INTO phieuxetnghiem(Ngayxetnghiem, Phieukhambenh_id, Bacsi_id) 
+                                        VALUES (@ngayxetnghiem, @phieukhambenh_id, @bacsi_id)";
                 Util.con.Open();
                 com.ExecuteNonQuery();
                 Util.con.Close();
@@ -716,6 +746,7 @@ namespace QLBV_normal
             {
 
             }
+            load_ChitietPhieuxetnghiem(idPhieuxetnghiem);
             load_Xetnghiem();
             load_Ketquaxetnghiem(idPhieuxetnghiem);
         }
@@ -1655,23 +1686,21 @@ namespace QLBV_normal
             {
                 MySqlCommand com = new MySqlCommand();
                 com.Connection = Util.con;
-                if (idToathuoc != -1)
-                {
-                    com.Parameters.Add("@idToathuoc", MySqlDbType.Int32, 11).Value = idToathuoc;
-                    com.CommandText = @"SELECT *
+
+                com.Parameters.Add("@idToathuoc", MySqlDbType.Int32, 11).Value = idToathuoc;
+                com.CommandText = @"SELECT *
                                         FROM toathuoc
                                         WHERE id=@idToathuoc";
-                    Util.con.Open();
-                    MySqlDataReader read = com.ExecuteReader();
-                    while (read.Read())
-                    {
-                        dateTimePicker_thuoctungay.Value = DateTime.Parse(read["Tungay"].ToString());
-                        dateTimePicker_thuocdenngay.Value = DateTime.Parse(read["Denngay"].ToString());
-                        richTextBox_loidan.Text = read["Loidan"].ToString();
-                        comboBox_bacsi_toathuoc.SelectedValue = read["Bacsi_id"].ToString();
-                    }
-                    Util.con.Close();
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                while (read.Read())
+                {
+                    dateTimePicker_thuoctungay.Value = DateTime.Parse(read["Tungay"].ToString());
+                    dateTimePicker_thuocdenngay.Value = DateTime.Parse(read["Denngay"].ToString());
+                    richTextBox_loidan.Text = read["Loidan"].ToString();
+                    comboBox_bacsi_toathuoc.SelectedValue = read["Bacsi_id"].ToString();
                 }
+                Util.con.Close();
             }
             catch (MySqlException sqlE)
             {
@@ -2726,20 +2755,18 @@ namespace QLBV_normal
             {
                 MySqlCommand com = new MySqlCommand();
                 com.Connection = Util.con;
-                if (idChaythan != -1)
-                {
-                    com.Parameters.Add("@idChaythan", MySqlDbType.Int32, 11).Value = idChaythan;
-                    com.CommandText = @"SELECT *
+
+                com.Parameters.Add("@idChaythan", MySqlDbType.Int32, 11).Value = idChaythan;
+                com.CommandText = @"SELECT *
                                         FROM chaythan
                                         WHERE id=@idChaythan";
-                    Util.con.Open();
-                    MySqlDataReader read = com.ExecuteReader();
-                    while (read.Read())
-                    {
-                        comboBox_bacsi_chaythan.SelectedValue = read["Bacsi_id"].ToString();
-                    }
-                    Util.con.Close();
+                Util.con.Open();
+                MySqlDataReader read = com.ExecuteReader();
+                while (read.Read())
+                {
+                    comboBox_bacsi_chaythan.SelectedValue = read["Bacsi_id"].ToString();
                 }
+                Util.con.Close();
             }
             catch (MySqlException sqlE)
             {
