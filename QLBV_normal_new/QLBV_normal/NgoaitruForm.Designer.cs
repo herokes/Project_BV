@@ -2731,7 +2731,7 @@
             "Nhẹ"});
             this.comboBox_ngayxetnghiem_hoichuan.Location = new System.Drawing.Point(229, 21);
             this.comboBox_ngayxetnghiem_hoichuan.Name = "comboBox_ngayxetnghiem_hoichuan";
-            this.comboBox_ngayxetnghiem_hoichuan.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_ngayxetnghiem_hoichuan.Size = new System.Drawing.Size(135, 21);
             this.comboBox_ngayxetnghiem_hoichuan.TabIndex = 6;
             this.comboBox_ngayxetnghiem_hoichuan.SelectedIndexChanged += new System.EventHandler(this.comboBox_ngayxetnghiem_hoichuan_SelectedIndexChanged);
             // 

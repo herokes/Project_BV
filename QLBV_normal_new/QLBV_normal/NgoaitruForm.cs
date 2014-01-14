@@ -194,7 +194,7 @@ namespace QLBV_normal
                         + "\n" + read["Cacbophan"].ToString()
                         + "\nVấn đề: "
                         + "\n" + read["Chuandoanvaovien"].ToString();
-                    ////////////// thong tin dien bien benh///////
+                    //////////////////// thong tin dien bien benh////////////
                     textBox_Quatrinhbenhly.Text = read["Quatrinhbenhly"].ToString();
                     richTextBox_phuongphapdieutri.Text = read["Xuli"].ToString();
                     dateTimePicker_Ngaykham.Value =DateTime.Parse(read["Thoigiandenkham"].ToString());
@@ -1063,6 +1063,8 @@ namespace QLBV_normal
                     int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
                     int idBacsi = int.Parse(comboBox_bacsi_phieuxetnghiem.SelectedValue.ToString());
                     updateYlenh(2, idPhieuxetnghiem, idPhieukhambenh, idBacsi);
+                    // load combobox ngay hoi chuan
+                    load_Phieuxetnhgiem_hoichuan(idBenhnhan, idPhieukhambenh);
                 }
 
             }
@@ -2039,21 +2041,31 @@ namespace QLBV_normal
             MySqlCommand com = new MySqlCommand();
             com.Connection = Util.con;
             com.Parameters.Add("@idpheiuxetnghiem", MySqlDbType.Int32, 11).Value = idphieuxetnghiem;
-            com.CommandText = "SELECT * FROM hoichuan,phieuxetnghiem WHERE hoichuan.phieuxetnghiem_id = phieuxetnghiem.id AND phieuxetnghiem_id=" + idphieuxetnghiem.ToString();
+            com.CommandText = "SELECT * FROM hoichuan,phieuxetnghiem,bacsi_hoichuan, bacsi WHERE bacsi.id = bacsi_hoichuan.Bacsi_id AND bacsi_hoichuan.Hoichuan_id = hoichuan.id AND hoichuan.phieuxetnghiem_id = phieuxetnghiem.id AND phieuxetnghiem_id=" + idphieuxetnghiem.ToString();
             Util.con.Open();
            MySqlDataReader read = com.ExecuteReader();
-            while (read.Read())
-            {
-                richTextBox_chuandoan_hoichuan.Text = "cau sql";
-                comboBox_thieumaumucdo_hoichuan.Text = read["Mucdothieumau"].ToString();
-              
-                richTextBox_ketluanhoichuan_hoichuan.Text = read["Ketluanhoichuan"].ToString();
+           if (read.Read())
+           {
+               while (read.Read())
+               {
+                   richTextBox_chuandoan_hoichuan.Text = read["Chuandoan"].ToString();
+                   comboBox_thieumaumucdo_hoichuan.Text = read["Mucdothieumau"].ToString();
+                   richTextBox_ketluanhoichuan_hoichuan.Text = read["Ketluanhoichuan"].ToString();
+                   DateTime thoigianhoichuan = DateTime.Parse(read["Thoigianhoichuan"].ToString());
+                   dateTimePicker_ngayhoichuan_hoichuan.Value = thoigianhoichuan;
+                   dateTimePicker_giohoichuan_hoichuan.Value = thoigianhoichuan;
+                   textBox_idbacsihoichuan.Text = read[11].ToString(); 
+                   textBox_bacsihoichuan_hoichuan.Text = read["Tenbacsi"].ToString();
 
-            }
+               }
+           }
+           else
+               richTextBox_chuandoan_hoichuan.Text = textBox_Chuandoan.Text;
             Util.con.Close();
             ketqua_xetnghiem_gannhat_chohoichuan(idphieuxetnghiem);
             
         }
+        /////////////// load combobox ngay xet nghiem//////
         public void load_Phieuxetnhgiem_hoichuan(int idBenhnhan, int idPhieukhambenh)
         {
 
@@ -2090,7 +2102,7 @@ namespace QLBV_normal
             }
             catch (MySqlException sqlE)
             {
-                MessageBox.Show("Load phieu xet nghiem");
+                MessageBox.Show("Load  combobox ngay xet nghiem");
                 return;
             }
             comboBox_ngayxetnghiem_hoichuan.DataSource = (object)myCollection;
@@ -2163,7 +2175,7 @@ namespace QLBV_normal
         }
 
         private void button_luu_hoichuan_Click(object sender, EventArgs e)
-        {/// sua lai nu tluu vi dung id bac si ko dung ten bas si
+        {/// sua lai nutluu vi dung id bac si ko dung ten bas si
          /// 
             int idhoichuan=0;
             if (control == 0)
@@ -2182,6 +2194,7 @@ namespace QLBV_normal
                     com.CommandText = " insert into hoichuan value(null,@thoigianhoichuan,@ketluanhoichuan,@idphieuxetnghiem,@mucdo)";
                     Util.con.Open();
                     com.ExecuteNonQuery();
+                    MessageBox.Show("hoichuan thanh cong");
                     //tim idhoichuan
                     com.CommandText = "select * hoichuan where Ngayhoichuan=" + thoigianhoichuan.ToString("dd/MainMenu/yyyy"); ;
 
@@ -2200,7 +2213,7 @@ namespace QLBV_normal
                     com.ExecuteNonQuery();
                     Util.con.Close();
                  
-                    MessageBox.Show("hoichuan thanh cong");
+                    MessageBox.Show("hoichuan_bacsi thanh cong");
                 }
                 else
                     MessageBox.Show("biên bản hội chuẩn cho phiếu xét nghiệm ngày: " + comboBox_ngayxetnghiem_hoichuan.Text + " tồn tại");
@@ -2219,12 +2232,10 @@ namespace QLBV_normal
                         com.Parameters.Add("@bacsihoichuan", MySqlDbType.VarChar, 45).Value = textBox_bacsihoichuan_hoichuan.Text;
                         com.Parameters.Add("@mucdo", MySqlDbType.VarChar, 45).Value = comboBox_thieumaumucdo_hoichuan.Text;
                         com.CommandText = " UPDATE  hoichuan SET Thoigianhoichuan=@thoigianhoichuan, Ketluanhoichuan=@ketluanhoichuan, Bacsihoichuan=@bacsihoichuan,Mucdo=@mucdo WHERE Phieuxetnghiem_id="+idpxn;
-
                         Util.con.Open();
                         com.ExecuteNonQuery();
                         Util.con.Close();
-
-                        MessageBox.Show("Hội chuẩn cập nhật thanh cong");
+                        MessageBox.Show("Hội chuẩn cập nhật thành công");
                         control = 0;
                     }
                 }
@@ -2237,6 +2248,8 @@ namespace QLBV_normal
             {
                 idPhieuxetnghiem = int.Parse(comboBox_ngayxetnghiem_hoichuan.SelectedValue.ToString());
                 idpxn = int.Parse(comboBox_ngayxetnghiem_hoichuan.SelectedValue.ToString());
+                
+              
             }
             catch (Exception)
             {
@@ -2256,6 +2269,7 @@ namespace QLBV_normal
             frmMain.frmReport.typeReport = "Bienbanhoichuan";
 
             Bienbanhoichuan bant = new Bienbanhoichuan();
+            bant.Mabenhnhan = idbn.ToString();
             bant.Tenbenhnhan = textBox_Ten.Text;
             bant.Ngaysinh = dateTimePicker_Namsinh.Value;
             bant.Chuandoan = richTextBox_chuandoan_hoichuan.Text;
