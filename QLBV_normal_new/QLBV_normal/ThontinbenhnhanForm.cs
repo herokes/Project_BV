@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Collections;
+using System.Text.RegularExpressions;
 
 namespace QLBV_normal
 {
@@ -215,6 +216,37 @@ namespace QLBV_normal
             DateTime a = DateTime.Today;
             int b = a.Year - dateTimePicker_Namsinh.Value.Year;
             textBox_Tuoi.Text = b.ToString();
+        }
+
+        private void textBox_MaBN_Validating(object sender, CancelEventArgs e)
+        {
+            if (textBox_MaBN.Text == string.Empty)
+            {
+                errorProvider_error.SetError(textBox_MaBN, "bạn chưa nhập Mã bệnh nhân");
+            }
+            else
+            {
+                Regex numberchk = new Regex(@"^([0-9]*|\d*)$");
+                if (!numberchk.IsMatch(textBox_MaBN.Text))
+                {
+
+                    errorProvider_error.SetError(textBox_MaBN, " Mã Bệnh nhân phải Nhập số");
+                }
+                if (textBox_MaBN.Text.Length < 8 || textBox_MaBN.Text.Length > 8)
+                {
+                    errorProvider_error.SetError(textBox_MaBN, " Mã Bệnh nhân có 8 chữ số");
+                }
+                else errorProvider_true.SetError(textBox_MaBN, "Đúng");
+
+            } 
+        }
+
+        private void textBox_MaBN_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
 
