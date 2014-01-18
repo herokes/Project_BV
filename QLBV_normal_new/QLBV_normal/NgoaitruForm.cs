@@ -218,7 +218,7 @@ namespace QLBV_normal
                     richTextBox_phuongphapdieutri.Text = read["Xuli"].ToString();
                     textBox_huongdieutri.Text = read["Huongdieutri"].ToString();
                     textBox_tenbsdieutri.Text = read["Bacsidieutri"].ToString();
-                    richTextBox_chuandoan_hoichuan.Text = textBox_Quatrinhbenhly.Text;
+                    
                     //richTextBox_tomtatketquaxetnghiem.Text = ketqua_xetnghiem_gannhat_chotongketbenh(timkiem_idphieuxetnghiem_gannhat(idpkb.ToString()));
                 }
                 Util.con.Close();
@@ -683,9 +683,12 @@ namespace QLBV_normal
             load_Ylenh(idBenhnhan);
             load_Phieuxetnhgiem(idBenhnhan, idPhieukhambenh);
             load_Xetnghiem();
+            load_listview_ngayxetnghiem_hoichuan();
             load_Toathuoc(idBenhnhan, idPhieukhambenh);
             load_Chaythan(idBenhnhan, idPhieukhambenh);
-            load_Phieuxetnhgiem_hoichuan(idBenhnhan, idPhieukhambenh);// load xet nghiem vao hoi chuan
+            //load_Phieuxetnhgiem_hoichuan(idBenhnhan, idPhieukhambenh);// load xet nghiem vao hoi chuan
+            
+
         }
 
         private void textBox_search_benhnhan_TextChanged(object sender, EventArgs e)
@@ -2065,6 +2068,38 @@ namespace QLBV_normal
             ketqua_xetnghiem_gannhat_chohoichuan(idphieuxetnghiem);
             
         }
+        public void load_listview_ngayxetnghiem_hoichuan()
+        {
+            MySqlCommand com = new MySqlCommand();
+            com.Connection = Util.con;
+            com.Parameters.Add("@idphieukhambenh", MySqlDbType.Int32, 11).Value = idpkb;
+            com.CommandText=@"SELECT phieuxetnghiem.id,phieuxetnghiem.ngayxetnghiem, hoichuan.Thoigianhoichuan
+                                FROM phieuxetnghiem
+                                LEFT JOIN hoichuan ON phieuxetnghiem.id = hoichuan.phieuxetnghiem_id
+                                JOIN phieukhambenh ON phieukhambenh.id = phieuxetnghiem.phieukhambenh_id
+                                WHERE phieukhambenh.id = @idphieukhambenh" ;
+            Util.con.Open();
+            MySqlDataReader read = com.ExecuteReader();
+            listView_hoichuan.Items.Clear();
+          
+                while (read.Read())
+                {
+                    int i= listView_hoichuan.Items.Count;
+                    listView_hoichuan.Items.Add(read["ngayxetnghiem"].ToString());
+                    if (read["Thoigianhoichuan"].ToString() == "")
+                    {
+                        listView_hoichuan.Items[i].SubItems.Add("chưa hội chuẩn");
+                    }
+                    else
+                    listView_hoichuan.Items[i].SubItems.Add(read["Thoigianhoichuan"].ToString());
+                    listView_hoichuan.Items[i].SubItems.Add(read["id"].ToString());
+
+                }
+           
+            Util.con.Close();
+
+        }
+
         /////////////// load combobox ngay xet nghiem//////
         public void load_Phieuxetnhgiem_hoichuan(int idBenhnhan, int idPhieukhambenh)
         {
@@ -2135,7 +2170,7 @@ namespace QLBV_normal
             // Xetnghiem xn = new Xetnghiem();
             while (read.Read())
             {
-                ketqua += read["Tenxetnghiem"].ToString() + ":  " + read["Thongsoxetnghiem"].ToString() + read["Donvi"].ToString() + "\n";
+                ketqua += read["Tenxetnghiem"].ToString() + ":  " + read["Thongsoxetnghiem"].ToString()+" "+ read["Donvi"].ToString() + "\n";
             }
             Util.con.Close();
             richTextBox_ketquaxetnghiem_hoichuan.Text = ketqua;
@@ -2294,21 +2329,71 @@ namespace QLBV_normal
             {
                 MySqlCommand com = new MySqlCommand();
                 com.Connection = Util.con;
-                com.CommandText = "SELECT * FROM Bacsi WHERE id= " + textBox_idbacsihoichuan.Text;
+                com.CommandText = "SELECT * FROM bacsi WHERE id = " + textBox_idbacsihoichuan.Text;
+                MessageBox.Show(com.CommandText);
                 Util.con.Open();
                 MySqlDataReader read = com.ExecuteReader();
-                if (read.Read())
-                {
                     while (read.Read())
                     {
                         textBox_bacsihoichuan_hoichuan.Text = read["TenBacsi"].ToString();
+                        
                     }
-                }
-                else
-                    textBox_bacsihoichuan_hoichuan.Text = null;
                 Util.con.Close();
  
             }
+        }
+        private void listView_hoichuan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            richTextBox_chuandoan_hoichuan.Text = "";
+            comboBox_thieumaumucdo_hoichuan.Text = "";
+            richTextBox_ketquaxetnghiem_hoichuan.Text = "";
+            richTextBox_ketluanhoichuan_hoichuan.Text = "";
+            int idhoichuan=0;
+
+            if (listView_hoichuan.SelectedItems.Count < 1)
+            {
+                return;
+            }
+            string idPhieuxetnghiem = listView_hoichuan.SelectedItems[0].SubItems[2].Text;
+            //MessageBox.Show(idphieuxetnghiem);control 0 insert, 1 update
+            MySqlCommand com = new MySqlCommand();
+            com.Connection = Util.con;
+            com.Parameters.Add("@idphieuxetnghiem", MySqlDbType.VarChar, 11).Value = idPhieuxetnghiem;
+            com.CommandText = "select * from hoichuan where Phieuxetnghiem_id=@idphieuxetnghiem";
+            //MessageBox.Show(com.CommandText);
+            Util.con.Open();
+            MySqlDataReader read = com.ExecuteReader();
+            //////////////////////////co hoi chuan //////////////////////
+           
+                while (read.Read())
+                {
+                    richTextBox_chuandoan_hoichuan.Text = read["Chuandoan"].ToString();
+                    comboBox_thieumaumucdo_hoichuan.Text = read["Mucdothieumau"].ToString();
+                    richTextBox_ketluanhoichuan_hoichuan.Text = read["Ketluanhoichuan"].ToString();
+                    DateTime ngayhc = DateTime.Parse(read["Thoigianhoichuan"].ToString());
+                    dateTimePicker_ngayhoichuan_hoichuan.Value = ngayhc;
+                    dateTimePicker_giohoichuan_hoichuan.Value = ngayhc;
+                    idhoichuan = int.Parse(read["id"].ToString());
+
+                }
+                Util.con.Close();
+                string tinhtranghoichuan = listView_hoichuan.SelectedItems[0].SubItems[1].Text;
+                if (tinhtranghoichuan == "chưa hội chuẩn")
+                {
+                    richTextBox_chuandoan_hoichuan.Text = textBox_Quatrinhbenhly.Text;
+                    string ketluanhochuan = " + Dùng thuốc tạo máu : \r Liều: \t ui/tuần \n+Truyền đạm: \t lần/tuần\n+Truyền Fe:\t lần/tuần";
+                    richTextBox_ketluanhoichuan_hoichuan.Text = ketluanhochuan;
+                    dateTimePicker_ngayhoichuan_hoichuan.Value = DateTime.Today;
+                    dateTimePicker_giohoichuan_hoichuan.Value = DateTime.Today;
+                }
+                MySqlCommand com1 = new MySqlCommand();
+                com1.Parameters.Add("@hoichuanid", MySqlDbType.Int32, 11).Value = idhoichuan;
+                com1.CommandText = "select * from Bacsi,Bacsi_hoichuan where Hoichuan_id=@hoichuanid";
+           
+                Util.con.Close();
+                ketqua_xetnghiem_gannhat_chohoichuan(int.Parse(idPhieuxetnghiem));
+
+  
         }
 
       
@@ -3098,7 +3183,7 @@ namespace QLBV_normal
 
         private void listView_chitiet_thuoc_chaythan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            textBox_tenthuoc_chaythan.Text =
+            textBox_tenthuoc_chaythan.Text = "";
             textBox_soluong_thuoc_chaythan.Text = "";
             if (listView_chitiet_thuoc_chaythan.SelectedItems.Count < 1)
             {
@@ -3288,5 +3373,10 @@ namespace QLBV_normal
                 return;
             }
         }
+
+        
+
+
+
     }
 }
