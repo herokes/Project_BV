@@ -27,44 +27,47 @@ namespace QLBV_normal
         {
             try
             {
-                MySqlCommand com = new MySqlCommand();
-                com.Connection = Util.con;
-                com.CommandText = "SELECT * FROM benhnhan where id= "+ textBox_MaBN.Text;
-                Util.con.Open();
-                MySqlDataReader read = com.ExecuteReader();
-                if (read.Read())
+                if (textBox_MaBN.Text != string.Empty)
                 {
-                    while (read.Read())
+                    MySqlCommand com = new MySqlCommand();
+                    com.Connection = Util.con;
+                    com.CommandText = "SELECT * FROM benhnhan where id= " + textBox_MaBN.Text;
+                    Util.con.Open();
+                    MySqlDataReader read = com.ExecuteReader();
+                    if (read.Read())
                     {
-                        textBox_MaBN.Text = read[0].ToString();
-                        textBox_Ten.Text = read[1].ToString();
-                        dateTimePicker_Namsinh.Value = DateTime.Parse(read[0].ToString());
-                        if (read[3].ToString() == "1")
-                            comboBox_Gioitinh.Text = "Nam";
-                        else
-                            comboBox_Gioitinh.Text = "Nữ";
+                        while (read.Read())
+                        {
+                            textBox_MaBN.Text = read[0].ToString();
+                            textBox_Ten.Text = read[1].ToString();
+                            dateTimePicker_Namsinh.Value = DateTime.Parse(read[0].ToString());
+                            if (read[3].ToString() == "1")
+                                comboBox_Gioitinh.Text = "Nam";
+                            else
+                                comboBox_Gioitinh.Text = "Nữ";
 
-                        comboBox_Nghenghiep.Text = read[4].ToString();
-                        comboBox_Dantoc.Text = read[5].ToString();
-                        textBox_CMND.Text = read[6].ToString();
-                        comboBox_Ngoaikieu.Text = read[7].ToString();
-                        textBox_Sonha.Text = read[8].ToString();
-                        textBox_duong.Text = read[9].ToString();
-                        textBox_Thanhpho.Text = read[12].ToString();
-                        textBox_Quan.Text = read[11].ToString();
-                        textBox_Phuong.Text = read[10].ToString();
-                        textBox_Noilamviec.Text = read[13].ToString();
+                            comboBox_Nghenghiep.Text = read[4].ToString();
+                            comboBox_Dantoc.Text = read[5].ToString();
+                            textBox_CMND.Text = read[6].ToString();
+                            comboBox_Ngoaikieu.Text = read[7].ToString();
+                            textBox_Sonha.Text = read[8].ToString();
+                            textBox_duong.Text = read[9].ToString();
+                            textBox_Thanhpho.Text = read[12].ToString();
+                            textBox_Quan.Text = read[11].ToString();
+                            textBox_Phuong.Text = read[10].ToString();
+                            textBox_Noilamviec.Text = read[13].ToString();
+                        }
+                        trangthai = 1;
                     }
-                    trangthai=1;
+                    else
+                        trangthai = 0;
+                    Util.con.Close();
                 }
-                else
-                    trangthai = 0;
-                Util.con.Close();
             }
             catch (MySqlException sqlE)
             {
                 Util.con.Close();
-                MessageBox.Show(sqlE.Source.ToString());
+                MessageBox.Show("loi 1");
                 return;
             }
         }
@@ -73,71 +76,74 @@ namespace QLBV_normal
         {
             try
             {
-               if (trangthai == 0)
+                if (kiemtradulieunhap())
                 {
-                    MySqlCommand com = new MySqlCommand();
-                    com.Connection = Util.con;
-                    com.Parameters.Add("@id", MySqlDbType.Int64, 50).Value = textBox_MaBN.Text;
-                    com.Parameters.Add("@ten", MySqlDbType.VarChar, 200).Value = textBox_Ten.Text;
-                    com.Parameters.Add("@ngaysinh", MySqlDbType.Date, 20).Value = dateTimePicker_Namsinh.Value;
-                    if (comboBox_Gioitinh.Text == "Nam")
-                        com.Parameters.Add("@gioitinh", MySqlDbType.Int16, 10).Value = 1;
+                    if (trangthai == 0)
+                    {
+                        MySqlCommand com = new MySqlCommand();
+                        com.Connection = Util.con;
+                        com.Parameters.Add("@id", MySqlDbType.Int64, 50).Value = textBox_MaBN.Text;
+                        com.Parameters.Add("@ten", MySqlDbType.VarChar, 200).Value = textBox_Ten.Text;
+                        com.Parameters.Add("@ngaysinh", MySqlDbType.Date, 20).Value = dateTimePicker_Namsinh.Value;
+                        if (comboBox_Gioitinh.Text == "Nam")
+                            com.Parameters.Add("@gioitinh", MySqlDbType.Int16, 10).Value = 1;
+                        else
+                            com.Parameters.Add("@gioitinh", MySqlDbType.Int16, 10).Value = 2;
+                        com.Parameters.Add("@nghenghiep", MySqlDbType.VarChar, 20).Value = comboBox_Nghenghiep.Text;
+                        com.Parameters.Add("@dantoc", MySqlDbType.VarChar, 20).Value = comboBox_Dantoc.Text;
+                        com.Parameters.Add("@cmnd", MySqlDbType.VarChar, 20).Value = textBox_CMND.Text;
+                        com.Parameters.Add("@ngoaikieu", MySqlDbType.VarChar, 20).Value = comboBox_Ngoaikieu.Text;
+                        com.Parameters.Add("@sonha", MySqlDbType.VarChar, 50).Value = textBox_Sonha.Text;
+                        com.Parameters.Add("@duong", MySqlDbType.VarChar, 50).Value = textBox_duong.Text;
+                        com.Parameters.Add("@phuong", MySqlDbType.VarChar, 50).Value = textBox_Phuong.Text;
+                        com.Parameters.Add("@quan", MySqlDbType.VarChar, 50).Value = textBox_Quan.Text;
+                        com.Parameters.Add("@thanhpho", MySqlDbType.VarChar, 50).Value = textBox_Thanhpho.Text;
+                        com.Parameters.Add("@noilamviec", MySqlDbType.VarChar, 50).Value = textBox_Noilamviec.Text;
+                        com.CommandText = "insert into Benhnhan values (@id,@ten,@ngaysinh,@gioitinh,@nghenghiep,@dantoc,@cmnd,@ngoaikieu,@sonha,@duong,@phuong,@quan,@thanhpho,@noilamviec)";
+                        Util.con.Open();
+                        com.ExecuteNonQuery();
+                        Util.con.Close();
+                        Clear_Thongtin();
+                        trangthai = 0;
+                    }
                     else
-                        com.Parameters.Add("@gioitinh", MySqlDbType.Int16, 10).Value = 2;
-                    com.Parameters.Add("@nghenghiep", MySqlDbType.VarChar, 20).Value = comboBox_Nghenghiep.Text;
-                    com.Parameters.Add("@dantoc", MySqlDbType.VarChar, 20).Value = comboBox_Dantoc.Text;
-                    com.Parameters.Add("@cmnd", MySqlDbType.VarChar, 20).Value = textBox_CMND.Text;
-                    com.Parameters.Add("@ngoaikieu", MySqlDbType.VarChar, 20).Value = comboBox_Ngoaikieu.Text;
-                    com.Parameters.Add("@sonha", MySqlDbType.VarChar, 50).Value = textBox_Sonha.Text;
-                    com.Parameters.Add("@duong", MySqlDbType.VarChar, 50).Value = textBox_duong.Text;
-                    com.Parameters.Add("@phuong", MySqlDbType.VarChar, 50).Value = textBox_Phuong.Text;
-                    com.Parameters.Add("@quan", MySqlDbType.VarChar, 50).Value = textBox_Quan.Text;
-                    com.Parameters.Add("@thanhpho", MySqlDbType.VarChar, 50).Value = textBox_Thanhpho.Text;
-                    com.Parameters.Add("@noilamviec", MySqlDbType.VarChar, 50).Value = textBox_Noilamviec.Text;
-                    com.CommandText = "insert into Benhnhan values (@id,@ten,@ngaysinh,@gioitinh,@nghenghiep,@dantoc,@cmnd,@ngoaikieu,@sonha,@duong,@phuong,@quan,@thanhpho,@noilamviec)";
-                    Util.con.Open();
-                    com.ExecuteNonQuery();
-                    Util.con.Close();
-                    Clear_Thongtin();
-                    trangthai = 0;
-                }
-               else
-                   if (trangthai == 1)
-                   { 
-     ///UPDATE  `dbthan`.`benhnhan` SET  `ten` =  'QUANG2',`ngaysinh` =  '2013-12-02 00:00:00',`gioitinh` =  '1',`nghenghiep` =  'Học sinh',`Dantoc` =  'Kinh',`CMND` =  '025118871',
-///`Ngoaikieu` =  'k',`Sonha` =  '1234212',`Duong` =  'LTK2',`Phuong` =  'P3',`Quan` =  'H4',`Thanhpho` =  'TP5',`Noilamviec` =  'NLV5' WHERE  `benhnhan`.`id` =1300003;    
-                       MySqlCommand com = new MySqlCommand();
-                       com.Connection = Util.con;
-                       com.Parameters.Add("@id", MySqlDbType.Int64, 50).Value = textBox_MaBN.Text;
-                       com.Parameters.Add("@ten", MySqlDbType.VarChar, 200).Value = textBox_Ten.Text;
-                       com.Parameters.Add("@ngaysinh", MySqlDbType.Date, 20).Value = dateTimePicker_Namsinh.Value;
-                       if (comboBox_Gioitinh.Text == "Nam")
-                           com.Parameters.Add("@gioitinh", MySqlDbType.Bit, 10).Value = 1;
-                       else
-                           com.Parameters.Add("@gioitinh", MySqlDbType.Bit, 10).Value = 0;
-                       com.Parameters.Add("@nghenghiep", MySqlDbType.VarChar, 20).Value = comboBox_Nghenghiep.Text;
-                       com.Parameters.Add("@dantoc", MySqlDbType.VarChar, 20).Value = comboBox_Dantoc.Text;
-                       com.Parameters.Add("@cmnd", MySqlDbType.VarChar, 20).Value = textBox_CMND.Text;
-                       com.Parameters.Add("@ngoaikieu", MySqlDbType.VarChar, 20).Value = comboBox_Ngoaikieu.Text;
-                       com.Parameters.Add("@sonha", MySqlDbType.VarChar, 50).Value = textBox_Sonha.Text;
-                       com.Parameters.Add("@duong", MySqlDbType.VarChar, 50).Value = textBox_duong.Text;
-                       com.Parameters.Add("@phuong", MySqlDbType.VarChar, 50).Value = textBox_Phuong.Text;
-                       com.Parameters.Add("@quan", MySqlDbType.VarChar, 50).Value = textBox_Quan.Text;
-                       com.Parameters.Add("@thanhpho", MySqlDbType.VarChar, 50).Value = textBox_Thanhpho.Text;
-                       com.Parameters.Add("@noilamviec", MySqlDbType.VarChar, 50).Value = textBox_Noilamviec.Text;
-                       com.CommandText = "UPDATE  benhnhan SET  ten =  @ten,ngaysinh =  @ngaysinh,gioitinh =  @gioitinh,nghenghiep =  @nghenghiep,Dantoc = @dantoc"+
-                       ",CMND =@cmnd,Ngoaikieu = @ngoaikieu,Sonha =  @sonha,Duong =  @duong,Phuong =  @phuong,Quan =  @quan,"+
-                       "Thanhpho = @thanhpho,Noilamviec =  @noilamviec WHERE  id ="+ textBox_MaBN.Text;
-                       Util.con.Open();
-                       com.ExecuteNonQuery();
-                       Util.con.Close();
-                       Clear_Thongtin();
-                   }
+                        if (trangthai == 1)
+                        {
+                            ///UPDATE  `dbthan`.`benhnhan` SET  `ten` =  'QUANG2',`ngaysinh` =  '2013-12-02 00:00:00',`gioitinh` =  '1',`nghenghiep` =  'Học sinh',`Dantoc` =  'Kinh',`CMND` =  '025118871',
+                            ///`Ngoaikieu` =  'k',`Sonha` =  '1234212',`Duong` =  'LTK2',`Phuong` =  'P3',`Quan` =  'H4',`Thanhpho` =  'TP5',`Noilamviec` =  'NLV5' WHERE  `benhnhan`.`id` =1300003;    
+                            MySqlCommand com = new MySqlCommand();
+                            com.Connection = Util.con;
+                            com.Parameters.Add("@id", MySqlDbType.Int64, 50).Value = textBox_MaBN.Text;
+                            com.Parameters.Add("@ten", MySqlDbType.VarChar, 200).Value = textBox_Ten.Text;
+                            com.Parameters.Add("@ngaysinh", MySqlDbType.Date, 20).Value = dateTimePicker_Namsinh.Value;
+                            if (comboBox_Gioitinh.Text == "Nam")
+                                com.Parameters.Add("@gioitinh", MySqlDbType.Bit, 10).Value = 1;
+                            else
+                                com.Parameters.Add("@gioitinh", MySqlDbType.Bit, 10).Value = 0;
+                            com.Parameters.Add("@nghenghiep", MySqlDbType.VarChar, 20).Value = comboBox_Nghenghiep.Text;
+                            com.Parameters.Add("@dantoc", MySqlDbType.VarChar, 20).Value = comboBox_Dantoc.Text;
+                            com.Parameters.Add("@cmnd", MySqlDbType.VarChar, 20).Value = textBox_CMND.Text;
+                            com.Parameters.Add("@ngoaikieu", MySqlDbType.VarChar, 20).Value = comboBox_Ngoaikieu.Text;
+                            com.Parameters.Add("@sonha", MySqlDbType.VarChar, 50).Value = textBox_Sonha.Text;
+                            com.Parameters.Add("@duong", MySqlDbType.VarChar, 50).Value = textBox_duong.Text;
+                            com.Parameters.Add("@phuong", MySqlDbType.VarChar, 50).Value = textBox_Phuong.Text;
+                            com.Parameters.Add("@quan", MySqlDbType.VarChar, 50).Value = textBox_Quan.Text;
+                            com.Parameters.Add("@thanhpho", MySqlDbType.VarChar, 50).Value = textBox_Thanhpho.Text;
+                            com.Parameters.Add("@noilamviec", MySqlDbType.VarChar, 50).Value = textBox_Noilamviec.Text;
+                            com.CommandText = "UPDATE  benhnhan SET  ten =  @ten,ngaysinh =  @ngaysinh,gioitinh =  @gioitinh,nghenghiep =  @nghenghiep,Dantoc = @dantoc" +
+                            ",CMND =@cmnd,Ngoaikieu = @ngoaikieu,Sonha =  @sonha,Duong =  @duong,Phuong =  @phuong,Quan =  @quan," +
+                            "Thanhpho = @thanhpho,Noilamviec =  @noilamviec WHERE  id =" + textBox_MaBN.Text;
+                            Util.con.Open();
+                            com.ExecuteNonQuery();
+                            Util.con.Close();
+                            Clear_Thongtin();
+                        }
 
+                }
             }
             catch (MySqlException sqlE)
             {
-                MessageBox.Show(sqlE.Source.ToString());
+                MessageBox.Show("loi 2");
                 return;
             }
         }
@@ -206,7 +212,7 @@ namespace QLBV_normal
             catch (MySqlException sqlE)
             {
                 Util.con.Close();
-                MessageBox.Show(sqlE.Source.ToString());
+                MessageBox.Show("loi 3");
                 return;
             }
         }
@@ -223,6 +229,7 @@ namespace QLBV_normal
             if (textBox_MaBN.Text == string.Empty)
             {
                 errorProvider_error.SetError(textBox_MaBN, "bạn chưa nhập Mã bệnh nhân");
+                errorProvider_true.Clear();
             }
             else
             {
@@ -235,6 +242,7 @@ namespace QLBV_normal
                 if (textBox_MaBN.Text.Length < 8 || textBox_MaBN.Text.Length > 8)
                 {
                     errorProvider_error.SetError(textBox_MaBN, " Mã Bệnh nhân có 8 chữ số");
+
                 }
                 else errorProvider_true.SetError(textBox_MaBN, "Đúng");
 
@@ -247,6 +255,60 @@ namespace QLBV_normal
             {
                 e.Handled = true;
             }
+        }
+        private bool kiemtradulieunhap()
+        {
+            if (textBox_MaBN.Text == string.Empty)
+            {
+                MessageBox.Show("Mã bệnh nhân không được để trống");
+                return false;
+            }
+            if (textBox_Ten.Text == string.Empty)
+            {
+                MessageBox.Show("Tên bệnh nhân không được để trống");
+                return false;
+            }
+            if ( DateTime.Now.Year - dateTimePicker_Namsinh.Value.Year < 0)
+            {
+                MessageBox.Show("năm sinh không được lớn hơn ngày hiện tại");
+                return false;
+            }
+            if (textBox_CMND.Text== string.Empty)
+            {
+                MessageBox.Show("Chưa nhập số CMND");
+                return false;
+            }
+            if (textBox_Sonha.Text == string.Empty)
+            {
+                MessageBox.Show("Chưa nhập số nhà");
+                return false;
+            }
+            if (textBox_duong.Text == string.Empty)
+            {
+                MessageBox.Show("Chưa nhập tên đường");
+                return false;
+            }
+            if (textBox_CMND.Text == string.Empty)
+            {
+                MessageBox.Show("Chưa nhập phường");
+                return false;
+            }
+            if (textBox_Quan.Text == string.Empty)
+            {
+                MessageBox.Show("Chưa nhập quận");
+                return false;
+            }
+            if (textBox_Thanhpho.Text == string.Empty)
+            {
+                MessageBox.Show("Chưa nhập thành phố");
+                return false;
+            }
+            if (textBox_Noilamviec.Text == string.Empty)
+            {
+                MessageBox.Show("Chưa nhập nơi làm việc");
+                return false;
+            }
+            return true;
         }
 
 

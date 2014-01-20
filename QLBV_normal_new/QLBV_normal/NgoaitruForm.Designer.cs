@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             this.listView_danhsachbenhnhan = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -280,7 +280,6 @@
             this.textBox_idbacsihoichuan = new System.Windows.Forms.TextBox();
             this.label69 = new System.Windows.Forms.Label();
             this.comboBox_thieumaumucdo_hoichuan = new System.Windows.Forms.ComboBox();
-            this.comboBox_ngayxetnghiem_hoichuan = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.richTextBox_ketquaxetnghiem_hoichuan = new System.Windows.Forms.RichTextBox();
@@ -298,6 +297,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_search_benhnhan = new System.Windows.Forms.TextBox();
+            this.comboBox_ngayxetnghiem_hoichuan = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -2434,10 +2434,10 @@
             this.columnHeader17});
             this.listView_ketquaxetnghiem.FullRowSelect = true;
             this.listView_ketquaxetnghiem.GridLines = true;
-            listViewGroup5.Header = "ListViewGroup";
-            listViewGroup5.Name = "abc";
+            listViewGroup1.Header = "ListViewGroup";
+            listViewGroup1.Name = "abc";
             this.listView_ketquaxetnghiem.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup5});
+            listViewGroup1});
             this.listView_ketquaxetnghiem.HideSelection = false;
             this.listView_ketquaxetnghiem.Location = new System.Drawing.Point(8, 70);
             this.listView_ketquaxetnghiem.MultiSelect = false;
@@ -2506,10 +2506,10 @@
             // 
             this.listView_xetnghiem.CheckBoxes = true;
             this.listView_xetnghiem.GridLines = true;
-            listViewGroup6.Header = "ListViewGroup";
-            listViewGroup6.Name = "abc";
+            listViewGroup2.Header = "ListViewGroup";
+            listViewGroup2.Name = "abc";
             this.listView_xetnghiem.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup6});
+            listViewGroup2});
             this.listView_xetnghiem.Location = new System.Drawing.Point(6, 24);
             this.listView_xetnghiem.Name = "listView_xetnghiem";
             this.listView_xetnghiem.ShowGroups = false;
@@ -2631,6 +2631,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.comboBox_ngayxetnghiem_hoichuan);
             this.tabPage3.Controls.Add(this.listView_hoichuan);
             this.tabPage3.Controls.Add(this.button_sua_hoichuan);
             this.tabPage3.Controls.Add(this.button_inbienban_hoichuan);
@@ -2639,7 +2640,6 @@
             this.tabPage3.Controls.Add(this.textBox_idbacsihoichuan);
             this.tabPage3.Controls.Add(this.label69);
             this.tabPage3.Controls.Add(this.comboBox_thieumaumucdo_hoichuan);
-            this.tabPage3.Controls.Add(this.comboBox_ngayxetnghiem_hoichuan);
             this.tabPage3.Controls.Add(this.label12);
             this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Controls.Add(this.richTextBox_ketquaxetnghiem_hoichuan);
@@ -2754,19 +2754,6 @@
             this.comboBox_thieumaumucdo_hoichuan.Name = "comboBox_thieumaumucdo_hoichuan";
             this.comboBox_thieumaumucdo_hoichuan.Size = new System.Drawing.Size(121, 21);
             this.comboBox_thieumaumucdo_hoichuan.TabIndex = 6;
-            // 
-            // comboBox_ngayxetnghiem_hoichuan
-            // 
-            this.comboBox_ngayxetnghiem_hoichuan.FormattingEnabled = true;
-            this.comboBox_ngayxetnghiem_hoichuan.Items.AddRange(new object[] {
-            "Nhiều",
-            "Trung bình",
-            "Nhẹ"});
-            this.comboBox_ngayxetnghiem_hoichuan.Location = new System.Drawing.Point(393, 26);
-            this.comboBox_ngayxetnghiem_hoichuan.Name = "comboBox_ngayxetnghiem_hoichuan";
-            this.comboBox_ngayxetnghiem_hoichuan.Size = new System.Drawing.Size(135, 21);
-            this.comboBox_ngayxetnghiem_hoichuan.TabIndex = 6;
-            this.comboBox_ngayxetnghiem_hoichuan.SelectedIndexChanged += new System.EventHandler(this.comboBox_ngayxetnghiem_hoichuan_SelectedIndexChanged);
             // 
             // label12
             // 
@@ -2925,6 +2912,14 @@
             this.textBox_search_benhnhan.Size = new System.Drawing.Size(173, 20);
             this.textBox_search_benhnhan.TabIndex = 21;
             this.textBox_search_benhnhan.TextChanged += new System.EventHandler(this.textBox_search_benhnhan_TextChanged);
+            // 
+            // comboBox_ngayxetnghiem_hoichuan
+            // 
+            this.comboBox_ngayxetnghiem_hoichuan.FormattingEnabled = true;
+            this.comboBox_ngayxetnghiem_hoichuan.Location = new System.Drawing.Point(393, 20);
+            this.comboBox_ngayxetnghiem_hoichuan.Name = "comboBox_ngayxetnghiem_hoichuan";
+            this.comboBox_ngayxetnghiem_hoichuan.Size = new System.Drawing.Size(179, 21);
+            this.comboBox_ngayxetnghiem_hoichuan.TabIndex = 14;
             // 
             // NgoaitruForm
             // 
@@ -3168,7 +3163,6 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label69;
-        private System.Windows.Forms.ComboBox comboBox_ngayxetnghiem_hoichuan;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.RichTextBox richTextBox_chuandoan_hoichuan;
@@ -3252,5 +3246,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader26;
         private System.Windows.Forms.ColumnHeader columnHeader27;
         private System.Windows.Forms.ColumnHeader columnHeader28;
+        private System.Windows.Forms.ComboBox comboBox_ngayxetnghiem_hoichuan;
     }
 }
