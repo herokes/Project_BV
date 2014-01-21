@@ -685,7 +685,45 @@ namespace QLBV_normal
                 return;
             }
         }
-       
+        private bool kiemtranhap()
+        {
+            if (DateTime.Now.Year - dateTimePicker_Ngaykham.Value.Year < 0)
+            {
+                MessageBox.Show("Ngày khám bệnh không được lớn hơn ngày hiện tại");
+                return false;
+            }
+            if (textBox_NoiDKKCBBD.Text == string.Empty) 
+            {
+                MessageBox.Show("Nơi ĐKKCBBĐ không được để trống");
+                return false;
+            }
+            if (textBox_Sothe.Text == string.Empty)
+            {
+                MessageBox.Show("Số thẻ được để trống");
+                return false;
+            }
+            if (textBox_Nguoithan.Text == string.Empty)
+            {
+                MessageBox.Show("Người thân không được để trống được để trống");
+                return false;
+            }
+            if (textBox_Dienthoai.Text == string.Empty)
+            {
+                MessageBox.Show("Số điện thoại không được để trống");
+                return false;
+            }
+            if (textBox_Diachinguoithan.Text == string.Empty)
+            {
+                MessageBox.Show("Địa chỉ  không được để trống");
+                return false;
+            }
+            if (textBox_Noigioithieu.Text == string.Empty)
+            {
+                MessageBox.Show("Nơi giới thiệu không được để trống");
+                return false;
+            }
+            return true;
+        }
     }
 }
 
