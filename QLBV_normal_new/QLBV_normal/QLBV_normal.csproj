@@ -100,23 +100,11 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NgoaitruFormold.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NgoaitruFormold.Designer.cs">
-      <DependentUpon>NgoaitruFormold.cs</DependentUpon>
-    </Compile>
     <Compile Include="NgoaitruForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="NgoaitruForm.Designer.cs">
       <DependentUpon>NgoaitruForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PhieuxetnghiemForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PhieuxetnghiemForm.Designer.cs">
-      <DependentUpon>PhieuxetnghiemForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ReportForm.cs">
       <SubType>Form</SubType>
@@ -161,12 +149,6 @@
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SearchPhieukhambenhForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SearchPhieukhambenhForm.Designer.cs">
-      <DependentUpon>SearchPhieukhambenhForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="SetupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,14 +181,8 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NgoaitruFormold.resx">
-      <DependentUpon>NgoaitruFormold.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="NgoaitruForm.resx">
       <DependentUpon>NgoaitruForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PhieuxetnghiemForm.resx">
-      <DependentUpon>PhieuxetnghiemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
@@ -234,9 +210,6 @@
     <EmbeddedResource Include="Report\Report_Toathuoc.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Report_Toathuoc.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SearchPhieukhambenhForm.resx">
-      <DependentUpon>SearchPhieukhambenhForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SetupForm.resx">
       <DependentUpon>SetupForm.cs</DependentUpon>

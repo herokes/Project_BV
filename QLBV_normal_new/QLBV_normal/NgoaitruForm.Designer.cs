@@ -121,34 +121,6 @@
             this.label42 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBox38 = new System.Windows.Forms.CheckBox();
-            this.checkBox43 = new System.Windows.Forms.CheckBox();
-            this.checkBox44 = new System.Windows.Forms.CheckBox();
-            this.checkBox34 = new System.Windows.Forms.CheckBox();
-            this.checkBox35 = new System.Windows.Forms.CheckBox();
-            this.checkBox36 = new System.Windows.Forms.CheckBox();
-            this.checkBox33 = new System.Windows.Forms.CheckBox();
-            this.checkBox32 = new System.Windows.Forms.CheckBox();
-            this.checkBox31 = new System.Windows.Forms.CheckBox();
-            this.label33 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox31 = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox32 = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.textBox33 = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.comboBox_bacsi_chaythan = new System.Windows.Forms.ComboBox();
@@ -303,8 +275,6 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.tabPage6.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -487,7 +457,6 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage8);
@@ -592,7 +561,8 @@
             // 
             // dateTimePicker_Ngaykham
             // 
-            this.dateTimePicker_Ngaykham.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_Ngaykham.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker_Ngaykham.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_Ngaykham.Location = new System.Drawing.Point(109, 16);
             this.dateTimePicker_Ngaykham.Name = "dateTimePicker_Ngaykham";
             this.dateTimePicker_Ngaykham.Size = new System.Drawing.Size(105, 20);
@@ -608,7 +578,8 @@
             // 
             // dateTimePicker_Den
             // 
-            this.dateTimePicker_Den.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_Den.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker_Den.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_Den.Location = new System.Drawing.Point(551, 92);
             this.dateTimePicker_Den.Name = "dateTimePicker_Den";
             this.dateTimePicker_Den.Size = new System.Drawing.Size(85, 20);
@@ -616,7 +587,8 @@
             // 
             // dateTimePicker_Tu
             // 
-            this.dateTimePicker_Tu.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_Tu.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker_Tu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_Tu.Location = new System.Drawing.Point(425, 90);
             this.dateTimePicker_Tu.Name = "dateTimePicker_Tu";
             this.dateTimePicker_Tu.Size = new System.Drawing.Size(95, 20);
@@ -861,7 +833,8 @@
             // 
             // dateTimePicker5
             // 
-            this.dateTimePicker5.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker5.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker5.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker5.Location = new System.Drawing.Point(204, 18);
             this.dateTimePicker5.Name = "dateTimePicker5";
             this.dateTimePicker5.Size = new System.Drawing.Size(79, 20);
@@ -1203,292 +1176,6 @@
             this.label43.Size = new System.Drawing.Size(193, 13);
             this.label43.TabIndex = 190;
             this.label43.Text = "Quá trình bệnh lý và biễn biến lâm sàng";
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Controls.Add(this.groupBox3);
-            this.tabPage6.Controls.Add(this.label33);
-            this.tabPage6.Controls.Add(this.dateTimePicker1);
-            this.tabPage6.Controls.Add(this.dateTimePicker2);
-            this.tabPage6.Controls.Add(this.dateTimePicker3);
-            this.tabPage6.Controls.Add(this.dateTimePicker4);
-            this.tabPage6.Controls.Add(this.label11);
-            this.tabPage6.Controls.Add(this.label13);
-            this.tabPage6.Controls.Add(this.textBox31);
-            this.tabPage6.Controls.Add(this.label15);
-            this.tabPage6.Controls.Add(this.comboBox1);
-            this.tabPage6.Controls.Add(this.label16);
-            this.tabPage6.Controls.Add(this.textBox32);
-            this.tabPage6.Controls.Add(this.label28);
-            this.tabPage6.Controls.Add(this.textBox33);
-            this.tabPage6.Controls.Add(this.label29);
-            this.tabPage6.Controls.Add(this.label31);
-            this.tabPage6.Controls.Add(this.label32);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(848, 530);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Điều trị Ngoại trú";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.checkBox38);
-            this.groupBox3.Controls.Add(this.checkBox43);
-            this.groupBox3.Controls.Add(this.checkBox44);
-            this.groupBox3.Controls.Add(this.checkBox34);
-            this.groupBox3.Controls.Add(this.checkBox35);
-            this.groupBox3.Controls.Add(this.checkBox36);
-            this.groupBox3.Controls.Add(this.checkBox33);
-            this.groupBox3.Controls.Add(this.checkBox32);
-            this.groupBox3.Controls.Add(this.checkBox31);
-            this.groupBox3.Location = new System.Drawing.Point(99, 130);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(504, 108);
-            this.groupBox3.TabIndex = 194;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Xử trí";
-            // 
-            // checkBox38
-            // 
-            this.checkBox38.AutoSize = true;
-            this.checkBox38.Location = new System.Drawing.Point(265, 70);
-            this.checkBox38.Name = "checkBox38";
-            this.checkBox38.Size = new System.Drawing.Size(86, 17);
-            this.checkBox38.TabIndex = 8;
-            this.checkBox38.Text = "checkBox38";
-            this.checkBox38.UseVisualStyleBackColor = true;
-            // 
-            // checkBox43
-            // 
-            this.checkBox43.AutoSize = true;
-            this.checkBox43.Location = new System.Drawing.Point(265, 47);
-            this.checkBox43.Name = "checkBox43";
-            this.checkBox43.Size = new System.Drawing.Size(86, 17);
-            this.checkBox43.TabIndex = 7;
-            this.checkBox43.Text = "checkBox43";
-            this.checkBox43.UseVisualStyleBackColor = true;
-            // 
-            // checkBox44
-            // 
-            this.checkBox44.AutoSize = true;
-            this.checkBox44.Location = new System.Drawing.Point(265, 24);
-            this.checkBox44.Name = "checkBox44";
-            this.checkBox44.Size = new System.Drawing.Size(86, 17);
-            this.checkBox44.TabIndex = 6;
-            this.checkBox44.Text = "checkBox44";
-            this.checkBox44.UseVisualStyleBackColor = true;
-            // 
-            // checkBox34
-            // 
-            this.checkBox34.AutoSize = true;
-            this.checkBox34.Location = new System.Drawing.Point(144, 70);
-            this.checkBox34.Name = "checkBox34";
-            this.checkBox34.Size = new System.Drawing.Size(86, 17);
-            this.checkBox34.TabIndex = 5;
-            this.checkBox34.Text = "checkBox34";
-            this.checkBox34.UseVisualStyleBackColor = true;
-            // 
-            // checkBox35
-            // 
-            this.checkBox35.AutoSize = true;
-            this.checkBox35.Location = new System.Drawing.Point(144, 47);
-            this.checkBox35.Name = "checkBox35";
-            this.checkBox35.Size = new System.Drawing.Size(86, 17);
-            this.checkBox35.TabIndex = 4;
-            this.checkBox35.Text = "checkBox35";
-            this.checkBox35.UseVisualStyleBackColor = true;
-            // 
-            // checkBox36
-            // 
-            this.checkBox36.AutoSize = true;
-            this.checkBox36.Location = new System.Drawing.Point(144, 24);
-            this.checkBox36.Name = "checkBox36";
-            this.checkBox36.Size = new System.Drawing.Size(68, 17);
-            this.checkBox36.TabIndex = 3;
-            this.checkBox36.Text = "Theo dõi";
-            this.checkBox36.UseVisualStyleBackColor = true;
-            // 
-            // checkBox33
-            // 
-            this.checkBox33.AutoSize = true;
-            this.checkBox33.Location = new System.Drawing.Point(23, 70);
-            this.checkBox33.Name = "checkBox33";
-            this.checkBox33.Size = new System.Drawing.Size(74, 17);
-            this.checkBox33.TabIndex = 2;
-            this.checkBox33.Text = "Chạy thận";
-            this.checkBox33.UseVisualStyleBackColor = true;
-            // 
-            // checkBox32
-            // 
-            this.checkBox32.AutoSize = true;
-            this.checkBox32.Location = new System.Drawing.Point(23, 47);
-            this.checkBox32.Name = "checkBox32";
-            this.checkBox32.Size = new System.Drawing.Size(79, 17);
-            this.checkBox32.TabIndex = 1;
-            this.checkBox32.Text = "Xét nghiệm";
-            this.checkBox32.UseVisualStyleBackColor = true;
-            // 
-            // checkBox31
-            // 
-            this.checkBox31.AutoSize = true;
-            this.checkBox31.Location = new System.Drawing.Point(23, 24);
-            this.checkBox31.Name = "checkBox31";
-            this.checkBox31.Size = new System.Drawing.Size(63, 17);
-            this.checkBox31.TabIndex = 0;
-            this.checkBox31.Text = "Cấp toa";
-            this.checkBox31.UseVisualStyleBackColor = true;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(46, 126);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(39, 13);
-            this.label33.TabIndex = 193;
-            this.label33.Text = "Xử trí :";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(89, 17);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(105, 20);
-            this.dateTimePicker1.TabIndex = 177;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker2.Location = new System.Drawing.Point(232, 18);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.ShowUpDown = true;
-            this.dateTimePicker2.Size = new System.Drawing.Size(82, 20);
-            this.dateTimePicker2.TabIndex = 178;
-            // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker3.Location = new System.Drawing.Point(531, 93);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(85, 20);
-            this.dateTimePicker3.TabIndex = 184;
-            // 
-            // dateTimePicker4
-            // 
-            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker4.Location = new System.Drawing.Point(405, 91);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(95, 20);
-            this.dateTimePicker4.TabIndex = 183;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(506, 95);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(27, 13);
-            this.label11.TabIndex = 192;
-            this.label11.Text = "Đến";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(379, 95);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(20, 13);
-            this.label13.TabIndex = 191;
-            this.label13.Text = "Từ";
-            // 
-            // textBox31
-            // 
-            this.textBox31.Location = new System.Drawing.Point(89, 91);
-            this.textBox31.Name = "textBox31";
-            this.textBox31.Size = new System.Drawing.Size(283, 20);
-            this.textBox31.TabIndex = 182;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(46, 94);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(44, 13);
-            this.label15.TabIndex = 190;
-            this.label15.Text = "Số thẻ :";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "BHYT",
-            "THU PHÍ",
-            "MIỄN PHÍ",
-            "KHÁC"});
-            this.comboBox1.Location = new System.Drawing.Point(89, 42);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(105, 21);
-            this.comboBox1.TabIndex = 180;
-            this.comboBox1.Text = "BHYT";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(31, 48);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(59, 13);
-            this.label16.TabIndex = 189;
-            this.label16.Text = "Đối tượng :";
-            // 
-            // textBox32
-            // 
-            this.textBox32.Location = new System.Drawing.Point(89, 67);
-            this.textBox32.Name = "textBox32";
-            this.textBox32.Size = new System.Drawing.Size(527, 20);
-            this.textBox32.TabIndex = 181;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(14, 71);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(76, 13);
-            this.label28.TabIndex = 188;
-            this.label28.Text = "Nơi DKKBBĐ :";
-            // 
-            // textBox33
-            // 
-            this.textBox33.Location = new System.Drawing.Point(424, 18);
-            this.textBox33.Name = "textBox33";
-            this.textBox33.Size = new System.Drawing.Size(188, 20);
-            this.textBox33.TabIndex = 179;
-            this.textBox33.Text = "KHOA THẬN";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(341, 22);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(73, 13);
-            this.label29.TabIndex = 187;
-            this.label29.Text = "Phòng khám :";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(200, 22);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(27, 13);
-            this.label31.TabIndex = 186;
-            this.label31.Text = "giờ :";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(22, 22);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(68, 13);
-            this.label32.TabIndex = 185;
-            this.label32.Text = "Ngày Khám :";
             // 
             // tabPage4
             // 
@@ -2799,7 +2486,8 @@
             // 
             // dateTimePicker_ngayhoichuan_hoichuan
             // 
-            this.dateTimePicker_ngayhoichuan_hoichuan.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_ngayhoichuan_hoichuan.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker_ngayhoichuan_hoichuan.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_ngayhoichuan_hoichuan.Location = new System.Drawing.Point(482, 53);
             this.dateTimePicker_ngayhoichuan_hoichuan.Name = "dateTimePicker_ngayhoichuan_hoichuan";
             this.dateTimePicker_ngayhoichuan_hoichuan.Size = new System.Drawing.Size(90, 20);
@@ -2943,10 +2631,6 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.tabPage6.ResumeLayout(false);
-            this.tabPage6.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
@@ -3003,7 +2687,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.DateTimePicker dateTimePicker_Ngaykham;
         private System.Windows.Forms.DateTimePicker dateTimePicker_Giokham;
         private System.Windows.Forms.DateTimePicker dateTimePicker_Den;
@@ -3034,33 +2717,6 @@
         private System.Windows.Forms.TextBox textBox_Chuandoan;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.CheckBox checkBox38;
-        private System.Windows.Forms.CheckBox checkBox43;
-        private System.Windows.Forms.CheckBox checkBox44;
-        private System.Windows.Forms.CheckBox checkBox34;
-        private System.Windows.Forms.CheckBox checkBox35;
-        private System.Windows.Forms.CheckBox checkBox36;
-        private System.Windows.Forms.CheckBox checkBox33;
-        private System.Windows.Forms.CheckBox checkBox32;
-        private System.Windows.Forms.CheckBox checkBox31;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker4;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox31;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox32;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.TextBox textBox33;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Button button_print_todieutri;
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.Button button_del_dieutri;

@@ -20,11 +20,8 @@ namespace QLBV_normal
         public BenhvienForm frmBenhvien;
         public DangkyForm frmDangky;
         public ThuocForm frmThuoc;
-        public NgoaitruFormold frmNgoaitru;
-        public SearchPhieukhambenhForm frmSearchPhieukhambenh;
         public ReportForm frmReport;
-		public NgoaitruForm frmNgoaitrunew;
-        public PhieuxetnghiemForm frmPhieuxetnghiem; 
+		public NgoaitruForm frmNgoaitru;
 
         //Global class variable
 
@@ -42,7 +39,7 @@ namespace QLBV_normal
                 Session.SERVER = Util.connect(server);
                 if (Session.SERVER.Count != 0)
                 {
-                    Session.USER.Add("admin", "remove me");
+                    //Session.USER.Add("admin", "remove me");
                     if (Session.USER.Count == 0)
                     {
                         this.frmLogin = new LoginForm();
@@ -116,34 +113,16 @@ namespace QLBV_normal
 
         private void nGOẠITRÚToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (frmNgoaitrunew == null || frmNgoaitrunew.IsDisposed)
+            if (frmNgoaitru == null || frmNgoaitru.IsDisposed)
             {
-                frmNgoaitrunew = new NgoaitruForm();
-                frmNgoaitrunew.frmMain = this;
-                frmNgoaitrunew.MdiParent = this;
-                frmNgoaitrunew.Show();
+                frmNgoaitru = new NgoaitruForm();
+                frmNgoaitru.frmMain = this;
+                frmNgoaitru.MdiParent = this;
+                frmNgoaitru.Show();
             }
             else
             {
-                frmNgoaitrunew.Focus();
-            }
-        }
-
-        private void bỆNHÁNNGOẠITRÚToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (frmReport == null || frmReport.IsDisposed)
-            {
-                frmReport = new ReportForm();
-                frmReport.frmMain = this;
-                frmReport.MdiParent = this;
-                frmReport.arrReport = new ArrayList();
-                Todieutri bant = new Todieutri();
-                frmReport.arrReport.Add(bant);
-                frmReport.Show();
-            }
-            else
-            {
-                frmReport.Focus();
+                frmNgoaitru.Focus();
             }
         }
 
@@ -161,21 +140,5 @@ namespace QLBV_normal
                 frmThongtinbenhnhan.Focus();
             }
         }
-
-        private void phieuXetNghiemTestToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (frmPhieuxetnghiem == null || frmPhieuxetnghiem.IsDisposed)
-            {
-                frmPhieuxetnghiem = new PhieuxetnghiemForm();
-                frmPhieuxetnghiem.frmMain = this;
-                frmPhieuxetnghiem.MdiParent = this;
-                frmPhieuxetnghiem.Show();
-            }
-            else
-            {
-                frmPhieuxetnghiem.Focus();
-            }
-        }
-
     }
 }
