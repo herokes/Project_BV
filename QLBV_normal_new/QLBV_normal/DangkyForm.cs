@@ -61,6 +61,8 @@ namespace QLBV_normal
             //// cap nhat phieu kham benh
             //try
             //{
+            if (kiemtranhap)
+            {
                 if (Kiemtrabenhnhanxuatvien(textBox_MaBN.Text) == true)
                 {
                     MySqlCommand com1 = new MySqlCommand();
@@ -105,9 +107,9 @@ namespace QLBV_normal
                     com1.Parameters.Add("@chuy", MySqlDbType.VarChar, 200).Value = textBox_Chuy.Text;
                     com1.Parameters.Add("@idbenhnhan", MySqlDbType.Int64, 20).Value = textBox_MaBN.Text;
                     com1.Parameters.Add("@benhchinh", MySqlDbType.VarChar, 50).Value = textBox_Chuandoan_chinh.Text;
-                    com1.Parameters.Add("@chuandoankhiravien", MySqlDbType.VarChar, 50).Value =richTextBox_chuandoan.Text;
+                    com1.Parameters.Add("@chuandoankhiravien", MySqlDbType.VarChar, 50).Value = richTextBox_chuandoan.Text;
                     com1.Parameters.Add("@benhkemtheo", MySqlDbType.VarChar, 100).Value = benhkemtheo;
-                     //string benhkemtheo = chuan
+                    //string benhkemtheo = chuan
 
 
 
@@ -131,9 +133,9 @@ namespace QLBV_normal
 
                     /// nhap vao ngoai tru hay noi tru 
                     /// lay ma phieu kham benh
-                     
+
                     com1.CommandText = @"SELECT MAX( phieukhambenh.id ) FROM phieukhambenh WHERE  benhnhan_id = "
-                        + textBox_MaBN.Text  ;
+                        + textBox_MaBN.Text;
                     //MessageBox.Show("executenonquery select");
                     Util.con.Open();
                     int maphieukhambenh = (int)com1.ExecuteScalar();
@@ -146,7 +148,7 @@ namespace QLBV_normal
                                                 Soxquang,Soctscanner,Sosieuam,Soxetnghiem,Sokhac)
                                                 VALUES (NULL , @thoigiandenkham , @benhchinh , @benhkemtheo ,@thoigiandenkham , @thoigiandenkham ,
                                                 0,@chuandoankhiravien , 'đổi hồ sơ tiếp tục điều trị' ,'" + comboBox_Bacsikham.Text + "','" + comboBox_Bacsikham.Text + "'," + maphieukhambenh + ",0,0,0,0,0)";
-                    
+
                     else com1.CommandText = "INSERT INTO `dbthan`.`noitru` (`id`, `Thoigianvaovien`, `Tructiepvao`, `Vaolanthu`, `Ngaygiovaokhoa`, `Chuyenkhoa`, `Ngaygiochuyenkhoa`, `Chuyenvien`, `Chuyenden`, `Ngaygioravien`, `Loairavien`, `Noichuyenden`, `KKBCapcuu`, `Khivaokhoadieutri`, `Thuthuat`, `Phauthuat`, `Benhchinh`, `Benhkemtheo`, `Taibien`, `Bienchung`, `Ketquadieutri`, `Giaiphaubenh`, `Thoigiantuvong`, `Lydotuvong`, `Nguyennhanchinhtuvong`, `Khamnghiemtuthi`, `Chuandoangiaiphaututhi`, `Diung`, `Matuy`, `Ruoubia`, `Thuocla`, `Thuoclao`, `Khac`, `Tuanhoan`, `Hohap`, `Tieuhoa`, `Thantietnieusinhduc`, `Thankinh`, `Coxuongkhop`, `Taimuihong`, `Ranghammat`, `Mat`, `Noitietdinhduong`, `Tomtatbenhan`, `Tienluong`, `Huongdieutri`, `Phuongphapdieutri`, `BStruongkhoa`, `Bslambenhan`, `BSdieutri`, `Phieukhambenh_id`) VALUES (NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL," + maphieukhambenh + ")";
                     Util.con.Open();
                     com1.ExecuteNonQuery();
@@ -164,6 +166,7 @@ namespace QLBV_normal
                     MessageBox.Show("Đăng ký phiếu khám bệnh và nhập khoa thành công");
                 }
                 else MessageBox.Show(" Bệnh nhân chưa xuất viện");
+            }
             //}
             //catch (MySqlException sqlE)
             //{
@@ -715,6 +718,71 @@ namespace QLBV_normal
             if (textBox_Diachinguoithan.Text == string.Empty)
             {
                 MessageBox.Show("Địa chỉ  không được để trống");
+                return false;
+            }
+            if (textBox_Noigioithieu.Text == string.Empty)
+            {
+                MessageBox.Show("Nơi giới thiệu không được để trống");
+                return false;
+            }
+            if (textBox_Lydovaovien.Text == string.Empty)
+            {
+                MessageBox.Show("Lý do vào viện không được để trống không được để trống");
+                return false;
+            }
+            if (textBox_Quatrinhbenhly.Text == string.Empty)
+            {
+                MessageBox.Show("Quá trình bệnh lý không được để trống");
+                return false;
+            }
+            if (textBox_Tiensubenhbanthan.Text == string.Empty)
+            {
+                MessageBox.Show("Tiền sử bản thân không được để trống");
+                return false;
+            }
+            if (textBox_tiensubenhgiadinh.Text == string.Empty)
+            {
+                MessageBox.Show("Tiền sử gia đình không được để trống");
+                return false;
+            }
+            if (textBox_Mach.Text == string.Empty)
+            {
+                MessageBox.Show("Mạch không được để trống");
+                return false;
+            }
+            if (textBox_Nhiet.Text == string.Empty)
+            {
+                MessageBox.Show("Nhiệt độ không được để trống");
+                return false;
+            }
+            if (textBox_Huyetap.Text == string.Empty)
+            {
+                MessageBox.Show("Huyết áp không được để trống");
+                return false;
+            }
+            if (textBox_Nhiptho.Text == string.Empty)
+            {
+                MessageBox.Show("Nhịp thở không được để trống");
+                return false;
+            }
+            if (textBox_Trongluong.Text == string.Empty)
+            {
+                MessageBox.Show("Trọng lượng không được để trống");
+                return false;
+            }
+            if (richText_Toanthan.Text == string.Empty)
+            {
+                MessageBox.Show("Toàn thân không được để trống");
+                return false;
+            }
+            if (richTextBox_Cacbophan.Text == string.Empty)
+            {
+                MessageBox.Show("Các bộ phận không được để trống");
+                return false;
+            }
+            if (richTextBox_chuandoan.Text == string.Empty)
+            {
+                MessageBox.Show("Chuẩn đoán không được để trống");
                 return false;
             }
             if (textBox_Noigioithieu.Text == string.Empty)
