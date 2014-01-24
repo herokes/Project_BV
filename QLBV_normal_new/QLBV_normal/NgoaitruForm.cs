@@ -881,6 +881,7 @@ namespace QLBV_normal
                 int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
                 int idBacsi = int.Parse(comboBox_bacsi_phieuxetnghiem.SelectedValue.ToString());
                 updateYlenh(1, idPhieuxetnghiem, idPhieukhambenh, idBacsi);
+                load_Ylenh(idBenhnhan);
             }
             catch (MySqlException sqlE)
             {
@@ -1066,6 +1067,7 @@ namespace QLBV_normal
                     int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
                     int idBacsi = int.Parse(comboBox_bacsi_phieuxetnghiem.SelectedValue.ToString());
                     updateYlenh(2, idPhieuxetnghiem, idPhieukhambenh, idBacsi);
+                    load_Ylenh(idBenhnhan);
                     // load combobox ngay hoi chuan
                     load_Phieuxetnhgiem_hoichuan(idBenhnhan, idPhieukhambenh);
                 }
@@ -1510,19 +1512,37 @@ namespace QLBV_normal
                 }
                 else
                 {
-                    if (MessageBox.Show("Bạn có muốn hủy y lệnh chưa hoàn thành trước đó và sử dụng y lệnh vừa tạo?", "Xác nhận xóa y lệnh chưa hoàn thành", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    bool hasYlenhIncomplete = false;
+                    com.CommandText = @"SELECT ylenh.*
+                                        FROM ylenh
+                                        WHERE phieukhambenh_id=@idPhieukhambenh
+                                            AND status=1";
+                    Util.con.Open();
+                    read = com.ExecuteReader();
+                    if (read.Read())
                     {
-                        com.CommandText = "DELETE FROM ylenh WHERE phieukhambenh_id=@idPhieukhambenh AND status=1";
-                        Util.con.Open();
-                        com.ExecuteNonQuery();
-                        Util.con.Close();
-
-                        com.CommandText = @"INSERT INTO ylenh (loai, id_loai, Mota, Phieukhambenh_id, Bacsi_id) 
-                                                VALUES (@loai, @idLoai, @mota, @idPhieukhambenh, @idBacsi)";
-                        Util.con.Open();
-                        com.ExecuteNonQuery();
-                        Util.con.Close();
+                        hasYlenhIncomplete = true;
                     }
+                    Util.con.Close();
+                    if (hasYlenhIncomplete)
+                    {
+                        if (MessageBox.Show("Bạn có muốn hủy y lệnh chưa hoàn thành trước đó và sử dụng y lệnh vừa tạo?", "Xác nhận xóa y lệnh chưa hoàn thành", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            com.CommandText = "DELETE FROM ylenh WHERE phieukhambenh_id=@idPhieukhambenh AND status=1";
+                            Util.con.Open();
+                            com.ExecuteNonQuery();
+                            Util.con.Close();
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
+                    com.CommandText = @"INSERT INTO ylenh (loai, id_loai, Mota, Phieukhambenh_id, Bacsi_id) 
+                                                VALUES (@loai, @idLoai, @mota, @idPhieukhambenh, @idBacsi)";
+                    Util.con.Open();
+                    com.ExecuteNonQuery();
+                    Util.con.Close();
                 }
             }
             catch (MySqlException sqlE)
@@ -2025,6 +2045,7 @@ namespace QLBV_normal
                     int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
                     int idBacsi = int.Parse(comboBox_bacsi_toathuoc.SelectedValue.ToString());
                     updateYlenh(3, idToathuoc, idPhieukhambenh, idBacsi);
+                    load_Ylenh(idBenhnhan);
                 }
 
             }
@@ -2708,6 +2729,7 @@ namespace QLBV_normal
                 int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
                 int idBacsi = int.Parse(comboBox_bacsi_toathuoc.SelectedValue.ToString());
                 updateYlenh(3, idToathuoc, idPhieukhambenh, idBacsi);
+                load_Ylenh(idBenhnhan);
             }
             catch (MySqlException sqlE)
             {
@@ -3320,6 +3342,7 @@ namespace QLBV_normal
                     int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
                     int idBacsi = int.Parse(comboBox_bacsi_toathuoc.SelectedValue.ToString());
                     updateYlenh(4, idChaythan, idPhieukhambenh, idBacsi);
+                    load_Ylenh(idBenhnhan);
                 }
 
             }
@@ -3398,6 +3421,7 @@ namespace QLBV_normal
                 int idPhieukhambenh = int.Parse(currentObject["idPhieukhambenh"].ToString());
                 int idBacsi = int.Parse(comboBox_bacsi_toathuoc.SelectedValue.ToString());
                 updateYlenh(4, idChaythan, idPhieukhambenh, idBacsi);
+                load_Ylenh(idBenhnhan);
             }
             catch (MySqlException sqlE)
             {
