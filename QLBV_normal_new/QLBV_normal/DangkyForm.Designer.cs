@@ -42,7 +42,6 @@
             this.dateTimePicker_Den = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker_Tu = new System.Windows.Forms.DateTimePicker();
             this.textBox_idbacsikham = new System.Windows.Forms.TextBox();
-            this.comboBox_Bacsikham = new System.Windows.Forms.ComboBox();
             this.richTextBox_Xuly = new System.Windows.Forms.RichTextBox();
             this.richTextBox_Tomtat = new System.Windows.Forms.RichTextBox();
             this.richTextBox_Cacbophan = new System.Windows.Forms.RichTextBox();
@@ -125,6 +124,7 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label4 = new System.Windows.Forms.Label();
+            this.textBox_bacsikham = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -136,6 +136,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.textBox_bacsikham);
             this.groupBox2.Controls.Add(this.richTextBox_chuandoan);
             this.groupBox2.Controls.Add(this.textBox_idICD_kemtheo);
             this.groupBox2.Controls.Add(this.textBox_idICD_chinh);
@@ -147,7 +148,6 @@
             this.groupBox2.Controls.Add(this.dateTimePicker_Den);
             this.groupBox2.Controls.Add(this.dateTimePicker_Tu);
             this.groupBox2.Controls.Add(this.textBox_idbacsikham);
-            this.groupBox2.Controls.Add(this.comboBox_Bacsikham);
             this.groupBox2.Controls.Add(this.richTextBox_Xuly);
             this.groupBox2.Controls.Add(this.richTextBox_Tomtat);
             this.groupBox2.Controls.Add(this.richTextBox_Cacbophan);
@@ -248,6 +248,7 @@
             this.textBox_tiensubenhgiadinh.Name = "textBox_tiensubenhgiadinh";
             this.textBox_tiensubenhgiadinh.Size = new System.Drawing.Size(527, 20);
             this.textBox_tiensubenhgiadinh.TabIndex = 22;
+            this.textBox_tiensubenhgiadinh.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_tiensubenhgiadinh_KeyDown);
             // 
             // label50
             // 
@@ -272,7 +273,8 @@
             // 
             // dateTimePicker_Ngaykham
             // 
-            this.dateTimePicker_Ngaykham.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_Ngaykham.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker_Ngaykham.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_Ngaykham.Location = new System.Drawing.Point(148, 47);
             this.dateTimePicker_Ngaykham.Name = "dateTimePicker_Ngaykham";
             this.dateTimePicker_Ngaykham.Size = new System.Drawing.Size(105, 20);
@@ -288,19 +290,23 @@
             // 
             // dateTimePicker_Den
             // 
-            this.dateTimePicker_Den.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_Den.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker_Den.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_Den.Location = new System.Drawing.Point(590, 123);
             this.dateTimePicker_Den.Name = "dateTimePicker_Den";
             this.dateTimePicker_Den.Size = new System.Drawing.Size(85, 20);
             this.dateTimePicker_Den.TabIndex = 14;
+            this.dateTimePicker_Den.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker_Den_KeyDown);
             // 
             // dateTimePicker_Tu
             // 
-            this.dateTimePicker_Tu.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_Tu.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker_Tu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_Tu.Location = new System.Drawing.Point(464, 121);
             this.dateTimePicker_Tu.Name = "dateTimePicker_Tu";
             this.dateTimePicker_Tu.Size = new System.Drawing.Size(95, 20);
             this.dateTimePicker_Tu.TabIndex = 13;
+            this.dateTimePicker_Tu.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker_Tu_KeyDown);
             // 
             // textBox_idbacsikham
             // 
@@ -309,14 +315,7 @@
             this.textBox_idbacsikham.Size = new System.Drawing.Size(48, 20);
             this.textBox_idbacsikham.TabIndex = 37;
             this.textBox_idbacsikham.TextChanged += new System.EventHandler(this.textBox_idbacsikham_TextChanged_1);
-            // 
-            // comboBox_Bacsikham
-            // 
-            this.comboBox_Bacsikham.FormattingEnabled = true;
-            this.comboBox_Bacsikham.Location = new System.Drawing.Point(207, 606);
-            this.comboBox_Bacsikham.Name = "comboBox_Bacsikham";
-            this.comboBox_Bacsikham.Size = new System.Drawing.Size(229, 21);
-            this.comboBox_Bacsikham.TabIndex = 131;
+            this.textBox_idbacsikham.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_idbacsikham_KeyDown);
             // 
             // richTextBox_Xuly
             // 
@@ -333,6 +332,7 @@
             this.richTextBox_Tomtat.Size = new System.Drawing.Size(190, 32);
             this.richTextBox_Tomtat.TabIndex = 30;
             this.richTextBox_Tomtat.Text = "";
+            this.richTextBox_Tomtat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox_Tomtat_KeyDown);
             // 
             // richTextBox_Cacbophan
             // 
@@ -341,6 +341,7 @@
             this.richTextBox_Cacbophan.Size = new System.Drawing.Size(190, 32);
             this.richTextBox_Cacbophan.TabIndex = 29;
             this.richTextBox_Cacbophan.Text = "";
+            this.richTextBox_Cacbophan.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox_Cacbophan_KeyDown);
             // 
             // richText_Toanthan
             // 
@@ -349,6 +350,7 @@
             this.richText_Toanthan.Size = new System.Drawing.Size(190, 32);
             this.richText_Toanthan.TabIndex = 28;
             this.richText_Toanthan.Text = "";
+            this.richText_Toanthan.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richText_Toanthan_KeyDown);
             // 
             // label46
             // 
@@ -401,6 +403,7 @@
             this.textBox_Diachinguoithan.Name = "textBox_Diachinguoithan";
             this.textBox_Diachinguoithan.Size = new System.Drawing.Size(527, 20);
             this.textBox_Diachinguoithan.TabIndex = 17;
+            this.textBox_Diachinguoithan.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_Diachinguoithan_KeyDown);
             // 
             // label44
             // 
@@ -417,6 +420,7 @@
             this.textBox_Chuy.Name = "textBox_Chuy";
             this.textBox_Chuy.Size = new System.Drawing.Size(283, 20);
             this.textBox_Chuy.TabIndex = 36;
+            this.textBox_Chuy.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_Chuy_KeyDown);
             // 
             // textBox_chuandoan_kemtheo
             // 
@@ -446,6 +450,7 @@
             this.textBox_Trongluong.Name = "textBox_Trongluong";
             this.textBox_Trongluong.Size = new System.Drawing.Size(53, 20);
             this.textBox_Trongluong.TabIndex = 27;
+            this.textBox_Trongluong.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_Trongluong_KeyDown);
             // 
             // textBox_Nhiptho
             // 
@@ -453,6 +458,7 @@
             this.textBox_Nhiptho.Name = "textBox_Nhiptho";
             this.textBox_Nhiptho.Size = new System.Drawing.Size(53, 20);
             this.textBox_Nhiptho.TabIndex = 26;
+            this.textBox_Nhiptho.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_Nhiptho_KeyDown);
             // 
             // textBox_Huyetap
             // 
@@ -460,6 +466,7 @@
             this.textBox_Huyetap.Name = "textBox_Huyetap";
             this.textBox_Huyetap.Size = new System.Drawing.Size(53, 20);
             this.textBox_Huyetap.TabIndex = 25;
+            this.textBox_Huyetap.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_Huyetap_KeyDown);
             // 
             // textBox_Nhiet
             // 
@@ -467,6 +474,7 @@
             this.textBox_Nhiet.Name = "textBox_Nhiet";
             this.textBox_Nhiet.Size = new System.Drawing.Size(53, 20);
             this.textBox_Nhiet.TabIndex = 24;
+            this.textBox_Nhiet.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_Nhiet_KeyDown);
             // 
             // textBox_Mach
             // 
@@ -474,6 +482,7 @@
             this.textBox_Mach.Name = "textBox_Mach";
             this.textBox_Mach.Size = new System.Drawing.Size(53, 20);
             this.textBox_Mach.TabIndex = 23;
+            this.textBox_Mach.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_Mach_KeyDown);
             // 
             // textBox_Tiensubenhbanthan
             // 
@@ -481,6 +490,7 @@
             this.textBox_Tiensubenhbanthan.Name = "textBox_Tiensubenhbanthan";
             this.textBox_Tiensubenhbanthan.Size = new System.Drawing.Size(527, 20);
             this.textBox_Tiensubenhbanthan.TabIndex = 21;
+            this.textBox_Tiensubenhbanthan.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_Tiensubenhbanthan_KeyDown);
             // 
             // textBox_Quatrinhbenhly
             // 
@@ -488,6 +498,7 @@
             this.textBox_Quatrinhbenhly.Name = "textBox_Quatrinhbenhly";
             this.textBox_Quatrinhbenhly.Size = new System.Drawing.Size(527, 20);
             this.textBox_Quatrinhbenhly.TabIndex = 20;
+            this.textBox_Quatrinhbenhly.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_Quatrinhbenhly_KeyDown);
             // 
             // textBox_Lydovaovien
             // 
@@ -495,6 +506,7 @@
             this.textBox_Lydovaovien.Name = "textBox_Lydovaovien";
             this.textBox_Lydovaovien.Size = new System.Drawing.Size(527, 20);
             this.textBox_Lydovaovien.TabIndex = 19;
+            this.textBox_Lydovaovien.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_Lydovaovien_KeyDown);
             // 
             // textBox_Noigioithieu
             // 
@@ -502,6 +514,7 @@
             this.textBox_Noigioithieu.Name = "textBox_Noigioithieu";
             this.textBox_Noigioithieu.Size = new System.Drawing.Size(527, 20);
             this.textBox_Noigioithieu.TabIndex = 18;
+            this.textBox_Noigioithieu.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_Noigioithieu_KeyDown);
             // 
             // textBox_Dienthoai
             // 
@@ -509,6 +522,7 @@
             this.textBox_Dienthoai.Name = "textBox_Dienthoai";
             this.textBox_Dienthoai.Size = new System.Drawing.Size(170, 20);
             this.textBox_Dienthoai.TabIndex = 16;
+            this.textBox_Dienthoai.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_Dienthoai_KeyDown);
             // 
             // textBox_Nguoithan
             // 
@@ -516,6 +530,8 @@
             this.textBox_Nguoithan.Name = "textBox_Nguoithan";
             this.textBox_Nguoithan.Size = new System.Drawing.Size(283, 20);
             this.textBox_Nguoithan.TabIndex = 15;
+            this.textBox_Nguoithan.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_Nguoithan_KeyDown);
+            this.textBox_Nguoithan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Nguoithan_KeyPress);
             // 
             // label36
             // 
@@ -721,6 +737,7 @@
             this.textBox_Sothe.Name = "textBox_Sothe";
             this.textBox_Sothe.Size = new System.Drawing.Size(283, 20);
             this.textBox_Sothe.TabIndex = 12;
+            this.textBox_Sothe.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_Sothe_KeyDown);
             // 
             // label22
             // 
@@ -761,6 +778,7 @@
             this.textBox_NoiDKKCBBD.Name = "textBox_NoiDKKCBBD";
             this.textBox_NoiDKKCBBD.Size = new System.Drawing.Size(527, 20);
             this.textBox_NoiDKKCBBD.TabIndex = 11;
+            this.textBox_NoiDKKCBBD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_NoiDKKCBBD_KeyDown);
             // 
             // label20
             // 
@@ -885,7 +903,6 @@
             // 
             this.textBox_Ten.Location = new System.Drawing.Point(273, 24);
             this.textBox_Ten.Name = "textBox_Ten";
-            this.textBox_Ten.ReadOnly = true;
             this.textBox_Ten.Size = new System.Drawing.Size(327, 20);
             this.textBox_Ten.TabIndex = 2;
             this.textBox_Ten.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Ten_KeyPress);
@@ -976,7 +993,8 @@
             // 
             // dateTimePicker_Namsinh
             // 
-            this.dateTimePicker_Namsinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_Namsinh.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker_Namsinh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_Namsinh.Location = new System.Drawing.Point(78, 55);
             this.dateTimePicker_Namsinh.Name = "dateTimePicker_Namsinh";
             this.dateTimePicker_Namsinh.Size = new System.Drawing.Size(121, 20);
@@ -1039,6 +1057,14 @@
             this.label4.TabIndex = 51;
             this.label4.Text = "Các lần khám bệnh";
             // 
+            // textBox_bacsikham
+            // 
+            this.textBox_bacsikham.Location = new System.Drawing.Point(209, 634);
+            this.textBox_bacsikham.Name = "textBox_bacsikham";
+            this.textBox_bacsikham.Size = new System.Drawing.Size(233, 20);
+            this.textBox_bacsikham.TabIndex = 165;
+            this.textBox_bacsikham.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_bacsikham_KeyDown);
+            // 
             // DangkyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1079,7 +1105,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker_Den;
         private System.Windows.Forms.DateTimePicker dateTimePicker_Tu;
         private System.Windows.Forms.TextBox textBox_idbacsikham;
-        private System.Windows.Forms.ComboBox comboBox_Bacsikham;
         private System.Windows.Forms.RichTextBox richTextBox_Xuly;
         private System.Windows.Forms.RichTextBox richTextBox_Tomtat;
         private System.Windows.Forms.RichTextBox richTextBox_Cacbophan;
@@ -1167,6 +1192,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox_idICD_kemtheo;
         private System.Windows.Forms.TextBox textBox_chuandoan_kemtheo;
+        private System.Windows.Forms.TextBox textBox_bacsikham;
 
     }
 }

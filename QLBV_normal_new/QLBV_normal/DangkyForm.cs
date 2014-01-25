@@ -26,10 +26,14 @@ namespace QLBV_normal
 
         private void DangkyForm_Load(object sender, EventArgs e)
         {
-           
-            Show_Combobox_Bacsi();
-            
-            
+
+            Clear_Thongtin();
+            dateTimePicker_Tu.Format = DateTimePickerFormat.Custom;
+            dateTimePicker_Tu.CustomFormat = "dd/MM/yyyy";
+            dateTimePicker_Den.Format = DateTimePickerFormat.Custom;
+            dateTimePicker_Den.CustomFormat = "dd/MM/yyyy";
+            dateTimePicker_Ngaykham.Format = DateTimePickerFormat.Custom;
+            dateTimePicker_Ngaykham.CustomFormat = "dd/MM/yyyy";
 
         }
         public bool Kiemtrabenhnhanxuatvien(String mabn)
@@ -61,7 +65,7 @@ namespace QLBV_normal
             //// cap nhat phieu kham benh
             //try
             //{
-            if (kiemtranhap)
+            if (kiemtranhap())
             {
                 if (Kiemtrabenhnhanxuatvien(textBox_MaBN.Text) == true)
                 {
@@ -147,7 +151,7 @@ namespace QLBV_normal
                                                 Tinhtrangravien,chuandoankhiravien ,Huongdieutri ,Bacsikhambenh ,Bacsidieutri  ,Phieukhambenh_id,
                                                 Soxquang,Soctscanner,Sosieuam,Soxetnghiem,Sokhac)
                                                 VALUES (NULL , @thoigiandenkham , @benhchinh , @benhkemtheo ,@thoigiandenkham , @thoigiandenkham ,
-                                                0,@chuandoankhiravien , 'đổi hồ sơ tiếp tục điều trị' ,'" + comboBox_Bacsikham.Text + "','" + comboBox_Bacsikham.Text + "'," + maphieukhambenh + ",0,0,0,0,0)";
+                                                0,@chuandoankhiravien , 'đổi hồ sơ tiếp tục điều trị' ,'" + textBox_bacsikham.Text + "','" + textBox_bacsikham.Text + "'," + maphieukhambenh + ",0,0,0,0,0)";
 
                     else com1.CommandText = "INSERT INTO `dbthan`.`noitru` (`id`, `Thoigianvaovien`, `Tructiepvao`, `Vaolanthu`, `Ngaygiovaokhoa`, `Chuyenkhoa`, `Ngaygiochuyenkhoa`, `Chuyenvien`, `Chuyenden`, `Ngaygioravien`, `Loairavien`, `Noichuyenden`, `KKBCapcuu`, `Khivaokhoadieutri`, `Thuthuat`, `Phauthuat`, `Benhchinh`, `Benhkemtheo`, `Taibien`, `Bienchung`, `Ketquadieutri`, `Giaiphaubenh`, `Thoigiantuvong`, `Lydotuvong`, `Nguyennhanchinhtuvong`, `Khamnghiemtuthi`, `Chuandoangiaiphaututhi`, `Diung`, `Matuy`, `Ruoubia`, `Thuocla`, `Thuoclao`, `Khac`, `Tuanhoan`, `Hohap`, `Tieuhoa`, `Thantietnieusinhduc`, `Thankinh`, `Coxuongkhop`, `Taimuihong`, `Ranghammat`, `Mat`, `Noitietdinhduong`, `Tomtatbenhan`, `Tienluong`, `Huongdieutri`, `Phuongphapdieutri`, `BStruongkhoa`, `Bslambenhan`, `BSdieutri`, `Phieukhambenh_id`) VALUES (NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL," + maphieukhambenh + ")";
                     Util.con.Open();
@@ -269,6 +273,7 @@ namespace QLBV_normal
                         comboBox_Nghenghiep.Text = read[4].ToString();
                         //comboBox_Dantoc.Text = read[5].ToString();
                         textBox_CMND.Text = read[6].ToString();
+                        textBox_NoiDKKCBBD.Focus();
                         //comboBox_Ngoaikieu.Text = read[7].ToString();
                         //textBox_Sonha.Text = read[8].ToString();
                         //textBox_duong.Text = read[9].ToString();
@@ -466,8 +471,10 @@ namespace QLBV_normal
                     {
                         //MessageBox.Show(read[1].ToString());
                         //comboBox_Bacsikham.Text = read[1].ToString();
-                        comboBox_Bacsikham.Text = read[1].ToString();
+                        textBox_bacsikham.Text = read["TenBacsi"].ToString();
                     }
+                    else
+                        textBox_bacsikham.Text="";
                     Util.con.Close();
                 }
             }
@@ -785,13 +792,158 @@ namespace QLBV_normal
                 MessageBox.Show("Chuẩn đoán không được để trống");
                 return false;
             }
-            if (textBox_Noigioithieu.Text == string.Empty)
-            {
-                MessageBox.Show("Nơi giới thiệu không được để trống");
-                return false;
-            }
+        
             return true;
         }
+        /// <summary>
+        ///////////////////////////////////////// key enter///////////////////
+        
+        private void textBox_Nguoithan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.KeyChar = char.Parse(e.KeyChar.ToString().ToUpper()); 
+        }
+
+
+
+        private void textBox_NoiDKKCBBD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                textBox_Sothe.Focus();
+        }
+
+        private void textBox_Sothe_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                dateTimePicker_Tu.Focus();
+        }
+
+        private void dateTimePicker_Tu_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+               dateTimePicker_Den.Focus();
+        }
+
+        private void dateTimePicker_Den_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                textBox_Nguoithan.Focus();
+        }
+
+        private void textBox_Nguoithan_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                textBox_Dienthoai.Focus();
+        }
+
+        private void textBox_Dienthoai_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                textBox_Diachinguoithan.Focus();
+        }
+
+        private void textBox_Diachinguoithan_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                textBox_Noigioithieu.Focus();
+        }
+
+        private void textBox_Noigioithieu_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                textBox_Lydovaovien.Focus();
+        }
+
+        private void textBox_Lydovaovien_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                textBox_Quatrinhbenhly.Focus();
+        }
+
+        private void textBox_Quatrinhbenhly_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                textBox_Tiensubenhbanthan.Focus();
+        }
+
+        private void textBox_Tiensubenhbanthan_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                textBox_tiensubenhgiadinh.Focus();
+        }
+
+        private void textBox_tiensubenhgiadinh_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                textBox_Mach.Focus();
+        }
+
+        private void textBox_Nhiet_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                textBox_Huyetap.Focus();
+        }
+
+        private void textBox_Mach_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                textBox_Nhiet.Focus();
+        }
+
+        private void textBox_Huyetap_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                textBox_Nhiptho.Focus();
+        }
+
+        private void textBox_Nhiptho_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                textBox_Trongluong.Focus();
+        }
+
+        private void textBox_Trongluong_KeyDown(object sender, KeyEventArgs e)
+        {
+            //if (e.KeyCode == Keys.Enter)
+               //richText_Toanthan.Focus();
+        }
+
+        private void richText_Toanthan_KeyDown(object sender, KeyEventArgs e)
+        {
+           // if (e.KeyCode == Keys.Enter)
+               // richTextBox_Cacbophan.Focus();
+        }
+
+        private void richTextBox_Cacbophan_KeyDown(object sender, KeyEventArgs e)
+        {
+            //if (e.KeyCode == Keys.Enter)
+               // richTextBox_Tomtat.Focus();
+        }
+
+        private void richTextBox_Tomtat_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                textBox_idICD_chinh.Focus();
+        }
+
+        private void textBox_Chuy_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                textBox_idbacsikham.Focus();
+        }
+
+        private void textBox_idbacsikham_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                textBox_bacsikham.Focus();
+        }
+
+        private void textBox_bacsikham_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                button_CapNhat.Focus();
+        }
+
+
     }
 }
 
