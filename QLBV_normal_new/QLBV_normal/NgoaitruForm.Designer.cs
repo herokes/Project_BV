@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             this.listView_danhsachbenhnhan = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -241,6 +241,7 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.comboBox_ngayxetnghiem_hoichuan = new System.Windows.Forms.ComboBox();
             this.listView_hoichuan = new System.Windows.Forms.ListView();
             this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader27 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -269,7 +270,6 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_search_benhnhan = new System.Windows.Forms.TextBox();
-            this.comboBox_ngayxetnghiem_hoichuan = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -2121,10 +2121,10 @@
             this.columnHeader17});
             this.listView_ketquaxetnghiem.FullRowSelect = true;
             this.listView_ketquaxetnghiem.GridLines = true;
-            listViewGroup1.Header = "ListViewGroup";
-            listViewGroup1.Name = "abc";
+            listViewGroup3.Header = "ListViewGroup";
+            listViewGroup3.Name = "abc";
             this.listView_ketquaxetnghiem.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1});
+            listViewGroup3});
             this.listView_ketquaxetnghiem.HideSelection = false;
             this.listView_ketquaxetnghiem.Location = new System.Drawing.Point(8, 70);
             this.listView_ketquaxetnghiem.MultiSelect = false;
@@ -2193,10 +2193,10 @@
             // 
             this.listView_xetnghiem.CheckBoxes = true;
             this.listView_xetnghiem.GridLines = true;
-            listViewGroup2.Header = "ListViewGroup";
-            listViewGroup2.Name = "abc";
+            listViewGroup4.Header = "ListViewGroup";
+            listViewGroup4.Name = "abc";
             this.listView_xetnghiem.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup2});
+            listViewGroup4});
             this.listView_xetnghiem.Location = new System.Drawing.Point(6, 24);
             this.listView_xetnghiem.Name = "listView_xetnghiem";
             this.listView_xetnghiem.ShowGroups = false;
@@ -2230,6 +2230,7 @@
             this.button_del_dieutri.TabIndex = 35;
             this.button_del_dieutri.Text = "Xóa";
             this.button_del_dieutri.UseVisualStyleBackColor = true;
+            this.button_del_dieutri.Click += new System.EventHandler(this.button_del_dieutri_Click);
             // 
             // button_add_dieutri
             // 
@@ -2294,6 +2295,7 @@
             this.columnHeader5});
             this.listView_dieutri.FullRowSelect = true;
             this.listView_dieutri.GridLines = true;
+            this.listView_dieutri.HideSelection = false;
             this.listView_dieutri.Location = new System.Drawing.Point(4, 267);
             this.listView_dieutri.Name = "listView_dieutri";
             this.listView_dieutri.Size = new System.Drawing.Size(841, 231);
@@ -2346,6 +2348,14 @@
             this.tabPage3.TabIndex = 8;
             this.tabPage3.Text = "Hội Chuẩn";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // comboBox_ngayxetnghiem_hoichuan
+            // 
+            this.comboBox_ngayxetnghiem_hoichuan.FormattingEnabled = true;
+            this.comboBox_ngayxetnghiem_hoichuan.Location = new System.Drawing.Point(393, 20);
+            this.comboBox_ngayxetnghiem_hoichuan.Name = "comboBox_ngayxetnghiem_hoichuan";
+            this.comboBox_ngayxetnghiem_hoichuan.Size = new System.Drawing.Size(179, 21);
+            this.comboBox_ngayxetnghiem_hoichuan.TabIndex = 14;
             // 
             // listView_hoichuan
             // 
@@ -2600,14 +2610,6 @@
             this.textBox_search_benhnhan.Size = new System.Drawing.Size(173, 20);
             this.textBox_search_benhnhan.TabIndex = 21;
             this.textBox_search_benhnhan.TextChanged += new System.EventHandler(this.textBox_search_benhnhan_TextChanged);
-            // 
-            // comboBox_ngayxetnghiem_hoichuan
-            // 
-            this.comboBox_ngayxetnghiem_hoichuan.FormattingEnabled = true;
-            this.comboBox_ngayxetnghiem_hoichuan.Location = new System.Drawing.Point(393, 20);
-            this.comboBox_ngayxetnghiem_hoichuan.Name = "comboBox_ngayxetnghiem_hoichuan";
-            this.comboBox_ngayxetnghiem_hoichuan.Size = new System.Drawing.Size(179, 21);
-            this.comboBox_ngayxetnghiem_hoichuan.TabIndex = 14;
             // 
             // NgoaitruForm
             // 
