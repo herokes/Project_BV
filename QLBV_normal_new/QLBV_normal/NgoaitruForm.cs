@@ -152,8 +152,11 @@ namespace QLBV_normal
                 MySqlDataReader read = com.ExecuteReader();
                 while (read.Read())
                 {
+                    Hashtable hash = new Hashtable();
+                    hash.Add("id", read["id"].ToString());
                     ListViewItem item = new ListViewItem();
                     item.Text = DateTime.Parse(read["Ngaygio"].ToString()).ToString("dd/MM/yyyy h\\h mm");
+                    item.Tag = hash;
                     item.SubItems.Add(read["Dientienbenh"].ToString());
                     item.SubItems.Add(read["Mota"].ToString());
                     listView_dieutri.Items.Add(item);
@@ -3426,6 +3429,55 @@ namespace QLBV_normal
             catch (MySqlException sqlE)
             {
                 return;
+            }
+        }
+
+        private void button_del_dieutri_Click(object sender, EventArgs e)
+        {
+            int listView_dieutri_select_length = listView_dieutri.SelectedItems.Count;
+            if (listView_dieutri_select_length == 0)
+            {
+                return;
+            }
+            string valueString = "";
+            for (int i = 0; i < listView_dieutri_select_length; i++)
+            {
+                Hashtable hash = (Hashtable)listView_dieutri.SelectedItems[i].Tag;
+                if (i == 0)
+                {
+                    valueString += hash["id"].ToString();
+                }
+                else
+                {
+                    valueString += ", " + hash["id"].ToString();
+                }
+            }
+            if (MessageBox.Show("Bạn có muốn xóa nội dung tờ điều trị này?", "Xác nhận xóa nội dung tờ diều trị", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                try
+                {
+                    MySqlCommand com = new MySqlCommand();
+                    com.Connection = Util.con;
+                    com.CommandText = @"DELETE FROM todieutri_noidung WHERE id IN (" + valueString + ")";
+                    Util.con.Open();
+                    com.ExecuteNonQuery();
+                    Util.con.Close();
+                }
+                catch (MySqlException sqlE)
+                {
+                    return;
+                }
+
+                int idBenhnhan = -1;
+                try
+                {
+                    idBenhnhan = int.Parse(textBox_MaBN.Text);
+                }
+                catch (Exception ex)
+                {
+
+                }
+                load_Dieutri(idBenhnhan);
             }
         }
 
