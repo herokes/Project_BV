@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox_bacsikham = new System.Windows.Forms.TextBox();
             this.richTextBox_chuandoan = new System.Windows.Forms.RichTextBox();
             this.textBox_idICD_kemtheo = new System.Windows.Forms.TextBox();
             this.textBox_idICD_chinh = new System.Windows.Forms.TextBox();
@@ -124,7 +125,7 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox_bacsikham = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -212,6 +213,14 @@
             this.groupBox2.TabIndex = 48;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Phiếu Khám bệnh";
+            // 
+            // textBox_bacsikham
+            // 
+            this.textBox_bacsikham.Location = new System.Drawing.Point(209, 634);
+            this.textBox_bacsikham.Name = "textBox_bacsikham";
+            this.textBox_bacsikham.Size = new System.Drawing.Size(233, 20);
+            this.textBox_bacsikham.TabIndex = 165;
+            this.textBox_bacsikham.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_bacsikham_KeyDown);
             // 
             // richTextBox_chuandoan
             // 
@@ -1057,19 +1066,20 @@
             this.label4.TabIndex = 51;
             this.label4.Text = "Các lần khám bệnh";
             // 
-            // textBox_bacsikham
+            // textBox1
             // 
-            this.textBox_bacsikham.Location = new System.Drawing.Point(209, 634);
-            this.textBox_bacsikham.Name = "textBox_bacsikham";
-            this.textBox_bacsikham.Size = new System.Drawing.Size(233, 20);
-            this.textBox_bacsikham.TabIndex = 165;
-            this.textBox_bacsikham.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_bacsikham_KeyDown);
+            this.textBox1.Location = new System.Drawing.Point(171, 481);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(332, 39);
+            this.textBox1.TabIndex = 52;
             // 
             // DangkyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1336, 713);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.listView_Caclankhambenh);
             this.Controls.Add(this.button1);
@@ -1193,6 +1203,7 @@
         private System.Windows.Forms.TextBox textBox_idICD_kemtheo;
         private System.Windows.Forms.TextBox textBox_chuandoan_kemtheo;
         private System.Windows.Forms.TextBox textBox_bacsikham;
+        private System.Windows.Forms.TextBox textBox1;
 
     }
 }

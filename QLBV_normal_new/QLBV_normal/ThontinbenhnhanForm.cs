@@ -273,11 +273,7 @@ namespace QLBV_normal
                 MessageBox.Show("năm sinh không được lớn hơn ngày hiện tại");
                 return false;
             }
-            if (textBox_CMND.Text== string.Empty)
-            {
-                MessageBox.Show("Chưa nhập số CMND");
-                return false;
-            }
+         
             if (textBox_Sonha.Text == string.Empty)
             {
                 MessageBox.Show("Chưa nhập số nhà");
@@ -303,11 +299,7 @@ namespace QLBV_normal
                 MessageBox.Show("Chưa nhập thành phố");
                 return false;
             }
-            if (textBox_Noilamviec.Text == string.Empty)
-            {
-                MessageBox.Show("Chưa nhập nơi làm việc");
-                return false;
-            }
+         
             return true;
         }
 

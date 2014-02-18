@@ -118,7 +118,7 @@ namespace QLBV_normal.Class
 
         public Benhnhan()
         { 
-            _Ten = "Tiep ghe"; 
+            _Ten = " ga"; 
         }
         public Benhnhan(int idBenhnhan,String ten, Boolean gioitinh, String nghenghiep, String dantoc, String cmnd, String ngoaikieu, String sonha, String duong, String phuong, String quan,String thanhpho, String noilamviec, String doituong, DateTime bhytgiatriden,String sobhyt , String nguoithan, int dienthoai )
         {

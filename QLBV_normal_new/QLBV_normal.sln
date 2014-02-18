@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLBV_normal", "QLBV_normal\QLBV_normal.csproj", "{EFE895DB-D769-4FB9-B2E5-9A06D572B3B7}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "cai dat", "cai dat\cai dat.vdproj", "{8C93D940-2D46-4E6E-BEDA-9679E104A4EA}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "khoathan..setup", "C:\Users\minhtiep\Desktop\chay thu\khoathan..setup\khoathan..setup.vdproj", "{E70A1E6F-E456-46DE-80D7-B6918158EDDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +15,8 @@ Global
 		{EFE895DB-D769-4FB9-B2E5-9A06D572B3B7}.Debug|x86.Build.0 = Debug|x86
 		{EFE895DB-D769-4FB9-B2E5-9A06D572B3B7}.Release|x86.ActiveCfg = Release|x86
 		{EFE895DB-D769-4FB9-B2E5-9A06D572B3B7}.Release|x86.Build.0 = Release|x86
-		{8C93D940-2D46-4E6E-BEDA-9679E104A4EA}.Debug|x86.ActiveCfg = Debug
-		{8C93D940-2D46-4E6E-BEDA-9679E104A4EA}.Release|x86.ActiveCfg = Release
+		{E70A1E6F-E456-46DE-80D7-B6918158EDDC}.Debug|x86.ActiveCfg = Debug
+		{E70A1E6F-E456-46DE-80D7-B6918158EDDC}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

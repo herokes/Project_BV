@@ -70,6 +70,7 @@
       <DependentUpon>BenhvienForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\Bacsi.cs" />
+    <Compile Include="Class\Baocaoxetnghiemtheothang.cs" />
     <Compile Include="Class\Benhnhan.cs" />
     <Compile Include="Class\Benhanngoaitru.cs" />
     <Compile Include="Class\Bienbanhoichuan.cs" />
@@ -149,6 +150,12 @@
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\Report_Xetnghiemtheothang.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Report_Xetnghiemtheothang.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SetupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +217,10 @@
     <EmbeddedResource Include="Report\Report_Toathuoc.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Report_Toathuoc.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Report_Xetnghiemtheothang.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Report_Xetnghiemtheothang.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SetupForm.resx">
       <DependentUpon>SetupForm.cs</DependentUpon>

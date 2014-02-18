@@ -2343,7 +2343,7 @@ namespace QLBV_normal
             bant.Mabenhnhan = idbn.ToString();
             bant.Tenbenhnhan = textBox_Ten.Text;
             bant.Ngaysinh = dateTimePicker_Namsinh.Value;
-            bant.Chuandoan = richTextBox_chuandoan_hoichuan.Text;
+            bant.Chuandoan = textBox_Chuandoan.Text;
             DateTime thoigianhoichuan = new DateTime(dateTimePicker_ngayhoichuan_hoichuan.Value.Year, dateTimePicker_ngayhoichuan_hoichuan.Value.Month, dateTimePicker_ngayhoichuan_hoichuan.Value.Day, dateTimePicker_giohoichuan_hoichuan.Value.Hour, dateTimePicker_giohoichuan_hoichuan.Value.Minute, dateTimePicker_giohoichuan_hoichuan.Value.Second);
             bant.Ngayhoichuan = thoigianhoichuan;
             bant.Mucdothieumau = comboBox_thieumaumucdo_hoichuan.Text;
@@ -2398,7 +2398,7 @@ namespace QLBV_normal
                 //MessageBox.Show(idphieuxetnghiem);control 0 insert, 1 update
                 MySqlCommand com = new MySqlCommand();
                 com.Connection = Util.con;
-                com.Parameters.Add("@idphieuxetnghiem", MySqlDbType.VarChar, 11).Value = idPhieuxetnghiem;
+                com.Parameters.Add("@idphieuxetnghiem", MySqlDbType.VarChar,11).Value = idPhieuxetnghiem;
                 com.CommandText = "select * from hoichuan where Phieuxetnghiem_id=@idphieuxetnghiem";
                 //MessageBox.Show(com.CommandText);
                 Util.con.Open();
@@ -2432,7 +2432,7 @@ namespace QLBV_normal
                 
                 if (tinhtranghoichuan == "chưa hội chuẩn")
                 {
-                    richTextBox_chuandoan_hoichuan.Text = textBox_Quatrinhbenhly.Text;
+                    richTextBox_chuandoan_hoichuan.Text = textBox_Chuandoan.Text;
                     string ketluanhochuan = " + Dùng thuốc tạo máu : \r Liều: \t ui/tuần \n+Truyền đạm: \t lần/tuần\n+Truyền Fe:\t lần/tuần";
                     richTextBox_ketluanhoichuan_hoichuan.Text = ketluanhochuan;
                     dateTimePicker_ngayhoichuan_hoichuan.Value = DateTime.Today;
