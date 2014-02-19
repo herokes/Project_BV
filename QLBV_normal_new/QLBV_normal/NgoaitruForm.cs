@@ -1576,7 +1576,7 @@ namespace QLBV_normal
                     read = com.ExecuteReader();
                     while (read.Read())
                     {
-                        valueString += read["Tenxetnghiem"].ToString() + "\n";
+                        valueString += read["Tenxetnghiem"].ToString() + "\t";
                     }
                     Util.con.Close();
                     break;
