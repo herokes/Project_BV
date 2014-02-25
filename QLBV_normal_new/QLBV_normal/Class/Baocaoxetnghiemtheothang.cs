@@ -92,6 +92,107 @@ namespace QLBV_normal.Class
             set { _Ure2 = value; }
             get { return _Ure2; }
         }
-        
+        private String _Cre2;
+        public String Cre2
+        {
+            set { _Cre2 = value; }
+            get { return _Cre2; }
+        }
+        private String _K2;
+        public String K2
+        {
+            set { _K2 = value; }
+            get { return _K2; }
+        }
+        private String _Ca2;
+        public String Ca2
+        {
+            set { _Ca2 = value; }
+            get { return _Ca2; }
+        }
+        private String _GOT;
+        public String GOT
+        {
+            set { _GOT = value; }
+            get { return _GOT; }
+        }
+        private String _GPT;
+        public String GPT
+        {
+            set { _GPT = value; }
+            get { return _GPT; }
+        }
+        private String _GT;
+        public String GT
+        {
+            set { _GT = value; }
+            get { return _GT; }
+        }
+        private String _Alb;
+        public String Alb
+        {
+            set { _Alb = value; }
+            get { return _Alb; }
+        }
+        private String _Cho;
+        public String Cho
+        {
+            set { _Cho = value; }
+            get { return _Cho; }
+        }
+        private String _TG;
+        public String TG
+        {
+            set { _TG = value; }
+            get { return _TG; }
+        }
+        private String _HDL;
+        public String HDL
+        {
+            set { _HDL = value; }
+            get { return _HDL; }
+        }
+        private String _LDL;
+        public String LDL
+        {
+            set { _LDL = value; }
+            get { return _LDL; }
+        }
+        private String _Mucdo;
+        public String Mucdo
+        {
+            set { _Mucdo = value; }
+            get { return _Mucdo; }
+        }
+        private String _Thoigian;
+        public String Thoigian
+        {
+            set { _Thoigian = value; }
+            get { return _Thoigian; }
+        }
+        private String _Sohoso;
+        public String Sohoso
+        {
+            set { _Sohoso = value; }
+            get { return _Sohoso; }
+        }
+        private String _Lieudung;
+        public String Lieudung
+        {
+            set { _Lieudung = value; }
+            get { return _Lieudung; }
+        }
+        private String _Dam;
+        public String Dam
+        {
+            set { _Dam = value; }
+            get { return _Dam; }
+        }
+        private String _Albumin;
+        public String Albumin
+        {
+            set { _Albumin = value; }
+            get { return _Albumin; }
+        }
     }
 }
